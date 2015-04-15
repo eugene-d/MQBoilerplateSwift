@@ -1,0 +1,441 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
+		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
+		26E9FEAB1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		26E9FE981ADE090B00E92745 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26E9FE821ADE090B00E92745 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26E9FE8A1ADE090B00E92745;
+			remoteInfo = MQBoilerplateSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		26E9FE8F1ADE090B00E92745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQBoilerplateSwift.h; sourceTree = "<group>"; };
+		26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		26E9FE9C1ADE090B00E92745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQBoilerplateSwiftTests.swift; sourceTree = "<group>"; };
+		26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+MQBoilerplateExtensions.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		26E9FE871ADE090B00E92745 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26E9FE931ADE090B00E92745 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		26E9FE811ADE090B00E92745 = {
+			isa = PBXGroup;
+			children = (
+				26E9FE8D1ADE090B00E92745 /* MQBoilerplateSwift */,
+				26E9FE9A1ADE090B00E92745 /* MQBoilerplateSwiftTests */,
+				26E9FE8C1ADE090B00E92745 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		26E9FE8C1ADE090B00E92745 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */,
+				26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		26E9FE8D1ADE090B00E92745 /* MQBoilerplateSwift */ = {
+			isa = PBXGroup;
+			children = (
+				26E9FEA71ADE094900E92745 /* Controllers */,
+				26E9FEA81ADE094900E92745 /* Extensions */,
+				26E9FEA91ADE094900E92745 /* Views */,
+				26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */,
+				26E9FE8E1ADE090B00E92745 /* Supporting Files */,
+			);
+			path = MQBoilerplateSwift;
+			sourceTree = "<group>";
+		};
+		26E9FE8E1ADE090B00E92745 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				26E9FE8F1ADE090B00E92745 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26E9FE9A1ADE090B00E92745 /* MQBoilerplateSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */,
+				26E9FE9B1ADE090B00E92745 /* Supporting Files */,
+			);
+			path = MQBoilerplateSwiftTests;
+			sourceTree = "<group>";
+		};
+		26E9FE9B1ADE090B00E92745 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				26E9FE9C1ADE090B00E92745 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26E9FEA71ADE094900E92745 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		26E9FEA81ADE094900E92745 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26E9FEA91ADE094900E92745 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		26E9FE881ADE090B00E92745 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		26E9FE8A1ADE090B00E92745 /* MQBoilerplateSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26E9FEA11ADE090B00E92745 /* Build configuration list for PBXNativeTarget "MQBoilerplateSwift" */;
+			buildPhases = (
+				26E9FE861ADE090B00E92745 /* Sources */,
+				26E9FE871ADE090B00E92745 /* Frameworks */,
+				26E9FE881ADE090B00E92745 /* Headers */,
+				26E9FE891ADE090B00E92745 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MQBoilerplateSwift;
+			productName = MQBoilerplateSwift;
+			productReference = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		26E9FE951ADE090B00E92745 /* MQBoilerplateSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26E9FEA41ADE090B00E92745 /* Build configuration list for PBXNativeTarget "MQBoilerplateSwiftTests" */;
+			buildPhases = (
+				26E9FE921ADE090B00E92745 /* Sources */,
+				26E9FE931ADE090B00E92745 /* Frameworks */,
+				26E9FE941ADE090B00E92745 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				26E9FE991ADE090B00E92745 /* PBXTargetDependency */,
+			);
+			name = MQBoilerplateSwiftTests;
+			productName = MQBoilerplateSwiftTests;
+			productReference = 26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		26E9FE821ADE090B00E92745 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Matt Quiros";
+				TargetAttributes = {
+					26E9FE8A1ADE090B00E92745 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					26E9FE951ADE090B00E92745 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 26E9FE851ADE090B00E92745 /* Build configuration list for PBXProject "MQBoilerplateSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 26E9FE811ADE090B00E92745;
+			productRefGroup = 26E9FE8C1ADE090B00E92745 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				26E9FE8A1ADE090B00E92745 /* MQBoilerplateSwift */,
+				26E9FE951ADE090B00E92745 /* MQBoilerplateSwiftTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		26E9FE891ADE090B00E92745 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26E9FE941ADE090B00E92745 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		26E9FE861ADE090B00E92745 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26E9FEAB1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26E9FE921ADE090B00E92745 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		26E9FE991ADE090B00E92745 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 26E9FE8A1ADE090B00E92745 /* MQBoilerplateSwift */;
+			targetProxy = 26E9FE981ADE090B00E92745 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		26E9FE9F1ADE090B00E92745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		26E9FEA01ADE090B00E92745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		26E9FEA21ADE090B00E92745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MQBoilerplateSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		26E9FEA31ADE090B00E92745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MQBoilerplateSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		26E9FEA51ADE090B00E92745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MQBoilerplateSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		26E9FEA61ADE090B00E92745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MQBoilerplateSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		26E9FE851ADE090B00E92745 /* Build configuration list for PBXProject "MQBoilerplateSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26E9FE9F1ADE090B00E92745 /* Debug */,
+				26E9FEA01ADE090B00E92745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		26E9FEA11ADE090B00E92745 /* Build configuration list for PBXNativeTarget "MQBoilerplateSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26E9FEA21ADE090B00E92745 /* Debug */,
+				26E9FEA31ADE090B00E92745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		26E9FEA41ADE090B00E92745 /* Build configuration list for PBXNativeTarget "MQBoilerplateSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26E9FEA51ADE090B00E92745 /* Debug */,
+				26E9FEA61ADE090B00E92745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 26E9FE821ADE090B00E92745 /* Project object */;
+}
