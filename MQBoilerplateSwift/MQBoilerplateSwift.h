@@ -14,6 +14,4 @@ FOUNDATION_EXPORT double MQBoilerplateSwiftVersionNumber;
 //! Project version string for MQBoilerplateSwift.
 FOUNDATION_EXPORT const unsigned char MQBoilerplateSwiftVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <MQBoilerplateSwift/PublicHeader.h>
-
-
+// In this header, you should import all the public headers of your framework using statements like #import <MQBoilerplateSwift/PublicHeader.h>"

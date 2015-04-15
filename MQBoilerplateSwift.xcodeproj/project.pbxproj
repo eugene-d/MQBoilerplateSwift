@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		265A06811ADE555400826150 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 265A067F1ADE555400826150 /* Info.plist */; };
+		265A06851ADE56B400826150 /* MQCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06841ADE56B400826150 /* MQCommand.swift */; };
+		265A06871ADE58D200826150 /* MQHTTPCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06861ADE58D200826150 /* MQHTTPCommand.swift */; };
+		265A06931ADE5FE500826150 /* MQAlertingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06921ADE5FE500826150 /* MQAlertingCommand.swift */; };
+		265A06991ADE695800826150 /* MQAlertingHTTPCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06981ADE695800826150 /* MQAlertingHTTPCommand.swift */; };
 		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
 		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
@@ -24,8 +29,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		265A067F1ADE555400826150 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		265A06841ADE56B400826150 /* MQCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQCommand.swift; sourceTree = "<group>"; };
+		265A06861ADE58D200826150 /* MQHTTPCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQHTTPCommand.swift; sourceTree = "<group>"; };
+		265A06921ADE5FE500826150 /* MQAlertingCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAlertingCommand.swift; sourceTree = "<group>"; };
+		265A06981ADE695800826150 /* MQAlertingHTTPCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAlertingHTTPCommand.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		26E9FE8F1ADE090B00E92745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQBoilerplateSwift.h; sourceTree = "<group>"; };
 		26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE9C1ADE090B00E92745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +61,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		265A067C1ADE555400826150 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		265A067D1ADE555400826150 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				265A068C1ADE5D3700826150 /* Utilities */,
+				265A06831ADE558300826150 /* Commands */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		265A067E1ADE555400826150 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				265A067F1ADE555400826150 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		265A06801ADE555400826150 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		265A06831ADE558300826150 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				265A06841ADE56B400826150 /* MQCommand.swift */,
+				265A06861ADE58D200826150 /* MQHTTPCommand.swift */,
+				265A06921ADE5FE500826150 /* MQAlertingCommand.swift */,
+				265A06981ADE695800826150 /* MQAlertingHTTPCommand.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		265A068C1ADE5D3700826150 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		26E9FE811ADE090B00E92745 = {
 			isa = PBXGroup;
 			children = (
@@ -73,21 +131,14 @@
 		26E9FE8D1ADE090B00E92745 /* MQBoilerplateSwift */ = {
 			isa = PBXGroup;
 			children = (
-				26E9FEA71ADE094900E92745 /* Controllers */,
+				265A067C1ADE555400826150 /* Controllers */,
+				265A067D1ADE555400826150 /* Objects */,
+				265A067E1ADE555400826150 /* Supporting Files */,
+				265A06801ADE555400826150 /* Views */,
 				26E9FEA81ADE094900E92745 /* Extensions */,
-				26E9FEA91ADE094900E92745 /* Views */,
 				26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */,
-				26E9FE8E1ADE090B00E92745 /* Supporting Files */,
 			);
 			path = MQBoilerplateSwift;
-			sourceTree = "<group>";
-		};
-		26E9FE8E1ADE090B00E92745 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				26E9FE8F1ADE090B00E92745 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		26E9FE9A1ADE090B00E92745 /* MQBoilerplateSwiftTests */ = {
@@ -107,26 +158,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		26E9FEA71ADE094900E92745 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		26E9FEA81ADE094900E92745 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		26E9FEA91ADE094900E92745 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265A06811ADE555400826150 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265A06871ADE58D200826150 /* MQHTTPCommand.swift in Sources */,
+				265A06931ADE5FE500826150 /* MQAlertingCommand.swift in Sources */,
+				265A06851ADE56B400826150 /* MQCommand.swift in Sources */,
+				265A06991ADE695800826150 /* MQAlertingHTTPCommand.swift in Sources */,
 				26E9FEAB1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +321,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -325,6 +368,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -352,7 +396,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MQBoilerplateSwift/Info.plist;
+				INFOPLIST_FILE = "MQBoilerplateSwift/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -370,7 +414,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MQBoilerplateSwift/Info.plist;
+				INFOPLIST_FILE = "MQBoilerplateSwift/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
