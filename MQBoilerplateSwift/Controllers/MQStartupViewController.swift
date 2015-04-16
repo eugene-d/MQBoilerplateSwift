@@ -1,5 +1,5 @@
 //
-//  MQSetupViewController.swift
+//  MQStartupViewController.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 4/16/15.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class MQSetupViewController : UIViewController {
+public class MQStartupViewController : UIViewController {
     
-    public var setupCommand: MQCommand
+    public var startupCommand: MQCommand
     
     var activityIndicator: UIActivityIndicatorView
     
-    public init(setupCommand: MQCommand) {
-        self.setupCommand = setupCommand
+    public init(startupCommand: MQCommand) {
+        self.startupCommand = startupCommand
         self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,7 +54,7 @@ public class MQSetupViewController : UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.startAnimating()
-        self.setupCommand.execute()
+        self.startupCommand.execute()
     }
     
 }

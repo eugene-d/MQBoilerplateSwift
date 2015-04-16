@@ -37,7 +37,7 @@ public class MQFileManager {
     Convenience method for deflating an object of type T from /Document/fileName.
     */
     public class func objectWithFileName<T>(fileName: String) -> T? {
-        return self.objectWithFileName(fileName, inFolder: .DocumentDirectory)
+        return (self.objectWithFileName(fileName, inFolder: .DocumentDirectory) as T?)
     }
     
     /**

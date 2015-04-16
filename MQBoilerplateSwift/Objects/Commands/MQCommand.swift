@@ -13,10 +13,7 @@ public class MQCommand {
     /**
     Defines the main task of this command and called when execute() is called.
     If supplied, calling execute() WILL NOT call the process() function.
-    
-    This property is provided for cases where subclassing MQCommand is overkill
-    just to override the process() function. Use this to define the process
-    when instantiating an MQCommand.
+    This property is provided for cases when you don't want to subclass MQCommand.
     */
     public var processBlock: (() -> Void)?
     
