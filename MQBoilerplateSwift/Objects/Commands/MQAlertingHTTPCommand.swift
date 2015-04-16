@@ -23,4 +23,11 @@ public class MQAlertingHTTPCommand: MQAlertingCommand {
         }
     }
     
+    public func failWithError(error: NSError) {
+        self.error = error
+        if let failureBlock = self.failureBlock {
+            failureBlock(error)
+        }
+    }
+    
 }

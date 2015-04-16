@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		265A06811ADE555400826150 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 265A067F1ADE555400826150 /* Info.plist */; };
 		265A06851ADE56B400826150 /* MQCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06841ADE56B400826150 /* MQCommand.swift */; };
 		265A06871ADE58D200826150 /* MQHTTPCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06861ADE58D200826150 /* MQHTTPCommand.swift */; };
 		265A06931ADE5FE500826150 /* MQAlertingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06921ADE5FE500826150 /* MQAlertingCommand.swift */; };
@@ -256,7 +255,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				265A06811ADE555400826150 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

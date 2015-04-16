@@ -10,10 +10,36 @@ import Foundation
 
 public class MQCommand {
     
-    public var processBlock: (() -> ())?
-    public var completionBlock: (() -> ())?
-    public var successBlock: ((AnyObject?) -> ())?
-    public var failureBlock: ((NSError) -> ())?
+    /**
+    Defines the main task of this command and called when execute() is called.
+    If supplied, calling execute() WILL NOT call the process() function.
+    
+    This property is provided for cases where subclassing MQCommand is overkill
+    just to override the process() function. Use this to define the process
+    when instantiating an MQCommand.
+    */
+    public var processBlock: (() -> Void)?
+    
+    /**
+    Tasks that need to be executed after the process regardless of whether
+    the command succeeds or fails. This block is called before either the successBlock
+    or the failureBlock.
+    
+    Examples of what to do in a completion block are closing input/output streams,
+    or hiding a screen's "Loading" view before either showing the results or an error message.
+    */
+    public var completionBlock: (() -> Void)?
+    
+    /**
+    Executed when no errors occur, with or without a result.
+    This is performed after the completionBlock.
+    */
+    public var successBlock: ((AnyObject?) -> Void)?
+    
+    /**
+    Executed when an error occurs during processing.
+    */
+    public var failureBlock: ((NSError) -> Void)?
     
     public var result: AnyObject?
     public var error: NSError?
