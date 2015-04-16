@@ -11,10 +11,13 @@
 		265A06871ADE58D200826150 /* MQHTTPCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06861ADE58D200826150 /* MQHTTPCommand.swift */; };
 		265A06931ADE5FE500826150 /* MQAlertingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06921ADE5FE500826150 /* MQAlertingCommand.swift */; };
 		265A06991ADE695800826150 /* MQAlertingHTTPCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06981ADE695800826150 /* MQAlertingHTTPCommand.swift */; };
+		2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459191ADFCDDB00B92DC0 /* MQFileManager.swift */; };
 		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
 		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
-		26E9FEAB1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift */; };
+		26E9FEAB1ADE098100E92745 /* UIView+MQBoilerplateSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateSwiftExtensions.swift */; };
+		26F28AE01ADF89960070A08B /* MQSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F28ADF1ADF89960070A08B /* MQSetupViewController.swift */; };
+		26F28AFB1ADF90D10070A08B /* UIColor+MQBoilerplateSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F28AFA1ADF90D10070A08B /* UIColor+MQBoilerplateSwiftExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,12 +36,15 @@
 		265A06861ADE58D200826150 /* MQHTTPCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQHTTPCommand.swift; sourceTree = "<group>"; };
 		265A06921ADE5FE500826150 /* MQAlertingCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAlertingCommand.swift; sourceTree = "<group>"; };
 		265A06981ADE695800826150 /* MQAlertingHTTPCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAlertingHTTPCommand.swift; sourceTree = "<group>"; };
+		269459191ADFCDDB00B92DC0 /* MQFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFileManager.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQBoilerplateSwift.h; sourceTree = "<group>"; };
 		26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE9C1ADE090B00E92745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQBoilerplateSwiftTests.swift; sourceTree = "<group>"; };
-		26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+MQBoilerplateExtensions.swift"; sourceTree = "<group>"; };
+		26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+MQBoilerplateSwiftExtensions.swift"; sourceTree = "<group>"; };
+		26F28ADF1ADF89960070A08B /* MQSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQSetupViewController.swift; sourceTree = "<group>"; };
+		26F28AFA1ADF90D10070A08B /* UIColor+MQBoilerplateSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MQBoilerplateSwiftExtensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +66,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		265A067C1ADE555400826150 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		265A067D1ADE555400826150 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				265A068C1ADE5D3700826150 /* Utilities */,
+				269459161ADFC75100B92DC0 /* Utilities */,
 				265A06831ADE558300826150 /* Commands */,
 			);
 			path = Objects;
@@ -102,9 +101,10 @@
 			path = Commands;
 			sourceTree = "<group>";
 		};
-		265A068C1ADE5D3700826150 /* Utilities */ = {
+		269459161ADFC75100B92DC0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				269459191ADFCDDB00B92DC0 /* MQFileManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -130,7 +130,7 @@
 		26E9FE8D1ADE090B00E92745 /* MQBoilerplateSwift */ = {
 			isa = PBXGroup;
 			children = (
-				265A067C1ADE555400826150 /* Controllers */,
+				26F28ADE1ADF89830070A08B /* Controllers */,
 				265A067D1ADE555400826150 /* Objects */,
 				265A067E1ADE555400826150 /* Supporting Files */,
 				265A06801ADE555400826150 /* Views */,
@@ -160,9 +160,18 @@
 		26E9FEA81ADE094900E92745 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift */,
+				26E9FEAA1ADE098100E92745 /* UIView+MQBoilerplateSwiftExtensions.swift */,
+				26F28AFA1ADF90D10070A08B /* UIColor+MQBoilerplateSwiftExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26F28ADE1ADF89830070A08B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				26F28ADF1ADF89960070A08B /* MQSetupViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,11 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F28AFB1ADF90D10070A08B /* UIColor+MQBoilerplateSwiftExtensions.swift in Sources */,
+				26F28AE01ADF89960070A08B /* MQSetupViewController.swift in Sources */,
 				265A06871ADE58D200826150 /* MQHTTPCommand.swift in Sources */,
 				265A06931ADE5FE500826150 /* MQAlertingCommand.swift in Sources */,
 				265A06851ADE56B400826150 /* MQCommand.swift in Sources */,
 				265A06991ADE695800826150 /* MQAlertingHTTPCommand.swift in Sources */,
-				26E9FEAB1ADE098100E92745 /* UIView+MQBoilerplateExtensions.swift in Sources */,
+				26E9FEAB1ADE098100E92745 /* UIView+MQBoilerplateSwiftExtensions.swift in Sources */,
+				2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

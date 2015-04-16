@@ -1,5 +1,5 @@
 //
-//  UIView+MQBoilerplateExtensions.swift
+//  UIView+MQBoilerplateSwiftExtensions.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 4/15/15.
