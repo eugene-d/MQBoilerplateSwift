@@ -26,4 +26,16 @@ public extension UIView {
         }
     }
     
+    public class func instantiateFromNib<T: UIView>(type: T.Type) -> T? {
+        let className = type.classForCoder().description().componentsSeparatedByString(".").last!
+        
+        let mainBundle = NSBundle.mainBundle()
+        if let objects = mainBundle.loadNibNamed(className, owner: self, options: nil) {
+            if let view = objects.last as? T {
+                return view
+            }
+        }
+        return nil
+    }
+    
 }
