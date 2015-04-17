@@ -1,5 +1,5 @@
 //
-//  UIColor+MQBoilerplateSwiftExtensions.swift
+//  UIColor.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 4/16/15.

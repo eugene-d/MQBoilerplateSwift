@@ -1,5 +1,5 @@
 //
-//  NSLayoutConstraint+MQBoilerplateSwiftExtensions.swift
+//  NSLayoutConstraint.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 4/17/15.
