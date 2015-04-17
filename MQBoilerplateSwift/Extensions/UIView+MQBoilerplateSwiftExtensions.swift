@@ -16,4 +16,14 @@ public extension UIView {
         }
     }
     
+    /**
+    Adds multiple subviews in order. Later arguments are placed on top of the views
+    preceding them.
+    */
+    public func addSubviews(views: UIView...) {
+        for view in views {
+            self.addSubview(view)
+        }
+    }
+    
 }
