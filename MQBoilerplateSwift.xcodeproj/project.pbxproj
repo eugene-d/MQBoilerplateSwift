@@ -16,6 +16,7 @@
 		2682CAA01AE227470039CBB1 /* MQInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA9F1AE227470039CBB1 /* MQInputField.swift */; };
 		2682CAB41AE26DA60039CBB1 /* MQInputFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAB21AE26DA60039CBB1 /* MQInputFieldCell.swift */; };
 		2682CAB51AE26DA60039CBB1 /* MQInputFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAB31AE26DA60039CBB1 /* MQInputFieldTextField.swift */; };
+		2682CADB1AE2E4870039CBB1 /* MQFieldPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */; };
 		2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459191ADFCDDB00B92DC0 /* MQFileManager.swift */; };
 		269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */; };
 		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,6 +48,7 @@
 		2682CA9F1AE227470039CBB1 /* MQInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQInputField.swift; sourceTree = "<group>"; };
 		2682CAB21AE26DA60039CBB1 /* MQInputFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQInputFieldCell.swift; sourceTree = "<group>"; };
 		2682CAB31AE26DA60039CBB1 /* MQInputFieldTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQInputFieldTextField.swift; sourceTree = "<group>"; };
+		2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldPickerView.swift; sourceTree = "<group>"; };
 		269459191ADFCDDB00B92DC0 /* MQFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFileManager.swift; sourceTree = "<group>"; };
 		269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 			children = (
 				2682CAB21AE26DA60039CBB1 /* MQInputFieldCell.swift */,
 				2682CAB31AE26DA60039CBB1 /* MQInputFieldTextField.swift */,
+				2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				2682CAB41AE26DA60039CBB1 /* MQInputFieldCell.swift in Sources */,
 				2682CAB51AE26DA60039CBB1 /* MQInputFieldTextField.swift in Sources */,
 				2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */,
+				2682CADB1AE2E4870039CBB1 /* MQFieldPickerView.swift in Sources */,
 				2682CAA01AE227470039CBB1 /* MQInputField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
