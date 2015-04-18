@@ -11,13 +11,13 @@ import Foundation
 public class MQInputField {
     
     public var name: String
-    public var value: AnyObject?
+    public var value: Any?
     
     public init(name: String) {
         self.name = name
     }
     
-    public convenience init(name: String, value: AnyObject?) {
+    public convenience init(name: String, value: Any?) {
         self.init(name: name)
         self.value = value
     }
