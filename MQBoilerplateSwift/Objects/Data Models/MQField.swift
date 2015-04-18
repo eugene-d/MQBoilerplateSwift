@@ -1,5 +1,5 @@
 //
-//  MQInputField.swift
+//  MQField.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 4/18/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MQInputField {
+public class MQField {
     
     public var name: String
     public var value: Any?

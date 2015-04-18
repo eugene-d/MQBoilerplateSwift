@@ -1,5 +1,5 @@
 //
-//  MQInputFieldCell.swift
+//  MQFieldCell.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 4/18/15.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class MQInputFieldCell: UITableViewCell {
+public class MQFieldCell: UITableViewCell {
     
-    public weak var inputField: MQInputField?
+    public weak var field: MQField?
     public weak var delegate: AnyObject?
     
 }

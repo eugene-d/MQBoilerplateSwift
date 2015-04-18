@@ -1,5 +1,5 @@
 //
-//  MQInputFieldTextField.swift
+//  MQFieldTextField.swift
 //  CheersOAPE
 //
 //  Created by Matt Quiros on 4/18/15.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-public class MQInputFieldTextField : UITextField {
+public class MQFieldTextField : UITextField {
     
-    public weak var inputField: MQInputField?
+    public weak var field: MQField?
     
 }

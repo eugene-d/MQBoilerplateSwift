@@ -10,6 +10,6 @@ import UIKit
 
 public class MQFieldPickerView : UIPickerView {
     
-    public weak var field: MQInputField?
+    public weak var field: MQField?
     
 }
