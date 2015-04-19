@@ -9,7 +9,7 @@
 import Foundation
 
 public extension UIView {
-
+    
     public class func disableAutoresizingMasksInViews(views: UIView...) {
         for view in views {
             view.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -20,10 +20,30 @@ public extension UIView {
     Adds multiple subviews in order. Later arguments are placed on top of the views
     preceding them.
     */
-    public func addSubviews(views: UIView...) {
+    public func addSubviews(views: UIView ...) {
         for view in views {
             self.addSubview(view)
         }
+    }
+    
+    public func addSubviewsAndFill(views: UIView ...) {
+        for view in views {
+            self.addSubviewAndFill(view)
+        }
+    }
+    
+    public func addSubviewAndFill(view: UIView) {
+        self.addSubview(view)
+        
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        let views = ["view" : view]
+        let rules = ["H:|-0-[view]-0-|",
+            "V:|-0-[view]-0-|"]
+        self.addConstraints(
+            NSLayoutConstraint.constraintsWithVisualFormatArray(rules,
+                metrics: nil,
+                views: views))
     }
     
     public class func instantiateFromNib<T: UIView>() -> T? {

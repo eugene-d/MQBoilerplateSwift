@@ -6,19 +6,9 @@
 
 Currently, `MQBoilerplateSwift` can only be added to a project via `git submodule`.
 
-In the Terminal, go to your Xcode project's folder, and then to wherever you want to clone the submodule:
-
-```
-cd path/to/project/Submodules
-```
-
-Then, type `git submodule add https://github.com/mattquiros/MQBoilerplateSwift.git`
-
-## Cloning a project with MQBoilerplateSwift
-
-* `git clone` the project repo and go (`cd`) to its folder.
-* Run `git submodule update --init --recursive` to download the files from the `MQBoilerplateSwift` submodule.
-* Open the `.xcodeproj`, or `.xcworkspace` if using Cocoapods. 
+* In the Terminal, go to your Xcode project's folder, and then to wherever you want to clone the submodule: `cd path/to/project/Submodules`
+* Type `git submodule add https://github.com/mattquiros/MQBoilerplateSwift.git`
+* Open your app's Xcode project.
 * In Xcode, expand to the folders *PROJECT_NAME > Libraries > MQBoilerplateSwift*.
 * Keep only the `MQBoilerplateSwift.xcodeproj` in the project and remove references to the following files, **but DO NOT move them to the Trash:**
     * .gitignore
@@ -26,6 +16,23 @@ Then, type `git submodule add https://github.com/mattquiros/MQBoilerplateSwift.g
     * MQBoilerplateSwiftTests (folder)
 * In the project target's *Build Phases > Target Dependencies*, click on the plus sign and add `MQBoilerplateSwift.framework`.
 * In the project target's '*General* tab, scroll to `Embedded Binaries`, click on the plus sign, and add `MQBoilerplateSwift.framework`
+
+## Cloning a project with MQBoilerplateSwift
+
+* `git clone` the project repo and go (`cd`) to its folder.
+* Run `git submodule update --init --recursive` to download the files from the `MQBoilerplateSwift` submodule.
+
+## Versioning
+
+If you are cloning a project that I built with `MQBoilerplateSwift`, make sure that your local copy of the framework is the correct version.
+
+To find out what version of `MQBoilerplateSwift` you should use, go to the app's `README.md` file. Then, `git checkout` the specified tag.
+
+```
+$ cd MQBoilerplateSwift
+$ git fetch --tags
+$ git checkout tags/VERSION_NUMBER
+```
 
 ## Checking out branches without MQBoilerplateSwift
 
