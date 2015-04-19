@@ -10,6 +10,8 @@ import Foundation
 
 public class MQAlertingHTTPCommand: MQAlertingCommand {
     
+    public var shouldStoreCookies: Bool = false
+    
     /**
     The execute() function of an MQAlertingHTTPCommand only executes the processBlock or the process()
     function. The developer is exepected to manually define an asynchronous HTTP request
