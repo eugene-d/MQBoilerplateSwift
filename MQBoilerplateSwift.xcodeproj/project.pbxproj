@@ -17,6 +17,7 @@
 		2682CAB41AE26DA60039CBB1 /* MQFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAB21AE26DA60039CBB1 /* MQFieldCell.swift */; };
 		2682CAB51AE26DA60039CBB1 /* MQFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAB31AE26DA60039CBB1 /* MQFieldTextField.swift */; };
 		2682CADB1AE2E4870039CBB1 /* MQFieldPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */; };
+		2682CAE81AE364220039CBB1 /* MQError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAE71AE364220039CBB1 /* MQError.swift */; };
 		2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459191ADFCDDB00B92DC0 /* MQFileManager.swift */; };
 		269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */; };
 		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,6 +50,7 @@
 		2682CAB21AE26DA60039CBB1 /* MQFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQFieldCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2682CAB31AE26DA60039CBB1 /* MQFieldTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQFieldTextField.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQFieldPickerView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		2682CAE71AE364220039CBB1 /* MQError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQError.swift; sourceTree = "<group>"; };
 		269459191ADFCDDB00B92DC0 /* MQFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFileManager.swift; sourceTree = "<group>"; };
 		269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				269459191ADFCDDB00B92DC0 /* MQFileManager.swift */,
+				2682CAE71AE364220039CBB1 /* MQError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2682CAE81AE364220039CBB1 /* MQError.swift in Sources */,
 				26F28AFB1ADF90D10070A08B /* UIColor.swift in Sources */,
 				26F28AE01ADF89960070A08B /* MQStartupViewController.swift in Sources */,
 				269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */,
