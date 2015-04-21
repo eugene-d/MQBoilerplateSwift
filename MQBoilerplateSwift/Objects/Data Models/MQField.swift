@@ -27,6 +27,17 @@ public class MQField {
     */
     public var value: Any?
     
+    public var keyboardType: UIKeyboardType?
+    public var validCharacterSet: NSCharacterSet?
+    public var invalidCharacterSet: NSCharacterSet? {
+        get {
+            if let validCharacterSet = self.validCharacterSet {
+                return validCharacterSet.invertedSet
+            }
+            return nil
+        }
+    }
+    
     public init(name: String, label: String, value: Any?) {
         self.name = name
         self.label = label
