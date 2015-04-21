@@ -14,6 +14,17 @@ public class MQLoadingView: UIView {
     var loadingLabel: UILabel
     var containerView: UIView
     
+    public var loadingText: String? {
+        didSet {
+            if let text = self.loadingText {
+                self.loadingLabel.text = text
+            } else {
+                self.loadingLabel.text = ""
+            }
+            self.setNeedsLayout()
+        }
+    }
+    
     public init() {
         self.spinnerView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
         

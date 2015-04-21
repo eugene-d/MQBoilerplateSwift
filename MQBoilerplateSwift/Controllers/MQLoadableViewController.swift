@@ -14,6 +14,34 @@ public class MQLoadableViewController: UIViewController {
     public var retryView: UIView?
     public var primaryView: UIView?
     
+    public var command: MQCommand? {
+        didSet {
+            if let command = self.command {
+                // Override the successBlock to automatically show
+                // the primary view when successful.
+                let customSuccessBlock = command.successBlock
+                command.successBlock = {[unowned self] result in
+                    if let theCustomSuccessBlock = customSuccessBlock {
+                        theCustomSuccessBlock(result)
+                    }
+                    
+                    self.showView(.Primary)
+                }
+                
+                // Override the failureBlock to automatically show the
+                // retry view when failed.
+                let customFailureBlock = command.failureBlock
+                command.failureBlock = {[unowned self] error in
+                    if let theCustomFailureBlock = customFailureBlock {
+                        theCustomFailureBlock(error)
+                    }
+                    
+                    self.showView(.Retry)
+                }
+            }
+        }
+    }
+    
     public enum View {
         case Loading, Retry, Primary
     }
@@ -54,7 +82,24 @@ public class MQLoadableViewController: UIViewController {
         
     }
     
-    public func switchToView(view: MQLoadableViewController.View) {
+    public func setupCommand() {
+        
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupCommand()
+        
+        if let command = self.command {
+            self.showView(.Loading)
+            command.execute()
+        } else {
+            self.showView(.Retry)
+        }
+    }
+    
+    public func showView(view: MQLoadableViewController.View) {
         if let loadingView = self.loadingView {
             loadingView.hidden = view != .Loading
         }

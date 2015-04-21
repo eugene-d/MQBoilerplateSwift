@@ -10,9 +10,9 @@ import UIKit
 
 public class MQRetryView: UIControl {
     
-    public var errorLabel: UILabel
-    public var retryButton: UIButton
-    public var containerView: UIView
+    var errorLabel: UILabel
+    var retryButton: UIButton
+    var containerView: UIView
     
     public init() {
         self.errorLabel = UILabel()
@@ -99,6 +99,10 @@ public class MQRetryView: UIControl {
                 multiplier: 2.0 / 3,
                 constant: 0)
             ])
+    }
+    
+    func retryButtonTapped() {
+        self.sendActionsForControlEvents(.TouchUpInside)
     }
     
 }

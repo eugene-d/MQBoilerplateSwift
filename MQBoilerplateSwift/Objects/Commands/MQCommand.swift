@@ -38,8 +38,33 @@ public class MQCommand {
     */
     public var failureBlock: ((NSError) -> Void)?
     
+    /**
+    The result returned to the success block.
+    */
     public var result: AnyObject?
+    
+    /**
+    The error returned to the failure block. Setting a non-nil error automatically
+    makes the command a failure and executes the failure block.
+    */
     public var error: NSError?
+    
+    /**
+    The view controller that presents the `UIAlertController` if the `failureBlock`
+    has been set to display an error dialog upon failure. This behavior can be set
+    by calling `showErrorDialogOnFail()`.
+    */
+    public var errorPresenter: UIViewController?
+    
+    /**
+    The title for the error dialog.
+    */
+    public var errorDialogTitle: String?
+    
+    /**
+    The title for the error dialog's OK button.
+    */
+    public var okButtonTitle: String?
     
     public init() {}
     
@@ -69,6 +94,50 @@ public class MQCommand {
             if let successBlock = self.successBlock {
                 successBlock(self.result)
             }
+        }
+    }
+    
+    /**
+    Executes the failure block with the given error.
+    */
+    public func failWithError(error: NSError) {
+        self.error = error
+        if let failureBlock = self.failureBlock {
+            failureBlock(error)
+        }
+    }
+    
+    /**
+    Overrides the `failureBlock` to show a `UIAlertController` when an error occurs. The error
+    dialog uses default titles and button titles.
+    */
+    public func showErrorDialogInFailureBlock(presenter: UIViewController) {
+        self.showErrorDialogInFailureBlock(presenter, errorDialogTitle: "Error", okButtonTitle: "OK")
+    }
+    
+    /**
+    Overrides the `failureBlock` to show a `UIAlertController` when an error occurs.
+    */
+    public func showErrorDialogInFailureBlock(presenter: UIViewController, errorDialogTitle: String, okButtonTitle: String) {
+        // Keep a reference to the values.
+        self.errorPresenter = presenter
+        self.errorDialogTitle = errorDialogTitle
+        self.okButtonTitle = okButtonTitle
+        
+        let customFailureBlock = self.failureBlock
+        self.failureBlock = {[unowned self] error in
+            // If the developer provided a `failureBlock`, execute that first.
+            if let theCustomFailureBlock = customFailureBlock {
+                theCustomFailureBlock(error)
+            }
+            
+            // Display an alert view that shows the error.
+            let alertController = UIAlertController(title: self.errorDialogTitle!, message: error.localizedDescription, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: self.okButtonTitle!, style: .Default, handler: {(action) in
+                alertController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            alertController.addAction(okAction)
+            self.errorPresenter!.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
