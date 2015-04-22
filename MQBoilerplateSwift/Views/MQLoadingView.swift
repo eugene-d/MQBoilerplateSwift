@@ -43,6 +43,8 @@ public class MQLoadingView: UIView {
         self.containerView.addSubviews(self.spinnerView, self.loadingLabel)
         self.addSubviews(self.containerView)
         self.addAutolayout()
+        
+        self.spinnerView.startAnimating()
     }
 
     public required init(coder aDecoder: NSCoder) {
@@ -69,10 +71,10 @@ public class MQLoadingView: UIView {
         
         self.containerView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormatArray(rules, metrics: nil, views: views))
         
-        // Center the loadingLabel horizontally.
+        // Center the spinner view horizontally.
         
         self.containerView.addConstraint(
-            NSLayoutConstraint(item: self.loadingLabel,
+            NSLayoutConstraint(item: self.spinnerView,
                 attribute: .CenterX,
                 relatedBy: .Equal,
                 toItem: self.containerView,

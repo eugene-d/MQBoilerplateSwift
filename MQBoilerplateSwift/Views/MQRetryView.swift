@@ -8,11 +8,19 @@
 
 import UIKit
 
-public class MQRetryView: UIControl {
+protocol MQRetryViewDelegate {
+    
+     func MQRetryViewRetryButtonTapped()
+    
+}
+
+public class MQRetryView: UIView {
     
     var errorLabel: UILabel
     var retryButton: UIButton
     var containerView: UIView
+    
+    var delegate: MQRetryViewDelegate?
     
     public init() {
         self.errorLabel = UILabel()
@@ -102,7 +110,9 @@ public class MQRetryView: UIControl {
     }
     
     func retryButtonTapped() {
-        self.sendActionsForControlEvents(.TouchUpInside)
+        if let delegate = self.delegate {
+            delegate.MQRetryViewRetryButtonTapped()
+        }
     }
     
 }

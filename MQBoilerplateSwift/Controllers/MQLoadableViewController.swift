@@ -89,13 +89,20 @@ public class MQLoadableViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupCommand()
+        if let retryView = self.retryView as? MQRetryView {
+            retryView.delegate = self
+        }
         
+        self.setupCommand()
+        self.executeCommand()
+    }
+    
+    public func executeCommand() {
         if let command = self.command {
             self.showView(.Loading)
             command.execute()
         } else {
-            self.showView(.Retry)
+            self.showView(.Primary)
         }
     }
     
@@ -111,6 +118,14 @@ public class MQLoadableViewController: UIViewController {
         if let primaryView = self.primaryView {
             primaryView.hidden = view != .Primary
         }
+    }
+    
+}
+
+extension MQLoadableViewController : MQRetryViewDelegate {
+    
+    func MQRetryViewRetryButtonTapped() {
+        self.executeCommand()
     }
     
 }
