@@ -9,8 +9,8 @@ Currently, `MQBoilerplateSwift` can only be added to a project via `git submodul
 * In the Terminal, go to your Xcode project's folder, and then to wherever you want to clone the submodule: `cd path/to/project/Submodules`
 * Type `git submodule add https://github.com/mattquiros/MQBoilerplateSwift.git`
 * Open your app's Xcode project.
-* In Xcode, expand to the folders *PROJECT_NAME > Libraries > MQBoilerplateSwift*.
-* Keep only the `MQBoilerplateSwift.xcodeproj` in the project and remove references to the following files, **but DO NOT move them to the Trash:**
+* In Xcode, expand to the folder where you cloned `MQBoilerplateSwift`.
+* In the top-level `MQBoilerplateSwift` folder, keep only the `.xcodeproj` and remove references to the following files, **but DO NOT move them to the Trash:**
     * .gitignore
     * MQBoilerplateSwift (folder)
     * MQBoilerplateSwiftTests (folder)
