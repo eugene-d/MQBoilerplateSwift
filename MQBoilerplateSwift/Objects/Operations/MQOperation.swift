@@ -123,7 +123,6 @@ public class MQOperation : NSOperation {
                 self.errorPresenter!.presentViewController(alertController, animated: true, completion: nil)
             })
         }
-
     }
     
 }
