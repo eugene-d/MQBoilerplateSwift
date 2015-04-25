@@ -91,6 +91,13 @@ public class MQOperation : NSOperation {
         
     }
     
+    public func failWithError(error: NSError) {
+        self.error = error
+        if let failureBlock = self.failureBlock {
+            failureBlock(error)
+        }
+    }
+    
     public func showErrorDialogOnFail(#errorPresenter: UIViewController) {
         self.showErrorDialogOnFail(errorPresenter: errorPresenter, errorDialogTitle: "Error", errorDialogOKButtonTitle: "OK")
     }
