@@ -14,29 +14,45 @@ public class MQLoadableViewController: UIViewController {
     public var retryView: UIView?
     public var primaryView: UIView?
     
-    public var command: MQCommand? {
+    public var operation: MQHTTPOperation? {
         didSet {
-            if let command = self.command {
+            if let operation = self.operation {
+                // Override the startBlock to automatically show the loading view.
+                let customStartBlock = operation.startBlock
+                operation.startBlock = {[unowned self] in
+                    if let theCustomStartBlock = customStartBlock {
+                        theCustomStartBlock()
+                    }
+                    
+                    MQDispatcher.executeInMainThread {[unowned self] in
+                        self.showView(.Loading)
+                    }
+                }
+                
                 // Override the successBlock to automatically show
                 // the primary view when successful.
-                let customSuccessBlock = command.successBlock
-                command.successBlock = {[unowned self] result in
+                let customSuccessBlock = operation.successBlock
+                operation.successBlock = {[unowned self] result in
                     if let theCustomSuccessBlock = customSuccessBlock {
                         theCustomSuccessBlock(result)
                     }
                     
-                    self.showView(.Primary)
+                    MQDispatcher.executeInMainThread {[unowned self] in
+                        self.showView(.Primary)
+                    }
                 }
                 
                 // Override the failureBlock to automatically show the
                 // retry view when failed.
-                let customFailureBlock = command.failureBlock
-                command.failureBlock = {[unowned self] error in
+                let customFailureBlock = operation.failureBlock
+                operation.failureBlock = {[unowned self] error in
                     if let theCustomFailureBlock = customFailureBlock {
                         theCustomFailureBlock(error)
                     }
                     
-                    self.showView(.Retry)
+                    MQDispatcher.executeInMainThread {[unowned self] in
+                        self.showView(.Retry)
+                    }
                 }
             }
         }
@@ -82,28 +98,35 @@ public class MQLoadableViewController: UIViewController {
         
     }
     
-    public func setupCommand() {
-        
+    /**
+    Override to set the view controller's `self.operation`. Once `self.operation`
+    is set, its start, success, and failure blocks will be overridden by the property
+    observers to automatically show the appropriate views.
+    */
+    public func setupOperation() {
+        fatalError("\(__FUNCTION__) must be overridden.")
+    }
+    
+    /**
+    Adds the operation into the shared `MQHTTPOperationQueue`.
+    */
+    public func startOperation() {
+        if let operation = self.operation {
+            MQHTTPOperationQueue.sharedQueue.addOperation(operation)
+        }
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.showView(.Loading)
+        
         if let retryView = self.retryView as? MQRetryView {
             retryView.delegate = self
         }
         
-        self.setupCommand()
-        self.executeCommand()
-    }
-    
-    public func executeCommand() {
-        if let command = self.command {
-            self.showView(.Loading)
-            command.execute()
-        } else {
-            self.showView(.Primary)
-        }
+        self.setupOperation()
+        self.startOperation()
     }
     
     public func showView(view: MQLoadableViewController.View) {
@@ -125,7 +148,8 @@ public class MQLoadableViewController: UIViewController {
 extension MQLoadableViewController : MQRetryViewDelegate {
     
     func MQRetryViewRetryButtonTapped() {
-        self.executeCommand()
+        self.setupOperation()
+        self.startOperation()
     }
     
 }

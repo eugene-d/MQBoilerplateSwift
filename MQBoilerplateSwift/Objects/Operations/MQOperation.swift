@@ -17,6 +17,12 @@ by adding it to an `NSOperationQueue`.
 public class MQOperation : NSOperation {
     
     /**
+    Tasks that need execution before the main `process()` function is executed.
+    An example of what to do in a `startBlock` would be to show a loading view.
+    */
+    public var startBlock: (Void -> Void)?
+    
+    /**
     Tasks that need to be executed after the process block finishes, but before
     either the success of failure block is executed. An example of what to do in
     a `preparationBlock` is to hide a screen's "Loading" view before either showing
@@ -55,6 +61,18 @@ public class MQOperation : NSOperation {
     public var errorDialogOKButtonTitle: String?
     
     public override func main() {
+        if self.cancelled {
+            return
+        }
+        
+        if let startBlock = self.startBlock {
+            startBlock()
+        }
+        
+        if self.cancelled {
+            return
+        }
+        
         self.process()
         
         if self.cancelled {
