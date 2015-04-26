@@ -104,7 +104,7 @@ public class MQLoadableViewController: UIViewController {
     observers to automatically show the appropriate views.
     */
     public func setupOperation() {
-        fatalError("\(__FUNCTION__) must be overridden.")
+        
     }
     
     /**
