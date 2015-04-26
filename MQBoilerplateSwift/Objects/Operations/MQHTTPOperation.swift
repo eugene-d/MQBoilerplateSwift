@@ -16,6 +16,10 @@ Calling the success and failure blocks is left to the developer.
 public class MQHTTPOperation: MQOperation {
     
     public override func main() {
+        if let startBlock = self.startBlock {
+            startBlock()
+        }
+        
         self.process()
     }
     

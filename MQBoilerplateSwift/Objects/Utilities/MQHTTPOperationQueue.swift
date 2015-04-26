@@ -16,7 +16,7 @@ Once all the operations are finished, the queue hides the network activity indic
 */
 public class MQHTTPOperationQueue: NSOperationQueue {
     
-    private let kOperationCountKeypath = "operationCount"
+//    private let kOperationCountKeypath = "operationCount"
     
     public class var sharedQueue: MQHTTPOperationQueue {
         return _instance
@@ -25,27 +25,28 @@ public class MQHTTPOperationQueue: NSOperationQueue {
     override init() {
         super.init()
         self.name = "MQHTTPOperationQueue"
-        self.addObserver(self, forKeyPath: kOperationCountKeypath, options: .New, context: nil)
+//        self.addObserver(self, forKeyPath: kOperationCountKeypath, options: .New, context: nil)
     }
     
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if keyPath == kOperationCountKeypath {
-            if let newValue = change[NSKeyValueChangeNewKey] as? Int {
-                if newValue > 0 {
-                    MQDispatcher.executeInMainThread {
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-                    }
-                } else {
-                    MQDispatcher.executeInMainThread {
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    }
-                }
-            }
-        }
-    }
-    
-    deinit {
-        self.removeObserver(self, forKeyPath: kOperationCountKeypath)
-    }
+//    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+//        if keyPath == kOperationCountKeypath {
+//            if let newValue = change[NSKeyValueChangeNewKey] as? Int {
+//                println("newValue: \(newValue), operationCount: \(self.operationCount)")
+//                if newValue > 0 {
+//                    MQDispatcher.executeInMainThread {
+//                        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//                    }
+//                } else {
+//                    MQDispatcher.executeInMainThread {
+//                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    
+//    deinit {
+//        self.removeObserver(self, forKeyPath: kOperationCountKeypath)
+//    }
     
 }
