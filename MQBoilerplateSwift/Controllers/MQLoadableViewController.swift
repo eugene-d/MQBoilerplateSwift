@@ -11,7 +11,7 @@ import UIKit
 public class MQLoadableViewController: UIViewController {
     
     public var loadingView: UIView?
-    public var retryView: UIView?
+    public var retryView: MQRetryView?
     public var primaryView: UIView?
     
     public var operation: MQHTTPOperation? {
@@ -51,7 +51,10 @@ public class MQLoadableViewController: UIViewController {
                     }
                     
                     MQDispatcher.executeInMainThread {[unowned self] in
-                        self.showView(.Retry)
+                        if let retryView = self.retryView {
+                            retryView.error = error
+                            self.showView(.Retry)
+                        }
                     }
                 }
             }
@@ -91,7 +94,7 @@ public class MQLoadableViewController: UIViewController {
     }
     
     public func setupRetryView() {
-        self.retryView = MQRetryView()
+        self.retryView = MQDefaultRetryView()
     }
     
     public func setupPrimaryView() {
@@ -121,8 +124,8 @@ public class MQLoadableViewController: UIViewController {
         
         self.showView(.Loading)
         
-        if let retryView = self.retryView as? MQRetryView {
-            retryView.delegate = self
+        if let retryView = self.retryView as? MQDefaultRetryView {
+            retryView.internalDelegate = self
         }
         
         self.setupOperation()
@@ -145,9 +148,9 @@ public class MQLoadableViewController: UIViewController {
     
 }
 
-extension MQLoadableViewController : MQRetryViewDelegate {
+extension MQLoadableViewController : MQDefaultRetryViewDelegate {
     
-    func MQRetryViewRetryButtonTapped() {
+    func defaultRetryViewDidTapRetry() {
         self.setupOperation()
         self.startOperation()
     }

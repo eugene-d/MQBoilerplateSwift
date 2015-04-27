@@ -23,12 +23,13 @@
 		2682CAE81AE364220039CBB1 /* MQError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAE71AE364220039CBB1 /* MQError.swift */; };
 		2682CAFB1AE375DC0039CBB1 /* MQLoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAFA1AE375DC0039CBB1 /* MQLoadableViewController.swift */; };
 		2682CAFD1AE3776B0039CBB1 /* MQLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAFC1AE3776B0039CBB1 /* MQLoadingView.swift */; };
-		2682CAFF1AE3AB530039CBB1 /* MQRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAFE1AE3AB530039CBB1 /* MQRetryView.swift */; };
+		2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAFE1AE3AB530039CBB1 /* MQDefaultRetryView.swift */; };
 		2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459191ADFCDDB00B92DC0 /* MQFileManager.swift */; };
 		269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */; };
 		26AB58A61AE8FC0100C0C711 /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB58A51AE8FC0100C0C711 /* MQOperation.swift */; };
 		26AB58AA1AE915F800C0C711 /* MQDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB58A91AE915F800C0C711 /* MQDispatcher.swift */; };
 		26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */; };
+		26D37CA21AEDE80F00145C7A /* MQRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D37CA11AEDE80F00145C7A /* MQRetryView.swift */; };
 		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
 		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
@@ -66,12 +67,13 @@
 		2682CAED1AE36D2C0039CBB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2682CAFA1AE375DC0039CBB1 /* MQLoadableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadableViewController.swift; sourceTree = "<group>"; };
 		2682CAFC1AE3776B0039CBB1 /* MQLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingView.swift; sourceTree = "<group>"; };
-		2682CAFE1AE3AB530039CBB1 /* MQRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQRetryView.swift; sourceTree = "<group>"; };
+		2682CAFE1AE3AB530039CBB1 /* MQDefaultRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultRetryView.swift; sourceTree = "<group>"; };
 		269459191ADFCDDB00B92DC0 /* MQFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFileManager.swift; sourceTree = "<group>"; };
 		269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		26AB58A51AE8FC0100C0C711 /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
 		26AB58A91AE915F800C0C711 /* MQDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDispatcher.swift; sourceTree = "<group>"; };
 		26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorDialog.swift; sourceTree = "<group>"; };
+		26D37CA11AEDE80F00145C7A /* MQRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQRetryView.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQBoilerplateSwift.h; sourceTree = "<group>"; };
 		26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,8 +146,9 @@
 				2682CAB31AE26DA60039CBB1 /* MQFieldTextField.swift */,
 				2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */,
 				2682CAFC1AE3776B0039CBB1 /* MQLoadingView.swift */,
-				2682CAFE1AE3AB530039CBB1 /* MQRetryView.swift */,
+				2682CAFE1AE3AB530039CBB1 /* MQDefaultRetryView.swift */,
 				2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */,
+				26D37CA11AEDE80F00145C7A /* MQRetryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -361,8 +364,9 @@
 				2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */,
 				266F56FC1AEC891100E5FE0D /* MQHTTPOperationQueue.swift in Sources */,
 				265A06851ADE56B400826150 /* MQCommand.swift in Sources */,
-				2682CAFF1AE3AB530039CBB1 /* MQRetryView.swift in Sources */,
+				2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */,
 				26E9FEAB1ADE098100E92745 /* UIView.swift in Sources */,
+				26D37CA21AEDE80F00145C7A /* MQRetryView.swift in Sources */,
 				2682CAFB1AE375DC0039CBB1 /* MQLoadableViewController.swift in Sources */,
 				267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */,
 				2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */,
