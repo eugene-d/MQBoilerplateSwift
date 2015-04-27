@@ -9,10 +9,11 @@
 import Foundation
 
 /**
-EXPERIMENTAL CLASS
-
 An `MQOperation` is defined as a synchronous operation and should only be executed
 by adding it to an `NSOperationQueue`.
+
+See *Asynchronous Versus Synchronous Operations* in:
+https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperation_class/index.html
 */
 public class MQOperation : NSOperation {
     

@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+**IMPORTANT:** Use `MQOperation` instead. `MQCommand` will be deleted in future releases
+of this framework.
+*/
 public class MQCommand {
     
     /**

@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+**IMPORTANT:** Use `MQHTTPOperation` instead. `MQHTTPCommand` will be deleted in future releases
+of this framework.
+*/
 public class MQHTTPCommand: MQCommand {
     
     /**
