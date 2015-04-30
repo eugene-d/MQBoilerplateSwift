@@ -26,10 +26,10 @@ public class MQOperation : NSOperation {
     /**
     Tasks that need to be executed after the process block finishes, but before
     either the success of failure block is executed. An example of what to do in
-    a `preparationBlock` is to hide a screen's "Loading" view before either showing
+    a `finishBlock` is to hide a screen's "Loading" view before either showing
     the results or an error message.
     */
-    public var preparationBlock: (Void -> Void)?
+    public var finishBlock: (Void -> Void)?
     
     /**
     Executed after the `preparationBlock` if `error` is `nil`.
@@ -57,10 +57,6 @@ public class MQOperation : NSOperation {
     */
     public var result: AnyObject?
     
-    public var errorPresenter: UIViewController?
-    public var errorDialogTitle: String?
-    public var errorDialogOKButtonTitle: String?
-    
     public override func main() {
         if self.cancelled {
             return
@@ -80,8 +76,8 @@ public class MQOperation : NSOperation {
             return
         }
         
-        if let preparationBlock = self.preparationBlock {
-            preparationBlock()
+        if let finishBlock = self.finishBlock {
+            MQDispatcher.executeInMainThread(finishBlock)
         }
         
         if self.cancelled {
@@ -90,11 +86,15 @@ public class MQOperation : NSOperation {
         
         if let error = self.error {
             if let failureBlock = self.failureBlock {
-                failureBlock(error)
+                MQDispatcher.executeInMainThread {
+                    failureBlock(error)
+                }
             }
         } else {
             if let successBlock = self.successBlock {
-                successBlock(self.result)
+                MQDispatcher.executeInMainThread {
+                    successBlock(self.result)
+                }
             }
         }
     }
@@ -110,44 +110,13 @@ public class MQOperation : NSOperation {
         
     }
     
-    public func failWithError(error: NSError) {
-        self.error = error
-        if let failureBlock = self.failureBlock {
-            failureBlock(error)
-        }
-    }
-    
-    public func showErrorDialogOnFail(#errorPresenter: UIViewController) {
-        self.showErrorDialogOnFail(errorPresenter: errorPresenter, errorDialogTitle: "Error", errorDialogOKButtonTitle: "OK")
-    }
-    
-    public func showErrorDialogOnFail(#errorPresenter: UIViewController,
-        errorDialogTitle: String,
-        errorDialogOKButtonTitle: String) {
-            
-        // Keep a reference to the values.
-        self.errorPresenter = errorPresenter
-        self.errorDialogTitle = errorDialogTitle
-        self.errorDialogOKButtonTitle = errorDialogOKButtonTitle
-        
-        let customFailureBlock = self.failureBlock
+    public func showErrorDialogOnFail(#presenter: UIViewController) {
+        let someCustomFailureBlock = self.failureBlock
         self.failureBlock = {[unowned self] error in
-            // If the developer provided a `failureBlock`, execute that first.
-            if let theCustomFailureBlock = customFailureBlock {
-                theCustomFailureBlock(error)
+            if let customFailureBlock = someCustomFailureBlock {
+                customFailureBlock(error)
             }
-            
-            // Display an alert view that shows the error.
-            let alertController = UIAlertController(title: self.errorDialogTitle!, message: error.localizedDescription, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: self.errorDialogOKButtonTitle!, style: .Default, handler: {(action) in
-                alertController.dismissViewControllerAnimated(true, completion: nil)
-            })
-            alertController.addAction(okAction)
-            
-            // Show the error dialog in the main UI thread.
-            dispatch_async(dispatch_get_main_queue(), {[unowned self] in
-                self.errorPresenter!.presentViewController(alertController, animated: true, completion: nil)
-            })
+            MQErrorDialog(error: error).showInPresenter(presenter)
         }
     }
     

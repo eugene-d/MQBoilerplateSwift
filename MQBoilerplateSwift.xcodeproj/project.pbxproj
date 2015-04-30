@@ -14,8 +14,6 @@
 		266B67671AF1AAA7009AA10E /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67661AF1AAA7009AA10E /* MQOperation.swift */; };
 		266B67691AF1AAF3009AA10E /* MQAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */; };
 		266B67751AF1D16D009AA10E /* MQUnexpectedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */; };
-		266F56FC1AEC891100E5FE0D /* MQHTTPOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F56FB1AEC891100E5FE0D /* MQHTTPOperationQueue.swift */; };
-		266F57021AEC905D00E5FE0D /* MQHTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F57011AEC905D00E5FE0D /* MQHTTPOperation.swift */; };
 		267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267D5F991AE4CFEC002A2C8D /* UIViewController.swift */; };
 		2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8A1AE1B6790039CBB1 /* String.swift */; };
 		2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */; };
@@ -59,8 +57,6 @@
 		266B67661AF1AAA7009AA10E /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
 		266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAPIRequest.swift; sourceTree = "<group>"; };
 		266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQUnexpectedError.swift; sourceTree = "<group>"; };
-		266F56FB1AEC891100E5FE0D /* MQHTTPOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQHTTPOperationQueue.swift; sourceTree = "<group>"; };
-		266F57011AEC905D00E5FE0D /* MQHTTPOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQHTTPOperation.swift; sourceTree = "<group>"; };
 		267D5F991AE4CFEC002A2C8D /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2682CA8A1AE1B6790039CBB1 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCharacterSet.swift; sourceTree = "<group>"; };
@@ -110,7 +106,6 @@
 		265A067D1ADE555400826150 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				26AB58A41AE8FC0100C0C711 /* Operations */,
 				2682CA9E1AE227350039CBB1 /* Data Models */,
 				269459161ADFC75100B92DC0 /* Utilities */,
 				265A06831ADE558300826150 /* Commands */,
@@ -165,19 +160,10 @@
 				269459191ADFCDDB00B92DC0 /* MQFileManager.swift */,
 				2682CAE71AE364220039CBB1 /* MQError.swift */,
 				26AB58A91AE915F800C0C711 /* MQDispatcher.swift */,
-				266F56FB1AEC891100E5FE0D /* MQHTTPOperationQueue.swift */,
 				266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */,
 				266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		26AB58A41AE8FC0100C0C711 /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				266F57011AEC905D00E5FE0D /* MQHTTPOperation.swift */,
-			);
-			path = Operations;
 			sourceTree = "<group>";
 		};
 		26E9FE811ADE090B00E92745 = {
@@ -369,7 +355,6 @@
 				26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */,
 				265A06871ADE58D200826150 /* MQHTTPCommand.swift in Sources */,
 				2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */,
-				266F56FC1AEC891100E5FE0D /* MQHTTPOperationQueue.swift in Sources */,
 				266B67751AF1D16D009AA10E /* MQUnexpectedError.swift in Sources */,
 				265A06851ADE56B400826150 /* MQCommand.swift in Sources */,
 				2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */,
@@ -378,7 +363,6 @@
 				2682CAFB1AE375DC0039CBB1 /* MQLoadableViewController.swift in Sources */,
 				267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */,
 				2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */,
-				266F57021AEC905D00E5FE0D /* MQHTTPOperation.swift in Sources */,
 				26AB58AA1AE915F800C0C711 /* MQDispatcher.swift in Sources */,
 				2682CAB41AE26DA60039CBB1 /* MQFieldCell.swift in Sources */,
 				2682CAB51AE26DA60039CBB1 /* MQFieldTextField.swift in Sources */,

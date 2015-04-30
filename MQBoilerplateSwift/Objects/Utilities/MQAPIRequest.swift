@@ -10,6 +10,7 @@ import Foundation
 
 /**
 NOTE: This class is a work in progress and currently sets a blueprint for `NSURLSessionDataTask` objects only.
+Moreover, HTTP payloads are assumed to be written in JSON format.
 */
 public class MQAPIRequest {
     
@@ -59,6 +60,12 @@ public class MQAPIRequest {
     public func start() {
         let request = NSMutableURLRequest(URL: self.URL)
         request.HTTPMethod = method.rawValue
+        request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        if let parameters = self.parameters {
+            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: nil)
+        }
+        println(String("parameters: ") + (parameters == nil ? "nil" : parameters!.description))
+        println("request: \(request)")
         self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
             if let responseHandler = self.responseHandler {
                 responseHandler(data, response, error)

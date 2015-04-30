@@ -14,53 +14,6 @@ public class MQLoadableViewController: UIViewController {
     public var retryView: MQRetryView?
     public var primaryView: UIView?
     
-    public var operation: MQHTTPOperation? {
-        didSet {
-            if let operation = self.operation {
-                // Override the startBlock to automatically show the loading view.
-                let customStartBlock = operation.startBlock
-                operation.startBlock = {[unowned self] in
-                    if let theCustomStartBlock = customStartBlock {
-                        theCustomStartBlock()
-                    }
-                    
-                    MQDispatcher.executeInMainThread {[unowned self] in
-                        self.showView(.Loading)
-                    }
-                }
-                
-                // Override the successBlock to automatically show
-                // the primary view when successful.
-                let customSuccessBlock = operation.successBlock
-                operation.successBlock = {[unowned self] result in
-                    if let theCustomSuccessBlock = customSuccessBlock {
-                        theCustomSuccessBlock(result)
-                    }
-                    
-                    MQDispatcher.executeInMainThread {[unowned self] in
-                        self.showView(.Primary)
-                    }
-                }
-                
-                // Override the failureBlock to automatically show the
-                // retry view when failed.
-                let customFailureBlock = operation.failureBlock
-                operation.failureBlock = {[unowned self] error in
-                    if let theCustomFailureBlock = customFailureBlock {
-                        theCustomFailureBlock(error)
-                    }
-                    
-                    MQDispatcher.executeInMainThread {[unowned self] in
-                        if let retryView = self.retryView {
-                            retryView.error = error
-                            self.showView(.Retry)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
     public var request: MQAPIRequest? {
         didSet {
             if let request = self.request {
@@ -139,24 +92,6 @@ public class MQLoadableViewController: UIViewController {
     
     public func setupPrimaryView() {
         
-    }
-    
-    /**
-    Override to set the view controller's `self.operation`. Once `self.operation`
-    is set, its start, success, and failure blocks will be overridden by the property
-    observers to automatically show the appropriate views.
-    */
-    public func setupOperation() {
-        
-    }
-    
-    /**
-    Adds the operation into the shared `MQHTTPOperationQueue`.
-    */
-    public func startOperation() {
-        if let operation = self.operation {
-            MQHTTPOperationQueue.sharedQueue.addOperation(operation)
-        }
     }
     
     public func setupRequest() {
