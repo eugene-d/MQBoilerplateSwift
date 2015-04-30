@@ -61,6 +61,46 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
+    public var request: MQAPIRequest? {
+        didSet {
+            if let request = self.request {
+                // Override the startBlock to automatically show the loading view.
+                let someCustomStartBlock = request.startBlock
+                request.startBlock = {[unowned self] in
+                    if let customStartBlock = someCustomStartBlock {
+                        customStartBlock()
+                    }
+                    
+                    self.showView(.Loading)
+                }
+                
+                // Override the successBlock to automatically show
+                // the primary view when successful.
+                let someCustomSuccessBlock = request.successBlock
+                request.successBlock = {[unowned self] result in
+                    if let customSuccessBlock = someCustomSuccessBlock {
+                        customSuccessBlock(result)
+                    }
+                    self.showView(.Primary)
+                }
+                
+                // Override the failureBlock to automatically show the
+                // retry view when failed.
+                let someCustomFailureBlock = request.failureBlock
+                request.failureBlock = {[unowned self] error in
+                    if let customFailureBlock = someCustomFailureBlock {
+                        customFailureBlock(error)
+                    }
+                    
+                    if let retryView = self.retryView {
+                        retryView.error = error
+                        self.showView(.Retry)
+                    }
+                }
+            }
+        }
+    }
+    
     public enum View {
         case Loading, Retry, Primary
     }
@@ -119,6 +159,16 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
+    public func setupRequest() {
+        
+    }
+    
+    public func startRequest() {
+        if let request = self.request {
+            request.start()
+        }
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -128,8 +178,10 @@ public class MQLoadableViewController: UIViewController {
             retryView.internalDelegate = self
         }
         
-        self.setupOperation()
-        self.startOperation()
+//        self.setupOperation()
+//        self.startOperation()
+        self.setupRequest()
+        self.startRequest()
     }
     
     public func showView(view: MQLoadableViewController.View) {
@@ -151,8 +203,10 @@ public class MQLoadableViewController: UIViewController {
 extension MQLoadableViewController : MQDefaultRetryViewDelegate {
     
     func defaultRetryViewDidTapRetry() {
-        self.setupOperation()
-        self.startOperation()
+//        self.setupOperation()
+//        self.startOperation()
+        self.setupRequest()
+        self.startRequest()
     }
     
 }
