@@ -1,5 +1,5 @@
 //
-//  MQNoResultsView.swift
+//  MQStartingView.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 5/1/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class MQNoResultsView: UIView {
+public class MQStartingView: UIView {
     
     public var text: String?
     

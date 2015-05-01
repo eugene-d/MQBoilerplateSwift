@@ -10,10 +10,11 @@ import UIKit
 
 public class MQLoadableViewController: UIViewController {
     
-    public var loadingView: UIView?
-    public var retryView: MQRetryView?
+    public var startingView: MQStartingView!
+    public var loadingView: UIView!
+    public var retryView: MQRetryView!
     public var primaryView: UIView?
-    public var noResultsView: MQNoResultsView?
+    public var noResultsView: MQNoResultsView!
     
     /**
     Determines whether the primary view is automatically shown in the request's
@@ -25,7 +26,7 @@ public class MQLoadableViewController: UIViewController {
     public var automaticallyShowsPrimaryViewOnSuccess = false
     
     public enum View {
-        case Loading, Retry, Primary, NoResults
+        case Starting, Loading, Retry, Primary, NoResults
     }
     
     public var request: MQAPIRequest? {
@@ -95,15 +96,20 @@ public class MQLoadableViewController: UIViewController {
         
         // Call this class or the subclass' methods for setting up
         // the subviews.
+        self.setupStartingView()
         self.setupLoadingView()
         self.setupRetryView()
         self.setupPrimaryView()
         self.setupNoResultsView()
         
-        mainView.addSubviewsAndFill(self.loadingView!, self.retryView!, self.noResultsView!)
+        mainView.addSubviewsAndFill(self.startingView!, self.loadingView!, self.retryView!, self.noResultsView!)
         if let primaryView = self.primaryView {
             mainView.addSubviewAndFill(primaryView)
         }
+    }
+    
+    public func setupStartingView() {
+        self.startingView = MQDefaultStartingView()
     }
     
     public func setupLoadingView() {
@@ -135,7 +141,7 @@ public class MQLoadableViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.showView(.NoResults)
+        self.showView(.Starting)
         
         if let retryView = self.retryView as? MQDefaultRetryView {
             retryView.internalDelegate = self
@@ -153,21 +159,15 @@ public class MQLoadableViewController: UIViewController {
     }
     
     public func showView(view: MQLoadableViewController.View) {
-        if let loadingView = self.loadingView {
-            loadingView.hidden = view != .Loading
-        }
-        
-        if let retryView = self.retryView {
-            retryView.hidden = view != .Retry
-        }
+        self.startingView.hidden = view != .Starting
+        self.loadingView.hidden = view != .Loading
+        self.retryView.hidden = view != .Retry
         
         if let primaryView = self.primaryView {
             primaryView.hidden = view != .Primary
         }
         
-        if let noResultsView = self.noResultsView {
-            noResultsView.hidden = view != .NoResults
-        }
+        self.noResultsView.hidden = view != .NoResults
     }
     
 }

@@ -14,9 +14,9 @@ public class MQLoadingView: UIView {
     var loadingLabel: UILabel
     var containerView: UIView
     
-    public var loadingText: String? {
+    public var text: String? {
         didSet {
-            if let text = self.loadingText {
+            if let text = self.text {
                 self.loadingLabel.text = text
             } else {
                 self.loadingLabel.text = ""
