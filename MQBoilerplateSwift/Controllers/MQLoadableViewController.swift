@@ -95,10 +95,10 @@ public class MQLoadableViewController: UIViewController {
         
         // Call this class or the subclass' methods for setting up
         // the subviews.
-        self.createLoadingView()
-        self.createRetryView()
-        self.createPrimaryView()
-        self.createNoResultsView()
+        self.setupLoadingView()
+        self.setupRetryView()
+        self.setupPrimaryView()
+        self.setupNoResultsView()
         
         mainView.addSubviewsAndFill(self.loadingView!, self.retryView!, self.noResultsView!)
         if let primaryView = self.primaryView {
@@ -106,23 +106,23 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
-    public func createLoadingView() {
+    public func setupLoadingView() {
         self.loadingView = MQLoadingView()
     }
     
-    public func createRetryView() {
+    public func setupRetryView() {
         self.retryView = MQDefaultRetryView()
     }
     
-    public func createPrimaryView() {
+    public func setupPrimaryView() {
         
     }
     
-    public func createNoResultsView() {
+    public func setupNoResultsView() {
         self.noResultsView = MQDefaultNoResultsView()
     }
     
-    public func createRequest() {
+    public func setupRequest() {
         
     }
     
@@ -146,7 +146,7 @@ public class MQLoadableViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if self.isComingFromViewDidLoad {
-            self.createRequest()
+            self.setupRequest()
             self.startRequest()
             self.isComingFromViewDidLoad = false
         }
@@ -175,7 +175,7 @@ public class MQLoadableViewController: UIViewController {
 extension MQLoadableViewController : MQDefaultRetryViewDelegate {
     
     func defaultRetryViewDidTapRetry() {
-        self.createRequest()
+        self.setupRequest()
         self.startRequest()
     }
     

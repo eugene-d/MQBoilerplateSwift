@@ -53,7 +53,7 @@ public class MQAPIRequest {
     public init(session: NSURLSession, method: MQAPIRequest.Method, URL: String, parameters: [String : AnyObject]?) {
         self.session = session
         self.method = method
-        self.URL = NSURL(string: URL)!
+        self.URL = NSURL(string: URL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet())!)!
         self.parameters = parameters
     }
     
