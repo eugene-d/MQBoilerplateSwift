@@ -33,6 +33,9 @@ public class MQAPIRequest {
     public let method: MQAPIRequest.Method
     public let parameters: [String : AnyObject]?
     
+    public var needsAuthentication: Bool
+    public var cookie: NSHTTPCookie?
+    
     public var startBlock: (() -> Void)?
     
     /**
@@ -44,26 +47,36 @@ public class MQAPIRequest {
     */
     public var responseHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
     
-    
     public var finishBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
     public var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?)?)?
     public var successBlock: ((AnyObject?) -> Void)?
+    public var cookieBlock: ((NSHTTPCookie) -> Void)?
     
     public init(session: NSURLSession, method: MQAPIRequest.Method, URL: String, parameters: [String : AnyObject]?) {
         self.session = session
         self.method = method
         self.URL = NSURL(string: URL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet())!)!
         self.parameters = parameters
+        self.needsAuthentication = false
     }
     
     public func start() {
         let request = NSMutableURLRequest(URL: self.URL)
         request.HTTPMethod = method.rawValue
         request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        if self.needsAuthentication {
+            if let cookie = self.cookie {
+                if let value = cookie.value {
+                    request.setValue("\(cookie.name)=\(value)", forHTTPHeaderField: "Cookie")
+                }
+            }
+        }
+        
         if let parameters = self.parameters {
             request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: nil)
         }
+        
         self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
             if let responseHandler = self.responseHandler {
                 responseHandler(data, response, error)
