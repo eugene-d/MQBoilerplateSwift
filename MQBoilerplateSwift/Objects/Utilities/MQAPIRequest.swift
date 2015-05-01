@@ -47,7 +47,7 @@ public class MQAPIRequest {
     
     public var finishBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
-    public var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?))?
+    public var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?)?)?
     public var successBlock: ((AnyObject?) -> Void)?
     
     public init(session: NSURLSession, method: MQAPIRequest.Method, URL: String, parameters: [String : AnyObject]?) {
@@ -64,8 +64,6 @@ public class MQAPIRequest {
         if let parameters = self.parameters {
             request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: nil)
         }
-        println(String("parameters: ") + (parameters == nil ? "nil" : parameters!.description))
-        println("request: \(request)")
         self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
             if let responseHandler = self.responseHandler {
                 responseHandler(data, response, error)
