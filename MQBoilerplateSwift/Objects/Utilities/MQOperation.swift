@@ -76,26 +76,16 @@ public class MQOperation : NSOperation {
             return
         }
         
-        if let finishBlock = self.finishBlock {
-            MQDispatcher.executeInMainThread(finishBlock)
-        }
+        self.finish()
         
         if self.cancelled {
             return
         }
         
         if let error = self.error {
-            if let failureBlock = self.failureBlock {
-                MQDispatcher.executeInMainThread {
-                    failureBlock(error)
-                }
-            }
+            self.failWithError(error)
         } else {
-            if let successBlock = self.successBlock {
-                MQDispatcher.executeInMainThread {
-                    successBlock(self.result)
-                }
-            }
+            self.succeedWithResult(self.result)
         }
     }
     
@@ -108,6 +98,28 @@ public class MQOperation : NSOperation {
     */
     public func process() {
         
+    }
+    
+    public func finish() {
+        if let finishBlock = self.finishBlock {
+            MQDispatcher.executeInMainThread(finishBlock)
+        }
+    }
+    
+    public func failWithError(error: NSError) {
+        if let failureBlock = self.failureBlock {
+            MQDispatcher.executeInMainThread {
+                failureBlock(error)
+            }
+        }
+    }
+    
+    public func succeedWithResult(result: AnyObject?) {
+        if let successBlock = self.successBlock {
+            MQDispatcher.executeInMainThread {
+                successBlock(self.result)
+            }
+        }
     }
     
     public func showErrorDialogOnFail(#presenter: UIViewController) {
