@@ -17,4 +17,8 @@ public extension String {
         return false
     }
     
+    public func trim() -> String  {
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    }
+    
 }

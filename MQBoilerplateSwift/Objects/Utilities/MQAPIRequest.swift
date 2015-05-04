@@ -77,9 +77,28 @@ public class MQAPIRequest {
             request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: nil)
         }
         
+        /*
+        Not sure if this is my error or a Swift bug.
+        
+        I think that the capture list for self should be unowned because if the completion handler
+        gets executed, then the request itself shouldn't be nil. The request object holds references 
+        to the other blocks so it must be kept in memory.
+        
+        And for most requests it works, but I had one where it causes a crash because self
+        becomes deallocated prematurely. However, using weak instead doesn't cause self
+        to be deallocated prematurely. Strange.
+        
         self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
             if let responseHandler = self.responseHandler {
                 responseHandler(data, response, error)
+            }
+        }
+        */
+        self.task = self.session.dataTaskWithRequest(request) {[weak self] (data, response, error) in
+            if let weakSelf = self {
+                if let responseHandler = weakSelf.responseHandler {
+                    responseHandler(data, response, error)
+                }
             }
         }
         
