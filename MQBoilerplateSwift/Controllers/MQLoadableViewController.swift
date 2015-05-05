@@ -24,19 +24,6 @@ public class MQLoadableViewController: UIViewController {
     public var noResultsView: MQNoResultsView!
     
     /**
-    Determines whether the `task` property's main thread blocks should be overridden
-    to automatically show the different views. If set to true, the `startingBlock` automatically
-    shows the `loadingView`, the `failureBlock` the `retryView`, and
-    if `automaticallyShowsPrimaryViewOnSuccess` is true, the `successBlock` automatically
-    shows the `primaryView`.
-    
-    The default value is `true`. Set this to false if you don't want the overriding behavior,
-    which is useful when the `task` property chains to another `MQExecutableTask` whose success
-    status is the ultimate arbiter of which view will be displayed upon completion.
-    
-    public var shouldOverrideTaskBlocks = true*/
-    
-    /**
     Determines whether the `successBlock` should be overridden to automatically
     show the primary view.
     
