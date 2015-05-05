@@ -12,7 +12,7 @@ import Foundation
 NOTE: This class is a work in progress and currently sets a blueprint for `NSURLSessionDataTask` objects only.
 Moreover, HTTP payloads are assumed to be written in JSON format.
 */
-public class MQAPIRequest: Equatable {
+public class MQAPIRequest: MQExecutableTask, Equatable {
     
     public enum Method: String {
         case OPTIONS = "OPTIONS"
@@ -24,6 +24,10 @@ public class MQAPIRequest: Equatable {
         case DELETE = "DELETE"
         case TRACE = "TRACE"
         case CONNECT = "CONNECT"
+    }
+    
+    public var type: MQExecutableTaskType {
+        return .NSURLSessionTask
     }
     
     public let session: NSURLSession
@@ -47,12 +51,12 @@ public class MQAPIRequest: Equatable {
     */
     public var responseHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
     
-    public var finishBlock: (() -> Void)?
+    public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
     public var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?)?)?
     public var successBlock: ((AnyObject?) -> Void)?
     public var cookieBlock: ((NSHTTPCookie) -> Void)?
-    public var completionBlock: (() -> Void)?
+    public var finishBlock: (() -> Void)?
     
     public init(session: NSURLSession, method: MQAPIRequest.Method, URL: String, parameters: [String : AnyObject]?) {
         self.session = session
@@ -130,38 +134,6 @@ public class MQAPIRequest: Equatable {
         }
     }
     
-    public func finish() {
-        if let finishBlock = self.finishBlock {
-            MQDispatcher.executeInMainThread {
-                finishBlock()
-            }
-        }
-    }
-    
-    public func failWithError(error: NSError) {
-        if let failureBlock = self.failureBlock {
-            MQDispatcher.executeInMainThread {
-                failureBlock(error)
-                
-                if let completionBlock = self.completionBlock {
-                    completionBlock()
-                }
-            }
-        }
-    }
-    
-    public func succeedWithResult(result: AnyObject?) {
-        if let successBlock = self.successBlock {
-            MQDispatcher.executeInMainThread {
-                successBlock(result)
-                
-                if let completionBlock = self.completionBlock {
-                    completionBlock()
-                }
-            }
-        }
-    }
-    
     public func showErrorDialogOnFail(presenter: UIViewController) {
         let someCustomFailureBlock = self.failureBlock
         self.failureBlock = {[unowned self] error in
@@ -170,6 +142,38 @@ public class MQAPIRequest: Equatable {
             }
             
             MQErrorDialog(error: error).showInPresenter(presenter)
+        }
+    }
+    
+    public func performReturn() {
+        if let returnBlock = self.returnBlock {
+            MQDispatcher.executeInMainThreadSynchronously {
+                returnBlock()
+            }
+        }
+    }
+    
+    public func performSuccessWithResult(result: AnyObject?) {
+        if let successBlock = self.successBlock {
+            MQDispatcher.executeInMainThreadSynchronously {
+                successBlock(result)
+                
+                if let finishBlock = self.finishBlock {
+                    finishBlock()
+                }
+            }
+        }
+    }
+    
+    public func performFailureWithError(error: NSError) {
+        if let failureBlock = self.failureBlock {
+            MQDispatcher.executeInMainThreadSynchronously {
+                failureBlock(error)
+                
+                if let finishBlock = self.finishBlock {
+                    finishBlock()
+                }
+            }
         }
     }
     

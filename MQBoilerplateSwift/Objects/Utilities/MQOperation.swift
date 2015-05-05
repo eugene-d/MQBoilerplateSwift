@@ -15,7 +15,11 @@ by adding it to an `NSOperationQueue`.
 See *Asynchronous Versus Synchronous Operations* in:
 https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperation_class/index.html
 */
-public class MQOperation : NSOperation {
+public class MQOperation : NSOperation, MQExecutableTask {
+    
+    public var type: MQExecutableTaskType {
+        return .NSOperation
+    }
     
     /**
     Tasks that need execution before the main `process()` function is executed.
@@ -23,13 +27,7 @@ public class MQOperation : NSOperation {
     */
     public var startBlock: (Void -> Void)?
     
-    /**
-    Tasks that need to be executed after the process block finishes, but before
-    either the success of failure block is executed. An example of what to do in
-    a `finishBlock` is to hide a screen's "Loading" view before either showing
-    the results or an error message.
-    */
-    public var finishBlock: (Void -> Void)?
+    public var returnBlock: (() -> Void)?
     
     /**
     Executed after the `preparationBlock` if `error` is `nil`.
@@ -44,6 +42,8 @@ public class MQOperation : NSOperation {
     main thread.
     */
     public var failureBlock: ((NSError) -> Void)?
+    
+    public var finishBlock: (Void -> Void)?
     
     /**
     The error that was produced during the process block. If this property is `nil`,
@@ -76,16 +76,16 @@ public class MQOperation : NSOperation {
             return
         }
         
-        self.finish()
+        self.performReturn()
         
         if self.cancelled {
             return
         }
         
         if let error = self.error {
-            self.failWithError(error)
+            self.performFailureWithError(error)
         } else {
-            self.succeedWithResult(self.result)
+            self.performSuccessWithResult(self.result)
         }
     }
     
@@ -100,28 +100,6 @@ public class MQOperation : NSOperation {
         
     }
     
-    public func finish() {
-        if let finishBlock = self.finishBlock {
-            MQDispatcher.executeInMainThread(finishBlock)
-        }
-    }
-    
-    public func failWithError(error: NSError) {
-        if let failureBlock = self.failureBlock {
-            MQDispatcher.executeInMainThread {
-                failureBlock(error)
-            }
-        }
-    }
-    
-    public func succeedWithResult(result: AnyObject?) {
-        if let successBlock = self.successBlock {
-            MQDispatcher.executeInMainThread {
-                successBlock(self.result)
-            }
-        }
-    }
-    
     public func showErrorDialogOnFail(#presenter: UIViewController) {
         let someCustomFailureBlock = self.failureBlock
         self.failureBlock = {[unowned self] error in
@@ -129,6 +107,38 @@ public class MQOperation : NSOperation {
                 customFailureBlock(error)
             }
             MQErrorDialog(error: error).showInPresenter(presenter)
+        }
+    }
+    
+    public func performReturn() {
+        if let returnBlock = self.returnBlock {
+            MQDispatcher.executeInMainThreadSynchronously {
+                returnBlock()
+            }
+        }
+    }
+    
+    public func performSuccessWithResult(result: AnyObject?) {
+        if let successBlock = self.successBlock {
+            MQDispatcher.executeInMainThreadSynchronously {
+                successBlock(result)
+                
+                if let finishBlock = self.finishBlock {
+                    finishBlock()
+                }
+            }
+        }
+    }
+    
+    public func performFailureWithError(error: NSError) {
+        if let failureBlock = self.failureBlock {
+            MQDispatcher.executeInMainThreadSynchronously {
+                failureBlock(error)
+                
+                if let finishBlock = self.finishBlock {
+                    finishBlock()
+                }
+            }
         }
     }
     
