@@ -23,6 +23,12 @@ public protocol MQExecutableTask: class {
     var finishBlock: (() -> Void)? { get set }
     
     /**
+    Implemented by subclasses to synchronously perform the `startBlock` in the main thread
+    if it exists, and waits for it to return before proceeding.
+    */
+    func performStart()
+    
+    /**
     Implemented by subclasses to synchronously perform the `returnBlock` in the main thread
     if it exists, and waits for it to return before proceeding.
     */

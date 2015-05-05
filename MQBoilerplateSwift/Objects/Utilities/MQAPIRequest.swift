@@ -107,10 +107,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             }
         }
         
-        if let startBlock = self.startBlock {
-            startBlock()
-        }
-        
+        self.performStart()
         self.task!.resume()
     }
     
@@ -142,6 +139,14 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             }
             
             MQErrorDialog(error: error).showInPresenter(presenter)
+        }
+    }
+    
+    public func performStart() {
+        if let startBlock = self.startBlock {
+            MQDispatcher.executeInMainThreadSynchronously {
+                startBlock()
+            }
         }
     }
     

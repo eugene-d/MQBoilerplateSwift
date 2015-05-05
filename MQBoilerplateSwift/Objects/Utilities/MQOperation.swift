@@ -25,7 +25,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     Tasks that need execution before the main `process()` function is executed.
     An example of what to do in a `startBlock` would be to show a loading view.
     */
-    public var startBlock: (Void -> Void)?
+    public var startBlock: (() -> Void)?
     
     public var returnBlock: (() -> Void)?
     
@@ -43,7 +43,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     */
     public var failureBlock: ((NSError) -> Void)?
     
-    public var finishBlock: (Void -> Void)?
+    public var finishBlock: (() -> Void)?
     
     /**
     The error that was produced during the process block. If this property is `nil`,
@@ -62,9 +62,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
             return
         }
         
-        if let startBlock = self.startBlock {
-            startBlock()
-        }
+        self.performStart()
         
         if self.cancelled {
             return
@@ -107,6 +105,14 @@ public class MQOperation : NSOperation, MQExecutableTask {
                 customFailureBlock(error)
             }
             MQErrorDialog(error: error).showInPresenter(presenter)
+        }
+    }
+    
+    public func performStart() {
+        if let startBlock = self.startBlock {
+            MQDispatcher.executeInMainThreadSynchronously {
+                startBlock()
+            }
         }
     }
     

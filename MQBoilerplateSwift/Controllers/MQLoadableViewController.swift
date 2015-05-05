@@ -15,7 +15,7 @@ public class MQLoadableViewController: UIViewController {
     }
     
     public var task: MQExecutableTask?
-    public var operationQueue: NSOperationQueue?
+    public lazy var operationQueue = NSOperationQueue()
     
     public var startingView: MQStartingView!
     public var loadingView: UIView!
@@ -24,11 +24,26 @@ public class MQLoadableViewController: UIViewController {
     public var noResultsView: MQNoResultsView!
     
     /**
-    Determines whether the primary view is automatically shown in the request's
-    success block. The default value is `false` since it is up to you to show
-    either the `primaryView` or the `noResultsView` depending on the `result`
-    returned by the success block. Set this to `true` if your `request` will always
-    have a result.
+    Determines whether the `task` property's main thread blocks should be overridden
+    to automatically show the different views. If set to true, the `startingBlock` automatically
+    shows the `loadingView`, the `failureBlock` the `retryView`, and
+    if `automaticallyShowsPrimaryViewOnSuccess` is true, the `successBlock` automatically
+    shows the `primaryView`.
+    
+    The default value is `true`. Set this to false if you don't want the overriding behavior,
+    which is useful when the `task` property chains to another `MQExecutableTask` whose success
+    status is the ultimate arbiter of which view will be displayed upon completion.
+    
+    public var shouldOverrideTaskBlocks = true*/
+    
+    /**
+    Determines whether the `successBlock` should be overridden to automatically
+    show the primary view.
+    
+    The default value is `false` since it is up to you to define whether the `primaryView`
+    or the `noResultsView` will be displayed upon receiving the result. However,
+    if your request will always succeed and you don't need to define a custom `successBlock`,
+    set this to true.
     */
     public var automaticallyShowsPrimaryViewOnSuccess = false
     
@@ -86,15 +101,13 @@ public class MQLoadableViewController: UIViewController {
     }
     
     public func startTask() {
-        self.overrideTaskBlocks()
-        
-        if let task = self.task {
+        if var task = self.task {
+            self.overrideTaskBlocks(&task)
+            
             if let request = task as? MQAPIRequest {
                 request.start()
             } else if let operation = task as? MQOperation {
-                if let operationQueue = self.operationQueue {
-                    operationQueue.addOperation(operation)
-                }
+                self.operationQueue.addOperation(operation)
             }
         }
     }
@@ -135,42 +148,40 @@ public class MQLoadableViewController: UIViewController {
         self.noResultsView.hidden = view != .NoResults
     }
     
-    func overrideTaskBlocks() {
-        if let task = self.task {
-            // Override the startBlock to automatically show the loading view.
-            let someCustomStartBlock = task.startBlock
-            task.startBlock = {[unowned self] in
-                if let customStartBlock = someCustomStartBlock {
-                    customStartBlock()
-                }
-                
-                self.showView(.Loading)
+    public func overrideTaskBlocks(inout task: MQExecutableTask) {
+        // Override the startBlock to automatically show the loading view.
+        let someCustomStartBlock = task.startBlock
+        task.startBlock = {[unowned self] in
+            if let customStartBlock = someCustomStartBlock {
+                customStartBlock()
             }
             
-            if self.automaticallyShowsPrimaryViewOnSuccess {
-                // Override the successBlock to automatically show
-                // the primary view when successful.
-                let someCustomSuccessBlock = task.successBlock
-                task.successBlock = {[unowned self] result in
-                    if let customSuccessBlock = someCustomSuccessBlock {
-                        customSuccessBlock(result)
-                    }
-                    self.showView(.Primary)
+            self.showView(.Loading)
+        }
+        
+        if self.automaticallyShowsPrimaryViewOnSuccess {
+            // Override the successBlock to automatically show
+            // the primary view when successful.
+            let someCustomSuccessBlock = task.successBlock
+            task.successBlock = {[unowned self] result in
+                if let customSuccessBlock = someCustomSuccessBlock {
+                    customSuccessBlock(result)
                 }
+                self.showView(.Primary)
+            }
+        }
+        
+        // Override the failureBlock to automatically show the
+        // retry view when failed.
+        let someCustomFailureBlock = task.failureBlock
+        task.failureBlock = {[unowned self] error in
+            if let customFailureBlock = someCustomFailureBlock {
+                customFailureBlock(error)
             }
             
-            // Override the failureBlock to automatically show the
-            // retry view when failed.
-            let someCustomFailureBlock = task.failureBlock
-            task.failureBlock = {[unowned self] error in
-                if let customFailureBlock = someCustomFailureBlock {
-                    customFailureBlock(error)
-                }
-                
-                if let retryView = self.retryView {
-                    retryView.error = error
-                    self.showView(.Retry)
-                }
+            if let retryView = self.retryView {
+                retryView.error = error
+                self.showView(.Retry)
             }
         }
     }
@@ -202,9 +213,8 @@ public class MQLoadableViewController: UIViewController {
     
     @availability(*, deprecated=1.2, message="Use startTask() instead.")
     public func startOperation() {
-        if let operation = self.operation,
-            let operationQueue = self.operationQueue {
-                operationQueue.addOperation(operation)
+        if let operation = self.operation {
+            self.operationQueue.addOperation(operation)
         }
     }
     
