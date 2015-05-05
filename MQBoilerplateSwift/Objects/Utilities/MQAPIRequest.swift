@@ -12,7 +12,7 @@ import Foundation
 NOTE: This class is a work in progress and currently sets a blueprint for `NSURLSessionDataTask` objects only.
 Moreover, HTTP payloads are assumed to be written in JSON format.
 */
-public class MQAPIRequest {
+public class MQAPIRequest: Equatable {
     
     public enum Method: String {
         case OPTIONS = "OPTIONS"
@@ -52,6 +52,7 @@ public class MQAPIRequest {
     public var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?)?)?
     public var successBlock: ((AnyObject?) -> Void)?
     public var cookieBlock: ((NSHTTPCookie) -> Void)?
+    public var completionBlock: (() -> Void)?
     
     public init(session: NSURLSession, method: MQAPIRequest.Method, URL: String, parameters: [String : AnyObject]?) {
         self.session = session
@@ -141,6 +142,10 @@ public class MQAPIRequest {
         if let failureBlock = self.failureBlock {
             MQDispatcher.executeInMainThread {
                 failureBlock(error)
+                
+                if let completionBlock = self.completionBlock {
+                    completionBlock()
+                }
             }
         }
     }
@@ -149,6 +154,10 @@ public class MQAPIRequest {
         if let successBlock = self.successBlock {
             MQDispatcher.executeInMainThread {
                 successBlock(result)
+                
+                if let completionBlock = self.completionBlock {
+                    completionBlock()
+                }
             }
         }
     }
@@ -164,4 +173,16 @@ public class MQAPIRequest {
         }
     }
     
+}
+
+extension MQAPIRequest: Hashable {
+    
+    public var hashValue: Int {
+        return unsafeAddressOf(self).hashValue
+    }
+    
+}
+
+public func ==(r1: MQAPIRequest, r2: MQAPIRequest) -> Bool {
+    return r1.hashValue == r2.hashValue
 }
