@@ -34,7 +34,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     You must take care of dispatching UI-related tasks in the `successBlock` to the
     main thread.
     */
-    public var successBlock: ((AnyObject?) -> Void)?
+    public var successBlock: ((Any?) -> Void)?
     
     /**
     Executed after the `preparationBlock` if the `error` is non-`nil`.
@@ -55,7 +55,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     /**
     The value that will be returned to the `successBlock` when it is executed.
     */
-    public var result: AnyObject?
+    public var result: Any?
     
     public override func main() {
         if self.cancelled {
@@ -130,7 +130,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
         }
     }
     
-    public func performSuccessWithResult(result: AnyObject?) {
+    public func performSuccessWithResult(result: Any?) {
         if let successBlock = self.successBlock {
             MQDispatcher.executeInMainThreadSynchronously {
                 if self.cancelled {

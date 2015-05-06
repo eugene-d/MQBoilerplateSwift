@@ -54,7 +54,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
     public var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?)?)?
-    public var successBlock: ((AnyObject?) -> Void)?
+    public var successBlock: ((Any?) -> Void)?
     public var cookieBlock: ((NSHTTPCookie) -> Void)?
     public var finishBlock: (() -> Void)?
     
@@ -158,7 +158,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         }
     }
     
-    public func performSuccessWithResult(result: AnyObject?) {
+    public func performSuccessWithResult(result: Any?) {
         if let successBlock = self.successBlock {
             MQDispatcher.executeInMainThreadSynchronously {
                 successBlock(result)

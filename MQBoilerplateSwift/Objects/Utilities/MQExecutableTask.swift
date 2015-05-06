@@ -19,7 +19,7 @@ public protocol MQExecutableTask: class {
     var startBlock: (() -> Void)? { get set }
     var returnBlock: (() -> Void)? { get set }
     var failureBlock: ((NSError) -> Void)? { get set }
-    var successBlock: ((AnyObject?) -> Void)? { get set }
+    var successBlock: ((Any?) -> Void)? { get set }
     var finishBlock: (() -> Void)? { get set }
     
     /**
@@ -38,7 +38,7 @@ public protocol MQExecutableTask: class {
     Implemented by subclasses to synchronously perform the `successBlock` and
     then the `finishBlock` in the main thread if they exist.
     */
-    func performSuccessWithResult(result: AnyObject?)
+    func performSuccessWithResult(result: Any?)
     
     /**
     Implemented by subclasses to synchronously perform the `failureBlock` and
