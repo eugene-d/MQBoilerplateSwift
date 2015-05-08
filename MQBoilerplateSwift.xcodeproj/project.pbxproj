@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2615AE2F1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615AE2E1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift */; };
 		2615AE311AE3CDB800FAC44C /* MQLoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */; };
+		262E9C391AFC8F5D00EC7AE2 /* MQConfirmDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */; };
 		265A06851ADE56B400826150 /* MQCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06841ADE56B400826150 /* MQCommand.swift */; };
 		265A06871ADE58D200826150 /* MQHTTPCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265A06861ADE58D200826150 /* MQHTTPCommand.swift */; };
 		266B67671AF1AAA7009AA10E /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67661AF1AAA7009AA10E /* MQOperation.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		2615AE2E1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingOverlayViewController.swift; sourceTree = "<group>"; };
 		2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingOverlay.swift; sourceTree = "<group>"; };
+		262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQConfirmDialog.swift; sourceTree = "<group>"; };
 		265A067F1ADE555400826150 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265A06841ADE56B400826150 /* MQCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQCommand.swift; sourceTree = "<group>"; };
 		265A06861ADE58D200826150 /* MQHTTPCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQHTTPCommand.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */,
 				266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */,
 				26B5ACF71AF8B5AF007F8380 /* MQExecutableTask.swift */,
+				262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */,
 				2682CADB1AE2E4870039CBB1 /* MQFieldPickerView.swift in Sources */,
 				2682CAA01AE227470039CBB1 /* MQField.swift in Sources */,
+				262E9C391AFC8F5D00EC7AE2 /* MQConfirmDialog.swift in Sources */,
 				2682CAFD1AE3776B0039CBB1 /* MQLoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
