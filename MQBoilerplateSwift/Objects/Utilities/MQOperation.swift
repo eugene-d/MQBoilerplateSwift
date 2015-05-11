@@ -110,7 +110,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     
     public func performStart() {
         if let startBlock = self.startBlock {
-            MQDispatcher.executeInMainThreadSynchronously {
+            MQDispatcher.syncRunInMainThread {
                 if self.cancelled {
                     return
                 }
@@ -121,7 +121,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     
     public func performReturn() {
         if let returnBlock = self.returnBlock {
-            MQDispatcher.executeInMainThreadSynchronously {
+            MQDispatcher.syncRunInMainThread {
                 if self.cancelled {
                     return
                 }
@@ -132,7 +132,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     
     public func performSuccessWithResult(result: Any?) {
         if let successBlock = self.successBlock {
-            MQDispatcher.executeInMainThreadSynchronously {
+            MQDispatcher.syncRunInMainThread {
                 if self.cancelled {
                     return
                 }
@@ -150,7 +150,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     
     public func performFailureWithError(error: NSError) {
         if let failureBlock = self.failureBlock {
-            MQDispatcher.executeInMainThreadSynchronously {
+            MQDispatcher.syncRunInMainThread {
                 if self.cancelled {
                     return
                 }

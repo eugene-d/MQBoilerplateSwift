@@ -82,28 +82,9 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: nil)
         }
         
-        /*
-        Not sure if this is my error or a Swift bug.
-        
-        I think that the capture list for self should be unowned because if the completion handler
-        gets executed, then the request itself shouldn't be nil. The request object holds references 
-        to the other blocks so it must be kept in memory.
-        
-        And for most requests it works, but I had one where it causes a crash because self
-        becomes deallocated prematurely. However, using weak instead doesn't cause self
-        to be deallocated prematurely. Strange.
-        
         self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
             if let responseHandler = self.responseHandler {
                 responseHandler(data, response, error)
-            }
-        }
-        */
-        self.task = self.session.dataTaskWithRequest(request) {[weak self] (data, response, error) in
-            if let weakSelf = self {
-                if let responseHandler = weakSelf.responseHandler {
-                    responseHandler(data, response, error)
-                }
             }
         }
         
@@ -144,7 +125,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     
     public func performStart() {
         if let startBlock = self.startBlock {
-            MQDispatcher.executeInMainThreadSynchronously {
+            MQDispatcher.syncRunInMainThread {
                 startBlock()
             }
         }
@@ -152,7 +133,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     
     public func performReturn() {
         if let returnBlock = self.returnBlock {
-            MQDispatcher.executeInMainThreadSynchronously {
+            MQDispatcher.syncRunInMainThread {
                 returnBlock()
             }
         }
@@ -160,7 +141,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     
     public func performSuccessWithResult(result: Any?) {
         if let successBlock = self.successBlock {
-            MQDispatcher.executeInMainThreadSynchronously {
+            MQDispatcher.syncRunInMainThread {
                 successBlock(result)
                 
                 if let finishBlock = self.finishBlock {
@@ -172,7 +153,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     
     public func performFailureWithError(error: NSError) {
         if let failureBlock = self.failureBlock {
-            MQDispatcher.executeInMainThreadSynchronously {
+            MQDispatcher.syncRunInMainThread {
                 failureBlock(error)
                 
                 if let finishBlock = self.finishBlock {

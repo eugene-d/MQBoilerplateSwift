@@ -31,6 +31,7 @@ public class MQDefaultStartingView: MQStartingView {
         super.init(frame: CGRectZero)
         
         self.addSubview(self.startingTextLabel)
+        self.backgroundColor = UIColor.whiteColor()
         self.addAutolayout()
     }
     
