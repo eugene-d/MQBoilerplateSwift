@@ -20,34 +20,21 @@ public class MQLoadingOverlayViewController : UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    public override func loadView() {
-//        let mainView = UIView()
-//        self.view = mainView
-//        
-//        self.setupPrimaryView()
-//        if let primaryView = self.primaryView {
-//            mainView.addSubviewAndFill(primaryView)
-//        }
-        
-//        mainView.addSubviewAndFill(self.loadingOverlay)
-//    }
-    
     public func showLoadingOverlay(show: Bool) {
-        self.loadingOverlay.hidden = show == false
+        if let appDelegate = UIApplication.sharedApplication().delegate,
+            let someWindow = appDelegate.window,
+            let window = someWindow {
+                if show {
+                    window.addSubviewAndFill(self.loadingOverlay)
+                } else {
+                    self.loadingOverlay.removeFromSuperview()
+                }
+        }
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-//        if let primaryView = self.primaryView {
-//            self.showLoadingOverlay(false)
-//        }
         self.showLoadingOverlay(false)
-        if let appDelegate = UIApplication.sharedApplication().delegate,
-            let someWindow = appDelegate.window,
-            let window = someWindow,
-            let rootViewController = window.rootViewController {
-                rootViewController.view.addSubviewAndFill(self.loadingOverlay)
-        }
     }
     
     // MARK: Deprecated

@@ -64,15 +64,21 @@ public class MQLoadableViewController: UIViewController {
     }
     
     public func setupStartingView() {
-        self.startingView = MQDefaultStartingView()
+        if self.startingView == nil {
+            self.startingView = MQDefaultStartingView()
+        }
     }
     
     public func setupLoadingView() {
-        self.loadingView = MQLoadingView()
+        if self.loadingView == nil {
+            self.loadingView = MQLoadingView()
+        }
     }
     
     public func setupRetryView() {
-        self.retryView = MQDefaultRetryView()
+        if self.retryView == nil {
+            self.retryView = MQDefaultRetryView()
+        }
     }
     
     public func setupPrimaryView() {
@@ -80,7 +86,9 @@ public class MQLoadableViewController: UIViewController {
     }
     
     public func setupNoResultsView() {
-        self.noResultsView = MQDefaultNoResultsView()
+        if self.noResultsView == nil {
+            self.noResultsView = MQDefaultNoResultsView()
+        }
     }
     
     public func setupTask() {
