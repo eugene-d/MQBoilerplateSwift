@@ -46,6 +46,19 @@ public extension UIView {
                 views: views))
     }
     
+    public func fillSuperview() {
+        if let superview = self.superview {
+            self.setTranslatesAutoresizingMaskIntoConstraints(false)
+            let views = ["view" : self]
+            let rules = ["H:|-0-[view]-0-|",
+                "V:|-0-[view]-0-|"]
+            superview.addConstraints(
+                NSLayoutConstraint.constraintsWithVisualFormatArray(rules,
+                    metrics: nil,
+                    views: views))
+        }
+    }
+    
     public class func instantiateFromNib<T: UIView>() -> T? {
         if let className = self.className() {
             let mainBundle = NSBundle.mainBundle()

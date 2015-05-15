@@ -57,9 +57,13 @@ public class MQLoadableViewController: UIViewController {
         self.setupPrimaryView()
         self.setupNoResultsView()
         
-        mainView.addSubviewsAndFill(self.startingView!, self.loadingView!, self.retryView!, self.noResultsView!)
+//        mainView.addSubviewsAndFill(self.startingView!, self.loadingView!, self.retryView!, self.noResultsView!)
+//        if let primaryView = self.primaryView {
+//            mainView.addSubviewAndFill(primaryView)
+//        }
+        mainView.addSubviews(self.startingView, self.loadingView, self.retryView, self.noResultsView)
         if let primaryView = self.primaryView {
-            mainView.addSubviewAndFill(primaryView)
+            mainView.addSubview(primaryView)
         }
     }
     
@@ -91,6 +95,17 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
+    public func setupViewConstraints() {
+        self.startingView.fillSuperview()
+        self.loadingView.fillSuperview()
+        self.retryView.fillSuperview()
+        self.noResultsView.fillSuperview()
+        
+        if let primaryView = self.primaryView {
+            primaryView.fillSuperview()
+        }
+    }
+    
     public func setupTask() {
         
     }
@@ -114,6 +129,8 @@ public class MQLoadableViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupViewConstraints()
         
         self.showView(.Starting)
         
