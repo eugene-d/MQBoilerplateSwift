@@ -28,9 +28,8 @@ public class MQLoadableViewController: UIViewController {
     show the primary view.
     
     The default value is `false` since it is up to you to define whether the `primaryView`
-    or the `noResultsView` will be displayed upon receiving the result. However,
-    if your request will always succeed and you don't need to define a custom `successBlock`,
-    set this to true.
+    or the `noResultsView` will be displayed upon receiving the result. However, if you
+    don't need to process the result returned to the `successBlock`, you can set this to true.
     */
     public var automaticallyShowsPrimaryViewOnSuccess = false
     
@@ -39,7 +38,7 @@ public class MQLoadableViewController: UIViewController {
     the view controller to appear. If it is, the view controller will setup the 
     `request` and start it.
     
-    This "initial" running of the `request` is written inside `viewWillAppear:`
+    This initial run of the `request` is written inside `viewWillAppear:`
     instead of `viewDidLoad` so that a child class can just override `viewDidLoad`
     normally and not worry about when the parent class automatically starts the `request`.
     */
@@ -57,10 +56,6 @@ public class MQLoadableViewController: UIViewController {
         self.setupPrimaryView()
         self.setupNoResultsView()
         
-//        mainView.addSubviewsAndFill(self.startingView!, self.loadingView!, self.retryView!, self.noResultsView!)
-//        if let primaryView = self.primaryView {
-//            mainView.addSubviewAndFill(primaryView)
-//        }
         mainView.addSubviews(self.startingView, self.loadingView, self.retryView, self.noResultsView)
         if let primaryView = self.primaryView {
             mainView.addSubview(primaryView)
