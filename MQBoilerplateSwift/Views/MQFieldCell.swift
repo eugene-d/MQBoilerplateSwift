@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class MQFieldCell: UITableViewCell {
+public class MQFieldCell: MQTableViewCell {
     
-    public weak var field: MQField?
+    public var field: MQField?
     public weak var delegate: AnyObject?
     
 }

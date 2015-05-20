@@ -8,6 +8,7 @@
 
 import Foundation
 
+@availability(*, deprecated=1.5, message="Replace with showLoadingOverlay() from the UIViewController extension.")
 public class MQLoadingOverlayViewController : UIViewController {
     
     public lazy var loadingOverlay: UIView = MQLoadingOverlay()
@@ -20,7 +21,7 @@ public class MQLoadingOverlayViewController : UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func showLoadingOverlay(show: Bool) {
+    /*public func showLoadingOverlay(show: Bool) {
         if let appDelegate = UIApplication.sharedApplication().delegate,
             let someWindow = appDelegate.window,
             let window = someWindow {
@@ -30,7 +31,7 @@ public class MQLoadingOverlayViewController : UIViewController {
                     self.loadingOverlay.removeFromSuperview()
                 }
         }
-    }
+    }*/
     
     public override func viewDidLoad() {
         super.viewDidLoad()

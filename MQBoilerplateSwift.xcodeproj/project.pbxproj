@@ -36,6 +36,7 @@
 		26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */; };
 		26B416691AF7471700CF80B0 /* MQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B416681AF7471700CF80B0 /* MQTableViewCell.swift */; };
 		26B5ACF81AF8B5AF007F8380 /* MQExecutableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5ACF71AF8B5AF007F8380 /* MQExecutableTask.swift */; };
+		26C71B801B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C71B7F1B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift */; };
 		26D37CA21AEDE80F00145C7A /* MQRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D37CA11AEDE80F00145C7A /* MQRetryView.swift */; };
 		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
@@ -87,6 +88,7 @@
 		26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorDialog.swift; sourceTree = "<group>"; };
 		26B416681AF7471700CF80B0 /* MQTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTableViewCell.swift; sourceTree = "<group>"; };
 		26B5ACF71AF8B5AF007F8380 /* MQExecutableTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQExecutableTask.swift; sourceTree = "<group>"; };
+		26C71B7F1B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldTextFieldDelegate.swift; sourceTree = "<group>"; };
 		26D37CA11AEDE80F00145C7A /* MQRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQRetryView.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQBoilerplateSwift.h; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */,
 				26B5ACF71AF8B5AF007F8380 /* MQExecutableTask.swift */,
 				262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */,
+				26C71B7F1B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */,
 				2615AE2F1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift in Sources */,
 				266B678D1AF335F1009AA10E /* MQNoResultsView.swift in Sources */,
+				26C71B801B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift in Sources */,
 				266B67B21AF3CE00009AA10E /* MQDefaultStartingView.swift in Sources */,
 				26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */,
 				265A06871ADE58D200826150 /* MQHTTPCommand.swift in Sources */,

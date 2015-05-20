@@ -28,7 +28,9 @@ public class MQField {
     public var value: Any?
     
     public var keyboardType: UIKeyboardType?
+    public var autocapitalizationType: UITextAutocapitalizationType?
     public var validCharacterSet: NSCharacterSet?
+    
     public var invalidCharacterSet: NSCharacterSet? {
         get {
             if let validCharacterSet = self.validCharacterSet {

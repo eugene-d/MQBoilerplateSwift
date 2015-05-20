@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let kLoadingOverlay = MQLoadingOverlay()
+
 public extension UIViewController {
     
     public func embedChildViewController(childViewController: UIViewController) {
@@ -28,6 +30,18 @@ public extension UIViewController {
         }
         
         childViewController.didMoveToParentViewController(self)
+    }
+    
+    public func showLoadingOverlay(show: Bool) {
+        if let appDelegate = UIApplication.sharedApplication().delegate,
+            let someWindow = appDelegate.window,
+            let window = someWindow {
+                if show {
+                    window.addSubviewAndFill(kLoadingOverlay)
+                } else {
+                    kLoadingOverlay.removeFromSuperview()
+                }
+        }
     }
     
 }

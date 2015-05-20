@@ -10,6 +10,35 @@ import UIKit
 
 public class MQFieldTextField : UITextField {
     
-    public weak var field: MQField?
+    public weak var field: MQField? {
+        didSet {
+            if let field = self.field {
+                self.applyTextInputTraits()
+                if let value = field.value as? String {
+                    self.text = value
+                    return
+                }
+            }
+            self.text = nil
+        }
+    }
+    
+    public required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.clearButtonMode = .WhileEditing
+        self.keyboardType = .Default
+    }
+    
+    func applyTextInputTraits() {
+        if let field = self.field {
+            if let keyboardType = field.keyboardType {
+                self.keyboardType = keyboardType
+            }
+            
+            if let autocapitalizationType = field.autocapitalizationType {
+                self.autocapitalizationType = autocapitalizationType
+            }
+        }
+    }
     
 }
