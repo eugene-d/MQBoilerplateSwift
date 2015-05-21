@@ -44,6 +44,7 @@
 		26E9FEAB1ADE098100E92745 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FEAA1ADE098100E92745 /* UIView.swift */; };
 		26F28AE01ADF89960070A08B /* MQStartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F28ADF1ADF89960070A08B /* MQStartupViewController.swift */; };
 		26F28AFB1ADF90D10070A08B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F28AFA1ADF90D10070A08B /* UIColor.swift */; };
+		26F531571B0E53F800D4AF08 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F531561B0E53F800D4AF08 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		26E9FEAA1ADE098100E92745 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		26F28ADF1ADF89960070A08B /* MQStartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQStartupViewController.swift; sourceTree = "<group>"; };
 		26F28AFA1ADF90D10070A08B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		26F531561B0E53F800D4AF08 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 		26E9FE8D1ADE090B00E92745 /* MQBoilerplateSwift */ = {
 			isa = PBXGroup;
 			children = (
+				26F531551B0E53F000D4AF08 /* Functions */,
 				2682CAB11AE26DA60039CBB1 /* Views */,
 				26F28ADE1ADF89830070A08B /* Controllers */,
 				265A067D1ADE555400826150 /* Objects */,
@@ -260,6 +263,14 @@
 				2615AE2E1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		26F531551B0E53F000D4AF08 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				26F531561B0E53F800D4AF08 /* Functions.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +391,7 @@
 				269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */,
 				2615AE2F1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift in Sources */,
 				266B678D1AF335F1009AA10E /* MQNoResultsView.swift in Sources */,
+				26F531571B0E53F800D4AF08 /* Functions.swift in Sources */,
 				26C71B801B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift in Sources */,
 				266B67B21AF3CE00009AA10E /* MQDefaultStartingView.swift in Sources */,
 				26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */,

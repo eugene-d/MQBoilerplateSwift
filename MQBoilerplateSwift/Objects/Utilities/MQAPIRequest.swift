@@ -82,6 +82,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: nil)
         }
         
+        println("request: \(request)")
         self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
             if let responseHandler = self.responseHandler {
                 responseHandler(data, response, error)
