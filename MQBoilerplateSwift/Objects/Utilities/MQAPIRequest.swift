@@ -27,7 +27,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     }
     
     public var type: MQExecutableTaskType {
-        return .NSURLSessionTask
+        return .Default
     }
     
     public let session: NSURLSession
@@ -66,7 +66,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         self.needsAuthentication = false
     }
     
-    public func start() {
+    public func begin() {
         let request = NSMutableURLRequest(URL: self.URL)
         request.HTTPMethod = method.rawValue
         request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -82,7 +82,6 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: nil)
         }
         
-        println("request: \(request)")
         self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
             if let responseHandler = self.responseHandler {
                 responseHandler(data, response, error)
@@ -93,24 +92,11 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         self.task!.resume()
     }
     
-    public func resume() {
-        if let task = self.task {
-            task.resume()
-        } else {
-            self.start()
-        }
-    }
-    
-    public func cancel() {
-        if let task = self.task {
-            task.cancel()
-        }
-    }
-    
-    public func suspend() {
-        if let task = self.task {
-            task.suspend()
-        }
+    /**
+    Meaningless to MQAPIRequest--only here for protocol compliance.
+    */
+    public final func mainProcess() {
+        
     }
     
     public func showErrorDialogOnFail(presenter: UIViewController) {

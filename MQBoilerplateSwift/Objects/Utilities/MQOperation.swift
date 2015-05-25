@@ -68,7 +68,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
             return
         }
         
-        self.process()
+        self.mainProcess()
         
         if self.cancelled {
             return
@@ -94,7 +94,14 @@ public class MQOperation : NSOperation, MQExecutableTask {
     You must constantly check for the operation's `cancelled` property when
     overriding this method.
     */
-    public func process() {
+    public func mainProcess() {
+        
+    }
+    
+    /**
+    Only here to comply with MQExecutableTaskProtocol.
+    */
+    public final func begin() {
         
     }
     

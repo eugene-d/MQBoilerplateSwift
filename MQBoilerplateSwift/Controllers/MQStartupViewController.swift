@@ -10,13 +10,13 @@ import UIKit
 
 public class MQStartupViewController : UIViewController {
     
-    public var startupCommand: MQCommand
+    public var operation: MQOperation
     
-    var activityIndicator: UIActivityIndicatorView
+    lazy var operationQueue = NSOperationQueue()
+    lazy var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     
-    public init(startupCommand: MQCommand) {
-        self.startupCommand = startupCommand
-        self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    public init(operation: MQOperation) {
+        self.operation = operation
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -54,7 +54,7 @@ public class MQStartupViewController : UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.startAnimating()
-        self.startupCommand.execute()
+        self.operationQueue.addOperation(self.operation)
     }
     
 }

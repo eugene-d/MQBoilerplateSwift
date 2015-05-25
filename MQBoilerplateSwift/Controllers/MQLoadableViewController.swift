@@ -109,10 +109,12 @@ public class MQLoadableViewController: UIViewController {
         if var task = self.task {
             self.overrideTaskBlocks(&task)
             
-            if let request = task as? MQAPIRequest {
-                request.start()
-            } else if let operation = task as? MQOperation {
-                self.operationQueue.addOperation(operation)
+            if task.type == .NSOperation {
+                if let operation = task as? MQOperation {
+                    self.operationQueue.addOperation(operation)
+                }
+            } else {
+                task.begin()
             }
         }
     }
@@ -190,38 +192,6 @@ public class MQLoadableViewController: UIViewController {
                 retryView.error = error
                 self.showView(.Retry)
             }
-        }
-    }
-    
-    // MARK: DEPRECATED
-    
-    @availability(*, deprecated=1.2, message="Use task instead.")
-    public var request: MQAPIRequest?
-    
-    @availability(*, deprecated=1.2, message="Use task instead.")
-    public var operation: MQOperation?
-    
-    @availability(*, deprecated=1.2, message="Use setupTask() instead.")
-    public func setupRequest() {
-        
-    }
-    
-    @availability(*, deprecated=1.2, message="Use startTask() instead.")
-    public func startRequest() {
-        if let request = self.request {
-            request.start()
-        }
-    }
-    
-    @availability(*, deprecated=1.2, message="Use setupTask() instead.")
-    public func setupOperation() {
-        
-    }
-    
-    @availability(*, deprecated=1.2, message="Use startTask() instead.")
-    public func startOperation() {
-        if let operation = self.operation {
-            self.operationQueue.addOperation(operation)
         }
     }
     

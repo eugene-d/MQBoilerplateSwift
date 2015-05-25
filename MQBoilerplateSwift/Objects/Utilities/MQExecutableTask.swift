@@ -9,7 +9,7 @@
 import Foundation
 
 public enum MQExecutableTaskType {
-    case NSURLSessionTask, NSOperation
+    case Default, NSOperation
 }
 
 public protocol MQExecutableTask: class {
@@ -21,6 +21,18 @@ public protocol MQExecutableTask: class {
     var failureBlock: ((NSError) -> Void)? { get set }
     var successBlock: ((Any?) -> Void)? { get set }
     var finishBlock: (() -> Void)? { get set }
+    
+    /**
+    Starts the task. Override to define the order at which the blocks and the
+    `mainProcess()` function is called.
+    */
+    func begin()
+    
+    /**
+    Defines the main process of the task. Override to define how the result
+    or error is generated. Must ultimately end with
+    */
+    func mainProcess()
     
     /**
     Implemented by subclasses to synchronously perform the `startBlock` in the main thread
