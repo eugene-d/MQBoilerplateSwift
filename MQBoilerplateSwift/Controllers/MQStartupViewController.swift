@@ -10,19 +10,21 @@ import UIKit
 
 public class MQStartupViewController : UIViewController {
     
-    public var operation: MQOperation
+    public var operation: NSOperation?
     
     lazy var operationQueue = NSOperationQueue()
     lazy var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     
-    public init(operation: MQOperation) {
-        self.operation = operation
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    public required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var isComingFromViewDidLoad = true
+    
+//    public init(operation: NSOperation) {
+//        self.operation = operation
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    public required init(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     public override func loadView() {
         self.view = UIView()
@@ -54,7 +56,23 @@ public class MQStartupViewController : UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.startAnimating()
-        self.operationQueue.addOperation(self.operation)
+    }
+    
+    public override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Check if appearing for the first time.
+        if self.isComingFromViewDidLoad {
+            
+            // Execute the operation if it has been assigned in viewDidLoad.
+            // We put the logic inside viewWillAppear so that viewDidLoad can be
+            // overridden normally.
+            if let operation = self.operation {
+                self.operationQueue.addOperation(operation)
+            }
+            
+            self.isComingFromViewDidLoad = false
+        }
     }
     
 }
