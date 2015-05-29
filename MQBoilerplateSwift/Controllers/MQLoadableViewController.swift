@@ -28,8 +28,10 @@ public class MQLoadableViewController: UIViewController {
     show the primary view.
     
     The default value is `false` since it is up to you to define whether the `primaryView`
-    or the `noResultsView` will be displayed upon receiving the result. However, if you
-    don't need to process the result returned to the `successBlock`, you can set this to true.
+    or the `noResultsView` will be displayed upon receiving the result. However, if
+    the result you are expecting does not have a "no results" state (i.e., it is not an
+    array that may have no elements), you can set this to true to show the `primaryView`
+    in the `successBlock`.
     */
     public var automaticallyShowsPrimaryViewOnSuccess = false
     

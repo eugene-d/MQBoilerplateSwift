@@ -31,6 +31,7 @@
 		2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAFE1AE3AB530039CBB1 /* MQDefaultRetryView.swift */; };
 		2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459191ADFCDDB00B92DC0 /* MQFileManager.swift */; };
 		269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */; };
+		26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A07BD61B182607006250CF /* MQAspectFitLabel.swift */; };
 		26AB58AA1AE915F800C0C711 /* MQDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB58A91AE915F800C0C711 /* MQDispatcher.swift */; };
 		26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */; };
 		26B416691AF7471700CF80B0 /* MQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B416681AF7471700CF80B0 /* MQTableViewCell.swift */; };
@@ -83,6 +84,7 @@
 		2682CAFE1AE3AB530039CBB1 /* MQDefaultRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultRetryView.swift; sourceTree = "<group>"; };
 		269459191ADFCDDB00B92DC0 /* MQFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFileManager.swift; sourceTree = "<group>"; };
 		269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
+		26A07BD61B182607006250CF /* MQAspectFitLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAspectFitLabel.swift; sourceTree = "<group>"; };
 		26AB58A91AE915F800C0C711 /* MQDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDispatcher.swift; sourceTree = "<group>"; };
 		26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorDialog.swift; sourceTree = "<group>"; };
 		26B416681AF7471700CF80B0 /* MQTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTableViewCell.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				266B67AF1AF3CDE2009AA10E /* MQStartingView.swift */,
 				266B67B11AF3CE00009AA10E /* MQDefaultStartingView.swift */,
 				26B416681AF7471700CF80B0 /* MQTableViewCell.swift */,
+				26A07BD61B182607006250CF /* MQAspectFitLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				2682CAA01AE227470039CBB1 /* MQField.swift in Sources */,
 				262E9C391AFC8F5D00EC7AE2 /* MQConfirmDialog.swift in Sources */,
 				2682CAFD1AE3776B0039CBB1 /* MQLoadingView.swift in Sources */,
+				26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
