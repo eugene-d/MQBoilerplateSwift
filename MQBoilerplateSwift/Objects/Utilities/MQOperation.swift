@@ -145,12 +145,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
                 }
                 successBlock(result)
                 
-                if let finishBlock = self.finishBlock {
-                    if self.cancelled {
-                        return
-                    }
-                    finishBlock()
-                }
+                self.runFinishBlock()
             }
         }
     }
@@ -163,13 +158,17 @@ public class MQOperation : NSOperation, MQExecutableTask {
                 }
                 failureBlock(error)
                 
-                if let finishBlock = self.finishBlock {
-                    if self.cancelled {
-                        return
-                    }
-                    finishBlock()
-                }
+                self.runFinishBlock()
             }
+        }
+    }
+    
+    public func runFinishBlock() {
+        if let finishBlock = self.finishBlock {
+            if self.cancelled {
+                return
+            }
+            MQDispatcher.syncRunInMainThread(finishBlock)
         }
     }
     

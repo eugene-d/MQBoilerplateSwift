@@ -131,9 +131,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             MQDispatcher.syncRunInMainThread {
                 successBlock(result)
                 
-                if let finishBlock = self.finishBlock {
-                    finishBlock()
-                }
+                self.runFinishBlock()
             }
         }
     }
@@ -143,10 +141,14 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             MQDispatcher.syncRunInMainThread {
                 failureBlock(error)
                 
-                if let finishBlock = self.finishBlock {
-                    finishBlock()
-                }
+                self.runFinishBlock()
             }
+        }
+    }
+    
+    public func runFinishBlock() {
+        if let finishBlock = self.finishBlock {
+            MQDispatcher.syncRunInMainThread(finishBlock)
         }
     }
     

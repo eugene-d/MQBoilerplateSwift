@@ -32,6 +32,8 @@ public class MQDefaultNoResultsView: MQNoResultsView {
         
         self.addSubview(self.noResultsLabel)
         self.addAutolayout()
+        
+        self.backgroundColor = UIColor.whiteColor()
     }
 
     public required init(coder aDecoder: NSCoder) {

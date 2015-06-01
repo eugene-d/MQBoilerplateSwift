@@ -51,6 +51,7 @@ public class MQConcreteExecutableTask: MQExecutableTask {
         if let successBlock = self.successBlock {
             MQDispatcher.syncRunInMainThread {[unowned self] in
                 successBlock(result)
+                self.runFinishBlock()
             }
         }
     }
@@ -59,7 +60,14 @@ public class MQConcreteExecutableTask: MQExecutableTask {
         if let failureBlock = self.failureBlock {
             MQDispatcher.syncRunInMainThread {[unowned self] in
                 failureBlock(error)
+                self.runFinishBlock()
             }
+        }
+    }
+    
+    public func runFinishBlock() {
+        if let finishBlock = self.finishBlock {
+            MQDispatcher.syncRunInMainThread(finishBlock)
         }
     }
     

@@ -58,4 +58,6 @@ public protocol MQExecutableTask: class {
     */
     func performFailureWithError(error: NSError)
     
+    func runFinishBlock()
+    
 }
