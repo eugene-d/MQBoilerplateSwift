@@ -22,6 +22,9 @@ public protocol MQExecutableTask: class {
     var successBlock: ((Any?) -> Void)? { get set }
     var finishBlock: (() -> Void)? { get set }
     
+//    var result: Any? { get set }
+//    var error: NSError? { get set }
+    
     /**
     Starts the task. Override to define the order at which the blocks and the
     `mainProcess()` function is called.
@@ -38,26 +41,28 @@ public protocol MQExecutableTask: class {
     Implemented by subclasses to synchronously perform the `startBlock` in the main thread
     if it exists, and waits for it to return before proceeding.
     */
-    func performStart()
+    func runStartBlock()
     
     /**
     Implemented by subclasses to synchronously perform the `returnBlock` in the main thread
     if it exists, and waits for it to return before proceeding.
     */
-    func performReturn()
+    func runReturnBlock()
     
     /**
     Implemented by subclasses to synchronously perform the `successBlock` and
     then the `finishBlock` in the main thread if they exist.
     */
-    func performSuccessWithResult(result: Any?)
+    func runSuccessBlockAndFinish(#result: Any?)
     
     /**
     Implemented by subclasses to synchronously perform the `failureBlock` and
     then the `finishBlock` in the main thread if they exist.
     */
-    func performFailureWithError(error: NSError)
+    func runFailureBlockAndFinish(#error: NSError)
     
     func runFinishBlock()
+    
+    func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController)
     
 }

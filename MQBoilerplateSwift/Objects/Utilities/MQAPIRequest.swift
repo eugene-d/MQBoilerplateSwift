@@ -88,7 +88,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             }
         }
         
-        self.performStart()
+        self.runStartBlock()
         self.task!.resume()
     }
     
@@ -99,57 +99,28 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         
     }
     
-    public func showErrorDialogOnFail(presenter: UIViewController) {
-        let someCustomFailureBlock = self.failureBlock
-        self.failureBlock = {[unowned self] error in
-            if let customFailureBlock = someCustomFailureBlock {
-                customFailureBlock(error)
-            }
-            
-            MQErrorDialog(error: error).showInPresenter(presenter)
-        }
+    public func runStartBlock() {
+        MQExecutableTaskBlockRunner.runStartBlockOfTask(self)
     }
     
-    public func performStart() {
-        if let startBlock = self.startBlock {
-            MQDispatcher.syncRunInMainThread {
-                startBlock()
-            }
-        }
+    public func runReturnBlock() {
+        MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
     }
     
-    public func performReturn() {
-        if let returnBlock = self.returnBlock {
-            MQDispatcher.syncRunInMainThread {
-                returnBlock()
-            }
-        }
+    public func runSuccessBlockAndFinish(#result: Any?) {
+        MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
     }
     
-    public func performSuccessWithResult(result: Any?) {
-        if let successBlock = self.successBlock {
-            MQDispatcher.syncRunInMainThread {
-                successBlock(result)
-                
-                self.runFinishBlock()
-            }
-        }
-    }
-    
-    public func performFailureWithError(error: NSError) {
-        if let failureBlock = self.failureBlock {
-            MQDispatcher.syncRunInMainThread {
-                failureBlock(error)
-                
-                self.runFinishBlock()
-            }
-        }
+    public func runFailureBlockAndFinish(#error: NSError) {
+        MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
     }
     
     public func runFinishBlock() {
-        if let finishBlock = self.finishBlock {
-            MQDispatcher.syncRunInMainThread(finishBlock)
-        }
+        MQExecutableTaskBlockRunner.runFinishBlockOfTask(self)
+    }
+    
+    public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
+        MQExecutableTaskBlockRunner.overrideFailureBlockOfTask(self, toShowErrorDialogInPresenter: presenter)
     }
     
 }
