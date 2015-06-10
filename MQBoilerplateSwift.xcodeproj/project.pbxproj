@@ -11,6 +11,9 @@
 		2615AE311AE3CDB800FAC44C /* MQLoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */; };
 		262E9C391AFC8F5D00EC7AE2 /* MQConfirmDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */; };
 		265BD12F1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BD12E1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift */; };
+		2666595D1B257F87003F24F8 /* MQButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666595C1B257F87003F24F8 /* MQButton.swift */; };
+		2666595F1B258080003F24F8 /* MQLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666595E1B258080003F24F8 /* MQLabelButton.swift */; };
+		266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266659601B2581A1003F24F8 /* MQImageButton.swift */; };
 		266B67671AF1AAA7009AA10E /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67661AF1AAA7009AA10E /* MQOperation.swift */; };
 		266B67691AF1AAF3009AA10E /* MQAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */; };
 		266B67751AF1D16D009AA10E /* MQUnexpectedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */; };
@@ -65,6 +68,9 @@
 		262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQConfirmDialog.swift; sourceTree = "<group>"; };
 		265A067F1ADE555400826150 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265BD12E1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQExecutableTaskBlockRunner.swift; sourceTree = "<group>"; };
+		2666595C1B257F87003F24F8 /* MQButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQButton.swift; sourceTree = "<group>"; };
+		2666595E1B258080003F24F8 /* MQLabelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLabelButton.swift; sourceTree = "<group>"; };
+		266659601B2581A1003F24F8 /* MQImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQImageButton.swift; sourceTree = "<group>"; };
 		266B67661AF1AAA7009AA10E /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
 		266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAPIRequest.swift; sourceTree = "<group>"; };
 		266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQUnexpectedError.swift; sourceTree = "<group>"; };
@@ -166,6 +172,9 @@
 				266B67B11AF3CE00009AA10E /* MQDefaultStartingView.swift */,
 				26B416681AF7471700CF80B0 /* MQTableViewCell.swift */,
 				26A07BD61B182607006250CF /* MQAspectFitLabel.swift */,
+				2666595C1B257F87003F24F8 /* MQButton.swift */,
+				2666595E1B258080003F24F8 /* MQLabelButton.swift */,
+				266659601B2581A1003F24F8 /* MQImageButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2666595F1B258080003F24F8 /* MQLabelButton.swift in Sources */,
 				266B678F1AF33621009AA10E /* MQDefaultNoResultsView.swift in Sources */,
 				266B67691AF1AAF3009AA10E /* MQAPIRequest.swift in Sources */,
 				26B416691AF7471700CF80B0 /* MQTableViewCell.swift in Sources */,
@@ -396,6 +406,7 @@
 				26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */,
 				2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */,
 				266B67751AF1D16D009AA10E /* MQUnexpectedError.swift in Sources */,
+				266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */,
 				2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */,
 				26E9FEAB1ADE098100E92745 /* UIView.swift in Sources */,
 				265BD12F1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift in Sources */,
@@ -409,6 +420,7 @@
 				2682CAB51AE26DA60039CBB1 /* MQFieldTextField.swift in Sources */,
 				266B67671AF1AAA7009AA10E /* MQOperation.swift in Sources */,
 				2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */,
+				2666595D1B257F87003F24F8 /* MQButton.swift in Sources */,
 				2682CADB1AE2E4870039CBB1 /* MQFieldPickerView.swift in Sources */,
 				2682CAA01AE227470039CBB1 /* MQField.swift in Sources */,
 				262E9C391AFC8F5D00EC7AE2 /* MQConfirmDialog.swift in Sources */,
