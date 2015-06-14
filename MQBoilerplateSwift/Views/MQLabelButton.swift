@@ -22,4 +22,9 @@ public class MQLabelButton: MQButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public override func sizeToFit() {
+        self.label.sizeToFit()
+        self.bounds = self.label.bounds
+    }
+    
 }
