@@ -20,7 +20,7 @@ public class MQButton: UIControl {
     */
     public var overlayView: UIView = {
         let overlayView = UIView()
-        overlayView.backgroundColor = UIColor.grayColor()
+        overlayView.backgroundColor = UIColor.blackColor()
         overlayView.alpha = 0.3
         overlayView.userInteractionEnabled = false
         return overlayView

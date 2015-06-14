@@ -10,10 +10,11 @@ import UIKit
 
 public class MQLabelButton: MQButton {
     
-    public lazy var label: UILabel = UILabel()
+    public var label: UILabel = UILabel()
     
     public override init() {
         super.init()
+        self.label.textAlignment = .Center
         self.customView.addSubviewAndFill(self.label)
     }
 
