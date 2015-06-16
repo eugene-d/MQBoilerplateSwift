@@ -14,7 +14,7 @@ public class MQUnexpectedError: MQError {
         super.init("An unexpected error occurred:\n\(message)", code: .Unexpected)
     }
 
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

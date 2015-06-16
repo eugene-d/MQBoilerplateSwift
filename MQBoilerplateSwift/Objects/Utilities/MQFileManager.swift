@@ -110,7 +110,11 @@ public class MQFileManager {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
                 
-                NSFileManager.defaultManager().removeItemAtURL(fileURL, error: error)
+                do {
+                    try NSFileManager.defaultManager().removeItemAtURL(fileURL)
+                } catch let error1 as NSError {
+                    error.memory = error1
+                }
             }
         }
     }

@@ -12,7 +12,7 @@ public extension UIView {
     
     public class func disableAutoresizingMasksInViews(views: UIView...) {
         for view in views {
-            view.setTranslatesAutoresizingMaskIntoConstraints(false)
+            view.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
@@ -35,7 +35,7 @@ public extension UIView {
     public func addSubviewAndFill(view: UIView) {
         self.addSubview(view)
         
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         let views = ["view" : view]
         let rules = ["H:|-0-[view]-0-|",
@@ -48,7 +48,7 @@ public extension UIView {
     
     public func fillSuperview() {
         if let superview = self.superview {
-            self.setTranslatesAutoresizingMaskIntoConstraints(false)
+            self.translatesAutoresizingMaskIntoConstraints = false
             let views = ["view" : self]
             let rules = ["H:|-0-[view]-0-|",
                 "V:|-0-[view]-0-|"]

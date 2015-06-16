@@ -39,11 +39,11 @@ public class MQConcreteExecutableTask: MQExecutableTask {
         MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
     }
     
-    public func runSuccessBlockAndFinish(#result: Any?) {
+    public func runSuccessBlockAndFinish(result result: Any?) {
         MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
     }
     
-    public func runFailureBlockAndFinish(#error: NSError) {
+    public func runFailureBlockAndFinish(error error: NSError) {
         MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
     }
     

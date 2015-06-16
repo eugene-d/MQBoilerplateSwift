@@ -51,12 +51,12 @@ public class MQButton: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool {
+    public override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
         self.overlayView.hidden = false
         return true
     }
     
-    public override func endTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) {
+    public override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
         self.overlayView.hidden = true
     }
     
