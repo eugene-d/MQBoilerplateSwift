@@ -40,7 +40,7 @@ public class MQDefaultRetryView: MQRetryView {
     
     public init() {
         self.errorLabel = UILabel()
-        self.retryButton = UIButton.buttonWithType(.System) as! UIButton
+        self.retryButton = UIButton(type: .System)
         self.containerView = UIView()
         
         super.init(frame: CGRectZero)

@@ -43,7 +43,7 @@ public class MQDefaultNoResultsView: MQNoResultsView {
     func addAutolayout() {
         // The noResultsLabel is centered vertically,
         // with a width 2/3 that of its superview.
-        self.noResultsLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.noResultsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.addConstraints([
             NSLayoutConstraint(item: self.noResultsLabel,

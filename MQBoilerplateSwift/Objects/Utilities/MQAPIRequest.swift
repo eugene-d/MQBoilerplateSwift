@@ -72,14 +72,19 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
         if self.needsAuthentication {
             if let cookie = self.cookie {
-                if let value = cookie.value {
-                    request.setValue("\(cookie.name)=\(value)", forHTTPHeaderField: "Cookie")
-                }
+//                if let value = cookie.value {
+//                    request.setValue("\(cookie.name)=\(value)", forHTTPHeaderField: "Cookie")
+//                }
+                request.setValue("\(cookie.name)=\(cookie.value)", forHTTPHeaderField: "Cookie")
             }
         }
         
         if let parameters = self.parameters {
-            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: nil)
+            do {
+                request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+            } catch _ {
+                request.HTTPBody = nil
+            }
         }
         
         self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
@@ -107,11 +112,11 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
     }
     
-    public func runSuccessBlockAndFinish(#result: Any?) {
+    public func runSuccessBlockAndFinish(result result: Any?) {
         MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
     }
     
-    public func runFailureBlockAndFinish(#error: NSError) {
+    public func runFailureBlockAndFinish(error error: NSError) {
         MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
     }
     
