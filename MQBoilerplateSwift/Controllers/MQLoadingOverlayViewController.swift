@@ -8,7 +8,7 @@
 
 import Foundation
 
-@availability(*, deprecated=1.5, message="Replace with showLoadingOverlay() from the UIViewController extension.")
+@available(*, deprecated=1.5, message="Replace with showLoadingOverlay() from the UIViewController extension.")
 public class MQLoadingOverlayViewController : UIViewController {
     
     public lazy var loadingOverlay: UIView = MQLoadingOverlay()

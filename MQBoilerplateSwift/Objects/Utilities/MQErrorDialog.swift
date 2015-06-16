@@ -18,7 +18,7 @@ public class MQErrorDialog {
     
     public func showInPresenter(errorPresenter: UIViewController) {
         let alertController = UIAlertController(title: "Error", message: self.error.localizedDescription, preferredStyle: .Alert)
-        let okButtonAction = UIAlertAction(title: "OK", style: .Default) {[unowned self] action in
+        let okButtonAction = UIAlertAction(title: "OK", style: .Default) {_ in
             alertController.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(okButtonAction)

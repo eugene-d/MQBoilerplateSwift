@@ -53,13 +53,13 @@ public protocol MQExecutableTask: class {
     Implemented by subclasses to synchronously perform the `successBlock` and
     then the `finishBlock` in the main thread if they exist.
     */
-    func runSuccessBlockAndFinish(#result: Any?)
+    func runSuccessBlockAndFinish(result result: Any?)
     
     /**
     Implemented by subclasses to synchronously perform the `failureBlock` and
     then the `finishBlock` in the main thread if they exist.
     */
-    func runFailureBlockAndFinish(#error: NSError)
+    func runFailureBlockAndFinish(error error: NSError)
     
     func runFinishBlock()
     

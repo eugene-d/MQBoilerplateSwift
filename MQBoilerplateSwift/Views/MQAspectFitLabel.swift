@@ -42,13 +42,13 @@ public class MQAspectFitLabel: UILabel {
     different font sizes in certain parts of the string.
     */
     public func adjustFontSizeToScaleAspectFit() {
-        if let text: NSString = self.text {
+        if let _: NSString = self.text {
             // Find the min and max font sizes before doing a binary search.
             var currentSize = self.self.font.pointSize > 0 ? self.self.font.pointSize : UIFont.systemFontSize()
             var min = CGFloat(0)
             var max = CGFloat(0)
             
-            var startingDirection = self.scaleDirectionForFontSize(currentSize)
+            let startingDirection = self.scaleDirectionForFontSize(currentSize)
             var currentDirection = startingDirection
             
             loop: while true {
@@ -103,7 +103,7 @@ public class MQAspectFitLabel: UILabel {
     private func scaleDirectionForFontSize(fontSize: CGFloat) -> ScaleDirection {
         if let text = self.text {            
             let textSize = text.boundingRectWithSize(CGSizeMax,
-                options: .UsesLineFragmentOrigin | .UsesFontLeading,
+                options: [.UsesLineFragmentOrigin, .UsesFontLeading],
                 attributes: [NSFontAttributeName : UIFont(name: self.font.fontName, size: fontSize)!],
                 context: nil).size
             
