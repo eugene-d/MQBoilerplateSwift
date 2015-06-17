@@ -51,9 +51,10 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     */
     public var responseHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
     
+    public var builderBlock: ((Any) throws -> (Any))?
+    
     public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
-    public var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?)?)?
     public var successBlock: ((Any?) -> Void)?
     public var cookieBlock: ((NSHTTPCookie) -> Void)?
     public var finishBlock: (() -> Void)?
@@ -72,9 +73,6 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
         if self.needsAuthentication {
             if let cookie = self.cookie {
-//                if let value = cookie.value {
-//                    request.setValue("\(cookie.name)=\(value)", forHTTPHeaderField: "Cookie")
-//                }
                 request.setValue("\(cookie.name)=\(cookie.value)", forHTTPHeaderField: "Cookie")
             }
         }
@@ -95,37 +93,6 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         
         self.runStartBlock()
         self.task!.resume()
-    }
-    
-    /**
-    Meaningless to MQAPIRequest--only here for protocol compliance.
-    */
-    public final func mainProcess() {
-        
-    }
-    
-    public func runStartBlock() {
-        MQExecutableTaskBlockRunner.runStartBlockOfTask(self)
-    }
-    
-    public func runReturnBlock() {
-        MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
-    }
-    
-    public func runSuccessBlockAndFinish(result result: Any?) {
-        MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
-    }
-    
-    public func runFailureBlockAndFinish(error error: NSError) {
-        MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
-    }
-    
-    public func runFinishBlock() {
-        MQExecutableTaskBlockRunner.runFinishBlockOfTask(self)
-    }
-    
-    public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
-        MQExecutableTaskBlockRunner.overrideFailureBlockOfTask(self, toShowErrorDialogInPresenter: presenter)
     }
     
 }
