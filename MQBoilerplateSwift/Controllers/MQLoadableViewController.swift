@@ -8,6 +8,33 @@
 
 import UIKit
 
+/**
+A view controller that loads and displays information based on the results of an
+executable task. An `MQLoadableViewController` has five subviews, only one of which
+are displayed at any given moment:
+
+* `startingView` - The initial state of the view controller, when there is no
+information yet. For example, in a blogging app, the `startingView` can tell the
+user, "No posts yet! Press the add button to write your first entry."
+
+* `loadingView` - Indicates that the executable task is running in the background.
+The `loadingView`, by default, is assigned an instance of `MQLoadingView` in
+`setupLoadingView()`. It contains a `UIActivityIndicatorView` and a `UILabel` that says
+"Loading." However, you can override this function, not invoke this class's implementation,
+and assign your own custom view, which is why the property is of type `UIView`.
+
+* `retryView` - Displayed when the executable task produces an error. The standard
+`retryView`, an instance of `MQRetryView`, contains a label that displays the error
+message, and a Retry button.
+
+* `primaryView` - The view that is displayed when there are results. An `MQLoadableViewController`
+subclass should override the `setupPrimaryView()` function and set this property.
+
+* `noResultsView` - The view that is displayed when the executable task succeeds,
+but finds no results. The standard `noResultsView`, an instance of `MQNoResultsView`,
+contains a `UILabel` that says there were no results found.
+
+*/
 public class MQLoadableViewController: UIViewController {
     
     public enum View {
@@ -103,6 +130,10 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
+    /**
+    A callback function that you must override to set the `self.task` property.
+    The task will automatically be executed once the view controller is displayed.
+    */
     public func setupTask() {
         
     }
