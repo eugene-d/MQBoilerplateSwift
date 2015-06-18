@@ -172,6 +172,8 @@ public class MQLoadableViewController: UIViewController {
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        // We start the task if the view is appearing for the first time
+        // so the you can override viewDidLoad normally.
         if self.isComingFromViewDidLoad {
             self.restartTask()
             self.isComingFromViewDidLoad = false
