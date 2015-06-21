@@ -44,11 +44,11 @@ public class MQLoadableViewController: UIViewController {
     public var task: MQExecutableTask?
     public lazy var operationQueue = NSOperationQueue()
     
-    public var startingView: MQStartingView!
-    public var loadingView: UIView!
-    public var retryView: MQRetryView!
-    public var primaryView: UIView?
-    public var noResultsView: MQNoResultsView!
+    public lazy var startingView: MQStartingView = MQDefaultStartingView()
+    public lazy var loadingView: UIView = MQLoadingView()
+    public lazy var retryView: MQRetryView = MQDefaultRetryView()
+    public var primaryView = UIView()
+    public lazy var noResultsView: MQNoResultsView = MQDefaultNoResultsView()
     
     /**
     Determines whether the `successBlock` should be overridden to automatically
@@ -85,58 +85,52 @@ public class MQLoadableViewController: UIViewController {
         self.setupPrimaryView()
         self.setupNoResultsView()
         
-        mainView.addSubviews(self.startingView, self.loadingView, self.retryView, self.noResultsView)
-        if let primaryView = self.primaryView {
-            mainView.addSubview(primaryView)
-        }
+        mainView.addSubviews(self.startingView, self.loadingView, self.primaryView, self.retryView, self.noResultsView)
     }
     
-    public func setupStartingView() {
-        if self.startingView == nil {
-            self.startingView = MQDefaultStartingView()
-        }
-    }
+    /**
+    Override this function and assign a value to `self.startingView`
+    if you want a custom `startingView`.
+    */
+    public func setupStartingView() {}
     
-    public func setupLoadingView() {
-        if self.loadingView == nil {
-            self.loadingView = MQLoadingView()
-        }
-    }
+    /**
+    Override this function and assign a value to `self.loadingView`
+    if you want a custom `loadingView`.
+    */
+    public func setupLoadingView() {}
     
-    public func setupRetryView() {
-        if self.retryView == nil {
-            self.retryView = MQDefaultRetryView()
-        }
-    }
+    /**
+    Override this function and assign a value to `self.retryView`
+    if you want a custom `retryView`.
+    */
+    public func setupRetryView() {}
     
-    public func setupPrimaryView() {
-        
-    }
+    /**
+    Override this function and assign a value to `self.primaryView`
+    if you want a custom `primaryView`.
+    */
+    public func setupPrimaryView() {}
     
-    public func setupNoResultsView() {
-        if self.noResultsView == nil {
-            self.noResultsView = MQDefaultNoResultsView()
-        }
-    }
+    /**
+    Override this function and assign a value to `self.noResultsView`
+    if you want a custom `noResultsView`.
+    */
+    public func setupNoResultsView() {}
     
     public func setupViewConstraints() {
         self.startingView.fillSuperview()
         self.loadingView.fillSuperview()
+        self.primaryView.fillSuperview()
         self.retryView.fillSuperview()
         self.noResultsView.fillSuperview()
-        
-        if let primaryView = self.primaryView {
-            primaryView.fillSuperview()
-        }
     }
     
     /**
     A callback function that you must override to set the `self.task` property.
     The task will automatically be executed once the view controller is displayed.
     */
-    public func setupTask() {
-        
-    }
+    public func setupTask() {}
     
     public func startTask() {
         if var task = self.task {
@@ -183,13 +177,11 @@ public class MQLoadableViewController: UIViewController {
     public func showView(view: MQLoadableViewController.View) {
         self.startingView.hidden = view != .Starting
         self.loadingView.hidden = view != .Loading
+        self.primaryView.hidden = view != .Primary
         self.retryView.hidden = view != .Retry
-        
-        if let primaryView = self.primaryView {
-            primaryView.hidden = view != .Primary
-        }
-        
         self.noResultsView.hidden = view != .NoResults
+        
+        print("\n\nview: \(view)\nloadingView: \(self.loadingView)\nprimaryView: \(self.primaryView)")
     }
     
     public func overrideTaskBlocks(inout task: MQExecutableTask) {
@@ -223,10 +215,8 @@ public class MQLoadableViewController: UIViewController {
                 customFailureBlock(error)
             }
             
-            if let retryView = self.retryView {
-                retryView.error = error
-                self.showView(.Retry)
-            }
+            self.retryView.error = error
+            self.showView(.Retry)
         }
     }
     
