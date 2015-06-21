@@ -47,7 +47,7 @@ public class MQLoadableViewController: UIViewController {
     public lazy var startingView: MQStartingView = MQDefaultStartingView()
     public lazy var loadingView: UIView = MQLoadingView()
     public lazy var retryView: MQRetryView = MQDefaultRetryView()
-    public var primaryView = UIView()
+    public lazy var primaryView = UIView()
     public lazy var noResultsView: MQNoResultsView = MQDefaultNoResultsView()
     
     /**
@@ -180,8 +180,6 @@ public class MQLoadableViewController: UIViewController {
         self.primaryView.hidden = view != .Primary
         self.retryView.hidden = view != .Retry
         self.noResultsView.hidden = view != .NoResults
-        
-        print("\n\nview: \(view)\nloadingView: \(self.loadingView)\nprimaryView: \(self.primaryView)")
     }
     
     public func overrideTaskBlocks(inout task: MQExecutableTask) {
