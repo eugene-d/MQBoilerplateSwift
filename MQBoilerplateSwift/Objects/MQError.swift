@@ -17,18 +17,6 @@ public class MQError : NSError {
         case Unexpected = -2
     }
     
-//    public init(message: String) {
-//        // Set the error's domain property.
-//        var domain: String
-//        if let bundleID = NSBundle.mainBundle().bundleIdentifier {
-//            domain = bundleID
-//        } else {
-//            domain = ""
-//        }
-//        
-//        super.init(domain: domain, code: kMQGenericErrorCode, userInfo: [NSLocalizedDescriptionKey : message])
-//    }
-    
     public init(_ message: String, code: Code) {
         // Set the error's domain property.
         var domain: String
