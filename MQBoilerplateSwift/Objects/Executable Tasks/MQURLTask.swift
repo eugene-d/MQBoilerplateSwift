@@ -37,26 +37,14 @@ public class MQURLTask: MQExecutableTask, Equatable {
     public var cookie: NSHTTPCookie?
     
     public var startBlock: (() -> Void)?
-    
-    public var result: Any?
-    public var error: NSError?
-    
-    /**
-    The block executed when the request returns with a response.
-    
-    **IMPORTANT:** Remember to execute the `finishBlock`, the `failureBlock`, and the `successBlock`
-    in the main thread. The convenience methods `finish()`, `failWithError(:)`, and `succeedWithResult(:)`
-    are provided for performing the said blocks in the main thread.
-    */
-    public var responseHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
-    
-    public var builderBlock: ((Any) throws -> (Any))?
-    
     public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
     public var successBlock: ((Any?) -> Void)?
     public var cookieBlock: ((NSHTTPCookie) -> Void)?
     public var finishBlock: (() -> Void)?
+    
+    public var result: Any?
+    public var error: NSError?
     
     public init(session: NSURLSession, method: MQAPIRequest.Method, URL: String, parameters: [String : AnyObject]?) {
         self.session = session
@@ -67,29 +55,7 @@ public class MQURLTask: MQExecutableTask, Equatable {
     }
     
     public func execute() {
-        let request = NSMutableURLRequest(URL: self.URL)
-        request.HTTPMethod = method.rawValue
-        request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        if self.needsAuthentication {
-            if let cookie = self.cookie {
-                request.setValue("\(cookie.name)=\(cookie.value)", forHTTPHeaderField: "Cookie")
-            }
-        }
         
-        if let parameters = self.parameters {
-            do {
-                request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
-            } catch _ {
-                request.HTTPBody = nil
-            }
-        }
-        
-        self.task = self.session.dataTaskWithRequest(request) {[unowned self] (someData, someResponse, someError) in
-            self.handleResponse(someData, someResponse: someResponse, someError: someError)
-        }
-        
-        self.runStartBlock()
-        self.task!.resume()
     }
     
     public func performSequence() {
@@ -97,10 +63,6 @@ public class MQURLTask: MQExecutableTask, Equatable {
     }
     
     public func computeResult() {
-        
-    }
-    
-    public func handleResponse(someData: NSData?, someResponse: NSURLResponse?, someError: NSError?) {
         
     }
     
