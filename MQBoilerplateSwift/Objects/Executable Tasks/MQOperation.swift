@@ -58,6 +58,16 @@ public class MQOperation : NSOperation, MQExecutableTask {
     public var result: Any?
     
     public override func main() {
+        self.performSequence()
+    }
+    
+    public func execute() {
+        // Empty function. This means nothing for an MQOperation since they are triggered
+        // by being added to an instance of NSOperationQueue.
+        // This function is simply here for protocol compliance.
+    }
+    
+    public func performSequence() {
         defer {
             self.runFinishBlock()
         }
@@ -89,6 +99,10 @@ public class MQOperation : NSOperation, MQExecutableTask {
         } else {
             self.runSuccessBlockWithResult(result)
         }
+    }
+    
+    public func computeResult() {
+        
     }
     
 }

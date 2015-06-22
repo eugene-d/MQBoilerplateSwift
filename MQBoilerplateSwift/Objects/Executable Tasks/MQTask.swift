@@ -1,14 +1,14 @@
 //
-//  MQConcreteExecutableTask.swift
+//  MQTask.swift
 //  MQBoilerplateSwift
 //
-//  Created by Matt Quiros on 5/26/15.
-//  Copyright (c) 2015 Matt Quiros. All rights reserved.
+//  Created by Matt Quiros on 6/23/15.
+//  Copyright © 2015 Matt Quiros. All rights reserved.
 //
 
 import Foundation
 
-public class MQConcreteExecutableTask: MQExecutableTask {
+public class MQTask: MQExecutableTask {
     
     public var type: MQExecutableTaskType {
         return .Default
@@ -25,11 +25,11 @@ public class MQConcreteExecutableTask: MQExecutableTask {
     
     public init() {}
     
-    public func begin() {
-        self.performCallbacks()
+    public func execute() {
+        self.performSequence()
     }
     
-    public func performCallbacks() {
+    public func performSequence() {
         defer {
             self.runFinishBlock()
         }
@@ -39,12 +39,16 @@ public class MQConcreteExecutableTask: MQExecutableTask {
         self.computeResult()
         
         self.runReturnBlock()
-
+        
         if let error = self.error {
             self.runFailureBlockWithError(error)
         } else {
             self.runSuccessBlockWithResult(self.result)
         }
+    }
+    
+    public func computeResult() {
+        
     }
     
 }
