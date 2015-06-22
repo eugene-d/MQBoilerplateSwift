@@ -141,7 +141,7 @@ public class MQLoadableViewController: UIViewController {
                     self.operationQueue.addOperation(operation)
                 }
             } else {
-                task.begin()
+                task.execute()
             }
         }
     }
