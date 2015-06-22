@@ -42,6 +42,9 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     
     public var startBlock: (() -> Void)?
     
+    public var result: Any?
+    public var error: NSError?
+    
     /**
     The block executed when the request returns with a response.
     

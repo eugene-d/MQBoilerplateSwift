@@ -22,6 +22,9 @@ public protocol MQExecutableTaskBaseProtocol: class {
     var successBlock: ((Any?) -> Void)? { get set }
     var finishBlock: (() -> Void)? { get set }
     
+    var result: Any? { get set }
+    var error: NSError? { get set }
+    
     /**
     Starts the task. Override to define the order at which the blocks and the
     `mainProcess()` function is called.
@@ -33,6 +36,9 @@ public protocol MQExecutableTaskBaseProtocol: class {
     or error is generated. Must ultimately end with
     */
     func mainProcess()
+    
+    func performCallbacks()
+    func computeResult()
     
     /**
     Implemented by subclasses to synchronously perform the `startBlock` in the main thread
@@ -85,6 +91,14 @@ public extension MQExecutableTask {
     }
     
     public func mainProcess() {
+        
+    }
+    
+    public func performCallbacks() {
+        
+    }
+    
+    public func computeResult() {
         
     }
     

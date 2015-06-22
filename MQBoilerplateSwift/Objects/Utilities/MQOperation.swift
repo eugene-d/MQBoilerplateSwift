@@ -58,6 +58,10 @@ public class MQOperation : NSOperation, MQExecutableTask {
     public var result: Any?
     
     public override func main() {
+        defer {
+            self.runFinishBlock()
+        }
+        
         if self.cancelled {
             return
         }
@@ -68,7 +72,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
             return
         }
         
-        self.mainProcess()
+        self.computeResult()
         
         if self.cancelled {
             return
@@ -81,53 +85,10 @@ public class MQOperation : NSOperation, MQExecutableTask {
         }
         
         if let error = self.error {
-            self.runFailureBlockAndFinish(error: error)
+            self.runFailureBlockWithError(error)
         } else {
-            self.runSuccessBlockAndFinish(result: self.result)
+            self.runSuccessBlockWithResult(result)
         }
-    }
-    
-    /**
-    Defines the main process of this operation. Assign a value to the `error`
-    property to mark the operation as failed.
-    
-    You must constantly check for the operation's `cancelled` property when
-    overriding this method.
-    */
-    public func mainProcess() {
-        
-    }
-    
-    /**
-    Only here to comply with MQExecutableTaskProtocol.
-    */
-    public final func begin() {
-        
-    }
-    
-    public func runStartBlock() {
-        MQExecutableTaskBlockRunner.runStartBlockOfTask(self)
-    }
-    
-    public func runReturnBlock() {
-        MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
-    }
-    
-    public func runSuccessBlockAndFinish(result result: Any?) {
-        MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
-    }
-    
-    public func runFailureBlockAndFinish(error error: NSError) {
-        MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
-    }
-    
-    public func runFinishBlock() {
-        MQExecutableTaskBlockRunner.runFinishBlockOfTask(self)
-    }
-    
-    public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
-        MQExecutableTaskBlockRunner.overrideFailureBlockOfTask(self,
-            toShowErrorDialogInPresenter: presenter)
     }
     
 }
