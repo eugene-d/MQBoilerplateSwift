@@ -20,40 +20,31 @@ public class MQConcreteExecutableTask: MQExecutableTask {
     public var successBlock: ((Any?) -> Void)?
     public var finishBlock: (() -> Void)?
     
+    public var result: Any?
+    public var error: NSError?
+    
     public init() {}
     
     public func begin() {
-        self.runStartBlock()
-        self.mainProcess()
+        self.performCallbacks()
     }
     
-    public func mainProcess() {
+    public func performCallbacks() {
+        defer {
+            self.runFinishBlock()
+        }
         
-    }
-    
-    public func runStartBlock() {
-        MQExecutableTaskBlockRunner.runStartBlockOfTask(self)
-    }
-    
-    public func runReturnBlock() {
-        MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
-    }
-    
-    public func runSuccessBlockAndFinish(result result: Any?) {
-        MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
-    }
-    
-    public func runFailureBlockAndFinish(error error: NSError) {
-        MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
-    }
-    
-    public func runFinishBlock() {
-        MQExecutableTaskBlockRunner.runFinishBlockOfTask(self)
-    }
-    
-    public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
-        MQExecutableTaskBlockRunner.overrideFailureBlockOfTask(self,
-            toShowErrorDialogInPresenter: presenter)
+        self.runStartBlock()
+        
+        self.computeResult()
+        
+        self.runReturnBlock()
+
+        if let error = self.error {
+            self.runFailureBlockWithError(error)
+        } else {
+            self.runSuccessBlockWithResult(self.result)
+        }
     }
     
 }
