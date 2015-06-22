@@ -1,18 +1,14 @@
 //
-//  MQAPIRequest.swift
+//  MQURLTask.swift
 //  MQBoilerplateSwift
 //
-//  Created by Matt Quiros on 4/30/15.
-//  Copyright (c) 2015 Matt Quiros. All rights reserved.
+//  Created by Matt Quiros on 6/23/15.
+//  Copyright © 2015 Matt Quiros. All rights reserved.
 //
 
 import Foundation
 
-/**
-NOTE: This class is a work in progress and currently sets a blueprint for `NSURLSessionDataTask` objects only.
-Moreover, HTTP payloads are assumed to be written in JSON format.
-*/
-public class MQAPIRequest: MQExecutableTask, Equatable {
+public class MQURLTask: MQExecutableTask, Equatable {
     
     public enum Method: String {
         case OPTIONS = "OPTIONS"
@@ -70,7 +66,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         self.needsAuthentication = false
     }
     
-    public func begin() {
+    public func execute() {
         let request = NSMutableURLRequest(URL: self.URL)
         request.HTTPMethod = method.rawValue
         request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -88,19 +84,29 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
             }
         }
         
-        self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
-            if let responseHandler = self.responseHandler {
-                responseHandler(data, response, error)
-            }
+        self.task = self.session.dataTaskWithRequest(request) {[unowned self] (someData, someResponse, someError) in
+            self.handleResponse(someData, someResponse: someResponse, someError: someError)
         }
         
         self.runStartBlock()
         self.task!.resume()
     }
     
+    public func performSequence() {
+        
+    }
+    
+    public func computeResult() {
+        
+    }
+    
+    public func handleResponse(someData: NSData?, someResponse: NSURLResponse?, someError: NSError?) {
+        
+    }
+    
 }
 
-extension MQAPIRequest: Hashable {
+extension MQURLTask: Hashable {
     
     public var hashValue: Int {
         return unsafeAddressOf(self).hashValue
@@ -108,6 +114,6 @@ extension MQAPIRequest: Hashable {
     
 }
 
-public func ==(r1: MQAPIRequest, r2: MQAPIRequest) -> Bool {
+public func ==(r1: MQURLTask, r2: MQURLTask) -> Bool {
     return r1.hashValue == r2.hashValue
 }
