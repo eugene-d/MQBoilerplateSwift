@@ -45,16 +45,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     public var result: Any?
     public var error: NSError?
     
-    /**
-    The block executed when the request returns with a response.
-    
-    **IMPORTANT:** Remember to execute the `finishBlock`, the `failureBlock`, and the `successBlock`
-    in the main thread. The convenience methods `finish()`, `failWithError(:)`, and `succeedWithResult(:)`
-    are provided for performing the said blocks in the main thread.
-    */
-    public var responseHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
-    
-    public var builderBlock: ((Any) throws -> (Any))?
+    public var builderBlock: ((AnyObject) throws -> (AnyObject))?
     
     public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
