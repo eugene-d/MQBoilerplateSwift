@@ -11,10 +11,6 @@ import Alamofire
 
 public class MQAFURLTask: MQExecutableTask {
     
-    public var type: MQExecutableTaskType {
-        return .Default
-    }
-    
     public var startBlock: (() -> Void)?
     public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?

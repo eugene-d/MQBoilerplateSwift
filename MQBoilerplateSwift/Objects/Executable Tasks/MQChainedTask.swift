@@ -1,5 +1,5 @@
 //
-//  MQTask.swift
+//  MQChainedTask.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 6/23/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MQTask: MQExecutableTask {
+public class MQChainedTask: MQExecutableTask {
     
     public var startBlock: (() -> Void)?
     public var returnBlock: (() -> Void)?
@@ -19,28 +19,12 @@ public class MQTask: MQExecutableTask {
     public var result: Any?
     public var error: NSError?
     
-    public init() {}
-    
     public func execute() {
-        self.performSequence()
+        
     }
     
     public func performSequence() {
-        defer {
-            self.runFinishBlock()
-        }
         
-        self.runStartBlock()
-        
-        self.computeResult()
-        
-        self.runReturnBlock()
-        
-        if let error = self.error {
-            self.runFailureBlockWithError(error)
-        } else {
-            self.runSuccessBlockWithResult(self.result)
-        }
     }
     
     public func computeResult() {

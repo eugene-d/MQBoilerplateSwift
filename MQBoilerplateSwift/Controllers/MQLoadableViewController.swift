@@ -133,16 +133,16 @@ public class MQLoadableViewController: UIViewController {
     public func setupTask() {}
     
     public func startTask() {
-        if var task = self.task {
-            self.overrideTaskBlocks(&task)
-            
-            if task.type == .NSOperation {
-                if let operation = task as? MQOperation {
-                    self.operationQueue.addOperation(operation)
-                }
-            } else {
-                task.execute()
-            }
+        guard var task = self.task else {
+            return
+        }
+        
+        self.overrideTaskBlocks(&task)
+        
+        if let operation = task as? MQOperation {
+            self.operationQueue.addOperation(operation)
+        } else {
+            task.execute()
         }
     }
     
