@@ -31,6 +31,7 @@
 		269939A01B38DCD10061FA22 /* MQAFURLTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2699399F1B38DCD10061FA22 /* MQAFURLTask.swift */; };
 		26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A07BD61B182607006250CF /* MQAspectFitLabel.swift */; };
 		26B416691AF7471700CF80B0 /* MQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B416681AF7471700CF80B0 /* MQTableViewCell.swift */; };
+		26BC70F41B38FCD500A7F314 /* MQAFURLDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC70F31B38FCD500A7F314 /* MQAFURLDataTask.swift */; };
 		26C3A5331B3870E1001AA190 /* MQAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A5271B3870E1001AA190 /* MQAPIRequest.swift */; };
 		26C3A5351B3870E1001AA190 /* MQExecutableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A5291B3870E1001AA190 /* MQExecutableTask.swift */; };
 		26C3A5361B3870E1001AA190 /* MQExecutableTaskBlockRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A52A1B3870E1001AA190 /* MQExecutableTaskBlockRunner.swift */; };
@@ -102,6 +103,9 @@
 		2699399F1B38DCD10061FA22 /* MQAFURLTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAFURLTask.swift; sourceTree = "<group>"; };
 		26A07BD61B182607006250CF /* MQAspectFitLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAspectFitLabel.swift; sourceTree = "<group>"; };
 		26B416681AF7471700CF80B0 /* MQTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTableViewCell.swift; sourceTree = "<group>"; };
+		26BC70F01B38F96C00A7F314 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		26BC70F11B38F98200A7F314 /* Pods.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		26BC70F31B38FCD500A7F314 /* MQAFURLDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAFURLDataTask.swift; sourceTree = "<group>"; };
 		26C3A5271B3870E1001AA190 /* MQAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAPIRequest.swift; sourceTree = "<group>"; };
 		26C3A5291B3870E1001AA190 /* MQExecutableTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQExecutableTask.swift; sourceTree = "<group>"; };
 		26C3A52A1B3870E1001AA190 /* MQExecutableTaskBlockRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQExecutableTaskBlockRunner.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				26C3A52B1B3870E1001AA190 /* MQOperation.swift */,
 				26C3A53F1B3871F4001AA190 /* MQTask.swift */,
 				2699399F1B38DCD10061FA22 /* MQAFURLTask.swift */,
+				26BC70F31B38FCD500A7F314 /* MQAFURLDataTask.swift */,
 			);
 			path = "Executable Tasks";
 			sourceTree = "<group>";
@@ -216,6 +221,8 @@
 		26E9FE811ADE090B00E92745 = {
 			isa = PBXGroup;
 			children = (
+				26BC70F11B38F98200A7F314 /* Pods.release.xcconfig */,
+				26BC70F01B38F96C00A7F314 /* Pods.debug.xcconfig */,
 				2682CAED1AE36D2C0039CBB1 /* README.md */,
 				26E9FE8D1ADE090B00E92745 /* MQBoilerplateSwift */,
 				26E9FE9A1ADE090B00E92745 /* MQBoilerplateSwiftTests */,
@@ -425,6 +432,7 @@
 				2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */,
 				266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */,
 				2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */,
+				26BC70F41B38FCD500A7F314 /* MQAFURLDataTask.swift in Sources */,
 				26E9FEAB1ADE098100E92745 /* UIView.swift in Sources */,
 				269939A01B38DCD10061FA22 /* MQAFURLTask.swift in Sources */,
 				26C3A5391B3870E1001AA190 /* MQDispatcher.swift in Sources */,
@@ -557,6 +565,7 @@
 		};
 		26E9FEA21ADE090B00E92745 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26BC70F01B38F96C00A7F314 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -576,6 +585,7 @@
 		};
 		26E9FEA31ADE090B00E92745 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26BC70F11B38F98200A7F314 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
