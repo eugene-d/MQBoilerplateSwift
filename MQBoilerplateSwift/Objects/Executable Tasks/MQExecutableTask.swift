@@ -8,13 +8,7 @@
 
 import Foundation
 
-public enum MQExecutableTaskType {
-    case Default, NSOperation
-}
-
 public protocol MQExecutableTaskBaseProtocol: class {
-    
-    var type: MQExecutableTaskType { get }
     
     var startBlock: (() -> Void)? { get set }
     var returnBlock: (() -> Void)? { get set }
@@ -31,29 +25,15 @@ public protocol MQExecutableTaskBaseProtocol: class {
     
     /**
     Implemented by subclasses to synchronously perform the `startBlock` in the main thread
-    if it exists, and waits for it to return before proceeding.
+    and waits for it to return before proceeding.
     */
     func runStartBlock()
     
     /**
     Implemented by subclasses to synchronously perform the `returnBlock` in the main thread
-    if it exists, and waits for it to return before proceeding.
+    and waits for it to return before proceeding.
     */
     func runReturnBlock()
-    
-    /*/**
-    Implemented by subclasses to synchronously perform the `successBlock` and
-    then the `finishBlock` in the main thread if they exist.
-    */
-    @available(*, deprecated=1.11, message="Use runSuccessBlockWithResult() instead. The finish block should be executed in a defer block.")
-    func runSuccessBlockAndFinish(result result: Any?)*/
-    
-    /*/**
-    Implemented by subclasses to synchronously perform the `failureBlock` and
-    then the `finishBlock` in the main thread if they exist.
-    */
-    @available(*, deprecated=1.11, message="Use runFailureBlockWithError() instead. The finish block should be executed in a defer block.")
-    func runFailureBlockAndFinish(error error: NSError)*/
     
     func runSuccessBlockWithResult(result: Any?)
     
@@ -76,18 +56,6 @@ This extension of `MQExecutableTask` is here to provide default implementations
 to any object that complies with the `MQExecutableTask` protocol.
 */
 public extension MQExecutableTask {
-    
-//    public func execute() {
-//        
-//    }
-//    
-//    public func performSequence() {
-//        
-//    }
-//    
-//    public func computeResult() {
-//        
-//    }
     
     public func runStartBlock() {
         guard let startBlock = self.startBlock else {
