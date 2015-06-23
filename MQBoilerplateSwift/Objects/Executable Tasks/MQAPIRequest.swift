@@ -26,10 +26,6 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         case CONNECT = "CONNECT"
     }
     
-    public var type: MQExecutableTaskType {
-        return .Default
-    }
-    
     public let session: NSURLSession
     public var task: NSURLSessionTask?
     

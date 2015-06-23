@@ -17,10 +17,6 @@ https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperatio
 */
 public class MQOperation : NSOperation, MQExecutableTask {
     
-    public var type: MQExecutableTaskType {
-        return .NSOperation
-    }
-    
     /**
     Tasks that need execution before the main `process()` function is executed.
     An example of what to do in a `startBlock` would be to show a loading view.
