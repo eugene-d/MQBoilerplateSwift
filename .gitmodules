@@ -1,0 +1,3 @@
+[submodule "MQBoilerplateSwift/Dependencies/Alamofire"]
+	path = MQBoilerplateSwift/Dependencies/Alamofire
+	url = https://github.com/Alamofire/Alamofire.git
