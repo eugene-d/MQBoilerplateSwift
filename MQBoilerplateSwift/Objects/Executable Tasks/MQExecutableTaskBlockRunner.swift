@@ -90,7 +90,7 @@ public final class MQExecutableTaskBlockRunner {
         }
     }
     
-    public class func overrideFailureBlockOfTask(task: MQExecutableTask, toShowErrorDialogInPresenter presenter: UIViewController) {
+    public class func overrideFailureBlockOfTask(var task: MQExecutableTask, toShowErrorDialogInPresenter presenter: UIViewController) {
         let someCustomFailureBlock = task.failureBlock
         task.failureBlock = { error in
             if let operation = task as? MQOperation {
