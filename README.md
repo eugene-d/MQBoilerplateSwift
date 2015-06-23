@@ -2,6 +2,10 @@
 
 `MQBoilerplateSwift` is a Swift framework containing all the code that I keep reusing across my iOS app projects.
 
+## Dependencies
+
+This framework uses [Alamofire](https://github.com/Alamofire/Alamofire) under the hood to manage network requests. You must add the `Alamofire.framework` from `MQBoilerplateSwift` to your project's `Embedded Libraries` build phase.
+
 ## Installation
 
 Currently, `MQBoilerplateSwift` can only be added to a project via `git submodule`.
