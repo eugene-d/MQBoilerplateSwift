@@ -35,7 +35,6 @@
 		26BC70FD1B393C8100A7F314 /* MQChainedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC70FC1B393C8100A7F314 /* MQChainedTask.swift */; };
 		26C3A5331B3870E1001AA190 /* MQAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A5271B3870E1001AA190 /* MQAPIRequest.swift */; };
 		26C3A5351B3870E1001AA190 /* MQExecutableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A5291B3870E1001AA190 /* MQExecutableTask.swift */; };
-		26C3A5361B3870E1001AA190 /* MQExecutableTaskBlockRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A52A1B3870E1001AA190 /* MQExecutableTaskBlockRunner.swift */; };
 		26C3A5371B3870E1001AA190 /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A52B1B3870E1001AA190 /* MQOperation.swift */; };
 		26C3A5381B3870E1001AA190 /* MQConfirmDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A52C1B3870E1001AA190 /* MQConfirmDialog.swift */; };
 		26C3A5391B3870E1001AA190 /* MQDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3A52D1B3870E1001AA190 /* MQDispatcher.swift */; };
@@ -110,7 +109,6 @@
 		26BC70FC1B393C8100A7F314 /* MQChainedTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQChainedTask.swift; sourceTree = "<group>"; };
 		26C3A5271B3870E1001AA190 /* MQAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAPIRequest.swift; sourceTree = "<group>"; };
 		26C3A5291B3870E1001AA190 /* MQExecutableTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQExecutableTask.swift; sourceTree = "<group>"; };
-		26C3A52A1B3870E1001AA190 /* MQExecutableTaskBlockRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQExecutableTaskBlockRunner.swift; sourceTree = "<group>"; };
 		26C3A52B1B3870E1001AA190 /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
 		26C3A52C1B3870E1001AA190 /* MQConfirmDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQConfirmDialog.swift; sourceTree = "<group>"; };
 		26C3A52D1B3870E1001AA190 /* MQDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDispatcher.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 			children = (
 				26C3A5271B3870E1001AA190 /* MQAPIRequest.swift */,
 				26C3A5291B3870E1001AA190 /* MQExecutableTask.swift */,
-				26C3A52A1B3870E1001AA190 /* MQExecutableTaskBlockRunner.swift */,
 				26C3A52B1B3870E1001AA190 /* MQOperation.swift */,
 				26C3A53F1B3871F4001AA190 /* MQTask.swift */,
 				2699399F1B38DCD10061FA22 /* MQAFURLTask.swift */,
@@ -452,7 +449,6 @@
 				2682CAA01AE227470039CBB1 /* MQField.swift in Sources */,
 				2682CAFD1AE3776B0039CBB1 /* MQLoadingView.swift in Sources */,
 				267B856B1B185DCA00AAF8E8 /* Double.swift in Sources */,
-				26C3A5361B3870E1001AA190 /* MQExecutableTaskBlockRunner.swift in Sources */,
 				26C3A53C1B3870E1001AA190 /* MQFieldTextFieldDelegate.swift in Sources */,
 				26C3A53B1B3870E1001AA190 /* MQErrorDialog.swift in Sources */,
 				26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */,
