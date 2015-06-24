@@ -11,6 +11,10 @@ import Alamofire
 
 public class MQAFURLTask: MQExecutableTask {
     
+    public enum MQAFURLTaskType {
+        case Data, Upload(NSData), Download
+    }
+    
     public var startBlock: (() -> Void)?
     public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
@@ -21,17 +25,24 @@ public class MQAFURLTask: MQExecutableTask {
     public var error: NSError?
     
     public var manager: Alamofire.Manager
-    var method: Alamofire.Method
+    public var taskType: MQAFURLTaskType
+    public var method: Alamofire.Method
     public var URL: String
-    var parameters: [String : AnyObject]?
-    var parameterEncoding: Alamofire.ParameterEncoding
+    public var parameters: [String : AnyObject]?
+    public var parameterEncoding: Alamofire.ParameterEncoding
     
-    public init(manager: Alamofire.Manager, method: Alamofire.Method, URL: String, parameters: [String : AnyObject]?, parameterEncoding: Alamofire.ParameterEncoding) {
-        self.manager = manager
-        self.method = method
-        self.URL = URL
-        self.parameters = parameters
-        self.parameterEncoding = parameterEncoding
+    public init(manager: Alamofire.Manager,
+        taskType: MQAFURLTaskType,
+        method: Alamofire.Method,
+        URL: String,
+        parameters: [String : AnyObject]?,
+        parameterEncoding: Alamofire.ParameterEncoding) {
+            self.manager = manager
+            self.taskType = taskType
+            self.method = method
+            self.URL = URL
+            self.parameters = parameters
+            self.parameterEncoding = parameterEncoding
     }
     
     public func execute() {
@@ -39,7 +50,30 @@ public class MQAFURLTask: MQExecutableTask {
     }
     
     public func performSequence() {
+        // Run the start block.
+        self.runStartBlock()
         
+        // Execute the proper Alamofire function depending on
+        // the type of the URL task.
+        switch taskType {
+        case .Data:
+            self.manager
+                .request(self.method, self.URL, parameters: self.parameters, encoding: self.parameterEncoding)
+                .response {[unowned self] (someRequest, someResponse, someObject, someError) in
+                    self.handleResponse(someRequest, someResponse, someObject, someError)
+            }
+            
+        case .Upload(let data):
+            self.manager
+                .upload(self.method, self.URL, data: data)
+                .response {[unowned self] (someRequest, someResponse, someObject, someError) in
+                    self.handleResponse(someRequest, someResponse, someObject, someError)
+            }
+            
+        case .Download:
+            // empty
+            break
+        }
     }
     
     public func computeResult() {
