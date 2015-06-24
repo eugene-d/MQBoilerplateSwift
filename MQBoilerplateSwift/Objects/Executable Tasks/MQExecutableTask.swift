@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol MQExecutableTaskBaseProtocol: class {
+public protocol MQExecutableTask: class {
     
     var startBlock: (() -> Void)? { get set }
     var returnBlock: (() -> Void)? { get set }
@@ -42,12 +42,6 @@ public protocol MQExecutableTaskBaseProtocol: class {
     func runFinishBlock()
     
     func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController)
-    
-    func chain(task: MQExecutableTaskBaseProtocol) -> MQExecutableTaskBaseProtocol
-    
-}
-
-public protocol MQExecutableTask: MQExecutableTaskBaseProtocol {
     
 }
 
@@ -156,19 +150,6 @@ public extension MQExecutableTask {
             
             MQErrorDialog(error: error).showInPresenter(presenter)
         }
-    }
-    
-    public func chain(task: MQExecutableTaskBaseProtocol) -> MQExecutableTaskBaseProtocol {
-        let someCustomSuccessBlock = self.successBlock
-        self.successBlock = { result in
-            if let customSuccessBlock = someCustomSuccessBlock {
-                customSuccessBlock(result)
-            }
-            
-            task.execute()
-        }
-        
-        return task
     }
     
 }
