@@ -10,6 +10,10 @@ import Foundation
 
 private let CGSizeMax = CGSizeMake(CGFloat.max, CGFloat.max)
 
+/**
+A subclass of `UILabel` that automatically adjusts the text's font size
+so that the text fits exactly within the bounds of the label.
+*/
 public class MQAspectFitLabel: UILabel {
     
     private enum ScaleDirection {
@@ -106,9 +110,6 @@ public class MQAspectFitLabel: UILabel {
                 options: [.UsesLineFragmentOrigin, .UsesFontLeading],
                 attributes: [NSFontAttributeName : UIFont(name: self.font.fontName, size: fontSize)!],
                 context: nil).size
-            
-//            let textSize = (text as NSString).sizeWithAttributes(
-//                [NSFontAttributeName : UIFont(name: self.font.fontName, size: fontSize)!])
             
             let labelWidth = floor(self.bounds.size.width)
             let labelHeight = floor(self.bounds.size.height)
