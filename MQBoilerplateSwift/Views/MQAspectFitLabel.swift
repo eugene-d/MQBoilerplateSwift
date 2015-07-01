@@ -33,6 +33,25 @@ public class MQAspectFitLabel: UILabel {
         }
     }
     
+    public init() {
+        super.init(frame: CGRectZero)
+        self.setTextAlignment()
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setTextAlignment()
+    }
+
+    public required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setTextAlignment()
+    }
+    
+    func setTextAlignment() {
+        self.textAlignment = .Center
+    }
+    
     public func setFontSize(fontSize: CGFloat) {
         self.font = UIFont(name: self.font.fontName, size: fontSize)
     }
