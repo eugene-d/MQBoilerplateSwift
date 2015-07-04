@@ -41,7 +41,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     public var result: Any?
     public var error: NSError?
     
-    public var builderBlock: ((AnyObject) throws -> (AnyObject))?
+    public var builderBlock: ((Any) throws -> (Any))?
     
     public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?
