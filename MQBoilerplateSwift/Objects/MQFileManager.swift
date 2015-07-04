@@ -10,44 +10,22 @@ import Foundation
 
 public class MQFileManager {
     
-    // MARK: Convenience methods
-    
     /**
-    Convenience method for returning the URL of a file in /Document.
+    Returns the URL of a file in /Document.
     */
     public class func URLForFileName(fileName: String) -> NSURL? {
         return self.URLForFileName(fileName, inFolder: .DocumentDirectory)
     }
     
     /**
-    Convenience method for checking whether a file exists in /Document.
+    Returns the URL for a file in a given system directory.
     */
-    public class func findsFileWithName(fileName: String) -> Bool {
-        return self.findsFileWithName(fileName, inFolder: .DocumentDirectory)
+    public class func URLForFileName(fileName: String, inFolder folder: NSSearchPathDirectory) -> NSURL? {
+        if let systemDirectory = self.URLForSystemFolder(folder) {
+            return systemDirectory.URLByAppendingPathComponent(fileName)
+        }
+        return nil
     }
-    
-    /**
-    Convenience method for writing an object to /Document/fileName.
-    */
-    public class func writeObject(object: AnyObject, toFileName fileName: String) -> Bool {
-        return self.writeObject(object, toFileName: fileName, inFolder: .DocumentDirectory)
-    }
-    
-    /**
-    Convenience method for deflating an object of type T from /Document/fileName.
-    */
-    public class func objectWithFileName<T>(fileName: String) -> T? {
-        return (self.objectWithFileName(fileName, inFolder: .DocumentDirectory) as T?)
-    }
-    
-    /**
-    Convenience method for deleting a file in /Document.
-    */
-    public class func deleteObjectWithFileName(fileName: String, error: NSErrorPointer) {
-        self.deleteObjectWithFileName(fileName, inFolder: .DocumentDirectory, error: error)
-    }
-    
-    // MARK: Base methods
     
     /**
     Returns the URL for a system folder in the app's sandbox.
@@ -65,13 +43,10 @@ public class MQFileManager {
     }
     
     /**
-    Returns the URL for a file in a given system directory.
+    Convenience method for checking whether a file exists in /Document.
     */
-    public class func URLForFileName(fileName: String, inFolder folder: NSSearchPathDirectory) -> NSURL? {
-        if let systemDirectory = self.URLForSystemFolder(folder) {
-            return systemDirectory.URLByAppendingPathComponent(fileName)
-        }
-        return nil
+    public class func findsFileWithName(fileName: String) -> Bool {
+        return self.findsFileWithName(fileName, inFolder: .DocumentDirectory)
     }
     
     public class func findsFileWithName(fileName: String, inFolder folder: NSSearchPathDirectory) -> Bool {
@@ -85,6 +60,24 @@ public class MQFileManager {
         return NSFileManager.defaultManager().fileExistsAtPath(fileURL.path!)
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+    Convenience method for writing an object to /Document/fileName.
+    */
+    public class func writeObject(object: AnyObject, toFileName fileName: String) -> Bool {
+        return self.writeObject(object, toFileName: fileName, inFolder: .DocumentDirectory)
+    }
+    
     public class func writeObject(object: AnyObject, toFileName fileName: String, inFolder folder: NSSearchPathDirectory) -> Bool {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             return NSKeyedArchiver.archiveRootObject(object, toFile: fileURL.path!)
@@ -92,20 +85,49 @@ public class MQFileManager {
         return false
     }
     
+    
+    
+    
+    
+    
+    
+    
+    /**
+    Convenience method for deflating an object of type T from /Document/fileName.
+    */
+    public class func objectWithFileName<T>(fileName: String) -> T? {
+        return (self.objectWithFileName(fileName, inFolder: .DocumentDirectory) as T?)
+    }
+
     public class func objectWithFileName<T>(fileName: String, inFolder folder: NSSearchPathDirectory) -> T? {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
-                
-                if let object: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithFile(fileURL.path!) {
-                    if let typedObject = object as? T {
-                        return typedObject
-                    }
+                guard let path = fileURL.path,
+                    let object: T = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? T else {
+                        fatalError("Cannot convert object at URL '\(fileURL.description)' to type \(T.self)")
                 }
+                return object
             }
         }
         return nil
     }
     
+    
+    
+    
+    
+    
+    
+    /**
+    Convenience method for deleting a file in /Document.
+    */
+    public class func deleteObjectWithFileName(fileName: String, error: NSErrorPointer) {
+        self.deleteObjectWithFileName(fileName, inFolder: .DocumentDirectory, error: error)
+    }
+    
+    /**
+    
+    */
     public class func deleteObjectWithFileName(fileName: String, inFolder folder: NSSearchPathDirectory, error: NSErrorPointer) {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
@@ -116,6 +138,53 @@ public class MQFileManager {
                     error.memory = error1
                 }
             }
+        }
+    }
+    
+}
+
+public extension MQFileManager {
+    
+    public class func writeValue<T: MQDataModel>(value: T, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
+        guard let fileURL = self.URLForFileName(fileName, inFolder: folder),
+            let path = fileURL.path else {
+                throw MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
+        }
+        
+        let dictionary = value.convertToDictionary()
+        if NSKeyedArchiver.archiveRootObject(dictionary, toFile: path) == false {
+            throw MQError("Archiving value \(value) failed.")
+        }
+    }
+    
+    public class func writeValue(value: AnyObject, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
+        guard let fileURL = self.URLForFileName(fileName, inFolder: folder),
+            let path = fileURL.path else {
+                throw MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
+        }
+        
+        if NSKeyedArchiver.archiveRootObject(value, toFile: path) == false {
+            throw MQError("Cannot write value \(value) to file.")
+        }
+    }
+    
+    public class func valueAtFile<T: MQDataModel>(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) -> T? {
+        guard let fileURL = self.URLForFileName(fileName, inFolder: folder),
+            let path = fileURL.path,
+            let dictionary = NSDictionary(contentsOfFile: path) as? [String : AnyObject] else {
+                return nil
+        }
+        
+        return T(dictionary: dictionary)
+    }
+    
+    public class func deleteValueAtFile(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
+        guard let fileURL = self.URLForFileName(fileName, inFolder: folder) else {
+                return
+        }
+        
+        if self.findsFileInURL(fileURL) {
+            try NSFileManager.defaultManager().removeItemAtURL(fileURL)
         }
     }
     
