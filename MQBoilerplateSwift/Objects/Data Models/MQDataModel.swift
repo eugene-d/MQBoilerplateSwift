@@ -11,9 +11,9 @@ import Foundation
 public protocol MQDataModel {
     
     init(data: NSData)
-    init(dictionary: [String : AnyObject])
+    init(dictionary: NSDictionary)
     
-    func convertToDictionary() -> [String : AnyObject]
+    func convertToNSDictionary() -> NSDictionary
     static func formFieldsFromInstance(instance: Self) -> [MQField]
     
 }
@@ -21,7 +21,7 @@ public protocol MQDataModel {
 public extension MQDataModel {
     
     init(data: NSData) {
-        guard let dictionary = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String: AnyObject] else {
+        guard let dictionary = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSDictionary else {
             fatalError("Cannot convert to NSData.")
         }
         self.init(dictionary: dictionary)
