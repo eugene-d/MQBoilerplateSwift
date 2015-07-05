@@ -37,12 +37,24 @@ public class MQAFURLTask: MQExecutableTask {
         URL: String,
         parameters: [String : AnyObject]?,
         parameterEncoding: Alamofire.ParameterEncoding) {
+        
+//        startBlock: (() -> Void)?,
+//        returnBlock: (() -> Void)?,
+//        failureBlock: ((NSError) -> Void)?,
+//        successBlock: ((Any?) -> Void)?,
+//        finishBlock: (() -> Void)?) {
             self.manager = manager
             self.taskType = taskType
             self.method = method
             self.URL = URL
             self.parameters = parameters
             self.parameterEncoding = parameterEncoding
+            
+//            self.startBlock = startBlock
+//            self.returnBlock = returnBlock
+//            self.failureBlock = failureBlock
+//            self.successBlock = successBlock
+//            self.finishBlock = finishBlock
     }
     
     public func execute() {
