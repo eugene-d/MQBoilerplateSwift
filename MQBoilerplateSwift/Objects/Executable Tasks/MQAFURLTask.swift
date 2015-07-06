@@ -96,7 +96,7 @@ public class MQAFURLTask: MQExecutableTask {
         
     }
     
-    public func buildResult(object: Any?) -> Any? {
+    public func buildResult(object: Any?) throws -> Any? {
         return nil
     }
     
