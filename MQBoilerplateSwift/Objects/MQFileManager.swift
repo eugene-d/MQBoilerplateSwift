@@ -151,7 +151,7 @@ public extension MQFileManager {
                 throw MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
         }
         
-        let dictionary = value.convertToDictionary()
+        let dictionary = value.archiveDictionary()
         if NSKeyedArchiver.archiveRootObject(dictionary, toFile: path) == false {
             throw MQError("Archiving value \(value) failed.")
         }
@@ -176,7 +176,7 @@ public extension MQFileManager {
                 return nil
         }
         
-        return T(dictionary: dictionary)
+        return T(archiveDictionary: dictionary)
     }
     
     public class func deleteValueAtFile(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {

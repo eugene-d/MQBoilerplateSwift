@@ -52,6 +52,7 @@
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
 		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
 		26E9FEAB1ADE098100E92745 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FEAA1ADE098100E92745 /* UIView.swift */; };
+		26F0F45C1B4E5D20009CF4A4 /* MQFieldCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0F45B1B4E5D20009CF4A4 /* MQFieldCollection.swift */; };
 		26F28AE01ADF89960070A08B /* MQStartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F28ADF1ADF89960070A08B /* MQStartupViewController.swift */; };
 		26F28AFB1ADF90D10070A08B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F28AFA1ADF90D10070A08B /* UIColor.swift */; };
 		26F531571B0E53F800D4AF08 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F531561B0E53F800D4AF08 /* Functions.swift */; };
@@ -152,6 +153,7 @@
 		26E9FE9C1ADE090B00E92745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQBoilerplateSwiftTests.swift; sourceTree = "<group>"; };
 		26E9FEAA1ADE098100E92745 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		26F0F45B1B4E5D20009CF4A4 /* MQFieldCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldCollection.swift; sourceTree = "<group>"; };
 		26F28ADF1ADF89960070A08B /* MQStartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQStartupViewController.swift; sourceTree = "<group>"; };
 		26F28AFA1ADF90D10070A08B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		26F531561B0E53F800D4AF08 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				2682CA9F1AE227470039CBB1 /* MQField.swift */,
 				265FBB131B46800C00DDFCA0 /* MQDataModel.swift */,
+				26F0F45B1B4E5D20009CF4A4 /* MQFieldCollection.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				265FBB141B46800C00DDFCA0 /* MQDataModel.swift in Sources */,
 				26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */,
 				26C3A5331B3870E1001AA190 /* MQAPIRequest.swift in Sources */,
+				26F0F45C1B4E5D20009CF4A4 /* MQFieldCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
