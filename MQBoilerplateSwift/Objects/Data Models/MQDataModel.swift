@@ -34,13 +34,12 @@ public protocol MQDataModel {
     Returns an array of the model's current values as form field objects. Whenever this function is
     called, a new array of `MQField` objects is created.
     */
-//    func formFields() -> MQFieldCollection
     func editableFields() -> [MQField]
     
     /**
     Updates the data model based on the values of a given collection of form fields.
     */
-    mutating func updateWithFormFields(fields: MQFieldCollection<Self>)
+    mutating func updateWithFieldCollection(fields: MQFieldCollection<Self>)
     
 }
 
@@ -57,7 +56,7 @@ public extension MQDataModel {
         fatalError("Unimplemented: \(__FUNCTION__)")
     }
     
-    mutating func updateWithFormFields(fields: MQFieldCollection<Self>) {
+    mutating func updateWithFieldCollection(fields: MQFieldCollection<Self>) {
         fatalError("Unimplemented: \(__FUNCTION__)")
     }
     
