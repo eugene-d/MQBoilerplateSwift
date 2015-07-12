@@ -12,6 +12,7 @@ import Foundation
 NOTE: This class is a work in progress and currently sets a blueprint for `NSURLSessionDataTask` objects only.
 Moreover, HTTP payloads are assumed to be written in JSON format.
 */
+@available(*, deprecated=2.0)
 public class MQAPIRequest: MQExecutableTask, Equatable {
     
     public enum Method: String {
