@@ -60,34 +60,29 @@ public extension UIView {
     }
     
     public class func instantiateFromNib<T: UIView>() -> T? {
-        if let className = self.className() {
-            let mainBundle = NSBundle.mainBundle()
-            if let objects = mainBundle.loadNibNamed(className, owner: self, options: nil) {
-                if let view = objects.last as? T {
-                    return view
-                }
+        let mainBundle = NSBundle.mainBundle()
+        if let objects = mainBundle.loadNibNamed(self.className(), owner: self, options: nil) {
+            if let view = objects.last as? T {
+                return view
             }
         }
         return nil
     }
     
-    public class func nib() -> UINib? {
-        if let className = self.className() {
-            return UINib(nibName: className, bundle: nil)
-        }
-        return nil
+    public class func nib() -> UINib {
+        return UINib(nibName: self.className(), bundle: nil)
     }
     
     /**
     Returns the name of this class based on a (poor?) assumption that it is the last
     token in the fully qualified class name assigned by Swift.
     */
-    class func className() -> String? {
+    class func className() -> String {
         let description = self.classForCoder().description()
         if let className = description.componentsSeparatedByString(".").last {
             return className
         }
-        return nil
+        fatalError("\(__FUNCTION__): This method no longer works for getting the Swift class name.")
     }
     
 }
