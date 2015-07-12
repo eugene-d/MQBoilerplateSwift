@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public class MQAFURLTask: MQExecutableTask {
+public class MQAFURLTask: MQExecutableTask, Equatable {
     
     public enum MQAFURLTaskType {
         case Data, Upload(NSData), Download
@@ -100,4 +100,16 @@ public class MQAFURLTask: MQExecutableTask {
         return nil
     }
     
+}
+
+extension MQAFURLTask: Hashable {
+    
+    public var hashValue: Int {
+        return unsafeAddressOf(self).hashValue
+    }
+    
+}
+
+public func ==(r1: MQAFURLTask, r2: MQAFURLTask) -> Bool {
+    return r1.hashValue == r2.hashValue
 }
