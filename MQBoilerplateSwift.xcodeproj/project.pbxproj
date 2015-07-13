@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2610B2B21B52E73C00DAD825 /* NSDate.swift */; };
 		2615AE2F1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615AE2E1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift */; };
 		2615AE311AE3CDB800FAC44C /* MQLoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */; };
+		2650C9891B5234900003C245 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2650C9881B5234900003C245 /* MKMapView.swift */; };
+		265FBB141B46800C00DDFCA0 /* MQDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FBB131B46800C00DDFCA0 /* MQDataModel.swift */; };
 		2666595D1B257F87003F24F8 /* MQButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666595C1B257F87003F24F8 /* MQButton.swift */; };
 		2666595F1B258080003F24F8 /* MQLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666595E1B258080003F24F8 /* MQLabelButton.swift */; };
 		266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266659601B2581A1003F24F8 /* MQImageButton.swift */; };
@@ -100,9 +103,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2610B2B21B52E73C00DAD825 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		2615AE2E1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingOverlayViewController.swift; sourceTree = "<group>"; };
 		2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingOverlay.swift; sourceTree = "<group>"; };
+		2650C9881B5234900003C245 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		265A067F1ADE555400826150 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		265FBB131B46800C00DDFCA0 /* MQDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDataModel.swift; sourceTree = "<group>"; };
 		2666595C1B257F87003F24F8 /* MQButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQButton.swift; sourceTree = "<group>"; };
 		2666595E1B258080003F24F8 /* MQLabelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLabelButton.swift; sourceTree = "<group>"; };
 		266659601B2581A1003F24F8 /* MQImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQImageButton.swift; sourceTree = "<group>"; };
@@ -199,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				2682CA9F1AE227470039CBB1 /* MQField.swift */,
+				265FBB131B46800C00DDFCA0 /* MQDataModel.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -327,6 +334,8 @@
 				2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */,
 				267D5F991AE4CFEC002A2C8D /* UIViewController.swift */,
 				267B856A1B185DCA00AAF8E8 /* Double.swift */,
+				2650C9881B5234900003C245 /* MKMapView.swift */,
+				2610B2B21B52E73C00DAD825 /* NSDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -518,6 +527,7 @@
 				2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */,
 				266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */,
 				2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */,
+				2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */,
 				26E9FEAB1ADE098100E92745 /* UIView.swift in Sources */,
 				269939A01B38DCD10061FA22 /* MQAFURLTask.swift in Sources */,
 				26C3A5391B3870E1001AA190 /* MQDispatcher.swift in Sources */,
@@ -525,6 +535,7 @@
 				2682CAFB1AE375DC0039CBB1 /* MQLoadableViewController.swift in Sources */,
 				267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */,
 				2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */,
+				2650C9891B5234900003C245 /* MKMapView.swift in Sources */,
 				2682CAB41AE26DA60039CBB1 /* MQFieldCell.swift in Sources */,
 				2682CAB51AE26DA60039CBB1 /* MQFieldTextField.swift in Sources */,
 				2666595D1B257F87003F24F8 /* MQButton.swift in Sources */,
@@ -535,6 +546,7 @@
 				267B856B1B185DCA00AAF8E8 /* Double.swift in Sources */,
 				26C3A53C1B3870E1001AA190 /* MQFieldTextFieldDelegate.swift in Sources */,
 				26C3A53B1B3870E1001AA190 /* MQErrorDialog.swift in Sources */,
+				265FBB141B46800C00DDFCA0 /* MQDataModel.swift in Sources */,
 				26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */,
 				26C3A5331B3870E1001AA190 /* MQAPIRequest.swift in Sources */,
 			);

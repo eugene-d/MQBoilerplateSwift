@@ -12,6 +12,7 @@ import Foundation
 NOTE: This class is a work in progress and currently sets a blueprint for `NSURLSessionDataTask` objects only.
 Moreover, HTTP payloads are assumed to be written in JSON format.
 */
+@available(*, deprecated=2.0)
 public class MQAPIRequest: MQExecutableTask, Equatable {
     
     public enum Method: String {
@@ -41,7 +42,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     public var result: Any?
     public var error: NSError?
     
-    public var builderBlock: ((AnyObject) throws -> (AnyObject))?
+    public var builderBlock: ((Any) throws -> (Any))?
     
     public var returnBlock: (() -> Void)?
     public var failureBlock: ((NSError) -> Void)?

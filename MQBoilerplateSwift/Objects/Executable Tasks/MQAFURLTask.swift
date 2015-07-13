@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public class MQAFURLTask: MQExecutableTask {
+public class MQAFURLTask: MQExecutableTask, Equatable {
     
     public enum MQAFURLTaskType {
         case Data, Upload(NSData), Download
@@ -37,12 +37,24 @@ public class MQAFURLTask: MQExecutableTask {
         URL: String,
         parameters: [String : AnyObject]?,
         parameterEncoding: Alamofire.ParameterEncoding) {
+        
+//        startBlock: (() -> Void)?,
+//        returnBlock: (() -> Void)?,
+//        failureBlock: ((NSError) -> Void)?,
+//        successBlock: ((Any?) -> Void)?,
+//        finishBlock: (() -> Void)?) {
             self.manager = manager
             self.taskType = taskType
             self.method = method
             self.URL = URL
             self.parameters = parameters
             self.parameterEncoding = parameterEncoding
+            
+//            self.startBlock = startBlock
+//            self.returnBlock = returnBlock
+//            self.failureBlock = failureBlock
+//            self.successBlock = successBlock
+//            self.finishBlock = finishBlock
     }
     
     public func execute() {
@@ -84,8 +96,20 @@ public class MQAFURLTask: MQExecutableTask {
         
     }
     
-    public func buildResult(object: Any?) -> Any? {
+    public func buildResult(object: Any?) throws -> Any? {
         return nil
     }
     
+}
+
+extension MQAFURLTask: Hashable {
+    
+    public var hashValue: Int {
+        return unsafeAddressOf(self).hashValue
+    }
+    
+}
+
+public func ==(r1: MQAFURLTask, r2: MQAFURLTask) -> Bool {
+    return r1.hashValue == r2.hashValue
 }
