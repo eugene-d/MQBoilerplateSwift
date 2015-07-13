@@ -145,7 +145,7 @@ public class MQFileManager {
 
 public extension MQFileManager {
     
-    public class func writeValue<T: MQDataModel>(value: T, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
+    public class func writeValue<T: MQArchivableValueType>(value: T, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
         guard let fileURL = self.URLForFileName(fileName, inFolder: folder),
             let path = fileURL.path else {
                 throw MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
@@ -155,7 +155,6 @@ public extension MQFileManager {
         if NSKeyedArchiver.archiveRootObject(dictionary, toFile: path) == false {
             throw MQError("Archiving value \(value) failed.")
         }
-//        dictionary.writeToFile(path, atomically: true)
     }
     
     public class func writeValue(value: AnyObject, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
@@ -169,7 +168,7 @@ public extension MQFileManager {
         }
     }
     
-    public class func valueAtFile<T: MQDataModel>(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) -> T? {
+    public class func valueAtFile<T: MQArchivableValueType>(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) -> T? {
         guard let fileURL = self.URLForFileName(fileName, inFolder: folder),
             let path = fileURL.path,
             let dictionary = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? [String : AnyObject] else {
