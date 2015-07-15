@@ -74,10 +74,12 @@ public class MQFileManager {
     /**
     Convenience method for writing an object to /Document/fileName.
     */
+    @available(*, deprecated=2.0)
     public class func writeObject(object: AnyObject, toFileName fileName: String) -> Bool {
         return self.writeObject(object, toFileName: fileName, inFolder: .DocumentDirectory)
     }
     
+    @available(*, deprecated=2.0)
     public class func writeObject(object: AnyObject, toFileName fileName: String, inFolder folder: NSSearchPathDirectory) -> Bool {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             return NSKeyedArchiver.archiveRootObject(object, toFile: fileURL.path!)
@@ -95,10 +97,12 @@ public class MQFileManager {
     /**
     Convenience method for deflating an object of type T from /Document/fileName.
     */
+    @available(*, deprecated=2.0)
     public class func objectWithFileName<T>(fileName: String) -> T? {
         return (self.objectWithFileName(fileName, inFolder: .DocumentDirectory) as T?)
     }
-
+    
+    @available(*, deprecated=2.0)
     public class func objectWithFileName<T>(fileName: String, inFolder folder: NSSearchPathDirectory) -> T? {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
@@ -121,6 +125,7 @@ public class MQFileManager {
     /**
     Convenience method for deleting a file in /Document.
     */
+    @available(*, deprecated=2.0)
     public class func deleteObjectWithFileName(fileName: String, error: NSErrorPointer) {
         self.deleteObjectWithFileName(fileName, inFolder: .DocumentDirectory, error: error)
     }
@@ -128,6 +133,7 @@ public class MQFileManager {
     /**
     
     */
+    @available(*, deprecated=2.0)
     public class func deleteObjectWithFileName(fileName: String, inFolder folder: NSSearchPathDirectory, error: NSErrorPointer) {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
@@ -176,6 +182,16 @@ public extension MQFileManager {
         }
         
         return T(archiveDictionary: dictionary)
+    }
+    
+    public class func valueAtFile<T>(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) -> T? {
+        guard let fileURL = self.URLForFileName(fileName, inFolder: folder),
+            let path = fileURL.path,
+            let object = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? T else {
+                return nil
+        }
+        
+        return object
     }
     
     public class func deleteValueAtFile(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {

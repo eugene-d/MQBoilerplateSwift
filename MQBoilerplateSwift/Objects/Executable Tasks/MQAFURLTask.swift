@@ -37,24 +37,20 @@ public class MQAFURLTask: MQExecutableTask, Equatable {
         URL: String,
         parameters: [String : AnyObject]?,
         parameterEncoding: Alamofire.ParameterEncoding) {
-        
-//        startBlock: (() -> Void)?,
-//        returnBlock: (() -> Void)?,
-//        failureBlock: ((NSError) -> Void)?,
-//        successBlock: ((Any?) -> Void)?,
-//        finishBlock: (() -> Void)?) {
             self.manager = manager
             self.taskType = taskType
             self.method = method
             self.URL = URL
             self.parameters = parameters
             self.parameterEncoding = parameterEncoding
-            
-//            self.startBlock = startBlock
-//            self.returnBlock = returnBlock
-//            self.failureBlock = failureBlock
-//            self.successBlock = successBlock
-//            self.finishBlock = finishBlock
+    }
+    
+    /**
+    Override point for customizing the `NSURLRequest` object used by Alamofire to make
+    the request. Currently used to set custom HTTP header fields, such as cookies.
+    */
+    public func customizeURLRequest() -> NSURLRequest? {
+        return nil
     }
     
     public func execute() {
@@ -67,19 +63,35 @@ public class MQAFURLTask: MQExecutableTask, Equatable {
         
         // Execute the proper Alamofire function depending on
         // the type of the URL task.
-        switch taskType {
+        switch self.taskType {
         case .Data:
-            self.manager
-                .request(self.method, self.URL, parameters: self.parameters, encoding: self.parameterEncoding)
-                .response {[unowned self] (someRequest, someResponse, someObject, someError) in
-                    self.handleResponse(someRequest, someResponse, someObject, someError)
+            if let request = self.customizeURLRequest() {
+                self.manager
+                    .request(request)
+                    .response {[unowned self] (someRequest, someResponse, someObject, someError) in
+                        self.handleResponse(someRequest, someResponse, someObject, someError)
+                }
+            } else {
+                self.manager
+                    .request(self.method, self.URL, parameters: self.parameters, encoding: self.parameterEncoding)
+                    .response {[unowned self] (someRequest, someResponse, someObject, someError) in
+                        self.handleResponse(someRequest, someResponse, someObject, someError)
+                }
             }
             
         case .Upload(let data):
-            self.manager
-                .upload(self.method, self.URL, data: data)
-                .response {[unowned self] (someRequest, someResponse, someObject, someError) in
-                    self.handleResponse(someRequest, someResponse, someObject, someError)
+            if let request = self.customizeURLRequest() {
+                self.manager
+                    .upload(request, data: data)
+                    .response {[unowned self] (someRequest, someResponse, someObject, someError) in
+                        self.handleResponse(someRequest, someResponse, someObject, someError)
+                }
+            } else {
+                self.manager
+                    .upload(self.method, self.URL, data: data)
+                    .response {[unowned self] (someRequest, someResponse, someObject, someError) in
+                        self.handleResponse(someRequest, someResponse, someObject, someError)
+                }
             }
             
         case .Download:
