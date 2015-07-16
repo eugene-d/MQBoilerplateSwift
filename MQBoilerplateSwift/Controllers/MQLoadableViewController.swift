@@ -158,9 +158,8 @@ public class MQLoadableViewController: UIViewController {
         
         self.showView(.Starting)
         
-        if let retryView = self.retryView as? MQDefaultRetryView {
-            retryView.internalDelegate = self
-        }
+        self.retryView.delegate = self
+        self.noResultsView.delegate = self
     }
     
     public override func viewWillAppear(animated: Bool) {
@@ -220,9 +219,17 @@ public class MQLoadableViewController: UIViewController {
     
 }
 
-extension MQLoadableViewController : MQDefaultRetryViewDelegate {
+extension MQLoadableViewController: MQRetryViewDelegate {
     
-    func defaultRetryViewDidTapRetry() {
+    public func retryViewDidTapRetry(retryView: MQRetryView) {
+        self.restartTask()
+    }
+    
+}
+
+extension MQLoadableViewController: MQNoResultsViewDelegate {
+    
+    public func noResultsViewDidTapRetry(noResultsView: MQNoResultsView) {
         self.restartTask()
     }
     

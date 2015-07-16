@@ -9,16 +9,6 @@
 import UIKit
 
 /**
-A separate delegate intended for the sole use of `MQLoadableViewController`
-so that its child classes don't have to use the `override` keyword when implementing `MQRetryViewDelegate`.
-*/
-protocol MQDefaultRetryViewDelegate {
-    
-    func defaultRetryViewDidTapRetry()
-    
-}
-
-/**
 A default implementation of an `MQRetryView`.
 */
 public class MQDefaultRetryView: MQRetryView {
@@ -35,8 +25,6 @@ public class MQDefaultRetryView: MQRetryView {
             }
         }
     }
-    
-    var internalDelegate: MQDefaultRetryViewDelegate?
     
     public init() {
         self.errorLabel = UILabel()
@@ -128,8 +116,8 @@ public class MQDefaultRetryView: MQRetryView {
     }
     
     func retryButtonTapped() {
-        if let internalDelegate = self.internalDelegate {
-            internalDelegate.defaultRetryViewDidTapRetry()
+        if let delegate = self.delegate {
+            delegate.retryViewDidTapRetry(self)
         }
     }
     
