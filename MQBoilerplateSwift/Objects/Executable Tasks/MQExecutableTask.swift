@@ -137,7 +137,7 @@ public extension MQExecutableTask {
     
     public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
         let someCustomFailureBlock = self.failureBlock
-        self.failureBlock = {error in
+        self.failureBlock = { error in
             if let operation = self as? MQOperation {
                 if operation.cancelled {
                     return
