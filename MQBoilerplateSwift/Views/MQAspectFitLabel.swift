@@ -43,7 +43,7 @@ public class MQAspectFitLabel: UILabel {
         self.setTextAlignment()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setTextAlignment()
     }
