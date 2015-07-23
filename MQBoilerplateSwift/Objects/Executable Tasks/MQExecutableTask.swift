@@ -19,12 +19,6 @@ public protocol MQExecutableTask: class {
     var result: Any? { get set }
     var error: NSError? { get set }
     
-//    init(startBlock: (() -> Void)?,
-//        returnBlock: (() -> Void)?,
-//        successBlock: ((Any?) -> Void)?,
-//        failureBlock: ((NSError) -> Void)?,
-//        finishBlock: (() -> Void)?)
-    
     func execute()
     func performSequence()
     func computeResult()

@@ -15,7 +15,7 @@ by adding it to an `NSOperationQueue`.
 See *Asynchronous Versus Synchronous Operations* in:
 https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperation_class/index.html
 */
-public class MQOperation : NSOperation, MQExecutableTask {
+public class _MQOperation : NSOperation, MQExecutableTask {
     
     /**
     Tasks that need execution before the main `process()` function is executed.
