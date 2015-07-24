@@ -116,7 +116,7 @@ public class MQOperation: NSOperation {
     }
     
     public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
-        self.failureBlock = { error in
+        self.failureBlock = {[unowned presenter] error in
             if self.cancelled {
                 return
             }
