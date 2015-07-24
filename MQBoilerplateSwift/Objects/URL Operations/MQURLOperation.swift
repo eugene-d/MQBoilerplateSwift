@@ -44,8 +44,6 @@ public class MQURLOperation: MQAsynchronousOperation {
     }
     
     public override func main() {
-        print("running op: \(self.classForCoder.description())")
-        
         if self.cancelled {
             self.closeOperation()
             return

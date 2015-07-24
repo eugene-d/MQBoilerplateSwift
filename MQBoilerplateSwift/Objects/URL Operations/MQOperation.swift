@@ -18,11 +18,10 @@ public class MQOperation: NSOperation {
     
     public override func main() {
         defer {
-            print("finishing MQOperation: \(self.classForCoder.description())")
-            self.runFinishBlock()
+            if self.cancelled == false {
+                self.runFinishBlock()
+            }
         }
-        
-        print("running op: \(self.classForCoder.description())")
         
         if self.cancelled {
             return
