@@ -12,7 +12,7 @@ public class MQOperation: NSOperation {
     
     public var startBlock: (() -> Void)?
     public var returnBlock: (() -> Void)?
-    public var failureBlock: ((NSError) -> Void)?
+    public var failureBlock: ((ErrorType) -> Void)?
     public var successBlock: ((Any?) -> Void)?
     public var finishBlock: (() -> Void)?
     
@@ -44,7 +44,7 @@ public class MQOperation: NSOperation {
             let result = try buildResult(nil)
             self.runSuccessBlockWithResult(result)
         } catch {
-            self.runFailureBlockWithError(error as NSError)
+            self.runFailureBlockWithError(error)
         }
     }
     
@@ -90,7 +90,7 @@ public class MQOperation: NSOperation {
         }
     }
     
-    public func runFailureBlockWithError(error: NSError) {
+    public func runFailureBlockWithError(error: ErrorType) {
         guard let failureBlock = self.failureBlock else {
             return
         }
@@ -117,21 +117,12 @@ public class MQOperation: NSOperation {
     }
     
     public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
-        let someCustomFailureBlock = self.failureBlock
         self.failureBlock = { error in
             if self.cancelled {
                 return
             }
             
-            if let customFailureBlock = someCustomFailureBlock {
-                customFailureBlock(error)
-            }
-            
-            if self.cancelled {
-                return
-            }
-            
-            MQErrorDialog(error: error).showInPresenter(presenter)
+            MQErrorDialog.showError(error, inPresenter: presenter)
         }
     }
     

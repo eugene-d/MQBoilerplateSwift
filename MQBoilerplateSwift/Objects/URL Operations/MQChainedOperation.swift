@@ -37,14 +37,11 @@ public class MQChainedOperation: MQAsynchronousOperation {
     }
     
     public override func main() {
-        print("running op: \(self.classForCoder.description())")
         defer {
             self.closeOperation()
-            print("chained ops queue: \(self.operationQueue.operations.count)")
         }
         
         if self.cancelled {
-            self.closeOperation()
             return
         }
         
@@ -71,7 +68,6 @@ public class MQChainedOperation: MQAsynchronousOperation {
                     customSuccessBlock?(result)
                     let nextOperation = self.operations[i + 1]
                     self.operationQueue.addOperation(nextOperation)
-                    print("chained ops queue: \(self.operationQueue.operations.count)")
                 }
             } else {
                 currentOperation.successBlock = {[unowned self] result in
@@ -89,14 +85,14 @@ public class MQChainedOperation: MQAsynchronousOperation {
             }
             
             if self.cancelled {
-                self.closeOperation()
                 return
             }
         }
         
         if let firstOperation = self.operations.first {
             self.operationQueue.addOperation(firstOperation)
-            print("chained ops queue: \(self.operationQueue.operations.count)")
+            
+            // Exit main() only when all operations in the chain are finished.
             self.operationQueue.waitUntilAllOperationsAreFinished()
         }
     }

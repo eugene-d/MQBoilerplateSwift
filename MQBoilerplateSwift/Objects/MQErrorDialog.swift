@@ -8,22 +8,23 @@
 
 import UIKit
 
-public class MQErrorDialog {
+public final class MQErrorDialog {
     
-    public var error: NSError
-    
-    public init(error: NSError) {
-        self.error = error
-    }
-    
-    public func showInPresenter(errorPresenter: UIViewController) {
-        let alertController = UIAlertController(title: "Error", message: self.error.localizedDescription, preferredStyle: .Alert)
+    public class func showError(error: ErrorType, inPresenter presenter: UIViewController) {
+        var message: String
+        if let customError = error as? MQError {
+            message = customError.localizedDescription
+        } else {
+            message = (error as NSError).localizedDescription
+        }
+        
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
         let okButtonAction = UIAlertAction(title: "OK", style: .Default) {_ in
             alertController.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(okButtonAction)
         
-        errorPresenter.presentViewController(alertController, animated: true, completion: nil)
+        presenter.presentViewController(alertController, animated: true, completion: nil)
     }
     
 }

@@ -148,7 +148,7 @@ public extension MQExecutableTask {
                 }
             }
             
-            MQErrorDialog(error: error).showInPresenter(presenter)
+            MQErrorDialog.showError(error, inPresenter: presenter)
         }
     }
     
