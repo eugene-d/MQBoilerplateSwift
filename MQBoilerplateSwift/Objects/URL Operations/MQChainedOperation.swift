@@ -9,12 +9,13 @@
 import Foundation
 
 /**
-Executes a chain of `MQOperation`s if all of them succeed; otherwise,
-automatically handles failure if any of the operations in the chain fail.
+Executes a chain of `MQOperation`s if all of them succeed; otherwise, automatically handles failure
+if any of the operations in the chain fail.
 
-Setting the callback blocks of an `MQChainedOperation` overrides the callback
-blocks of all operations in the chain **except for the `successBlock`**, because operations
-often have their own logic for handling results.
+Except for the `successBlock`, all the callback blocks of all operations in the chain are overridden
+by the callback blocks of the `MQChainedOperation`. Individual operations often have their own
+logic for processing results. However, the entire chain needs to perform the same UI callbacks
+regardless of which operation in the chain terminates the chain.
 */
 public class MQChainedOperation: MQAsynchronousOperation {
     
