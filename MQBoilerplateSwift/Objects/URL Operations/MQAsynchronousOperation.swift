@@ -52,7 +52,6 @@ public class MQAsynchronousOperation: MQOperation {
     }
     
     public func closeOperation() {
-        print("closing op: \(self.classForCoder.description())")
         self.willChangeValueForKey("isExecuting")
         self.willChangeValueForKey("isFinished")
         

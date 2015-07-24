@@ -125,8 +125,4 @@ public class MQOperation: NSOperation {
         }
     }
     
-    deinit {
-        print("deallocing: \(self.classForCoder.description())")
-    }
-    
 }
