@@ -47,6 +47,10 @@ public class MQOperation: NSOperation {
         }
     }
     
+    /**
+    Override point for converting raw results (usually in JSON format) to your
+    custom object or value types. Make sure to check for `self.cancelled` from inside the function.
+    */
     public func buildResult(rawResult: Any?) throws -> Any? {
         return nil
     }

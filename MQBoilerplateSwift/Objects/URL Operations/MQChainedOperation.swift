@@ -22,17 +22,6 @@ public class MQChainedOperation: MQAsynchronousOperation {
     var operationQueue = NSOperationQueue()
     var operations: [MQOperation]
     
-    /**
-    Returns `nil` and cannot be assigned a value. Each operation in the chain
-    has a `successBlock` of its own.
-    */
-    public override var successBlock: ((Any?) -> Void)? {
-        get {
-            return nil
-        }
-        set { }
-    }
-    
     public init(operations: MQOperation ...) {
         self.operations = operations
     }
@@ -62,7 +51,7 @@ public class MQChainedOperation: MQAsynchronousOperation {
             // If there are more operations in the chain, set the successBlock to fire its
             // custom logic and then execute the next operation.
             // Otherwise, run the returnBlock, then the success logic,
-            // and then the finishBlock.
+            // then the successBlock for the entire chain, and then the finishBlock.
             let customSuccessBlock = currentOperation.successBlock
             if i + 1 < self.operations.count {
                 currentOperation.successBlock = {[unowned self] result in
@@ -74,6 +63,7 @@ public class MQChainedOperation: MQAsynchronousOperation {
                 currentOperation.successBlock = {[unowned self] result in
                     self.runReturnBlock()
                     customSuccessBlock?(result)
+                    self.successBlock?(result)
                     self.runFinishBlock()
                 }
             }

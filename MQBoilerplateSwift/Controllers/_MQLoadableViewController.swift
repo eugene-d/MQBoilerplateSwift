@@ -1,12 +1,12 @@
 //
-//  MQLoadableViewController.swift
+//  _MQLoadableViewController.swift
 //  MQBoilerplateSwift
 //
-//  Created by Matt Quiros on 7/25/15.
-//  Copyright © 2015 Matt Quiros. All rights reserved.
+//  Created by Matt Quiros on 4/19/15.
+//  Copyright (c) 2015 Matt Quiros. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /**
 A view controller that loads and displays information based on the results of an
@@ -35,30 +35,36 @@ but finds no results. The standard `noResultsView`, an instance of `MQNoResultsV
 contains a `UILabel` that says there were no results found.
 
 */
-public class MQLoadableViewController: UIViewController {
+public class _MQLoadableViewController: UIViewController {
     
     public enum View {
         case Starting, Loading, Retry, Primary, NoResults
     }
-    public var operationQueue = NSOperationQueue()
     
-    public var startingView: MQStartingView = MQDefaultStartingView()
-    public var loadingView: UIView = MQLoadingView()
-    public var retryView: MQRetryView = MQDefaultRetryView()
-    public var primaryView = UIView()
-    public var noResultsView: MQNoResultsView = MQDefaultNoResultsView()
+    public var task: MQExecutableTask?
+    public lazy var operationQueue = NSOperationQueue()
+    
+    public lazy var startingView: MQStartingView = MQDefaultStartingView()
+    public lazy var loadingView: UIView = MQLoadingView()
+    public lazy var retryView: MQRetryView = MQDefaultRetryView()
+    public lazy var primaryView = UIView()
+    public lazy var noResultsView: MQNoResultsView = MQDefaultNoResultsView()
     
     /**
-    Determines if the operation to be executed will ever have to show the No Results view.
-    The default value is `false` since it is usually up to the developer to display the `primaryView`
-    if the operation succeeded and returned any items, or the `noResultsView` if there are none.
-    Setting this to true overrides the operation's `successBlock` to *always* display the `primaryView`.
+    Determines whether the `successBlock` should be overridden to automatically
+    show the primary view.
+    
+    The default value is `false` since it is up to you to define whether the `primaryView`
+    or the `noResultsView` will be displayed upon receiving the result. However, if
+    the result you are expecting does not have a "no results" state (i.e., it is not an
+    array that may have no elements), you can set this to true to show the `primaryView`
+    in the `successBlock`.
     */
-    public var alwaysHasResults = false
+    public var automaticallyShowsPrimaryViewOnSuccess = false
     
     /**
     A flag used by `viewWillAppear:` to check if it will be the first time for
-    the view controller to appear. If it is, the view controller will setup the
+    the view controller to appear. If it is, the view controller will setup the 
     `request` and start it.
     
     This initial run of the `request` is written inside `viewWillAppear:`
@@ -120,40 +126,29 @@ public class MQLoadableViewController: UIViewController {
         self.noResultsView.fillSuperview()
     }
     
-//    /**
-//    A callback function that you must override to set the `self.task` property.
-//    The task will automatically be executed once the view controller is displayed.
-//    */
-//    public func setupTask() {}
-//    
-//    public func startTask() {
-//        guard var task = self.task else {
-//            return
-//        }
-//        
-//        self.overrideTaskBlocks(&task)
-//        
-//        if let operation = task as? MQOperation {
-//            self.operationQueue.addOperation(operation)
-//        } else {
-//            task.execute()
-//        }
-//    }
-    
     /**
     A callback function that you must override to set the `self.task` property.
     The task will automatically be executed once the view controller is displayed.
     */
-//    public func setupOperation() {}
+    public func setupTask() {}
     
-    public func createOperation() -> MQOperation {
-        fatalError("Unimplemented function \(__FUNCTION__)")
+    public func startTask() {
+        guard var task = self.task else {
+            return
+        }
+        
+        self.overrideTaskBlocks(&task)
+        
+        if let operation = task as? MQOperation {
+            self.operationQueue.addOperation(operation)
+        } else {
+            task.execute()
+        }
     }
     
-    public func runOperation() {
-        var operation = self.createOperation()
-        self.overrideOperationBlocks(&operation)
-        self.operationQueue.addOperation(operation)
+    public func restartTask() {
+        self.setupTask()
+        self.startTask()
     }
     
     public override func viewDidLoad() {
@@ -173,7 +168,7 @@ public class MQLoadableViewController: UIViewController {
         // We start the task if the view is appearing for the first time
         // so the you can override viewDidLoad normally.
         if self.isComingFromViewDidLoad {
-            self.runOperation()
+            self.restartTask()
             self.isComingFromViewDidLoad = false
         }
     }
@@ -186,56 +181,37 @@ public class MQLoadableViewController: UIViewController {
         self.noResultsView.hidden = view != .NoResults
     }
     
-//    public func overrideTaskBlocks(inout task: MQExecutableTask) {
-//        // Override the startBlock to automatically show the loading view.
-//        let someCustomStartBlock = task.startBlock
-//        task.startBlock = {[unowned self] in
-//            if let customStartBlock = someCustomStartBlock {
-//                customStartBlock()
-//            }
-//            
-//            self.showView(.Loading)
-//        }
-//        
-//        if self.automaticallyShowsPrimaryViewOnSuccess {
-//            // Override the successBlock to automatically show
-//            // the primary view when successful.
-//            let someCustomSuccessBlock = task.successBlock
-//            task.successBlock = {[unowned self] result in
-//                if let customSuccessBlock = someCustomSuccessBlock {
-//                    customSuccessBlock(result)
-//                }
-//                self.showView(.Primary)
-//            }
-//        }
-//        
-//        // Override the failureBlock to automatically show the
-//        // retry view when failed.
-//        let someCustomFailureBlock = task.failureBlock
-//        task.failureBlock = {[unowned self] error in
-//            if let customFailureBlock = someCustomFailureBlock {
-//                customFailureBlock(error)
-//            }
-//            
-//            self.retryView.error = error
-//            self.showView(.Retry)
-//        }
-//    }
-    
-    public func overrideOperationBlocks(inout operation: MQOperation) {
-        operation.startBlock = {[unowned self] in
+    public func overrideTaskBlocks(inout task: MQExecutableTask) {
+        // Override the startBlock to automatically show the loading view.
+        let someCustomStartBlock = task.startBlock
+        task.startBlock = {[unowned self] in
+            if let customStartBlock = someCustomStartBlock {
+                customStartBlock()
+            }
+            
             self.showView(.Loading)
         }
         
-        if self.alwaysHasResults {
-            let customSuccessLogic = operation.successBlock
-            operation.successBlock = {[unowned self] results in
-                customSuccessLogic?(results)
+        if self.automaticallyShowsPrimaryViewOnSuccess {
+            // Override the successBlock to automatically show
+            // the primary view when successful.
+            let someCustomSuccessBlock = task.successBlock
+            task.successBlock = {[unowned self] result in
+                if let customSuccessBlock = someCustomSuccessBlock {
+                    customSuccessBlock(result)
+                }
                 self.showView(.Primary)
             }
         }
         
-        operation.failureBlock = {[unowned self] error in
+        // Override the failureBlock to automatically show the
+        // retry view when failed.
+        let someCustomFailureBlock = task.failureBlock
+        task.failureBlock = {[unowned self] error in
+            if let customFailureBlock = someCustomFailureBlock {
+                customFailureBlock(error)
+            }
+            
             self.retryView.error = error
             self.showView(.Retry)
         }
@@ -243,18 +219,18 @@ public class MQLoadableViewController: UIViewController {
     
 }
 
-extension MQLoadableViewController: MQRetryViewDelegate {
+extension _MQLoadableViewController: MQRetryViewDelegate {
     
     public func retryViewDidTapRetry(retryView: MQRetryView) {
-        self.runOperation()
+        self.restartTask()
     }
     
 }
 
-extension MQLoadableViewController: MQNoResultsViewDelegate {
+extension _MQLoadableViewController: MQNoResultsViewDelegate {
     
     public func noResultsViewDidTapRetry(noResultsView: MQNoResultsView) {
-        self.runOperation()
+        self.restartTask()
     }
     
 }
