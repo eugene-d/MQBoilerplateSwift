@@ -166,7 +166,7 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
-    public func showView(view: _MQLoadableViewController.View) {
+    public func showView(view: MQLoadableViewController.View) {
         self.startingView.hidden = view != .Starting
         self.loadingView.hidden = view != .Loading
         self.primaryView.hidden = view != .Primary
