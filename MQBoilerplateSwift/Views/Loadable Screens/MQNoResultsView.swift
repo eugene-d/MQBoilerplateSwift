@@ -8,8 +8,15 @@
 
 import UIKit
 
+public protocol MQNoResultsViewDelegate {
+    
+    func noResultsViewDidTapRetry(noResultsView: MQNoResultsView)
+    
+}
+
 public class MQNoResultsView: UIView {
     
     public var text: String?
+    public var delegate: MQNoResultsViewDelegate?
     
 }

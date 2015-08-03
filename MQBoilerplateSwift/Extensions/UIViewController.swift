@@ -44,4 +44,8 @@ public extension UIViewController {
         }
     }
     
+    public func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
 }

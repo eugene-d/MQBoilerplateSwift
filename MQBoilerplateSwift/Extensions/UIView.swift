@@ -59,14 +59,15 @@ public extension UIView {
         }
     }
     
-    public class func instantiateFromNib<T: UIView>() -> T? {
+    public class func instantiateFromNib<T: UIView>() -> T {
         let mainBundle = NSBundle.mainBundle()
         if let objects = mainBundle.loadNibNamed(self.className(), owner: self, options: nil) {
             if let view = objects.last as? T {
                 return view
             }
+            fatalError("\(__FUNCTION__): Cannot cast view object to \(T.classForCoder())")
         }
-        return nil
+        fatalError("\(__FUNCTION__): No nib named \'\(self.className())\'")
     }
     
     public class func nib() -> UINib {
