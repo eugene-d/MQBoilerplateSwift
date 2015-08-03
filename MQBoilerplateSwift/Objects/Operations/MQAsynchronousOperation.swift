@@ -10,7 +10,7 @@ import Foundation
 
 /**
 An `MQOperation` subclass that runs asynchronously. It overrides the properties and
-functions that you must override to implement an asynchronous `NSOperation`.
+functions that are required to be overriden when implementing an asynchronous `NSOperation`.
 */
 public class MQAsynchronousOperation: MQOperation {
     

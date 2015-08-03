@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+A base implementation for an operation that makes URL requests.
+*/
 public class MQURLOperation: MQAsynchronousOperation {
     
     public enum Method: String {

@@ -8,14 +8,41 @@
 
 import Foundation
 
+/**
+An `MQOperation` is any task that needs to execute code at various points during its execution
+and depending on whether it succeeds or fails. This is a subclass of `NSOperation` and must be
+added to an `NSOperationQueue` to execute. For an asynchronous implementation, see `MQAsynchronousOperation`.
+*/
 public class MQOperation: NSOperation {
     
+    /**
+    Executed when the operation begins. For example, you can show a loading screen in this block.
+    */
     public var startBlock: (() -> Void)?
+    
+    /**
+    Executed when the operation finishes processing but before a success or failure status is determined.
+    */
     public var returnBlock: (() -> Void)?
+    
+    /**
+    Executed when the operation produces an error, e.g., show an error dialog.
+    */
     public var failureBlock: ((ErrorType) -> Void)?
+    
+    /**
+    Executed when the operation produces a result, e.g., showing a `UITableView` of results.
+    */
     public var successBlock: ((Any?) -> Void)?
+    
+    /**
+    Executed before the operation closes regardless of whether it succeeds or fails, e.g., closing I/O streams.
+    */
     public var finishBlock: (() -> Void)?
     
+    /**
+    Defines the operation and at which points the callback blocks are executed.
+    */
     public override func main() {
         defer {
             if self.cancelled == false {
@@ -55,6 +82,9 @@ public class MQOperation: NSOperation {
         return nil
     }
     
+    /**
+    Performs the `startBlock` in the main UI thread and waits until it is finished.
+    */
     public func runStartBlock() {
         guard let startBlock = self.startBlock else {
             return
@@ -67,6 +97,9 @@ public class MQOperation: NSOperation {
         MQDispatcher.syncRunInMainThread(startBlock)
     }
     
+    /**
+    Performs the `returnBlock` in the main UI thread and waits until it is finished.
+    */
     public func runReturnBlock() {
         guard let returnBlock = self.returnBlock else {
             return
@@ -79,6 +112,9 @@ public class MQOperation: NSOperation {
         MQDispatcher.syncRunInMainThread(returnBlock)
     }
     
+    /**
+    Performs the `successBlock` in the main UI thread and waits until it is finished.
+    */
     public func runSuccessBlockWithResult(result: Any?) {
         guard let successBlock = self.successBlock else {
             return
@@ -93,6 +129,9 @@ public class MQOperation: NSOperation {
         }
     }
     
+    /**
+    Performs the `failureBlock` in the main UI thread and waits until it is finished.
+    */
     public func runFailureBlockWithError(error: ErrorType) {
         guard let failureBlock = self.failureBlock else {
             return
@@ -107,6 +146,9 @@ public class MQOperation: NSOperation {
         }
     }
     
+    /**
+    Performs the `finishBlock` in the main UI thread and waits until it is finished.
+    */
     public func runFinishBlock() {
         guard let finishBlock = self.finishBlock else {
             return
@@ -119,6 +161,9 @@ public class MQOperation: NSOperation {
         MQDispatcher.syncRunInMainThread(finishBlock)
     }
     
+    /**
+    Overrides the current `failureBlock` to show an error dialog in a provided `UIViewController`.
+    */
     public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
         self.failureBlock = {[unowned presenter] error in
             if self.cancelled {
