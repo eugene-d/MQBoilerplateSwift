@@ -114,14 +114,15 @@ public class MQLoadableViewController: UIViewController {
     
     /**
     Override point for creating the `MQOperation` that the view controller will run and
-    display the results of.
+    display the results of. If there are any pieces of information not yet available to create an
+    operation, you can return `nil` so that the view controller is stuck in the `startingView`.
     
     **IMPORTANT** You *must* define the behavior of the `successBlock` from within this function
     as it is up to you how to handle the results. You may show the `primaryView` if the operation succeeds
     and there are items in the data source, or the `noResultsView` if there are none. Alternatively,
     you may also just show the `primaryView` even if the data source is empty.
     */
-    public func createOperation() -> MQOperation {
+    public func createOperation() -> MQOperation? {
         fatalError("Unimplemented function \(__FUNCTION__)")
     }
     
@@ -130,7 +131,9 @@ public class MQLoadableViewController: UIViewController {
     `loadingView` and the `failureBlock` to show the `retryView`, and runs the operation.
     */
     public func runOperation() {
-        let operation = self.createOperation()
+        guard let operation = self.createOperation() else {
+            return
+        }
         
         operation.startBlock = {[unowned self] in
             self.showView(.Loading)
