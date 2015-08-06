@@ -12,7 +12,9 @@ public extension NSDate {
     
     public func isSameDayAsDate(date: NSDate) -> Bool {
         let calendar = NSCalendar.currentCalendar()
-        let components: NSCalendarUnit = [.Month, .Day, .Year]
+        // FIXME: Swift 2.0
+//        let components: NSCalendarUnit = [.Month, .Day, .Year]
+        let components: NSCalendarUnit = .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitYear
         
         let thisDate = calendar.components(components, fromDate: self)
         let otherDate = calendar.components(components, fromDate: date)

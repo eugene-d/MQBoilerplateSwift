@@ -43,7 +43,9 @@ public class MQAspectFitLabel: UILabel {
         self.setTextAlignment()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    // FIXME: Swift 2.0
+//    public required init?(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setTextAlignment()
     }
@@ -124,9 +126,14 @@ public class MQAspectFitLabel: UILabel {
     }
     
     private func scaleDirectionForFontSize(fontSize: CGFloat) -> ScaleDirection {
-        if let text = self.text {            
-            let textSize = text.boundingRectWithSize(CGSizeMax,
-                options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+        if let text = self.text {
+            // FIXME: Swift 2.0
+//            let textSize = text.boundingRectWithSize(CGSizeMax,
+//                options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+//                attributes: [NSFontAttributeName : UIFont(name: self.font.fontName, size: fontSize)!],
+//                context: nil).size
+            let textSize = (text as NSString).boundingRectWithSize(CGSizeMax,
+                options: .UsesLineFragmentOrigin | .UsesFontLeading,
                 attributes: [NSFontAttributeName : UIFont(name: self.font.fontName, size: fontSize)!],
                 context: nil).size
             

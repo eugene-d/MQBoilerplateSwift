@@ -32,7 +32,8 @@ public protocol MQArchivableValueType {
     
 }
 
-public extension MQArchivableValueType {
+// FIXME: Swift 2.0
+/*public extension MQArchivableValueType {
     
     init(archiveData data: NSData) {
         guard let dictionary = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String : AnyObject] else {
@@ -41,4 +42,4 @@ public extension MQArchivableValueType {
         self.init(archiveDictionary: dictionary)
     }
     
-}
+}*/

@@ -22,11 +22,13 @@ public class MQChainedOperation: MQAsynchronousOperation {
     }
     
     public override func main() {
-        defer {
-            self.closeOperation()
-        }
+        // FIXME: Swift 2.0
+//        defer {
+//            self.closeOperation()
+//        }
         
         if self.cancelled {
+            self.closeOperation()
             return
         }
         
@@ -72,6 +74,7 @@ public class MQChainedOperation: MQAsynchronousOperation {
             }
             
             if self.cancelled {
+                self.closeOperation()
                 return
             }
         }
@@ -82,6 +85,8 @@ public class MQChainedOperation: MQAsynchronousOperation {
             // Exit main() only when all operations in the chain are finished.
             self.operationQueue.waitUntilAllOperationsAreFinished()
         }
+        
+        self.closeOperation()
     }
     
 }

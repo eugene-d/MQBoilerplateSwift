@@ -28,7 +28,9 @@ public class MQOperation: NSOperation {
     /**
     Executed when the operation produces an error, e.g., show an error dialog.
     */
-    public var failureBlock: ((ErrorType) -> Void)?
+    // FIXME: Swift 2.0
+//    public var failureBlock: ((ErrorType) -> Void)?
+    public var failureBlock: ((NSError) -> Void)?
     
     /**
     Executed when the operation produces a result, e.g., showing a `UITableView` of results.
@@ -44,11 +46,12 @@ public class MQOperation: NSOperation {
     Defines the operation and at which points the callback blocks are executed.
     */
     public override func main() {
-        defer {
-            if self.cancelled == false {
-                self.runFinishBlock()
-            }
-        }
+        // FIXME: Swift 2.0
+//        defer {
+//            if self.cancelled == false {
+//                self.runFinishBlock()
+//            }
+//        }
         
         if self.cancelled {
             return
@@ -66,11 +69,22 @@ public class MQOperation: NSOperation {
             return
         }
         
-        do {
-            let result = try buildResult(nil)
-            self.runSuccessBlockWithResult(result)
-        } catch {
+        // FIXME: Swift 2.0
+//        do {
+//            let result = try buildResult(nil)
+//            self.runSuccessBlockWithResult(result)
+//        } catch {
+//            self.runFailureBlockWithError(error)
+//        }
+        var error: NSError?
+        let result = self.buildResult(nil, error: &error)
+        if let error = error {
             self.runFailureBlockWithError(error)
+        } else {
+            self.runSuccessBlockWithResult(result)
+        }
+        if self.cancelled == false {
+            self.runFinishBlock()
         }
     }
     
@@ -78,7 +92,9 @@ public class MQOperation: NSOperation {
     Override point for converting raw results (usually in JSON format) to your
     custom object or value types. Make sure to check for `self.cancelled` from inside the function.
     */
-    public func buildResult(rawResult: Any?) throws -> Any? {
+    // FIXME: Swift 2.0
+//    public func buildResult(rawResult: Any?) throws -> Any? {
+    public func buildResult(rawResult: Any?, inout error: NSError?) -> Any? {
         return nil
     }
     
@@ -86,63 +102,84 @@ public class MQOperation: NSOperation {
     Performs the `startBlock` in the main UI thread and waits until it is finished.
     */
     public func runStartBlock() {
-        guard let startBlock = self.startBlock else {
-            return
+        // FIXME: Swift 2.0
+        if let startBlock = self.startBlock {
+            if self.cancelled {
+                return
+            }
+            
+            MQDispatcher.syncRunInMainThread(startBlock)
         }
-        
-        if self.cancelled {
-            return
-        }
-        
-        MQDispatcher.syncRunInMainThread(startBlock)
     }
     
     /**
     Performs the `returnBlock` in the main UI thread and waits until it is finished.
     */
     public func runReturnBlock() {
-        guard let returnBlock = self.returnBlock else {
-            return
+        // FIXME: Swift 2.0
+        if let returnBlock = self.returnBlock {
+            if self.cancelled {
+                return
+            }
+            
+            MQDispatcher.syncRunInMainThread(returnBlock)
         }
-        
-        if self.cancelled {
-            return
-        }
-        
-        MQDispatcher.syncRunInMainThread(returnBlock)
     }
     
     /**
     Performs the `successBlock` in the main UI thread and waits until it is finished.
     */
     public func runSuccessBlockWithResult(result: Any?) {
-        guard let successBlock = self.successBlock else {
-            return
-        }
+        // FIXME: Swift 2.0
+//        guard let successBlock = self.successBlock else {
+//            return
+//        }
+//        
+//        if self.cancelled {
+//            return
+//        }
+//        
+//        MQDispatcher.syncRunInMainThread {
+//            successBlock(result)
+//        }
         
-        if self.cancelled {
-            return
-        }
-        
-        MQDispatcher.syncRunInMainThread {
-            successBlock(result)
+        if let successBlock = self.successBlock {
+            if self.cancelled {
+                return
+            }
+            
+            MQDispatcher.syncRunInMainThread {
+                successBlock(result)
+            }
         }
     }
     
     /**
     Performs the `failureBlock` in the main UI thread and waits until it is finished.
     */
-    public func runFailureBlockWithError(error: ErrorType) {
-        guard let failureBlock = self.failureBlock else {
-            return
-        }
+    // FIXME: Swift 2.0
+//    public func runFailureBlockWithError(error: ErrorType) {
+    public func runFailureBlockWithError(error: NSError) {
+        // FIXME: Swift 2.0
+//        guard let failureBlock = self.failureBlock else {
+//            return
+//        }
+//        
+//        if self.cancelled {
+//            return
+//        }
+//        
+//        MQDispatcher.syncRunInMainThread {
+//            failureBlock(error)
+//        }
         
-        if self.cancelled {
-            return
-        }
-        
-        MQDispatcher.syncRunInMainThread {
-            failureBlock(error)
+        if let failureBlock = self.failureBlock {
+            if self.cancelled {
+                return
+            }
+            MQDispatcher.syncRunInMainThread {
+                failureBlock(error)
+            }
         }
     }
     
@@ -150,15 +187,24 @@ public class MQOperation: NSOperation {
     Performs the `finishBlock` in the main UI thread and waits until it is finished.
     */
     public func runFinishBlock() {
-        guard let finishBlock = self.finishBlock else {
-            return
-        }
+        // FIXME: Swift 2.0
+//        guard let finishBlock = self.finishBlock else {
+//            return
+//        }
+//        
+//        if self.cancelled {
+//            return
+//        }
+//        
+//        MQDispatcher.syncRunInMainThread(finishBlock)
         
-        if self.cancelled {
-            return
+        if let finishBlock = self.finishBlock {
+            if self.cancelled {
+                return
+            }
+            
+            MQDispatcher.syncRunInMainThread(finishBlock)
         }
-        
-        MQDispatcher.syncRunInMainThread(finishBlock)
     }
     
     /**

@@ -16,7 +16,7 @@ public extension NSLayoutConstraint {
             constraints.extend(self.constraintsWithVisualFormat(rule,
                 options: .DirectionLeadingToTrailing,
                 metrics: metrics,
-                views: views))
+                views: views) as! [NSLayoutConstraint])
         }
         
         return constraints

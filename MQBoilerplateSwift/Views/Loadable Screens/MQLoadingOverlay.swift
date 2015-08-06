@@ -31,7 +31,9 @@ public class MQLoadingOverlay : UIView {
         
         self.translucentView.backgroundColor = UIColor.blackColor()
         self.translucentView.alpha = 0.7
-        self.translucentView.translatesAutoresizingMaskIntoConstraints = false
+        // FIXME: Swift 2.0
+//        self.translucentView.translatesAutoresizingMaskIntoConstraints = false
+        self.translucentView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.addSubviewAndFill(self.translucentView)
         
         self.activityIndicator.startAnimating()
@@ -39,7 +41,9 @@ public class MQLoadingOverlay : UIView {
     }
     
     func addAutolayout() {
-        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        // FIXME: Swift 2.0
+//        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.activityIndicator.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         // Center the activity indicator.
         self.addConstraints([

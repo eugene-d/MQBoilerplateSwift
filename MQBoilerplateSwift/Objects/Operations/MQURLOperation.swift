@@ -88,21 +88,38 @@ public class MQURLOperation: MQAsynchronousOperation {
         switch self.contentType {
         case .JSON:
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            do {
-                if let parameters = self.parameters {
-                    let HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+            // FIXME: Swift 2.0
+            if let parameters = self.parameters {
+                var error: NSError?
+                let HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: &error)
+                if let error = error {
+                    fatalError("Cannot encode JSON parameters: \(error)")
+                } else {
                     request.HTTPBody = HTTPBody
                 }
-            } catch {
-                fatalError("Cannot encode JSON parameters")
             }
+//            do {
+//                if let parameters = self.parameters {
+//                    let HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+//                    request.HTTPBody = HTTPBody
+//                }
+//            } catch {
+//                fatalError("Cannot encode JSON parameters")
+//            }
             
         case .MultipartFormData:
-            guard let boundary = self.formDataBoundary else {
+            // FIXME: Swift 2.0
+            if let boundary = self.formDataBoundary {
+                request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+                request.HTTPBody = self.createMultipartFormData()
+            } else {
                 fatalError("Initialised a multipart form data request without specifying formDataBoundary")
             }
-            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-            request.HTTPBody = self.createMultipartFormData()
+//            guard let boundary = self.formDataBoundary else {
+//                fatalError("Initialised a multipart form data request without specifying formDataBoundary")
+//            }
+//            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//            request.HTTPBody = self.createMultipartFormData()
         }
         
         return request
@@ -146,9 +163,11 @@ public class MQURLOperation: MQAsynchronousOperation {
     public func handleResponse(someResponse: NSURLResponse?,
         _ someData: NSData?,
         _ someError: NSError?) {
-            defer {
-                self.closeOperation()
-            }
+            // FIXME: Swift 2.0
+//            defer {
+//                self.closeOperation()
+//            }
+            self.closeOperation()
     }
     
 }
