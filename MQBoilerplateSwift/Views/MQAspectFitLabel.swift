@@ -10,6 +10,10 @@ import Foundation
 
 private let CGSizeMax = CGSizeMake(CGFloat.max, CGFloat.max)
 
+/**
+A subclass of `UILabel` that automatically adjusts the text's font size
+so that the text fits exactly within the bounds of the label.
+*/
 public class MQAspectFitLabel: UILabel {
     
     private enum ScaleDirection {
@@ -29,6 +33,27 @@ public class MQAspectFitLabel: UILabel {
         }
     }
     
+    public init() {
+        super.init(frame: CGRectZero)
+        self.setTextAlignment()
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setTextAlignment()
+    }
+
+    // FIXME: Swift 2.0
+//    public required init?(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setTextAlignment()
+    }
+    
+    func setTextAlignment() {
+        self.textAlignment = .Center
+    }
+    
     public func setFontSize(fontSize: CGFloat) {
         self.font = UIFont(name: self.font.fontName, size: fontSize)
     }
@@ -42,13 +67,13 @@ public class MQAspectFitLabel: UILabel {
     different font sizes in certain parts of the string.
     */
     public func adjustFontSizeToScaleAspectFit() {
-        if let text: NSString = self.text {
+        if let _: NSString = self.text {
             // Find the min and max font sizes before doing a binary search.
             var currentSize = self.self.font.pointSize > 0 ? self.self.font.pointSize : UIFont.systemFontSize()
             var min = CGFloat(0)
             var max = CGFloat(0)
             
-            var startingDirection = self.scaleDirectionForFontSize(currentSize)
+            let startingDirection = self.scaleDirectionForFontSize(currentSize)
             var currentDirection = startingDirection
             
             loop: while true {
@@ -101,14 +126,16 @@ public class MQAspectFitLabel: UILabel {
     }
     
     private func scaleDirectionForFontSize(fontSize: CGFloat) -> ScaleDirection {
-        if let text = self.text {            
-            let textSize = text.boundingRectWithSize(CGSizeMax,
+        if let text = self.text {
+            // FIXME: Swift 2.0
+//            let textSize = text.boundingRectWithSize(CGSizeMax,
+//                options: [.UsesLineFragmentOrigin, .UsesFontLeading],
+//                attributes: [NSFontAttributeName : UIFont(name: self.font.fontName, size: fontSize)!],
+//                context: nil).size
+            let textSize = (text as NSString).boundingRectWithSize(CGSizeMax,
                 options: .UsesLineFragmentOrigin | .UsesFontLeading,
                 attributes: [NSFontAttributeName : UIFont(name: self.font.fontName, size: fontSize)!],
                 context: nil).size
-            
-//            let textSize = (text as NSString).sizeWithAttributes(
-//                [NSFontAttributeName : UIFont(name: self.font.fontName, size: fontSize)!])
             
             let labelWidth = floor(self.bounds.size.width)
             let labelHeight = floor(self.bounds.size.height)

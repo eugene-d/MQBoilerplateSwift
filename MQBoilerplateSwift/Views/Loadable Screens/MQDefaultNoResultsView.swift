@@ -1,5 +1,5 @@
 //
-//  MQDefaultStartingView.swift
+//  MQDefaultNoResultsView.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 5/1/15.
@@ -8,58 +8,61 @@
 
 import UIKit
 
-public class MQDefaultStartingView: MQStartingView {
+public class MQDefaultNoResultsView: MQNoResultsView {
     
-    public var startingTextLabel: UILabel
+    public var noResultsLabel: UILabel
     
     public override var text: String? {
         didSet {
             if let text = self.text {
-                self.startingTextLabel.text = text
+                self.noResultsLabel.text = text
                 self.setNeedsLayout()
             }
         }
     }
     
     public init() {
-        self.startingTextLabel = UILabel()
-        self.startingTextLabel.numberOfLines = 0
-        self.startingTextLabel.lineBreakMode = .ByWordWrapping
-        self.startingTextLabel.text = "Nothing here yet."
-        self.startingTextLabel.textAlignment = .Center
+        self.noResultsLabel = UILabel()
+        self.noResultsLabel.numberOfLines = 0
+        self.noResultsLabel.lineBreakMode = .ByWordWrapping
+        self.noResultsLabel.text = "No results found."
+        self.noResultsLabel.textAlignment = .Center
         
         super.init(frame: CGRectZero)
         
-        self.addSubview(self.startingTextLabel)
-        self.backgroundColor = UIColor.whiteColor()
+        self.addSubview(self.noResultsLabel)
         self.addAutolayout()
+        
+        self.backgroundColor = UIColor.whiteColor()
     }
-    
+
     public required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func addAutolayout() {
-        // The startingTextLabel is centered vertically,
+        // The noResultsLabel is centered vertically,
         // with a width 2/3 that of its superview.
-        self.startingTextLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        // FIXME: Swift 2.0
+//        self.noResultsLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.noResultsLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         self.addConstraints([
-            NSLayoutConstraint(item: self.startingTextLabel,
+            NSLayoutConstraint(item: self.noResultsLabel,
                 attribute: .CenterY,
                 relatedBy: .Equal,
                 toItem: self,
                 attribute: .CenterY,
                 multiplier: 1,
                 constant: 0),
-            NSLayoutConstraint(item: self.startingTextLabel,
+            NSLayoutConstraint(item: self.noResultsLabel,
                 attribute: .CenterX,
                 relatedBy: .Equal,
                 toItem: self,
                 attribute: .CenterX,
                 multiplier: 1,
                 constant: 0),
-            NSLayoutConstraint(item: self.startingTextLabel,
+            NSLayoutConstraint(item: self.noResultsLabel,
                 attribute: .Width,
                 relatedBy: .Equal,
                 toItem: self,
@@ -70,3 +73,4 @@ public class MQDefaultStartingView: MQStartingView {
     }
     
 }
+

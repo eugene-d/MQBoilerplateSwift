@@ -7,42 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2615AE2F1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615AE2E1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift */; };
-		2615AE311AE3CDB800FAC44C /* MQLoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */; };
-		262E9C391AFC8F5D00EC7AE2 /* MQConfirmDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */; };
-		265BD12F1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265BD12E1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift */; };
+		2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2610B2B21B52E73C00DAD825 /* NSDate.swift */; };
+		265050211B62D2DC00100EBF /* MQLoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265050201B62D2DC00100EBF /* MQLoadableViewController.swift */; };
+		2650C9891B5234900003C245 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2650C9881B5234900003C245 /* MKMapView.swift */; };
+		2664407A1B56CB1C00186C4B /* MQFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2664406E1B56CB1C00186C4B /* MQFieldCell.swift */; };
+		2664407B1B56CB1C00186C4B /* MQFieldPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2664406F1B56CB1C00186C4B /* MQFieldPickerView.swift */; };
+		2664407C1B56CB1C00186C4B /* MQFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440701B56CB1C00186C4B /* MQFieldTextField.swift */; };
+		2664407D1B56CB1C00186C4B /* MQDefaultNoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440721B56CB1C00186C4B /* MQDefaultNoResultsView.swift */; };
+		2664407E1B56CB1C00186C4B /* MQDefaultRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440731B56CB1C00186C4B /* MQDefaultRetryView.swift */; };
+		2664407F1B56CB1C00186C4B /* MQDefaultStartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440741B56CB1C00186C4B /* MQDefaultStartingView.swift */; };
+		266440801B56CB1C00186C4B /* MQLoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440751B56CB1C00186C4B /* MQLoadingOverlay.swift */; };
+		266440811B56CB1C00186C4B /* MQLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440761B56CB1C00186C4B /* MQLoadingView.swift */; };
+		266440821B56CB1C00186C4B /* MQNoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440771B56CB1C00186C4B /* MQNoResultsView.swift */; };
+		266440831B56CB1C00186C4B /* MQRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440781B56CB1C00186C4B /* MQRetryView.swift */; };
+		266440841B56CB1C00186C4B /* MQStartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440791B56CB1C00186C4B /* MQStartingView.swift */; };
+		266440861B56CB5400186C4B /* MQFieldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266440851B56CB5400186C4B /* MQFieldTextView.swift */; };
 		2666595D1B257F87003F24F8 /* MQButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666595C1B257F87003F24F8 /* MQButton.swift */; };
 		2666595F1B258080003F24F8 /* MQLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666595E1B258080003F24F8 /* MQLabelButton.swift */; };
 		266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266659601B2581A1003F24F8 /* MQImageButton.swift */; };
-		266B67671AF1AAA7009AA10E /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67661AF1AAA7009AA10E /* MQOperation.swift */; };
-		266B67691AF1AAF3009AA10E /* MQAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */; };
-		266B67751AF1D16D009AA10E /* MQUnexpectedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */; };
-		266B678D1AF335F1009AA10E /* MQNoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B678C1AF335F1009AA10E /* MQNoResultsView.swift */; };
-		266B678F1AF33621009AA10E /* MQDefaultNoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B678E1AF33621009AA10E /* MQDefaultNoResultsView.swift */; };
-		266B67B01AF3CDE2009AA10E /* MQStartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67AF1AF3CDE2009AA10E /* MQStartingView.swift */; };
-		266B67B21AF3CE00009AA10E /* MQDefaultStartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B67B11AF3CE00009AA10E /* MQDefaultStartingView.swift */; };
 		267B856B1B185DCA00AAF8E8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267B856A1B185DCA00AAF8E8 /* Double.swift */; };
-		267C2F1D1B138A520005C7BA /* MQConcreteExecutableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267C2F1C1B138A520005C7BA /* MQConcreteExecutableTask.swift */; };
 		267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267D5F991AE4CFEC002A2C8D /* UIViewController.swift */; };
 		2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8A1AE1B6790039CBB1 /* String.swift */; };
 		2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */; };
-		2682CAA01AE227470039CBB1 /* MQField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA9F1AE227470039CBB1 /* MQField.swift */; };
-		2682CAB41AE26DA60039CBB1 /* MQFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAB21AE26DA60039CBB1 /* MQFieldCell.swift */; };
-		2682CAB51AE26DA60039CBB1 /* MQFieldTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAB31AE26DA60039CBB1 /* MQFieldTextField.swift */; };
-		2682CADB1AE2E4870039CBB1 /* MQFieldPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */; };
-		2682CAE81AE364220039CBB1 /* MQError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAE71AE364220039CBB1 /* MQError.swift */; };
-		2682CAFB1AE375DC0039CBB1 /* MQLoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAFA1AE375DC0039CBB1 /* MQLoadableViewController.swift */; };
-		2682CAFD1AE3776B0039CBB1 /* MQLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAFC1AE3776B0039CBB1 /* MQLoadingView.swift */; };
-		2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CAFE1AE3AB530039CBB1 /* MQDefaultRetryView.swift */; };
-		2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459191ADFCDDB00B92DC0 /* MQFileManager.swift */; };
 		269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */; };
 		26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A07BD61B182607006250CF /* MQAspectFitLabel.swift */; };
-		26AB58AA1AE915F800C0C711 /* MQDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB58A91AE915F800C0C711 /* MQDispatcher.swift */; };
-		26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */; };
 		26B416691AF7471700CF80B0 /* MQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B416681AF7471700CF80B0 /* MQTableViewCell.swift */; };
-		26B5ACF81AF8B5AF007F8380 /* MQExecutableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B5ACF71AF8B5AF007F8380 /* MQExecutableTask.swift */; };
-		26C71B801B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C71B7F1B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift */; };
-		26D37CA21AEDE80F00145C7A /* MQRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D37CA11AEDE80F00145C7A /* MQRetryView.swift */; };
+		26CBAF081B6F765B00A7BB5D /* MQAlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEF41B6F765B00A7BB5D /* MQAlertDialog.swift */; };
+		26CBAF091B6F765B00A7BB5D /* MQConfirmDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEF51B6F765B00A7BB5D /* MQConfirmDialog.swift */; };
+		26CBAF0A1B6F765B00A7BB5D /* MQErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEF61B6F765B00A7BB5D /* MQErrorDialog.swift */; };
+		26CBAF0B1B6F765B00A7BB5D /* MQError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEF81B6F765B00A7BB5D /* MQError.swift */; };
+		26CBAF0C1B6F765B00A7BB5D /* MQErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEF91B6F765B00A7BB5D /* MQErrorEnum.swift */; };
+		26CBAF0D1B6F765B00A7BB5D /* MQDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEFB1B6F765B00A7BB5D /* MQDataModel.swift */; };
+		26CBAF0E1B6F765B00A7BB5D /* MQField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEFC1B6F765B00A7BB5D /* MQField.swift */; };
+		26CBAF0F1B6F765B00A7BB5D /* MQFieldCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEFD1B6F765B00A7BB5D /* MQFieldCollection.swift */; };
+		26CBAF101B6F765B00A7BB5D /* MQFieldTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEFE1B6F765B00A7BB5D /* MQFieldTextFieldDelegate.swift */; };
+		26CBAF111B6F765B00A7BB5D /* MQArchivableValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAEFF1B6F765B00A7BB5D /* MQArchivableValueType.swift */; };
+		26CBAF121B6F765B00A7BB5D /* MQDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF001B6F765B00A7BB5D /* MQDispatcher.swift */; };
+		26CBAF131B6F765B00A7BB5D /* MQFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF011B6F765B00A7BB5D /* MQFileManager.swift */; };
+		26CBAF141B6F765B00A7BB5D /* MQNSNotificationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF021B6F765B00A7BB5D /* MQNSNotificationObject.swift */; };
+		26CBAF151B6F765B00A7BB5D /* MQAsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF041B6F765B00A7BB5D /* MQAsynchronousOperation.swift */; };
+		26CBAF161B6F765B00A7BB5D /* MQChainedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF051B6F765B00A7BB5D /* MQChainedOperation.swift */; };
+		26CBAF171B6F765B00A7BB5D /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF061B6F765B00A7BB5D /* MQOperation.swift */; };
+		26CBAF181B6F765B00A7BB5D /* MQURLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF071B6F765B00A7BB5D /* MQURLOperation.swift */; };
 		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
 		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
@@ -63,44 +69,50 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2615AE2E1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingOverlayViewController.swift; sourceTree = "<group>"; };
-		2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingOverlay.swift; sourceTree = "<group>"; };
-		262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQConfirmDialog.swift; sourceTree = "<group>"; };
+		2610B2B21B52E73C00DAD825 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		265050201B62D2DC00100EBF /* MQLoadableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQLoadableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		2650C9881B5234900003C245 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		265A067F1ADE555400826150 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		265BD12E1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQExecutableTaskBlockRunner.swift; sourceTree = "<group>"; };
+		2664406E1B56CB1C00186C4B /* MQFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldCell.swift; sourceTree = "<group>"; };
+		2664406F1B56CB1C00186C4B /* MQFieldPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldPickerView.swift; sourceTree = "<group>"; };
+		266440701B56CB1C00186C4B /* MQFieldTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldTextField.swift; sourceTree = "<group>"; };
+		266440721B56CB1C00186C4B /* MQDefaultNoResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultNoResultsView.swift; sourceTree = "<group>"; };
+		266440731B56CB1C00186C4B /* MQDefaultRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultRetryView.swift; sourceTree = "<group>"; };
+		266440741B56CB1C00186C4B /* MQDefaultStartingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultStartingView.swift; sourceTree = "<group>"; };
+		266440751B56CB1C00186C4B /* MQLoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingOverlay.swift; sourceTree = "<group>"; };
+		266440761B56CB1C00186C4B /* MQLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingView.swift; sourceTree = "<group>"; };
+		266440771B56CB1C00186C4B /* MQNoResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQNoResultsView.swift; sourceTree = "<group>"; };
+		266440781B56CB1C00186C4B /* MQRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQRetryView.swift; sourceTree = "<group>"; };
+		266440791B56CB1C00186C4B /* MQStartingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQStartingView.swift; sourceTree = "<group>"; };
+		266440851B56CB5400186C4B /* MQFieldTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldTextView.swift; sourceTree = "<group>"; };
 		2666595C1B257F87003F24F8 /* MQButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQButton.swift; sourceTree = "<group>"; };
 		2666595E1B258080003F24F8 /* MQLabelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLabelButton.swift; sourceTree = "<group>"; };
 		266659601B2581A1003F24F8 /* MQImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQImageButton.swift; sourceTree = "<group>"; };
-		266B67661AF1AAA7009AA10E /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
-		266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAPIRequest.swift; sourceTree = "<group>"; };
-		266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQUnexpectedError.swift; sourceTree = "<group>"; };
-		266B678C1AF335F1009AA10E /* MQNoResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQNoResultsView.swift; sourceTree = "<group>"; };
-		266B678E1AF33621009AA10E /* MQDefaultNoResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultNoResultsView.swift; sourceTree = "<group>"; };
-		266B67AF1AF3CDE2009AA10E /* MQStartingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQStartingView.swift; sourceTree = "<group>"; };
-		266B67B11AF3CE00009AA10E /* MQDefaultStartingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultStartingView.swift; sourceTree = "<group>"; };
 		267B856A1B185DCA00AAF8E8 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
-		267C2F1C1B138A520005C7BA /* MQConcreteExecutableTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQConcreteExecutableTask.swift; sourceTree = "<group>"; };
 		267D5F991AE4CFEC002A2C8D /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2682CA8A1AE1B6790039CBB1 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCharacterSet.swift; sourceTree = "<group>"; };
-		2682CA9F1AE227470039CBB1 /* MQField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQField.swift; sourceTree = "<group>"; };
-		2682CAB21AE26DA60039CBB1 /* MQFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQFieldCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		2682CAB31AE26DA60039CBB1 /* MQFieldTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQFieldTextField.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQFieldPickerView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		2682CAE71AE364220039CBB1 /* MQError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQError.swift; sourceTree = "<group>"; };
 		2682CAED1AE36D2C0039CBB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2682CAFA1AE375DC0039CBB1 /* MQLoadableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadableViewController.swift; sourceTree = "<group>"; };
-		2682CAFC1AE3776B0039CBB1 /* MQLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLoadingView.swift; sourceTree = "<group>"; };
-		2682CAFE1AE3AB530039CBB1 /* MQDefaultRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultRetryView.swift; sourceTree = "<group>"; };
-		269459191ADFCDDB00B92DC0 /* MQFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFileManager.swift; sourceTree = "<group>"; };
 		269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		26A07BD61B182607006250CF /* MQAspectFitLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAspectFitLabel.swift; sourceTree = "<group>"; };
-		26AB58A91AE915F800C0C711 /* MQDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDispatcher.swift; sourceTree = "<group>"; };
-		26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorDialog.swift; sourceTree = "<group>"; };
 		26B416681AF7471700CF80B0 /* MQTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTableViewCell.swift; sourceTree = "<group>"; };
-		26B5ACF71AF8B5AF007F8380 /* MQExecutableTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQExecutableTask.swift; sourceTree = "<group>"; };
-		26C71B7F1B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldTextFieldDelegate.swift; sourceTree = "<group>"; };
-		26D37CA11AEDE80F00145C7A /* MQRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQRetryView.swift; sourceTree = "<group>"; };
+		26CBAEF41B6F765B00A7BB5D /* MQAlertDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAlertDialog.swift; sourceTree = "<group>"; };
+		26CBAEF51B6F765B00A7BB5D /* MQConfirmDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQConfirmDialog.swift; sourceTree = "<group>"; };
+		26CBAEF61B6F765B00A7BB5D /* MQErrorDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorDialog.swift; sourceTree = "<group>"; };
+		26CBAEF81B6F765B00A7BB5D /* MQError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQError.swift; sourceTree = "<group>"; };
+		26CBAEF91B6F765B00A7BB5D /* MQErrorEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorEnum.swift; sourceTree = "<group>"; };
+		26CBAEFB1B6F765B00A7BB5D /* MQDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDataModel.swift; sourceTree = "<group>"; };
+		26CBAEFC1B6F765B00A7BB5D /* MQField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQField.swift; sourceTree = "<group>"; };
+		26CBAEFD1B6F765B00A7BB5D /* MQFieldCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldCollection.swift; sourceTree = "<group>"; };
+		26CBAEFE1B6F765B00A7BB5D /* MQFieldTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldTextFieldDelegate.swift; sourceTree = "<group>"; };
+		26CBAEFF1B6F765B00A7BB5D /* MQArchivableValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQArchivableValueType.swift; sourceTree = "<group>"; };
+		26CBAF001B6F765B00A7BB5D /* MQDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDispatcher.swift; sourceTree = "<group>"; };
+		26CBAF011B6F765B00A7BB5D /* MQFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFileManager.swift; sourceTree = "<group>"; };
+		26CBAF021B6F765B00A7BB5D /* MQNSNotificationObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQNSNotificationObject.swift; sourceTree = "<group>"; };
+		26CBAF041B6F765B00A7BB5D /* MQAsynchronousOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAsynchronousOperation.swift; sourceTree = "<group>"; };
+		26CBAF051B6F765B00A7BB5D /* MQChainedOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQChainedOperation.swift; sourceTree = "<group>"; };
+		26CBAF061B6F765B00A7BB5D /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
+		26CBAF071B6F765B00A7BB5D /* MQURLOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQURLOperation.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQBoilerplateSwift.h; sourceTree = "<group>"; };
 		26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,8 +146,14 @@
 		265A067D1ADE555400826150 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				2682CA9E1AE227350039CBB1 /* Data Models */,
-				269459161ADFC75100B92DC0 /* Utilities */,
+				26CBAEF31B6F765B00A7BB5D /* Dialogs */,
+				26CBAEF71B6F765B00A7BB5D /* Error Handling */,
+				26CBAEFA1B6F765B00A7BB5D /* Form Fields */,
+				26CBAEFF1B6F765B00A7BB5D /* MQArchivableValueType.swift */,
+				26CBAF001B6F765B00A7BB5D /* MQDispatcher.swift */,
+				26CBAF011B6F765B00A7BB5D /* MQFileManager.swift */,
+				26CBAF021B6F765B00A7BB5D /* MQNSNotificationObject.swift */,
+				26CBAF031B6F765B00A7BB5D /* Operations */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -148,28 +166,37 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2682CA9E1AE227350039CBB1 /* Data Models */ = {
+		2664406D1B56CB1C00186C4B /* Forms */ = {
 			isa = PBXGroup;
 			children = (
-				2682CA9F1AE227470039CBB1 /* MQField.swift */,
+				2664406E1B56CB1C00186C4B /* MQFieldCell.swift */,
+				2664406F1B56CB1C00186C4B /* MQFieldPickerView.swift */,
+				266440701B56CB1C00186C4B /* MQFieldTextField.swift */,
+				266440851B56CB5400186C4B /* MQFieldTextView.swift */,
 			);
-			path = "Data Models";
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		266440711B56CB1C00186C4B /* Loadable Screens */ = {
+			isa = PBXGroup;
+			children = (
+				266440721B56CB1C00186C4B /* MQDefaultNoResultsView.swift */,
+				266440731B56CB1C00186C4B /* MQDefaultRetryView.swift */,
+				266440741B56CB1C00186C4B /* MQDefaultStartingView.swift */,
+				266440751B56CB1C00186C4B /* MQLoadingOverlay.swift */,
+				266440761B56CB1C00186C4B /* MQLoadingView.swift */,
+				266440771B56CB1C00186C4B /* MQNoResultsView.swift */,
+				266440781B56CB1C00186C4B /* MQRetryView.swift */,
+				266440791B56CB1C00186C4B /* MQStartingView.swift */,
+			);
+			path = "Loadable Screens";
 			sourceTree = "<group>";
 		};
 		2682CAB11AE26DA60039CBB1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2682CAB21AE26DA60039CBB1 /* MQFieldCell.swift */,
-				2682CAB31AE26DA60039CBB1 /* MQFieldTextField.swift */,
-				2682CADA1AE2E4870039CBB1 /* MQFieldPickerView.swift */,
-				2682CAFC1AE3776B0039CBB1 /* MQLoadingView.swift */,
-				2682CAFE1AE3AB530039CBB1 /* MQDefaultRetryView.swift */,
-				2615AE301AE3CDB800FAC44C /* MQLoadingOverlay.swift */,
-				26D37CA11AEDE80F00145C7A /* MQRetryView.swift */,
-				266B678C1AF335F1009AA10E /* MQNoResultsView.swift */,
-				266B678E1AF33621009AA10E /* MQDefaultNoResultsView.swift */,
-				266B67AF1AF3CDE2009AA10E /* MQStartingView.swift */,
-				266B67B11AF3CE00009AA10E /* MQDefaultStartingView.swift */,
+				2664406D1B56CB1C00186C4B /* Forms */,
+				266440711B56CB1C00186C4B /* Loadable Screens */,
 				26B416681AF7471700CF80B0 /* MQTableViewCell.swift */,
 				26A07BD61B182607006250CF /* MQAspectFitLabel.swift */,
 				2666595C1B257F87003F24F8 /* MQButton.swift */,
@@ -179,23 +206,45 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		269459161ADFC75100B92DC0 /* Utilities */ = {
+		26CBAEF31B6F765B00A7BB5D /* Dialogs */ = {
 			isa = PBXGroup;
 			children = (
-				266B67661AF1AAA7009AA10E /* MQOperation.swift */,
-				26AB58D61AEB648300C0C711 /* MQErrorDialog.swift */,
-				269459191ADFCDDB00B92DC0 /* MQFileManager.swift */,
-				2682CAE71AE364220039CBB1 /* MQError.swift */,
-				26AB58A91AE915F800C0C711 /* MQDispatcher.swift */,
-				266B67681AF1AAF3009AA10E /* MQAPIRequest.swift */,
-				266B67741AF1D16D009AA10E /* MQUnexpectedError.swift */,
-				26B5ACF71AF8B5AF007F8380 /* MQExecutableTask.swift */,
-				262E9C381AFC8F5D00EC7AE2 /* MQConfirmDialog.swift */,
-				26C71B7F1B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift */,
-				267C2F1C1B138A520005C7BA /* MQConcreteExecutableTask.swift */,
-				265BD12E1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift */,
+				26CBAEF41B6F765B00A7BB5D /* MQAlertDialog.swift */,
+				26CBAEF51B6F765B00A7BB5D /* MQConfirmDialog.swift */,
+				26CBAEF61B6F765B00A7BB5D /* MQErrorDialog.swift */,
 			);
-			path = Utilities;
+			path = Dialogs;
+			sourceTree = "<group>";
+		};
+		26CBAEF71B6F765B00A7BB5D /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				26CBAEF81B6F765B00A7BB5D /* MQError.swift */,
+				26CBAEF91B6F765B00A7BB5D /* MQErrorEnum.swift */,
+			);
+			path = "Error Handling";
+			sourceTree = "<group>";
+		};
+		26CBAEFA1B6F765B00A7BB5D /* Form Fields */ = {
+			isa = PBXGroup;
+			children = (
+				26CBAEFB1B6F765B00A7BB5D /* MQDataModel.swift */,
+				26CBAEFC1B6F765B00A7BB5D /* MQField.swift */,
+				26CBAEFD1B6F765B00A7BB5D /* MQFieldCollection.swift */,
+				26CBAEFE1B6F765B00A7BB5D /* MQFieldTextFieldDelegate.swift */,
+			);
+			path = "Form Fields";
+			sourceTree = "<group>";
+		};
+		26CBAF031B6F765B00A7BB5D /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				26CBAF041B6F765B00A7BB5D /* MQAsynchronousOperation.swift */,
+				26CBAF051B6F765B00A7BB5D /* MQChainedOperation.swift */,
+				26CBAF061B6F765B00A7BB5D /* MQOperation.swift */,
+				26CBAF071B6F765B00A7BB5D /* MQURLOperation.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		26E9FE811ADE090B00E92745 = {
@@ -258,6 +307,8 @@
 				2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */,
 				267D5F991AE4CFEC002A2C8D /* UIViewController.swift */,
 				267B856A1B185DCA00AAF8E8 /* Double.swift */,
+				2650C9881B5234900003C245 /* MKMapView.swift */,
+				2610B2B21B52E73C00DAD825 /* NSDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -266,8 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				26F28ADF1ADF89960070A08B /* MQStartupViewController.swift */,
-				2682CAFA1AE375DC0039CBB1 /* MQLoadableViewController.swift */,
-				2615AE2E1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift */,
+				265050201B62D2DC00100EBF /* MQLoadableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -336,7 +386,8 @@
 		26E9FE821ADE090B00E92745 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Matt Quiros";
 				TargetAttributes = {
 					26E9FE8A1ADE090B00E92745 = {
@@ -353,6 +404,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 26E9FE811ADE090B00E92745;
 			productRefGroup = 26E9FE8C1ADE090B00E92745 /* Products */;
@@ -388,45 +440,51 @@
 			buildActionMask = 2147483647;
 			files = (
 				2666595F1B258080003F24F8 /* MQLabelButton.swift in Sources */,
-				266B678F1AF33621009AA10E /* MQDefaultNoResultsView.swift in Sources */,
-				266B67691AF1AAF3009AA10E /* MQAPIRequest.swift in Sources */,
+				266440801B56CB1C00186C4B /* MQLoadingOverlay.swift in Sources */,
 				26B416691AF7471700CF80B0 /* MQTableViewCell.swift in Sources */,
-				2682CAE81AE364220039CBB1 /* MQError.swift in Sources */,
-				266B67B01AF3CDE2009AA10E /* MQStartingView.swift in Sources */,
-				267C2F1D1B138A520005C7BA /* MQConcreteExecutableTask.swift in Sources */,
-				2615AE311AE3CDB800FAC44C /* MQLoadingOverlay.swift in Sources */,
+				266440861B56CB5400186C4B /* MQFieldTextView.swift in Sources */,
+				26CBAF111B6F765B00A7BB5D /* MQArchivableValueType.swift in Sources */,
+				26CBAF131B6F765B00A7BB5D /* MQFileManager.swift in Sources */,
 				26F28AFB1ADF90D10070A08B /* UIColor.swift in Sources */,
+				26CBAF101B6F765B00A7BB5D /* MQFieldTextFieldDelegate.swift in Sources */,
+				2664407D1B56CB1C00186C4B /* MQDefaultNoResultsView.swift in Sources */,
+				2664407E1B56CB1C00186C4B /* MQDefaultRetryView.swift in Sources */,
 				26F28AE01ADF89960070A08B /* MQStartupViewController.swift in Sources */,
 				269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */,
-				2615AE2F1AE3CD4D00FAC44C /* MQLoadingOverlayViewController.swift in Sources */,
-				266B678D1AF335F1009AA10E /* MQNoResultsView.swift in Sources */,
+				26CBAF0D1B6F765B00A7BB5D /* MQDataModel.swift in Sources */,
+				26CBAF0C1B6F765B00A7BB5D /* MQErrorEnum.swift in Sources */,
+				2664407B1B56CB1C00186C4B /* MQFieldPickerView.swift in Sources */,
+				266440821B56CB1C00186C4B /* MQNoResultsView.swift in Sources */,
+				26CBAF0A1B6F765B00A7BB5D /* MQErrorDialog.swift in Sources */,
+				26CBAF091B6F765B00A7BB5D /* MQConfirmDialog.swift in Sources */,
+				26CBAF181B6F765B00A7BB5D /* MQURLOperation.swift in Sources */,
 				26F531571B0E53F800D4AF08 /* Functions.swift in Sources */,
-				26C71B801B0C6C5A006DD2C8 /* MQFieldTextFieldDelegate.swift in Sources */,
-				266B67B21AF3CE00009AA10E /* MQDefaultStartingView.swift in Sources */,
-				26AB58D71AEB648300C0C711 /* MQErrorDialog.swift in Sources */,
 				2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */,
-				266B67751AF1D16D009AA10E /* MQUnexpectedError.swift in Sources */,
+				2664407F1B56CB1C00186C4B /* MQDefaultStartingView.swift in Sources */,
 				266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */,
-				2682CAFF1AE3AB530039CBB1 /* MQDefaultRetryView.swift in Sources */,
+				2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */,
+				26CBAF161B6F765B00A7BB5D /* MQChainedOperation.swift in Sources */,
 				26E9FEAB1ADE098100E92745 /* UIView.swift in Sources */,
-				265BD12F1B1E347B00E99300 /* MQExecutableTaskBlockRunner.swift in Sources */,
-				26D37CA21AEDE80F00145C7A /* MQRetryView.swift in Sources */,
-				2682CAFB1AE375DC0039CBB1 /* MQLoadableViewController.swift in Sources */,
+				26CBAF141B6F765B00A7BB5D /* MQNSNotificationObject.swift in Sources */,
+				266440811B56CB1C00186C4B /* MQLoadingView.swift in Sources */,
+				266440841B56CB1C00186C4B /* MQStartingView.swift in Sources */,
+				26CBAF0B1B6F765B00A7BB5D /* MQError.swift in Sources */,
+				2664407C1B56CB1C00186C4B /* MQFieldTextField.swift in Sources */,
+				26CBAF081B6F765B00A7BB5D /* MQAlertDialog.swift in Sources */,
+				26CBAF0E1B6F765B00A7BB5D /* MQField.swift in Sources */,
+				26CBAF121B6F765B00A7BB5D /* MQDispatcher.swift in Sources */,
+				266440831B56CB1C00186C4B /* MQRetryView.swift in Sources */,
+				265050211B62D2DC00100EBF /* MQLoadableViewController.swift in Sources */,
 				267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */,
 				2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */,
-				26AB58AA1AE915F800C0C711 /* MQDispatcher.swift in Sources */,
-				26B5ACF81AF8B5AF007F8380 /* MQExecutableTask.swift in Sources */,
-				2682CAB41AE26DA60039CBB1 /* MQFieldCell.swift in Sources */,
-				2682CAB51AE26DA60039CBB1 /* MQFieldTextField.swift in Sources */,
-				266B67671AF1AAA7009AA10E /* MQOperation.swift in Sources */,
-				2694591A1ADFCDDB00B92DC0 /* MQFileManager.swift in Sources */,
+				26CBAF0F1B6F765B00A7BB5D /* MQFieldCollection.swift in Sources */,
+				2650C9891B5234900003C245 /* MKMapView.swift in Sources */,
 				2666595D1B257F87003F24F8 /* MQButton.swift in Sources */,
-				2682CADB1AE2E4870039CBB1 /* MQFieldPickerView.swift in Sources */,
-				2682CAA01AE227470039CBB1 /* MQField.swift in Sources */,
-				262E9C391AFC8F5D00EC7AE2 /* MQConfirmDialog.swift in Sources */,
-				2682CAFD1AE3776B0039CBB1 /* MQLoadingView.swift in Sources */,
+				2664407A1B56CB1C00186C4B /* MQFieldCell.swift in Sources */,
 				267B856B1B185DCA00AAF8E8 /* Double.swift in Sources */,
 				26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */,
+				26CBAF151B6F765B00A7BB5D /* MQAsynchronousOperation.swift in Sources */,
+				26CBAF171B6F765B00A7BB5D /* MQOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -466,11 +525,13 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -485,7 +546,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -500,6 +561,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -513,7 +575,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -526,7 +589,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -539,17 +602,22 @@
 		26E9FEA21ADE090B00E92745 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "MQBoilerplateSwift/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mattquiros.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -557,17 +625,22 @@
 		26E9FEA31ADE090B00E92745 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "MQBoilerplateSwift/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mattquiros.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -584,6 +657,7 @@
 				);
 				INFOPLIST_FILE = MQBoilerplateSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mattquiros.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -597,6 +671,7 @@
 				);
 				INFOPLIST_FILE = MQBoilerplateSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mattquiros.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

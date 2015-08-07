@@ -9,16 +9,6 @@
 import UIKit
 
 /**
-A separate delegate intended for the sole use of `MQLoadableViewController`
-so that its child classes don't have to use the `override` keyword when implementing `MQRetryViewDelegate`.
-*/
-protocol MQDefaultRetryViewDelegate {
-    
-    func defaultRetryViewDidTapRetry()
-    
-}
-
-/**
 A default implementation of an `MQRetryView`.
 */
 public class MQDefaultRetryView: MQRetryView {
@@ -27,19 +17,30 @@ public class MQDefaultRetryView: MQRetryView {
     var retryButton: UIButton
     var containerView: UIView
     
+    // FIXME: Swift 2.0
+//    public override var error: ErrorType? {
+//        didSet {
+//            if let error = self.error as? NSError {
+//                self.errorLabel.text = error.localizedDescription
+//                self.setNeedsLayout()
+//            }
+//        }
+//    }
     public override var error: NSError? {
         didSet {
             if let error = self.error {
                 self.errorLabel.text = error.localizedDescription
-                self.setNeedsLayout()
+            } else {
+                self.errorLabel.text = nil
             }
+            self.setNeedsLayout()
         }
     }
     
-    var internalDelegate: MQDefaultRetryViewDelegate?
-    
     public init() {
         self.errorLabel = UILabel()
+        // FIXME: Swift 2.0
+//        self.retryButton = UIButton(type: .System)
         self.retryButton = UIButton.buttonWithType(.System) as! UIButton
         self.containerView = UIView()
         
@@ -128,8 +129,8 @@ public class MQDefaultRetryView: MQRetryView {
     }
     
     func retryButtonTapped() {
-        if let internalDelegate = self.internalDelegate {
-            internalDelegate.defaultRetryViewDidTapRetry()
+        if let delegate = self.delegate {
+            delegate.retryViewDidTapRetry(self)
         }
     }
     

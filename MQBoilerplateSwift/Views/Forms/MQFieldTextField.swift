@@ -23,6 +23,8 @@ public class MQFieldTextField : UITextField {
         }
     }
     
+    // FIXME: Swift 2.0
+//    public required init?(coder aDecoder: NSCoder) {
     public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.clearButtonMode = .WhileEditing

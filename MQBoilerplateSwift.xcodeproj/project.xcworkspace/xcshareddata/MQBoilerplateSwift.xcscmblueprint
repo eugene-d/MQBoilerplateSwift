@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DF5384677E919531626A9682F31F55C34D261EA5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DF5384677E919531626A9682F31F55C34D261EA5" : 0,
+    "4DC88E1706D313D1BA88103669A99A9F0BC40569" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B23C05D3-DF70-4A3F-AB99-006808E7D29F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DF5384677E919531626A9682F31F55C34D261EA5" : "MQBoilerplateSwift\/",
+    "4DC88E1706D313D1BA88103669A99A9F0BC40569" : "..\/.."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MQBoilerplateSwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MQBoilerplateSwift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/micodatech.git.beanstalkapp.com\/epreventions-iphone.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4DC88E1706D313D1BA88103669A99A9F0BC40569"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mattquiros\/MQBoilerplateSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DF5384677E919531626A9682F31F55C34D261EA5"
+    }
+  ]
+}

@@ -19,7 +19,7 @@ public class MQFieldTextFieldDelegate: NSObject, UITextFieldDelegate {
                     }
                 }
                 
-                if let mutableText = textField.text.mutableCopy() as? NSMutableString {
+                if let mutableText = textField.text!.mutableCopy() as? NSMutableString {
                     mutableText.replaceCharactersInRange(range, withString: string)
                     field.value = mutableText
                 }

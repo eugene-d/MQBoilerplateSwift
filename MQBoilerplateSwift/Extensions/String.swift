@@ -11,7 +11,7 @@ import Foundation
 public extension String {
     
     public func hasCharactersFromSet(characterSet: NSCharacterSet) -> Bool {
-        if let range = self.rangeOfCharacterFromSet(characterSet) {
+        if let _ = self.rangeOfCharacterFromSet(characterSet) {
             return true
         }
         return false

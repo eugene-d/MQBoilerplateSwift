@@ -43,29 +43,4 @@ public class MQDispatcher {
         }
     }
     
-    @availability(*, deprecated=1.3, message="Use asyncRunInBackgroundThread()")
-    public class func executeInBackgroundThread(block: () -> Void) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            block()
-        }
-    }
-    
-    @availability(*, deprecated=1.3, message="")
-    public class func executeInMainThreadSynchronously(block: () -> Void) {
-        if NSThread.isMainThread() {
-            block()
-        } else {
-            dispatch_sync(dispatch_get_main_queue()) {
-                block()
-            }
-        }
-    }
-    
-    @availability(*, deprecated=1.2, message="")
-    public class func executeInMainThread(block: () -> Void) {
-        dispatch_async(dispatch_get_main_queue(), {
-            block()
-        })
-    }
-    
 }
