@@ -60,31 +60,36 @@ public class MQFileManager {
         return NSFileManager.defaultManager().fileExistsAtPath(fileURL.path!)
     }
     
-    public class func writeValue<T: MQArchivableValueType>(value: T, toFileName fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, inout error: NSError?) {
+    public class func writeValue<T: MQArchivableValueType>(value: T, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, error: NSErrorPointer) {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder),
             let path = fileURL.path {
                 let dictionary = value.archiveDictionary()
                 if NSKeyedArchiver.archiveRootObject(dictionary, toFile: path) == false {
-                    error = MQError("Archiving value \(value) failed.")
+                    if error != nil {
+                        error.memory = MQError("Archiving value \(value) failed.")
+                    }
                     return
                 }
         } else {
-            error = MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
+            if error != nil {
+                error.memory = MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
+            }
             return
         }
     }
     
-    public class func writeValue(value: AnyObject, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, inout error: NSError?) {
+    public class func writeValue(value: AnyObject, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, error: NSErrorPointer) {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder),
             let path = fileURL.path {
                 if NSKeyedArchiver.archiveRootObject(value, toFile: path) == false {
-                    error = MQError("Cannot write value \(value) to file.")
+                    if error != nil {
+                        error.memory = MQError("Cannot write value \(value) to file.")
+                    }
                     return
                 }
+        } else {
+            error.memory = MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
         }
-        
-        error = MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
-        return
     }
     
     public class func valueAtFile<T: MQArchivableValueType>(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) -> T? {
@@ -105,10 +110,10 @@ public class MQFileManager {
         return nil
     }
     
-    public class func deleteValueAtFile(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, inout error: NSError?) {
+    public class func deleteValueAtFile(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, error: NSErrorPointer) {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
-                NSFileManager.defaultManager().removeItemAtURL(fileURL, error: &error)
+                NSFileManager.defaultManager().removeItemAtURL(fileURL, error: error)
             }
         }
     }
