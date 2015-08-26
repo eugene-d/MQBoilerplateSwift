@@ -77,11 +77,14 @@ public class MQOperation: NSOperation {
 //            self.runFailureBlockWithError(error)
 //        }
         
-        let (result, error) = self.buildResult(nil)
-        if let error = error {
-            self.runFailureBlockWithError(error)
+        if let (result, error) = self.buildResult(nil) {
+            if let error = error {
+                self.runFailureBlockWithError(error)
+            } else {
+                self.runSuccessBlockWithResult(result)
+            }
         } else {
-            self.runSuccessBlockWithResult(result)
+            self.runSuccessBlockWithResult(nil)
         }
         
         if self.cancelled == false {
@@ -90,16 +93,14 @@ public class MQOperation: NSOperation {
     }
     
     /**
-    Override point for converting raw results (usually in JSON format) to your custom object or value types.
-    If the provided `rawResult` is invalid, you can generate an error from your implementation and execute
-    the `failureBlock`. Note that the `failureBlock` from `buildResult` is different from the `failureBlock`
-    property of `MQOperation`.
-    
-    **IMPORTANT** Make sure to check for `self.cancelled` from inside the function.
+    Override point for converting raw results (usually a JSON object) into your own custom object or value type.
+    The returned value is a tuple. If `error` is non-nil, the build process failed (e.g. invalid JSON) and `result`
+    **must** be nil. If `error` is nil, then the build process succeeded and `result` may or may not have a value
+    depending on whether it matters or not. For simplicity, you can simply return `nil` if you wish to return `(nil, nil).
     */
-    // FIXME: Swift 2.0
-//    public func buildResult(rawResult: Any?) throws -> Any? {
-    public func buildResult(rawResult: Any?) -> (Any?, NSError?) {
+    // FIXME: Swift 2.0: Use the signature
+    // public func buildResult(rawResult: Any?) throws -> Any?
+    public func buildResult(rawResult: Any?) -> (result: Any?, error: NSError?)? {
         return (nil, nil)
     }
     
