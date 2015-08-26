@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+A `UITextFieldDelegate` that changes the value of the `MQField` associated with an `MQFieldTextField`.
+*/
 public class MQFieldTextFieldDelegate: NSObject, UITextFieldDelegate {
     
     public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

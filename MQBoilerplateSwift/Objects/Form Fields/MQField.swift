@@ -27,9 +27,10 @@ public class MQField {
     */
     public var value: Any?
     
-    public var keyboardType: UIKeyboardType?
-    public var autocapitalizationType: UITextAutocapitalizationType?
+    public var keyboardType: UIKeyboardType
+    public var autocapitalizationType: UITextAutocapitalizationType
     public var validCharacterSet: NSCharacterSet?
+    public var secureTextEntry: Bool
     
     public var invalidCharacterSet: NSCharacterSet? {
         get {
@@ -40,18 +41,27 @@ public class MQField {
         }
     }
     
-    public init(name: String, label: String, value: Any?) {
-        self.name = name
-        self.label = label
-        self.value = value
+    public init(name: String, label: String? = nil, value: Any? = nil,
+        keyboardType: UIKeyboardType = .Default,
+        autocapitalizationType: UITextAutocapitalizationType = .Words,
+        validCharacterSet: NSCharacterSet? = nil,
+        secureTextEntry: Bool = false) {
+            self.name = name
+            self.label = label ?? name
+            self.value = value
+            
+            self.keyboardType = keyboardType
+            self.autocapitalizationType = autocapitalizationType
+            self.validCharacterSet = validCharacterSet
+            self.secureTextEntry = secureTextEntry
     }
     
-    public convenience init(name: String) {
-        self.init(name: name, label: name, value: nil)
-    }
-    
-    public convenience init(name: String, value: Any?) {
-        self.init(name: name, label: name, value: value)
-    }
+//    public convenience init(name: String) {
+//        self.init(name: name, label: name, value: nil)
+//    }
+//    
+//    public convenience init(name: String, value: Any?) {
+//        self.init(name: name, label: name, value: value)
+//    }
     
 }
