@@ -76,26 +76,31 @@ public class MQOperation: NSOperation {
 //        } catch {
 //            self.runFailureBlockWithError(error)
 //        }
-        var error: NSError?
-        let result = self.buildResult(nil, error: &error)
+        
+        let (result, error) = self.buildResult(nil)
         if let error = error {
             self.runFailureBlockWithError(error)
         } else {
             self.runSuccessBlockWithResult(result)
         }
+        
         if self.cancelled == false {
             self.runFinishBlock()
         }
     }
     
     /**
-    Override point for converting raw results (usually in JSON format) to your
-    custom object or value types. Make sure to check for `self.cancelled` from inside the function.
+    Override point for converting raw results (usually in JSON format) to your custom object or value types.
+    If the provided `rawResult` is invalid, you can generate an error from your implementation and execute
+    the `failureBlock`. Note that the `failureBlock` from `buildResult` is different from the `failureBlock`
+    property of `MQOperation`.
+    
+    **IMPORTANT** Make sure to check for `self.cancelled` from inside the function.
     */
     // FIXME: Swift 2.0
 //    public func buildResult(rawResult: Any?) throws -> Any? {
-    public func buildResult(rawResult: Any?, inout error: NSError?) -> Any? {
-        return nil
+    public func buildResult(rawResult: Any?) -> (Any?, NSError?) {
+        return (nil, nil)
     }
     
     /**

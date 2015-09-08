@@ -43,3 +43,13 @@ public protocol MQArchivableValueType {
     }
     
 }*/
+
+/*
+init(archiveData data: NSData) {
+if let dictionary = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String : AnyObject] {
+self.init(archiveDictionary: dictionary)
+} else {
+fatalError("Cannot convert to NSData.")
+}
+}
+*/
