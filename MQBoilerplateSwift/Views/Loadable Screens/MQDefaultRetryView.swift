@@ -17,18 +17,11 @@ public class MQDefaultRetryView: MQRetryView {
     var retryButton: UIButton
     var containerView: UIView
     
-    // FIXME: Swift 2.0
-//    public override var error: ErrorType? {
-//        didSet {
-//            if let error = self.error as? NSError {
-//                self.errorLabel.text = error.localizedDescription
-//                self.setNeedsLayout()
-//            }
-//        }
-//    }
-    public override var error: NSError? {
+    public override var error: ErrorType? {
         didSet {
-            if let error = self.error {
+            if let error = self.error as? MQErrorEnum {
+                self.errorLabel.text = error.errorObject().localizedDescription
+            } else if let error = self.error as? NSError {
                 self.errorLabel.text = error.localizedDescription
             } else {
                 self.errorLabel.text = nil

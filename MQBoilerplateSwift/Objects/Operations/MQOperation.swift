@@ -28,9 +28,7 @@ public class MQOperation: NSOperation {
     /**
     Executed when the operation produces an error, e.g., show an error dialog.
     */
-    // FIXME: Swift 2.0
-//    public var failureBlock: ((ErrorType) -> Void)?
-    public var failureBlock: ((NSError) -> Void)?
+    public var failureBlock: ((ErrorType) -> Void)?
     
     /**
     Executed when the operation produces a result, e.g., showing a `UITableView` of results.
@@ -143,9 +141,7 @@ public class MQOperation: NSOperation {
     /**
     Performs the `failureBlock` in the main UI thread and waits until it is finished.
     */
-    // FIXME: Swift 2.0
-//    public func runFailureBlockWithError(error: ErrorType) {
-    public func runFailureBlockWithError(error: NSError) {
+    public func runFailureBlockWithError(error: ErrorType) {
         if let failureBlock = self.failureBlock {
             if self.cancelled {
                 return

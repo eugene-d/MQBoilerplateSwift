@@ -8,9 +8,8 @@
 
 import Foundation
 
-// FIXME: Swift 2.0
-//public protocol MQErrorEnum: ErrorType {
-//    
-//    func errorObject() -> MQError
-//    
-//}
+public protocol MQErrorEnum: ErrorType {
+    
+    func errorObject() -> MQError
+    
+}

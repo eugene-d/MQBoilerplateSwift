@@ -16,9 +16,7 @@ public protocol MQRetryViewDelegate {
 
 public class MQRetryView: UIView {
     
-    // FIXME: Swift 2.0
-//    public var error: ErrorType?
-    public var error: NSError?
+    public var error: ErrorType?
     public var delegate: MQRetryViewDelegate?
     
 }

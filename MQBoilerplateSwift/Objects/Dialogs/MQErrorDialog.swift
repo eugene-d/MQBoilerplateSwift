@@ -10,12 +10,14 @@ import UIKit
 
 public final class MQErrorDialog {
     
-    public class func showError(error: NSError, inPresenter presenter: UIViewController) {
+    public class func showError(error: ErrorType, inPresenter presenter: UIViewController) {
         var message: String
-        if let customError = error as? MQError {
-            message = customError.localizedDescription
-        } else {
+        if let error = error as? MQErrorEnum {
+            message = error.errorObject().localizedDescription
+        } else if let error = error as? MQError {
             message = error.localizedDescription
+        } else {
+            message = (error as NSError).localizedDescription
         }
         
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
