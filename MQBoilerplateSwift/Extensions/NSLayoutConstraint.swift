@@ -13,10 +13,10 @@ public extension NSLayoutConstraint {
     public class func constraintsWithVisualFormatArray(array: [String], metrics: [String: AnyObject]?, views: [String: AnyObject]) -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
         for rule in array {
-            constraints.extend(self.constraintsWithVisualFormat(rule,
+            constraints.appendContentsOf(self.constraintsWithVisualFormat(rule,
                 options: .DirectionLeadingToTrailing,
                 metrics: metrics,
-                views: views) as! [NSLayoutConstraint])
+                views: views) )
         }
         
         return constraints

@@ -36,7 +36,7 @@ public class MQDefaultNoResultsView: MQNoResultsView {
         self.backgroundColor = UIColor.whiteColor()
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -45,7 +45,7 @@ public class MQDefaultNoResultsView: MQNoResultsView {
         // with a width 2/3 that of its superview.
         // FIXME: Swift 2.0
 //        self.noResultsLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.noResultsLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.noResultsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.addConstraints([
             NSLayoutConstraint(item: self.noResultsLabel,

@@ -91,7 +91,13 @@ public class MQURLOperation: MQAsynchronousOperation {
             // FIXME: Swift 2.0
             if let parameters = self.parameters {
                 var error: NSError?
-                let HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: .allZeros, error: &error)
+                let HTTPBody: NSData?
+                do {
+                    HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+                } catch let error1 as NSError {
+                    error = error1
+                    HTTPBody = nil
+                }
                 if let error = error {
                     fatalError("Cannot encode JSON parameters: \(error)")
                 } else {

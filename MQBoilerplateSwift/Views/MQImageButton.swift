@@ -17,7 +17,7 @@ public class MQImageButton: MQButton {
         self.customView.addSubviewAndFill(self.imageView)
     }
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

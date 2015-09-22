@@ -28,7 +28,7 @@ public class MQError: NSError {
 
     // FIXME: Swift 2.0
 //    required public init?(coder aDecoder: NSCoder) {
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
