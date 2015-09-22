@@ -42,8 +42,6 @@ public class MQDefaultStartingView: MQStartingView {
     func addAutolayout() {
         // The startingTextLabel is centered vertically,
         // with a width 2/3 that of its superview.
-        // FIXME: Swift 2.0
-//        self.startingTextLabel.translatesAutoresizingMaskIntoConstraints = false
         self.startingTextLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.addConstraints([

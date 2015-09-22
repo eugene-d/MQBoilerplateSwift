@@ -25,9 +25,7 @@ public class MQError: NSError {
         let domain = NSBundle.mainBundle().bundleIdentifier ?? ""
         super.init(domain: domain, code: kMQGenericErrorCode, userInfo: nil)
     }
-
-    // FIXME: Swift 2.0
-//    required public init?(coder aDecoder: NSCoder) {
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

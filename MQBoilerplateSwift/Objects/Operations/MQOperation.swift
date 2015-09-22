@@ -46,12 +46,11 @@ public class MQOperation: NSOperation {
     Defines the operation and at which points the callback blocks are executed.
     */
     public override func main() {
-        // FIXME: Swift 2.0
-//        defer {
-//            if self.cancelled == false {
-//                self.runFinishBlock()
-//            }
-//        }
+        defer {
+            if self.cancelled == false {
+                self.runFinishBlock()
+            }
+        }
         
         if self.cancelled {
             return
@@ -86,10 +85,6 @@ public class MQOperation: NSOperation {
         } else {
             self.runSuccessBlockWithResult(nil)
         }
-        
-        if self.cancelled == false {
-            self.runFinishBlock()
-        }
     }
     
     /**
@@ -108,7 +103,6 @@ public class MQOperation: NSOperation {
     Performs the `startBlock` in the main UI thread and waits until it is finished.
     */
     public func runStartBlock() {
-        // FIXME: Swift 2.0
         if let startBlock = self.startBlock {
             if self.cancelled {
                 return
@@ -122,7 +116,6 @@ public class MQOperation: NSOperation {
     Performs the `returnBlock` in the main UI thread and waits until it is finished.
     */
     public func runReturnBlock() {
-        // FIXME: Swift 2.0
         if let returnBlock = self.returnBlock {
             if self.cancelled {
                 return
@@ -136,19 +129,6 @@ public class MQOperation: NSOperation {
     Performs the `successBlock` in the main UI thread and waits until it is finished.
     */
     public func runSuccessBlockWithResult(result: Any?) {
-        // FIXME: Swift 2.0
-//        guard let successBlock = self.successBlock else {
-//            return
-//        }
-//        
-//        if self.cancelled {
-//            return
-//        }
-//        
-//        MQDispatcher.syncRunInMainThread {
-//            successBlock(result)
-//        }
-        
         if let successBlock = self.successBlock {
             if self.cancelled {
                 return
@@ -166,19 +146,6 @@ public class MQOperation: NSOperation {
     // FIXME: Swift 2.0
 //    public func runFailureBlockWithError(error: ErrorType) {
     public func runFailureBlockWithError(error: NSError) {
-        // FIXME: Swift 2.0
-//        guard let failureBlock = self.failureBlock else {
-//            return
-//        }
-//        
-//        if self.cancelled {
-//            return
-//        }
-//        
-//        MQDispatcher.syncRunInMainThread {
-//            failureBlock(error)
-//        }
-        
         if let failureBlock = self.failureBlock {
             if self.cancelled {
                 return
@@ -193,17 +160,6 @@ public class MQOperation: NSOperation {
     Performs the `finishBlock` in the main UI thread and waits until it is finished.
     */
     public func runFinishBlock() {
-        // FIXME: Swift 2.0
-//        guard let finishBlock = self.finishBlock else {
-//            return
-//        }
-//        
-//        if self.cancelled {
-//            return
-//        }
-//        
-//        MQDispatcher.syncRunInMainThread(finishBlock)
-        
         if let finishBlock = self.finishBlock {
             if self.cancelled {
                 return

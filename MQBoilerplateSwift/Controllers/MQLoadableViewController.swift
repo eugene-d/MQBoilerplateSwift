@@ -139,34 +139,20 @@ public class MQLoadableViewController: UIViewController {
     `loadingView` and the `failureBlock` to show the `retryView`, and runs the operation.
     */
     public func runOperation() {
-        // FIXME: Swift 2.0
-//        guard let operation = self.createOperation() else {
-//            return
-//        }
-//        
-//        operation.startBlock = {[unowned self] in
-//            self.showView(.Loading)
-//        }
-//        
-//        operation.failureBlock = {[unowned self] error in
-//            self.retryView.error = error
-//            self.showView(.Retry)
-//        }
-//        
-//        self.operationQueue.addOperation(operation)
-        
-        if let operation = self.createOperation() {
-            operation.startBlock = {[unowned self] in
-                self.showView(.Loading)
-            }
-            
-            operation.failureBlock = {[unowned self] error in
-                self.retryView.error = error
-                self.showView(.Retry)
-            }
-            
-            self.operationQueue.addOperation(operation)
+        guard let operation = self.createOperation() else {
+            return
         }
+        
+        operation.startBlock = {[unowned self] in
+            self.showView(.Loading)
+        }
+        
+        operation.failureBlock = {[unowned self] error in
+            self.retryView.error = error
+            self.showView(.Retry)
+        }
+        
+        self.operationQueue.addOperation(operation)
     }
     
     public override func viewDidLoad() {

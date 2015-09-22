@@ -39,8 +39,6 @@ public class MQDefaultRetryView: MQRetryView {
     
     public init() {
         self.errorLabel = UILabel()
-        // FIXME: Swift 2.0
-//        self.retryButton = UIButton(type: .System)
         self.retryButton = UIButton(type: .System)
         self.containerView = UIView()
         

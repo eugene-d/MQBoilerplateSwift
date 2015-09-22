@@ -32,8 +32,7 @@ public protocol MQArchivableValueType {
     
 }
 
-// FIXME: Swift 2.0
-/*public extension MQArchivableValueType {
+public extension MQArchivableValueType {
     
     init(archiveData data: NSData) {
         guard let dictionary = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String : AnyObject] else {
@@ -42,14 +41,4 @@ public protocol MQArchivableValueType {
         self.init(archiveDictionary: dictionary)
     }
     
-}*/
-
-/*
-init(archiveData data: NSData) {
-if let dictionary = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [String : AnyObject] {
-self.init(archiveDictionary: dictionary)
-} else {
-fatalError("Cannot convert to NSData.")
 }
-}
-*/

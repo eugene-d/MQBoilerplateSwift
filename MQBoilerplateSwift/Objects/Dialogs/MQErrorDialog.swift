@@ -10,24 +10,6 @@ import UIKit
 
 public final class MQErrorDialog {
     
-    // FIXME: Swift 2.0
-    /*public class func showError(error: ErrorType, inPresenter presenter: UIViewController) {
-        var message: String
-        if let customError = error as? MQError {
-            message = customError.localizedDescription
-        } else {
-            message = (error as NSError).localizedDescription
-        }
-        
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
-        let okButtonAction = UIAlertAction(title: "OK", style: .Default) {_ in
-            alertController.dismissViewControllerAnimated(true, completion: nil)
-        }
-        alertController.addAction(okButtonAction)
-        
-        presenter.presentViewController(alertController, animated: true, completion: nil)
-    }*/
-    
     public class func showError(error: NSError, inPresenter presenter: UIViewController) {
         var message: String
         if let customError = error as? MQError {
