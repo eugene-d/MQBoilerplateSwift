@@ -51,6 +51,24 @@ public class MQAsynchronousOperation: MQOperation {
         self.didChangeValueForKey("isExecuting")
     }
     
+    public override func main() {
+        defer {
+            if self.cancelled == false {
+            self.runFinishBlock()
+            }
+            self.closeOperation()
+        }
+        
+        self.runStartBlock()
+        self.runReturnBlock()
+        do {
+            let result = try self.buildResult(nil)
+            self.runSuccessBlockWithResult(result)
+        } catch {
+            self.runFailureBlockWithError(error)
+        }
+    }
+    
     public func closeOperation() {
         self.willChangeValueForKey("isExecuting")
         self.willChangeValueForKey("isFinished")
