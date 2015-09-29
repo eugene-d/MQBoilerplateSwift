@@ -11,15 +11,7 @@ import UIKit
 public final class MQErrorDialog {
     
     public class func showError(error: ErrorType, inPresenter presenter: UIViewController) {
-        var message: String
-        if let error = error as? MQErrorEnum {
-            message = error.errorObject().localizedDescription
-        } else if let error = error as? MQError {
-            message = error.localizedDescription
-        } else {
-            message = (error as NSError).localizedDescription
-        }
-        
+        let message = error.toObject().localizedDescription
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
         let okButtonAction = UIAlertAction(title: "OK", style: .Default) {_ in
             alertController.dismissViewControllerAnimated(true, completion: nil)

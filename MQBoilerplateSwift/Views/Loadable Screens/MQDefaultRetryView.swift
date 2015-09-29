@@ -19,10 +19,8 @@ public class MQDefaultRetryView: MQRetryView {
     
     public override var error: ErrorType? {
         didSet {
-            if let error = self.error as? MQErrorEnum {
-                self.errorLabel.text = error.errorObject().localizedDescription
-            } else if let error = self.error as? NSError {
-                self.errorLabel.text = error.localizedDescription
+            if let error = self.error {
+                self.errorLabel.text = error.toObject().localizedDescription
             } else {
                 self.errorLabel.text = nil
             }
