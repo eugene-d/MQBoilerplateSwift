@@ -74,16 +74,6 @@ public class MQOperation: NSOperation {
         }
     }
     
-//    /**
-//    Override point for converting raw results (usually a JSON object) into your own custom object or value type.
-//    The returned value is a tuple. If `error` is non-nil, the build process failed (e.g. invalid JSON) and `result`
-//    **must** be nil. If `error` is nil, then the build process succeeded and `result` may or may not have a value
-//    depending on whether it matters or not. For simplicity, you can simply return `nil` if you wish to return `(nil, nil).
-//    */
-//    public func buildResult(rawResult: Any?) -> (result: Any?, error: NSError?)? {
-//        return (nil, nil)
-//    }
-    
     /**
     Override point for converting the raw result (usually a JSON object) into your own custom object or value type.
     The function throws an error if the `rawResult` can't be meaningfully converted into a custom type.
