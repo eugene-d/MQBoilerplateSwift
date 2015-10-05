@@ -12,15 +12,6 @@ public class MQFieldTextView: UITextView {
     
     public weak var field: MQField? {
         didSet {
-            // FIXME: Swift 2.0
-//            guard let field = self.field,
-//                let value = field.value as? String else {
-//                    self.text = nil
-//                    return
-//            }
-//            
-//            self.text = value
-            
             if let field = self.field,
                 let value = field.value as? String {
                     self.text = value

@@ -23,16 +23,14 @@ public class MQFieldTextField : UITextField {
         }
     }
     
-    // FIXME: Swift 2.0
-//    public required init?(coder aDecoder: NSCoder) {
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.clearButtonMode = .WhileEditing
         self.keyboardType = .Default
     }
     
     func applyTextInputTraits() {
-        if let field = self.field {
+        if let _ = self.field {
             self.keyboardType = keyboardType
             self.autocapitalizationType = autocapitalizationType
         }

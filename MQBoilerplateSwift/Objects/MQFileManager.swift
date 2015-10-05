@@ -113,7 +113,11 @@ public class MQFileManager {
     public class func deleteValueAtFile(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, error: NSErrorPointer) {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
-                NSFileManager.defaultManager().removeItemAtURL(fileURL, error: error)
+                do {
+                    try NSFileManager.defaultManager().removeItemAtURL(fileURL)
+                } catch let error1 as NSError {
+                    error.memory = error1
+                }
             }
         }
     }

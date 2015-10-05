@@ -17,19 +17,12 @@ public class MQDefaultRetryView: MQRetryView {
     var retryButton: UIButton
     var containerView: UIView
     
-    // FIXME: Swift 2.0
-//    public override var error: ErrorType? {
-//        didSet {
-//            if let error = self.error as? NSError {
-//                self.errorLabel.text = error.localizedDescription
-//                self.setNeedsLayout()
-//            }
-//        }
-//    }
-    public override var error: NSError? {
+    public override var error: ErrorType? {
         didSet {
-            if let error = self.error {
+            if let error = self.error as? MQError {
                 self.errorLabel.text = error.localizedDescription
+            } else if let error = self.error {
+                self.errorLabel.text = error.toObject().localizedDescription
             } else {
                 self.errorLabel.text = nil
             }
@@ -39,9 +32,7 @@ public class MQDefaultRetryView: MQRetryView {
     
     public init() {
         self.errorLabel = UILabel()
-        // FIXME: Swift 2.0
-//        self.retryButton = UIButton(type: .System)
-        self.retryButton = UIButton.buttonWithType(.System) as! UIButton
+        self.retryButton = UIButton(type: .System)
         self.containerView = UIView()
         
         super.init(frame: CGRectZero)
@@ -51,7 +42,7 @@ public class MQDefaultRetryView: MQRetryView {
         self.addAutolayout()
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

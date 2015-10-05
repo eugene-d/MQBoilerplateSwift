@@ -35,16 +35,14 @@ public class MQDefaultStartingView: MQStartingView {
         self.addAutolayout()
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func addAutolayout() {
         // The startingTextLabel is centered vertically,
         // with a width 2/3 that of its superview.
-        // FIXME: Swift 2.0
-//        self.startingTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.startingTextLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.startingTextLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.addConstraints([
             NSLayoutConstraint(item: self.startingTextLabel,

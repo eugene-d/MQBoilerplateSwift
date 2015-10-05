@@ -28,9 +28,7 @@ public class MQOperation: NSOperation {
     /**
     Executed when the operation produces an error, e.g., show an error dialog.
     */
-    // FIXME: Swift 2.0
-//    public var failureBlock: ((ErrorType) -> Void)?
-    public var failureBlock: ((NSError) -> Void)?
+    public var failureBlock: ((ErrorType) -> Void)?
     
     /**
     Executed when the operation produces a result, e.g., showing a `UITableView` of results.
@@ -46,12 +44,11 @@ public class MQOperation: NSOperation {
     Defines the operation and at which points the callback blocks are executed.
     */
     public override func main() {
-        // FIXME: Swift 2.0
-//        defer {
-//            if self.cancelled == false {
-//                self.runFinishBlock()
-//            }
-//        }
+        defer {
+            if self.cancelled == false {
+                self.runFinishBlock()
+            }
+        }
         
         if self.cancelled {
             return
@@ -69,46 +66,27 @@ public class MQOperation: NSOperation {
             return
         }
         
-        // FIXME: Swift 2.0
-//        do {
-//            let result = try buildResult(nil)
-//            self.runSuccessBlockWithResult(result)
-//        } catch {
-//            self.runFailureBlockWithError(error)
-//        }
-        
-        if let (result, error) = self.buildResult(nil) {
-            if let error = error {
-                self.runFailureBlockWithError(error)
-            } else {
-                self.runSuccessBlockWithResult(result)
-            }
-        } else {
-            self.runSuccessBlockWithResult(nil)
-        }
-        
-        if self.cancelled == false {
-            self.runFinishBlock()
+        do {
+            let result = try buildResult(nil)
+            self.runSuccessBlockWithResult(result)
+        } catch {
+            self.runFailureBlockWithError(error)
         }
     }
     
     /**
-    Override point for converting raw results (usually a JSON object) into your own custom object or value type.
-    The returned value is a tuple. If `error` is non-nil, the build process failed (e.g. invalid JSON) and `result`
-    **must** be nil. If `error` is nil, then the build process succeeded and `result` may or may not have a value
-    depending on whether it matters or not. For simplicity, you can simply return `nil` if you wish to return `(nil, nil).
+    Override point for converting the raw result (usually a JSON object) into your own custom object or value type.
+    The function throws an error if the `rawResult` can't be meaningfully converted into a custom type.
+    Otherwise, the function denotes success by returning with or without a custom value.
     */
-    // FIXME: Swift 2.0: Use the signature
-    // public func buildResult(rawResult: Any?) throws -> Any?
-    public func buildResult(rawResult: Any?) -> (result: Any?, error: NSError?)? {
-        return (nil, nil)
+    public func buildResult(rawResult: Any?) throws -> Any? {
+        return nil
     }
     
     /**
     Performs the `startBlock` in the main UI thread and waits until it is finished.
     */
     public func runStartBlock() {
-        // FIXME: Swift 2.0
         if let startBlock = self.startBlock {
             if self.cancelled {
                 return
@@ -122,7 +100,6 @@ public class MQOperation: NSOperation {
     Performs the `returnBlock` in the main UI thread and waits until it is finished.
     */
     public func runReturnBlock() {
-        // FIXME: Swift 2.0
         if let returnBlock = self.returnBlock {
             if self.cancelled {
                 return
@@ -136,19 +113,6 @@ public class MQOperation: NSOperation {
     Performs the `successBlock` in the main UI thread and waits until it is finished.
     */
     public func runSuccessBlockWithResult(result: Any?) {
-        // FIXME: Swift 2.0
-//        guard let successBlock = self.successBlock else {
-//            return
-//        }
-//        
-//        if self.cancelled {
-//            return
-//        }
-//        
-//        MQDispatcher.syncRunInMainThread {
-//            successBlock(result)
-//        }
-        
         if let successBlock = self.successBlock {
             if self.cancelled {
                 return
@@ -163,22 +127,7 @@ public class MQOperation: NSOperation {
     /**
     Performs the `failureBlock` in the main UI thread and waits until it is finished.
     */
-    // FIXME: Swift 2.0
-//    public func runFailureBlockWithError(error: ErrorType) {
-    public func runFailureBlockWithError(error: NSError) {
-        // FIXME: Swift 2.0
-//        guard let failureBlock = self.failureBlock else {
-//            return
-//        }
-//        
-//        if self.cancelled {
-//            return
-//        }
-//        
-//        MQDispatcher.syncRunInMainThread {
-//            failureBlock(error)
-//        }
-        
+    public func runFailureBlockWithError(error: ErrorType) {
         if let failureBlock = self.failureBlock {
             if self.cancelled {
                 return
@@ -193,17 +142,6 @@ public class MQOperation: NSOperation {
     Performs the `finishBlock` in the main UI thread and waits until it is finished.
     */
     public func runFinishBlock() {
-        // FIXME: Swift 2.0
-//        guard let finishBlock = self.finishBlock else {
-//            return
-//        }
-//        
-//        if self.cancelled {
-//            return
-//        }
-//        
-//        MQDispatcher.syncRunInMainThread(finishBlock)
-        
         if let finishBlock = self.finishBlock {
             if self.cancelled {
                 return

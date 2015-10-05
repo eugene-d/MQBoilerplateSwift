@@ -22,7 +22,7 @@ public class MQLoadingOverlay : UIView {
         self.addAutolayout()
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -31,9 +31,7 @@ public class MQLoadingOverlay : UIView {
         
         self.translucentView.backgroundColor = UIColor.blackColor()
         self.translucentView.alpha = 0.7
-        // FIXME: Swift 2.0
-//        self.translucentView.translatesAutoresizingMaskIntoConstraints = false
-        self.translucentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translucentView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubviewAndFill(self.translucentView)
         
         self.activityIndicator.startAnimating()
@@ -41,9 +39,7 @@ public class MQLoadingOverlay : UIView {
     }
     
     func addAutolayout() {
-        // FIXME: Swift 2.0
-//        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        self.activityIndicator.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         // Center the activity indicator.
         self.addConstraints([

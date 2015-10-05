@@ -18,7 +18,7 @@ public class MQLabelButton: MQButton {
         self.customView.addSubviewAndFill(self.label)
     }
 
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
