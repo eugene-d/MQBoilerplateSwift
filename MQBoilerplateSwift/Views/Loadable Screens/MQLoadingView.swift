@@ -10,9 +10,9 @@ import UIKit
 
 public class MQLoadingView: UIView {
 
-    var spinnerView: UIActivityIndicatorView
-    var loadingLabel: UILabel
-    var containerView: UIView
+    public var spinnerView: UIActivityIndicatorView
+    public var loadingLabel: UILabel
+    public var containerView: UIView
     
     public var text: String? {
         didSet {
@@ -35,6 +35,7 @@ public class MQLoadingView: UIView {
         self.loadingLabel.textAlignment = .Center
         
         self.containerView = UIView()
+        self.containerView.backgroundColor = UIColor.clearColor()
         
         super.init(frame: CGRectZero)
         
