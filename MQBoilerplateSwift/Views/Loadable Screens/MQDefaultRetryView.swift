@@ -17,12 +17,10 @@ public class MQDefaultRetryView: MQRetryView {
     var retryButton: UIButton
     var containerView: UIView
     
-    public override var error: ErrorType? {
+    public override var error: NSError? {
         didSet {
-            if let error = self.error as? MQError {
+            if let error = self.error {
                 self.errorLabel.text = error.localizedDescription
-            } else if let error = self.error {
-                self.errorLabel.text = error.toObject().localizedDescription
             } else {
                 self.errorLabel.text = nil
             }

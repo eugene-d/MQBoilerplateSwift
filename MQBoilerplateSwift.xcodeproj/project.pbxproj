@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2610B2B21B52E73C00DAD825 /* NSDate.swift */; };
-		2643A13A1BBACF3700EC6484 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643A1391BBACF3700EC6484 /* ErrorType.swift */; settings = {ASSET_TAGS = (); }; };
 		265050211B62D2DC00100EBF /* MQLoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265050201B62D2DC00100EBF /* MQLoadableViewController.swift */; };
 		2650C9891B5234900003C245 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2650C9881B5234900003C245 /* MKMapView.swift */; };
 		2664407A1B56CB1C00186C4B /* MQFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2664406E1B56CB1C00186C4B /* MQFieldCell.swift */; };
@@ -26,6 +25,7 @@
 		2666595D1B257F87003F24F8 /* MQButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666595C1B257F87003F24F8 /* MQButton.swift */; };
 		2666595F1B258080003F24F8 /* MQLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666595E1B258080003F24F8 /* MQLabelButton.swift */; };
 		266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266659601B2581A1003F24F8 /* MQImageButton.swift */; };
+		267207561BE5C1DD0041E17D /* MQErrorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267207551BE5C1DD0041E17D /* MQErrorBuilder.swift */; };
 		267B856B1B185DCA00AAF8E8 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267B856A1B185DCA00AAF8E8 /* Double.swift */; };
 		267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267D5F991AE4CFEC002A2C8D /* UIViewController.swift */; };
 		2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8A1AE1B6790039CBB1 /* String.swift */; };
@@ -70,7 +70,6 @@
 
 /* Begin PBXFileReference section */
 		2610B2B21B52E73C00DAD825 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
-		2643A1391BBACF3700EC6484 /* ErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		265050201B62D2DC00100EBF /* MQLoadableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQLoadableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2650C9881B5234900003C245 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		265A067F1ADE555400826150 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		2666595C1B257F87003F24F8 /* MQButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQButton.swift; sourceTree = "<group>"; };
 		2666595E1B258080003F24F8 /* MQLabelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQLabelButton.swift; sourceTree = "<group>"; };
 		266659601B2581A1003F24F8 /* MQImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQImageButton.swift; sourceTree = "<group>"; };
+		267207551BE5C1DD0041E17D /* MQErrorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorBuilder.swift; sourceTree = "<group>"; };
 		267B856A1B185DCA00AAF8E8 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		267D5F991AE4CFEC002A2C8D /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2682CA8A1AE1B6790039CBB1 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -220,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				26CBAEF81B6F765B00A7BB5D /* MQError.swift */,
+				267207551BE5C1DD0041E17D /* MQErrorBuilder.swift */,
 			);
 			path = "Error Handling";
 			sourceTree = "<group>";
@@ -308,7 +309,6 @@
 				267B856A1B185DCA00AAF8E8 /* Double.swift */,
 				2650C9881B5234900003C245 /* MKMapView.swift */,
 				2610B2B21B52E73C00DAD825 /* NSDate.swift */,
-				2643A1391BBACF3700EC6484 /* ErrorType.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -461,7 +461,6 @@
 				26F531571B0E53F800D4AF08 /* Functions.swift in Sources */,
 				2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */,
 				2664407F1B56CB1C00186C4B /* MQDefaultStartingView.swift in Sources */,
-				2643A13A1BBACF3700EC6484 /* ErrorType.swift in Sources */,
 				266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */,
 				2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */,
 				26CBAF161B6F765B00A7BB5D /* MQChainedOperation.swift in Sources */,
@@ -471,6 +470,7 @@
 				266440841B56CB1C00186C4B /* MQStartingView.swift in Sources */,
 				26CBAF0B1B6F765B00A7BB5D /* MQError.swift in Sources */,
 				2664407C1B56CB1C00186C4B /* MQFieldTextField.swift in Sources */,
+				267207561BE5C1DD0041E17D /* MQErrorBuilder.swift in Sources */,
 				26CBAF081B6F765B00A7BB5D /* MQAlertDialog.swift in Sources */,
 				26CBAF0E1B6F765B00A7BB5D /* MQField.swift in Sources */,
 				26CBAF121B6F765B00A7BB5D /* MQDispatcher.swift in Sources */,

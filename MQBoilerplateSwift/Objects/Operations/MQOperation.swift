@@ -28,7 +28,7 @@ public class MQOperation: NSOperation {
     /**
     Executed when the operation produces an error, e.g., show an error dialog.
     */
-    public var failureBlock: ((ErrorType) -> Void)?
+    public var failureBlock: ((NSError) -> Void)?
     
     /**
     Executed when the operation produces a result, e.g., showing a `UITableView` of results.
@@ -39,6 +39,13 @@ public class MQOperation: NSOperation {
     Executed before the operation closes regardless of whether it succeeds or fails, e.g., closing I/O streams.
     */
     public var finishBlock: (() -> Void)?
+    
+    /**
+     The object that builds an `NSError` object from `ErrorType`s thrown in `do` statements.
+     */
+    public var errorBuilder: MQErrorBuilder {
+        fatalError("Override this property and supply your custom error builder.")
+    }
     
     /**
     Defines the operation and at which points the callback blocks are executed.
@@ -127,7 +134,7 @@ public class MQOperation: NSOperation {
     /**
     Performs the `failureBlock` in the main UI thread and waits until it is finished.
     */
-    public func runFailureBlockWithError(error: ErrorType) {
+    public func runFailureBlockWithError(error: NSError) {
         if let failureBlock = self.failureBlock {
             if self.cancelled {
                 return
@@ -136,6 +143,15 @@ public class MQOperation: NSOperation {
                 failureBlock(error)
             }
         }
+    }
+    
+    /**
+     Automatically converts `ErrorType` objects to an `NSError` object based on `self.errorBuilder`
+     and calls `self.runFailurBlockWithError` with the generated error object.
+     */
+    public func runFailureBlockWithError(error: ErrorType) {
+        let errorObject = self.errorBuilder.errorObjectForError(error)
+        self.runFailureBlockWithError(errorObject)
     }
     
     /**

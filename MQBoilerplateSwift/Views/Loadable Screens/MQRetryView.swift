@@ -16,7 +16,7 @@ public protocol MQRetryViewDelegate {
 
 public class MQRetryView: UIView {
     
-    public var error: ErrorType?
+    public var error: NSError?
     public var delegate: MQRetryViewDelegate?
     
 }
