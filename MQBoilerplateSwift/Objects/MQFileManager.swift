@@ -8,6 +8,23 @@
 
 import Foundation
 
+public enum MQFileManagerError: MQErrorType {
+    
+    case CantArchiveValue(Any)
+    case CantBuildPathToFile(String, inFolder: NSSearchPathDirectory)
+    
+    public func object() -> MQError {
+        switch self {
+        case .CantArchiveValue(let value):
+            return MQError("Archiving the value \"\(value)\" failed.")
+            
+        case .CantBuildPathToFile(let file, inFolder: let folder):
+            return MQError("Can't build a path to file \(file) in \(folder)")
+        }
+    }
+    
+}
+
 public class MQFileManager {
     
     /**
@@ -60,35 +77,26 @@ public class MQFileManager {
         return NSFileManager.defaultManager().fileExistsAtPath(fileURL.path!)
     }
     
-    public class func writeValue<T: MQArchivableValueType>(value: T, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, error: NSErrorPointer) {
-        if let fileURL = self.URLForFileName(fileName, inFolder: folder),
-            let path = fileURL.path {
-                let dictionary = value.archiveDictionary()
-                if NSKeyedArchiver.archiveRootObject(dictionary, toFile: path) == false {
-                    if error != nil {
-                        error.memory = MQError("Archiving value \(value) failed.")
-                    }
-                    return
-                }
-        } else {
-            if error != nil {
-                error.memory = MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
-            }
-            return
+    public class func writeValue<T: MQArchivableValueType>(value: T, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
+        guard let fileURL = self.URLForFileName(fileName, inFolder: folder),
+            let path = fileURL.path else {
+                throw MQFileManagerError.CantBuildPathToFile(fileName, inFolder: folder)
+        }
+        
+        let dictionary = value.archiveDictionary()
+        if NSKeyedArchiver.archiveRootObject(dictionary, toFile: path) == false {
+            throw MQFileManagerError.CantArchiveValue(value)
         }
     }
     
-    public class func writeValue(value: AnyObject, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, error: NSErrorPointer) {
-        if let fileURL = self.URLForFileName(fileName, inFolder: folder),
-            let path = fileURL.path {
-                if NSKeyedArchiver.archiveRootObject(value, toFile: path) == false {
-                    if error != nil {
-                        error.memory = MQError("Cannot write value \(value) to file.")
-                    }
-                    return
-                }
-        } else {
-            error.memory = MQError("Cannot build a file URL to file name '\(fileName)' in '\(folder)'.")
+    public class func writeValue(value: AnyObject, toFile fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
+        guard let fileURL = self.URLForFileName(fileName, inFolder: folder),
+            let path = fileURL.path else {
+                throw MQFileManagerError.CantBuildPathToFile(fileName, inFolder: folder)
+        }
+        
+        if NSKeyedArchiver.archiveRootObject(value, toFile: path) == false {
+            throw MQFileManagerError.CantArchiveValue(value)
         }
     }
     
@@ -110,15 +118,13 @@ public class MQFileManager {
         return nil
     }
     
-    public class func deleteValueAtFile(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory, error: NSErrorPointer) {
-        if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
-            if self.findsFileInURL(fileURL) {
-                do {
-                    try NSFileManager.defaultManager().removeItemAtURL(fileURL)
-                } catch let error1 as NSError {
-                    error.memory = error1
-                }
-            }
+    public class func deleteValueAtFile(fileName: String, inFolder folder: NSSearchPathDirectory = .DocumentDirectory) throws {
+        guard let fileURL = self.URLForFileName(fileName, inFolder: folder) else {
+            return
+        }
+        
+        if self.findsFileInURL(fileURL) {
+            try NSFileManager.defaultManager().removeItemAtURL(fileURL)
         }
     }
     

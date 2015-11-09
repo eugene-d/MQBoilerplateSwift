@@ -40,12 +40,12 @@ public class MQOperation: NSOperation {
     */
     public var finishBlock: (() -> Void)?
     
-    /**
-     The object that builds an `NSError` object from `ErrorType`s thrown in `do` statements.
-     */
-    public var errorBuilder: MQErrorBuilder {
-        fatalError("Override this property and supply your custom error builder.")
-    }
+//    /**
+//     The object that builds an `NSError` object from `ErrorType`s thrown in `do` statements.
+//     */
+//    public var errorBuilder: MQErrorBuilder {
+//        fatalError("Override this property and supply your custom error builder.")
+//    }
     
     /**
     Defines the operation and at which points the callback blocks are executed.
@@ -150,8 +150,12 @@ public class MQOperation: NSOperation {
      and calls `self.runFailurBlockWithError` with the generated error object.
      */
     public func runFailureBlockWithError(error: ErrorType) {
-        let errorObject = self.errorBuilder.errorObjectForError(error)
-        self.runFailureBlockWithError(errorObject)
+        guard let theError = error as? MQErrorType else {
+            self.runFailureBlockWithError(error as NSError)
+            return
+        }
+        
+        self.runFailureBlockWithError(theError.object())
     }
     
     /**

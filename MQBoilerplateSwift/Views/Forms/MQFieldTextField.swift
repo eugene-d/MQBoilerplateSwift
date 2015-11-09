@@ -30,9 +30,10 @@ public class MQFieldTextField : UITextField {
     }
     
     func applyTextInputTraits() {
-        if let _ = self.field {
-            self.keyboardType = keyboardType
-            self.autocapitalizationType = autocapitalizationType
+        if let field = self.field {
+            self.keyboardType = field.keyboardType
+            self.autocapitalizationType = field.autocapitalizationType
+            self.secureTextEntry = field.secureTextEntry
         }
     }
     

@@ -56,12 +56,4 @@ public class MQField {
             self.secureTextEntry = secureTextEntry
     }
     
-//    public convenience init(name: String) {
-//        self.init(name: name, label: name, value: nil)
-//    }
-//    
-//    public convenience init(name: String, value: Any?) {
-//        self.init(name: name, label: name, value: value)
-//    }
-    
 }
