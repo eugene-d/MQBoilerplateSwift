@@ -30,6 +30,7 @@
 		267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267D5F991AE4CFEC002A2C8D /* UIViewController.swift */; };
 		2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8A1AE1B6790039CBB1 /* String.swift */; };
 		2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */; };
+		268FCB461BF090EB00DD5727 /* MQErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268FCB451BF090EB00DD5727 /* MQErrorType.swift */; };
 		269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */; };
 		26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A07BD61B182607006250CF /* MQAspectFitLabel.swift */; };
 		26B416691AF7471700CF80B0 /* MQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B416681AF7471700CF80B0 /* MQTableViewCell.swift */; };
@@ -94,6 +95,7 @@
 		2682CA8A1AE1B6790039CBB1 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCharacterSet.swift; sourceTree = "<group>"; };
 		2682CAED1AE36D2C0039CBB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		268FCB451BF090EB00DD5727 /* MQErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorType.swift; sourceTree = "<group>"; };
 		269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		26A07BD61B182607006250CF /* MQAspectFitLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAspectFitLabel.swift; sourceTree = "<group>"; };
 		26B416681AF7471700CF80B0 /* MQTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTableViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		265A067D1ADE555400826150 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				26CBAF031B6F765B00A7BB5D /* Operations */,
 				26CBAEF31B6F765B00A7BB5D /* Dialogs */,
 				26CBAEF71B6F765B00A7BB5D /* Error Handling */,
 				26CBAEFA1B6F765B00A7BB5D /* Form Fields */,
@@ -153,7 +156,6 @@
 				26CBAF001B6F765B00A7BB5D /* MQDispatcher.swift */,
 				26CBAF011B6F765B00A7BB5D /* MQFileManager.swift */,
 				26CBAF021B6F765B00A7BB5D /* MQNSNotificationObject.swift */,
-				26CBAF031B6F765B00A7BB5D /* Operations */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -221,6 +223,7 @@
 			children = (
 				26CBAEF81B6F765B00A7BB5D /* MQError.swift */,
 				267207551BE5C1DD0041E17D /* MQErrorBuilder.swift */,
+				268FCB451BF090EB00DD5727 /* MQErrorType.swift */,
 			);
 			path = "Error Handling";
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				266440861B56CB5400186C4B /* MQFieldTextView.swift in Sources */,
 				26CBAF111B6F765B00A7BB5D /* MQArchivableValueType.swift in Sources */,
 				26CBAF131B6F765B00A7BB5D /* MQFileManager.swift in Sources */,
+				268FCB461BF090EB00DD5727 /* MQErrorType.swift in Sources */,
 				26F28AFB1ADF90D10070A08B /* UIColor.swift in Sources */,
 				26CBAF101B6F765B00A7BB5D /* MQFieldTextFieldDelegate.swift in Sources */,
 				2664407D1B56CB1C00186C4B /* MQDefaultNoResultsView.swift in Sources */,
