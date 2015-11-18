@@ -13,9 +13,9 @@ A default implementation of an `MQRetryView`.
 */
 public class MQDefaultRetryView: MQRetryView {
     
-    var errorLabel: UILabel
-    var retryButton: UIButton
-    var containerView: UIView
+    public var errorLabel: UILabel
+    public var retryButton: UIButton
+    public var containerView: UIView
     
     public override var error: NSError? {
         didSet {
