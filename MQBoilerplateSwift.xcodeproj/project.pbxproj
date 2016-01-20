@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2610B2B21B52E73C00DAD825 /* NSDate.swift */; };
-		264131881C4F44FD0014A7EA /* MQFieldTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264131871C4F44FD0014A7EA /* MQFieldTextFieldCell.xib */; };
 		2641318A1C4F456D0014A7EA /* MQFieldTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264131891C4F456D0014A7EA /* MQFieldTextFieldCell.swift */; };
 		264131901C4F57000014A7EA /* MQFieldSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641318F1C4F57000014A7EA /* MQFieldSelectionCell.swift */; };
 		265050211B62D2DC00100EBF /* MQLoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265050201B62D2DC00100EBF /* MQLoadableViewController.swift */; };
@@ -74,7 +73,6 @@
 
 /* Begin PBXFileReference section */
 		2610B2B21B52E73C00DAD825 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
-		264131871C4F44FD0014A7EA /* MQFieldTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MQFieldTextFieldCell.xib; sourceTree = "<group>"; };
 		264131891C4F456D0014A7EA /* MQFieldTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldTextFieldCell.swift; sourceTree = "<group>"; };
 		2641318F1C4F57000014A7EA /* MQFieldSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldSelectionCell.swift; sourceTree = "<group>"; };
 		265050201B62D2DC00100EBF /* MQLoadableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQLoadableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -181,7 +179,6 @@
 				2664406F1B56CB1C00186C4B /* MQFieldPickerView.swift */,
 				266440701B56CB1C00186C4B /* MQFieldTextField.swift */,
 				266440851B56CB5400186C4B /* MQFieldTextView.swift */,
-				264131871C4F44FD0014A7EA /* MQFieldTextFieldCell.xib */,
 				264131891C4F456D0014A7EA /* MQFieldTextFieldCell.swift */,
 				2641318F1C4F57000014A7EA /* MQFieldSelectionCell.swift */,
 			);
@@ -435,7 +432,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				264131881C4F44FD0014A7EA /* MQFieldTextFieldCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

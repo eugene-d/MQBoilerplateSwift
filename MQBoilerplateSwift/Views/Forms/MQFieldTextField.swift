@@ -23,6 +23,10 @@ public class MQFieldTextField : UITextField {
         }
     }
     
+    public init() {
+        super.init(frame: CGRectZero)
+    }
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.clearButtonMode = .WhileEditing

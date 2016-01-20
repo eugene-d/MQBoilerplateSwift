@@ -14,9 +14,9 @@ import UIKit
  */
 public class MQFieldTextFieldCell: MQFieldCell {
     
-    @IBOutlet weak var wrapperView: UIView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var textField: MQFieldTextField!
+    public var wrapperView: UIView
+    public var nameLabel: UILabel
+    public var textField: MQFieldTextField
     
     public override var field: MQField? {
         didSet {
@@ -33,15 +33,45 @@ public class MQFieldTextFieldCell: MQFieldCell {
         }
     }
     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
+    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        self.wrapperView = UIView()
+        self.nameLabel = UILabel()
+        self.textField = MQFieldTextField()
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.setupSubviews()
+        self.addAutolayout()
+        
+        self.selectionStyle = .None
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("Unimplemented")
+    }
+    
+    func setupSubviews() {
         self.wrapperView.backgroundColor = UIColor.clearColor()
         
         self.textField.borderStyle = .None
         self.textField.textAlignment = .Right
         self.textField.clearButtonMode = .WhileEditing
         
-        self.selectionStyle = .None
+        UIView.disableAutoresizingMasksInViews(self.wrapperView, self.nameLabel, self.textField)
+        self.wrapperView.addSubviews(self.nameLabel, self.textField)
+        self.contentView.addSubviewAndFill(self.wrapperView)
+    }
+    
+    func addAutolayout() {
+        let rules = ["H:|-10-[nameLabel]-10-[textField]-10-|",
+            "V:|-0-[nameLabel]-0-|",
+            "V:|-0-[textField]-0-|"]
+        let views = ["nameLabel" : self.nameLabel,
+            "textField" : self.textField]
+        self.wrapperView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormatArray(rules,
+            metrics: nil,
+            views: views))
+        
+        self.nameLabel.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
     }
     
 }
