@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="gBG-GD-zzk" customClass="MQFieldTextFieldCell" customModule="MQBoilerplateSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBG-GD-zzk" id="1AU-NF-aXM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-6b-M7M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bw7-92-9Mg">
+                                <rect key="frame" x="10" y="18" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i71-Cw-maG" customClass="MQFieldTextField" customModule="MQBoilerplateSwift" customModuleProvider="target">
+                                <rect key="frame" x="62" y="0.0" width="248" height="55.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bw7-92-9Mg" firstAttribute="centerY" secondItem="gP9-6b-M7M" secondAttribute="centerY" id="0gC-DB-918"/>
+                            <constraint firstItem="bw7-92-9Mg" firstAttribute="leading" secondItem="gP9-6b-M7M" secondAttribute="leading" constant="10" id="Yiw-bg-Msl"/>
+                            <constraint firstAttribute="bottom" secondItem="i71-Cw-maG" secondAttribute="bottom" id="ZBV-YQ-fhK"/>
+                            <constraint firstItem="i71-Cw-maG" firstAttribute="top" secondItem="gP9-6b-M7M" secondAttribute="top" id="cr1-Cv-1VO"/>
+                            <constraint firstAttribute="trailing" secondItem="i71-Cw-maG" secondAttribute="trailing" constant="10" id="iD7-gm-7aj"/>
+                            <constraint firstItem="i71-Cw-maG" firstAttribute="leading" secondItem="bw7-92-9Mg" secondAttribute="trailing" constant="10" id="vnD-BF-ZhD"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gP9-6b-M7M" firstAttribute="leading" secondItem="1AU-NF-aXM" secondAttribute="leading" id="4De-gj-v7B"/>
+                    <constraint firstAttribute="trailing" secondItem="gP9-6b-M7M" secondAttribute="trailing" id="VdO-Vd-deB"/>
+                    <constraint firstItem="gP9-6b-M7M" firstAttribute="top" secondItem="1AU-NF-aXM" secondAttribute="top" id="eVi-4y-Cf6"/>
+                    <constraint firstAttribute="bottom" secondItem="gP9-6b-M7M" secondAttribute="bottom" id="uuE-kc-d3l"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="bw7-92-9Mg" id="3VP-lo-bA1"/>
+                <outlet property="textField" destination="i71-Cw-maG" id="us7-bv-YAu"/>
+                <outlet property="wrapperView" destination="gP9-6b-M7M" id="HPC-U3-Xw0"/>
+            </connections>
+            <point key="canvasLocation" x="637" y="402"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2610B2B21B52E73C00DAD825 /* NSDate.swift */; };
+		264131881C4F44FD0014A7EA /* MQFieldTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264131871C4F44FD0014A7EA /* MQFieldTextFieldCell.xib */; };
+		2641318A1C4F456D0014A7EA /* MQFieldTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264131891C4F456D0014A7EA /* MQFieldTextFieldCell.swift */; };
+		264131901C4F57000014A7EA /* MQFieldSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641318F1C4F57000014A7EA /* MQFieldSelectionCell.swift */; };
 		265050211B62D2DC00100EBF /* MQLoadableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265050201B62D2DC00100EBF /* MQLoadableViewController.swift */; };
 		2650C9891B5234900003C245 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2650C9881B5234900003C245 /* MKMapView.swift */; };
 		2664407A1B56CB1C00186C4B /* MQFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2664406E1B56CB1C00186C4B /* MQFieldCell.swift */; };
@@ -71,6 +74,9 @@
 
 /* Begin PBXFileReference section */
 		2610B2B21B52E73C00DAD825 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		264131871C4F44FD0014A7EA /* MQFieldTextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MQFieldTextFieldCell.xib; sourceTree = "<group>"; };
+		264131891C4F456D0014A7EA /* MQFieldTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldTextFieldCell.swift; sourceTree = "<group>"; };
+		2641318F1C4F57000014A7EA /* MQFieldSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldSelectionCell.swift; sourceTree = "<group>"; };
 		265050201B62D2DC00100EBF /* MQLoadableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MQLoadableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2650C9881B5234900003C245 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		265A067F1ADE555400826150 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,6 +181,9 @@
 				2664406F1B56CB1C00186C4B /* MQFieldPickerView.swift */,
 				266440701B56CB1C00186C4B /* MQFieldTextField.swift */,
 				266440851B56CB5400186C4B /* MQFieldTextView.swift */,
+				264131871C4F44FD0014A7EA /* MQFieldTextFieldCell.xib */,
+				264131891C4F456D0014A7EA /* MQFieldTextFieldCell.swift */,
+				2641318F1C4F57000014A7EA /* MQFieldSelectionCell.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -426,6 +435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				264131881C4F44FD0014A7EA /* MQFieldTextFieldCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,7 +485,9 @@
 				26CBAF0B1B6F765B00A7BB5D /* MQError.swift in Sources */,
 				2664407C1B56CB1C00186C4B /* MQFieldTextField.swift in Sources */,
 				267207561BE5C1DD0041E17D /* MQErrorBuilder.swift in Sources */,
+				2641318A1C4F456D0014A7EA /* MQFieldTextFieldCell.swift in Sources */,
 				26CBAF081B6F765B00A7BB5D /* MQAlertDialog.swift in Sources */,
+				264131901C4F57000014A7EA /* MQFieldSelectionCell.swift in Sources */,
 				26CBAF0E1B6F765B00A7BB5D /* MQField.swift in Sources */,
 				26CBAF121B6F765B00A7BB5D /* MQDispatcher.swift in Sources */,
 				266440831B56CB1C00186C4B /* MQRetryView.swift in Sources */,

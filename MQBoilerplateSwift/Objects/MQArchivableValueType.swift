@@ -19,8 +19,8 @@ public protocol MQArchivableValueType {
     init(archiveData data: NSData)
     
     /**
-    Called from within `init(archiveData:)` when the data is successfully converted to a dictionary.
-    Implement this initializer to set the model's properties to the dictionary's values.
+     Defines how a dictionary maps to the value type and its properties. Called from within
+     `init(archiveData:)` when the data is successfully converted to a dictionary.
     */
     init(archiveDictionary dict: [String : AnyObject])
     
