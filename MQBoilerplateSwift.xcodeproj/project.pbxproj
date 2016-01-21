@@ -52,6 +52,7 @@
 		26CBAF161B6F765B00A7BB5D /* MQChainedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF051B6F765B00A7BB5D /* MQChainedOperation.swift */; };
 		26CBAF171B6F765B00A7BB5D /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF061B6F765B00A7BB5D /* MQOperation.swift */; };
 		26CBAF181B6F765B00A7BB5D /* MQURLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBAF071B6F765B00A7BB5D /* MQURLOperation.swift */; };
+		26DF170C1C50CE8E00F895D7 /* MQPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF170B1C50CE8E00F895D7 /* MQPickerViewController.swift */; };
 		26E9FE911ADE090B00E92745 /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
 		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
@@ -119,6 +120,7 @@
 		26CBAF051B6F765B00A7BB5D /* MQChainedOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQChainedOperation.swift; sourceTree = "<group>"; };
 		26CBAF061B6F765B00A7BB5D /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
 		26CBAF071B6F765B00A7BB5D /* MQURLOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQURLOperation.swift; sourceTree = "<group>"; };
+		26DF170B1C50CE8E00F895D7 /* MQPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQPickerViewController.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE901ADE090B00E92745 /* MQBoilerplateSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MQBoilerplateSwift.h; sourceTree = "<group>"; };
 		26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 				266440851B56CB5400186C4B /* MQFieldTextView.swift */,
 				264131891C4F456D0014A7EA /* MQFieldTextFieldCell.swift */,
 				2641318F1C4F57000014A7EA /* MQFieldSelectionCell.swift */,
+				26DF170B1C50CE8E00F895D7 /* MQPickerViewController.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				26CBAF161B6F765B00A7BB5D /* MQChainedOperation.swift in Sources */,
 				26E9FEAB1ADE098100E92745 /* UIView.swift in Sources */,
 				26CBAF141B6F765B00A7BB5D /* MQNSNotificationObject.swift in Sources */,
+				26DF170C1C50CE8E00F895D7 /* MQPickerViewController.swift in Sources */,
 				266440811B56CB1C00186C4B /* MQLoadingView.swift in Sources */,
 				266440841B56CB1C00186C4B /* MQStartingView.swift in Sources */,
 				26CBAF0B1B6F765B00A7BB5D /* MQError.swift in Sources */,
