@@ -25,11 +25,21 @@ public class MQFieldTextFieldCell: MQFieldCell {
             }
             guard let field = self.field else {
                 self.nameLabel.text = nil
-                self.textField.text = nil
+                self.textField.field = nil
                 return
             }
             self.nameLabel.text = field.label
-            self.textField.text = field.value as? String
+            self.textField.field = field
+        }
+    }
+    
+    public override var delegate: AnyObject? {
+        didSet {
+            guard let delegate = self.delegate as? MQFieldTextFieldDelegate
+                else {
+                    return
+            }
+            self.textField.delegate = delegate
         }
     }
     
