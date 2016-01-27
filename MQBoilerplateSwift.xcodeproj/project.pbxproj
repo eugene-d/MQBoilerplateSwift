@@ -32,6 +32,7 @@
 		267D5F9A1AE4CFEC002A2C8D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267D5F991AE4CFEC002A2C8D /* UIViewController.swift */; };
 		2682CA8B1AE1B6790039CBB1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8A1AE1B6790039CBB1 /* String.swift */; };
 		2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */; };
+		2689CD221C585AE9009B8D3A /* MQBaseURLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2689CD211C585AE9009B8D3A /* MQBaseURLOperation.swift */; };
 		268FCB461BF090EB00DD5727 /* MQErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268FCB451BF090EB00DD5727 /* MQErrorType.swift */; };
 		269459351AE0B8F300B92DC0 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */; };
 		26A07BD71B182607006250CF /* MQAspectFitLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A07BD61B182607006250CF /* MQAspectFitLabel.swift */; };
@@ -100,6 +101,7 @@
 		2682CA8A1AE1B6790039CBB1 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2682CA8C1AE1BA970039CBB1 /* NSCharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCharacterSet.swift; sourceTree = "<group>"; };
 		2682CAED1AE36D2C0039CBB1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2689CD211C585AE9009B8D3A /* MQBaseURLOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQBaseURLOperation.swift; sourceTree = "<group>"; };
 		268FCB451BF090EB00DD5727 /* MQErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQErrorType.swift; sourceTree = "<group>"; };
 		269459341AE0B8F300B92DC0 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		26A07BD61B182607006250CF /* MQAspectFitLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAspectFitLabel.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				26CBAF051B6F765B00A7BB5D /* MQChainedOperation.swift */,
 				26CBAF061B6F765B00A7BB5D /* MQOperation.swift */,
 				26CBAF071B6F765B00A7BB5D /* MQURLOperation.swift */,
+				2689CD211C585AE9009B8D3A /* MQBaseURLOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				266440841B56CB1C00186C4B /* MQStartingView.swift in Sources */,
 				26CBAF0B1B6F765B00A7BB5D /* MQError.swift in Sources */,
 				2664407C1B56CB1C00186C4B /* MQFieldTextField.swift in Sources */,
+				2689CD221C585AE9009B8D3A /* MQBaseURLOperation.swift in Sources */,
 				267207561BE5C1DD0041E17D /* MQErrorBuilder.swift in Sources */,
 				2641318A1C4F456D0014A7EA /* MQFieldTextFieldCell.swift in Sources */,
 				26CBAF081B6F765B00A7BB5D /* MQAlertDialog.swift in Sources */,
