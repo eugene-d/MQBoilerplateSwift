@@ -83,7 +83,7 @@ public class MQFileManager {
                 throw MQFileManagerError.CantBuildPathToFile(fileName, inFolder: folder)
         }
         
-        let dictionary = value.archiveDictionary()
+        let dictionary = value.toDictionary()
         if NSKeyedArchiver.archiveRootObject(dictionary, toFile: path) == false {
             throw MQFileManagerError.CantArchiveValue(value)
         }
@@ -104,7 +104,7 @@ public class MQFileManager {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder),
             let path = fileURL.path,
             let dictionary = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? [String : AnyObject] {
-                return T(archiveDictionary: dictionary)
+                return T(fromDictionary: dictionary)
         }
         return nil
     }
