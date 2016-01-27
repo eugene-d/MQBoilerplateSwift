@@ -63,13 +63,11 @@ public extension UIView {
         return self.instantiateFromNibInBundle(NSBundle.mainBundle())
     }
     
-//    public class func instantiateFromNibWithBundleID<T: UIView>(bundleID: String) -> T {
-//        guard let bundle = NSBundle(identifier: bundleID)
-//            else {
-//                fatalError("\(__FUNCTION__): No nib named \'\(self.className())\'")
-//        }
-//        return self.instantiateFromNibInBundle(bundle)
-//    }
+    public class func clearBackgroundColors(views: UIView...) {
+        for view in views {
+            view.backgroundColor = UIColor.clearColor()
+        }
+    }
     
     class func instantiateFromNibInBundle<T: UIView>(bundle: NSBundle) -> T {
         if let objects = bundle.loadNibNamed(self.className(), owner: self, options: nil) {
@@ -84,14 +82,6 @@ public extension UIView {
     public class func nib() -> UINib {
         return UINib(nibName: self.className(), bundle: NSBundle.mainBundle())
     }
-    
-//    public class func nibInBundleWithID(bundleID: String) -> UINib {
-//        guard let bundle = NSBundle(identifier: bundleID)
-//            else {
-//                fatalError("\(__FUNCTION__): No bundle with ID '\(bundleID)' found.")
-//        }
-//        return self.nibInBundle(bundle)
-//    }
     
     class func nibInBundle(bundle: NSBundle) -> UINib {
         return UINib(nibName: self.className(), bundle: bundle)
