@@ -63,6 +63,7 @@
 		26F28AE01ADF89960070A08B /* MQStartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F28ADF1ADF89960070A08B /* MQStartupViewController.swift */; };
 		26F28AFB1ADF90D10070A08B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F28AFA1ADF90D10070A08B /* UIColor.swift */; };
 		26F531571B0E53F800D4AF08 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F531561B0E53F800D4AF08 /* Functions.swift */; };
+		26F728081C5934470013B2FE /* NSNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F728071C5934470013B2FE /* NSNotificationCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		26F28ADF1ADF89960070A08B /* MQStartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQStartupViewController.swift; sourceTree = "<group>"; };
 		26F28AFA1ADF90D10070A08B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		26F531561B0E53F800D4AF08 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		26F728071C5934470013B2FE /* NSNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotificationCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +339,7 @@
 				2650C9881B5234900003C245 /* MKMapView.swift */,
 				2610B2B21B52E73C00DAD825 /* NSDate.swift */,
 				2689CD391C58883E009B8D3A /* NSNotification.swift */,
+				26F728071C5934470013B2FE /* NSNotificationCenter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				2682CA8D1AE1BA970039CBB1 /* NSCharacterSet.swift in Sources */,
 				2664407F1B56CB1C00186C4B /* MQDefaultStartingView.swift in Sources */,
 				266659611B2581A1003F24F8 /* MQImageButton.swift in Sources */,
+				26F728081C5934470013B2FE /* NSNotificationCenter.swift in Sources */,
 				2610B2B31B52E73C00DAD825 /* NSDate.swift in Sources */,
 				26CBAF161B6F765B00A7BB5D /* MQChainedOperation.swift in Sources */,
 				26CEF2471C511A8900CD4917 /* MQPopupPickerViewController.swift in Sources */,

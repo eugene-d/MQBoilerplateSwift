@@ -73,7 +73,7 @@ public class MQBaseURLOperation: MQURLOperation {
             return
         }
         
-        print("JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
+//        print("JSON: \(NSString(data: data, encoding: NSUTF8StringEncoding)!)")
         
         do {
             let result = try self.buildResult(JSON)
