@@ -14,4 +14,8 @@ public extension NSCharacterSet {
         return NSCharacterSet(charactersInString: "0123456789.")
     }
     
+    public class func wholeNumberCharacterSet() -> NSCharacterSet {
+        return NSCharacterSet(charactersInString: "0123456789")
+    }
+    
 }

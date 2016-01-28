@@ -17,4 +17,12 @@ public extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
+    public class func randomColor() -> UIColor {
+        return UIColor(hex: UIColor.randomHex())
+    }
+    
+    public class func randomHex() -> Int {
+        return Int(arc4random_uniform(0xffffff + 1))
+    }
+    
 }

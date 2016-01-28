@@ -60,8 +60,17 @@ public extension UIView {
     }
     
     public class func instantiateFromNib<T: UIView>() -> T {
-        let mainBundle = NSBundle.mainBundle()
-        if let objects = mainBundle.loadNibNamed(self.className(), owner: self, options: nil) {
+        return self.instantiateFromNibInBundle(NSBundle.mainBundle())
+    }
+    
+    public class func clearBackgroundColors(views: UIView...) {
+        for view in views {
+            view.backgroundColor = UIColor.clearColor()
+        }
+    }
+    
+    class func instantiateFromNibInBundle<T: UIView>(bundle: NSBundle) -> T {
+        if let objects = bundle.loadNibNamed(self.className(), owner: self, options: nil) {
             if let view = objects.last as? T {
                 return view
             }
@@ -71,7 +80,11 @@ public extension UIView {
     }
     
     public class func nib() -> UINib {
-        return UINib(nibName: self.className(), bundle: nil)
+        return UINib(nibName: self.className(), bundle: NSBundle.mainBundle())
+    }
+    
+    class func nibInBundle(bundle: NSBundle) -> UINib {
+        return UINib(nibName: self.className(), bundle: bundle)
     }
     
     /**
