@@ -17,7 +17,9 @@ public final class MQErrorDialog {
         }
         alertController.addAction(okButtonAction)
         
-        presenter.presentViewController(alertController, animated: true, completion: nil)
+        MQDispatcher.asyncRunInMainThread {
+            presenter.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
 }
