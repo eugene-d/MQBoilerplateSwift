@@ -110,7 +110,7 @@ public class MQStatefulViewController: UIViewController {
         // so the you can override viewDidLoad normally.
         if self.firstLoad {
             self.runTask()
-            self.firstLoad == false
+            self.firstLoad = false
         }
     }
     

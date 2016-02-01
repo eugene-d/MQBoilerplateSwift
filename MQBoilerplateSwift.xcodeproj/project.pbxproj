@@ -54,11 +54,10 @@
 		26C109A01C5F87B2000FCFDB /* MQLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109691C5F87B1000FCFDB /* MQLabelButton.swift */; };
 		26C109A11C5F87B2000FCFDB /* MQLoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C1096A1C5F87B1000FCFDB /* MQLoadingOverlay.swift */; };
 		26C109A21C5F87B2000FCFDB /* MQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C1096B1C5F87B1000FCFDB /* MQTableViewCell.swift */; };
-		26C109A31C5F87B2000FCFDB /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26C1096C1C5F87B1000FCFDB /* MQBoilerplateSwift.h */; };
+		26C109A31C5F87B2000FCFDB /* MQBoilerplateSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 26C1096C1C5F87B1000FCFDB /* MQBoilerplateSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26C109A41C5F87B2000FCFDB /* MQNSNotificationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C1096E1C5F87B1000FCFDB /* MQNSNotificationObject.swift */; };
 		26C109A51C5F87B2000FCFDB /* MQPopupPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109701C5F87B1000FCFDB /* MQPopupPickerViewController.swift */; };
 		26C109A61C5F87B2000FCFDB /* MQStartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109711C5F87B1000FCFDB /* MQStartupViewController.swift */; };
-		26C109A71C5F87B2000FCFDB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26C109731C5F87B1000FCFDB /* Info.plist */; };
 		26C109A91C5F8871000FCFDB /* MQTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109A81C5F8871000FCFDB /* MQTask.swift */; };
 		26C109AB1C5F8CD2000FCFDB /* MQStatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109AA1C5F8CD2000FCFDB /* MQStatefulViewController.swift */; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
@@ -458,7 +457,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26C109A71C5F87B2000FCFDB /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

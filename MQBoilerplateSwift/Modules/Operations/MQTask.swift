@@ -116,7 +116,11 @@ public class MQTask: NSOperation {
             }
             
             if let failBlock = self.failBlock {
-                failBlock(error)
+                if let error = error as? MQErrorType {
+                    failBlock(error.object())
+                } else {
+                    failBlock(error as NSError)
+                }
             }
         }
     }
