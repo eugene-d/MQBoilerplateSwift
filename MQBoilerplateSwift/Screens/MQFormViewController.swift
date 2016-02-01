@@ -14,7 +14,7 @@ public class MQFormViewController: UIViewController {
         fatalError("Unimplemented \(__FUNCTION__): You must provide the scroll view for the form.")
     }
     
-    var activeTextField: UITextField?
+    public var activeTextField: UITextField?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
