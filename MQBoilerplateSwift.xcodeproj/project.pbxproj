@@ -60,6 +60,7 @@
 		26C109A61C5F87B2000FCFDB /* MQStartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109711C5F87B1000FCFDB /* MQStartupViewController.swift */; };
 		26C109A91C5F8871000FCFDB /* MQTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109A81C5F8871000FCFDB /* MQTask.swift */; };
 		26C109AB1C5F8CD2000FCFDB /* MQStatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109AA1C5F8CD2000FCFDB /* MQStatefulViewController.swift */; };
+		26E3B49C1C5FAE7A00596C82 /* MQFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3B49B1C5FAE7A00596C82 /* MQFormViewController.swift */; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
 		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
 /* End PBXBuildFile section */
@@ -130,6 +131,7 @@
 		26C109731C5F87B1000FCFDB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26C109A81C5F8871000FCFDB /* MQTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTask.swift; sourceTree = "<group>"; };
 		26C109AA1C5F8CD2000FCFDB /* MQStatefulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQStatefulViewController.swift; sourceTree = "<group>"; };
+		26E3B49B1C5FAE7A00596C82 /* MQFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFormViewController.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE9C1ADE090B00E92745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			children = (
 				26C109701C5F87B1000FCFDB /* MQPopupPickerViewController.swift */,
 				26C109711C5F87B1000FCFDB /* MQStartupViewController.swift */,
+				26E3B49B1C5FAE7A00596C82 /* MQFormViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				26C1098C1C5F87B2000FCFDB /* MQFieldTextFieldDelegate.swift in Sources */,
 				26C1098F1C5F87B2000FCFDB /* MQFileManager.swift in Sources */,
 				26C1099A1C5F87B2000FCFDB /* MQRetryView.swift in Sources */,
+				26E3B49C1C5FAE7A00596C82 /* MQFormViewController.swift in Sources */,
 				26C1097E1C5F87B2000FCFDB /* MQAlertDialog.swift in Sources */,
 				26C109921C5F87B2000FCFDB /* MQOperation.swift in Sources */,
 				26C1099C1C5F87B2000FCFDB /* MQDispatcher.swift in Sources */,
