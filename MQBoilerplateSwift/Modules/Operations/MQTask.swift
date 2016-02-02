@@ -16,6 +16,8 @@ public class MQTask: NSOperation {
     public var failBlock: (NSError -> Void)?
     public var finishBlock: (Void -> Void)?
     
+    public var executeCallbacksInMainThread = true
+    
     // MARK: Internal state variables
     
     private var _executing = false
@@ -88,44 +90,45 @@ public class MQTask: NSOperation {
     
     public override func main() {
         defer {
-            if self.cancelled == false {
-                if let finishBlock = self.finishBlock {
-                    finishBlock()
-                }
-            }
             self.closeOperation()
         }
         
-        if let startBlock = self.startBlock {
-            startBlock()
+        self.runStartBlock()
+        
+        if self.cancelled {
+            return
         }
         
         do {
             let result = try self.buildResult(nil)
             
-            if let returnBlock = self.returnBlock {
-                returnBlock()
+            if self.cancelled {
+                return
             }
             
-            if let successBlock = self.successBlock {
-                successBlock(result)
+            self.runReturnBlock()
+            
+            if self.cancelled {
+                return
             }
+            
+            self.runSuccessBlock(result)
         } catch {
-            if let returnBlock = self.returnBlock {
-                returnBlock()
+            self.runReturnBlock()
+            
+            if self.cancelled {
+                return
             }
             
-            if let failBlock = self.failBlock {
-                if let error = error as? MQErrorType {
-                    failBlock(error.object())
-                } else {
-                    failBlock(error as NSError)
-                }
-            }
+            self.runFailBlock(error)
         }
     }
     
     public func closeOperation() {
+        if self.cancelled == false {
+            self.runFinishBlock()
+        }
+        
         self.willChangeValueForKey("isExecuting")
         self.willChangeValueForKey("isFinished")
         
@@ -134,6 +137,89 @@ public class MQTask: NSOperation {
         
         self.didChangeValueForKey("isExecuting")
         self.didChangeValueForKey("isFinished")
+    }
+    
+    public func runStartBlock() {
+        print("\(__FUNCTION__)")
+        guard let startBlock = self.startBlock
+            else {
+                return
+        }
+        
+        if self.executeCallbacksInMainThread == true {
+            MQDispatcher.syncRunInMainThread(startBlock)
+        } else {
+            startBlock()
+        }
+    }
+    
+    public func runReturnBlock() {
+        print("\(__FUNCTION__)")
+        guard let returnBlock = self.returnBlock
+            else {
+                return
+        }
+        
+        if self.executeCallbacksInMainThread == true {
+            MQDispatcher.syncRunInMainThread(returnBlock)
+        } else {
+            returnBlock()
+        }
+    }
+    
+    public func runSuccessBlock(result: Any?) {
+        print("\(__FUNCTION__)")
+        guard let successBlock = self.successBlock
+            else {
+                return
+        }
+        
+        if self.executeCallbacksInMainThread == true {
+            MQDispatcher.syncRunInMainThread {
+                successBlock(result)
+            }
+        } else {
+            successBlock(result)
+        }
+    }
+    
+    public func runFailBlock(error: NSError) {
+        print("\(__FUNCTION__)")
+        guard let failBlock = self.failBlock
+            else {
+                return
+        }
+        
+        if self.executeCallbacksInMainThread == true {
+            MQDispatcher.syncRunInMainThread {
+                failBlock(error)
+            }
+        } else {
+            failBlock(error)
+        }
+    }
+    
+    public func runFailBlock(error: ErrorType) {
+        print("\(__FUNCTION__)")
+        if let error = error as? MQErrorType {
+            self.runFailBlock(error.object())
+        } else {
+            self.runFailBlock(error as NSError)
+        }
+    }
+    
+    public func runFinishBlock() {
+        print("\(__FUNCTION__)")
+        guard let finishBlock = self.finishBlock
+            else {
+                return
+        }
+        
+        if self.executeCallbacksInMainThread == true {
+            MQDispatcher.syncRunInMainThread(finishBlock)
+        } else {
+            finishBlock()
+        }
     }
     
 }
