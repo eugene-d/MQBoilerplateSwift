@@ -1,5 +1,5 @@
 //
-//  MQChainedOperation.swift
+//  __MQChainedOperation.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 7/29/15.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-public class MQChainedOperation: MQAsynchronousOperation {
+public class __MQChainedOperation: __MQAsynchronousOperation {
     
     var operationQueue = NSOperationQueue()
-    var operations: [MQOperation]
+    var operations: [__MQOperation]
     
-    public init(_ operations: MQOperation ...) {
+    public init(_ operations: __MQOperation ...) {
         self.operations = operations
     }
     
-    public func addOperation(operation: MQOperation) {
+    public func addOperation(operation: __MQOperation) {
         self.operations.append(operation)
     }
     

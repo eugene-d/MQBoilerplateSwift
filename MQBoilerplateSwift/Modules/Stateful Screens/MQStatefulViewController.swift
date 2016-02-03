@@ -64,12 +64,12 @@ public class MQStatefulViewController: UIViewController {
         self.noResultsView.fillSuperview()
     }
     
-    public func buildTask() -> MQTask? {
+    public func buildOperation() -> MQOperation? {
         fatalError("Unimplemented function \(__FUNCTION__)")
     }
     
     public func runTask() {
-        guard let task = self.buildTask()
+        guard let task = self.buildOperation()
             else {
                 return
         }
