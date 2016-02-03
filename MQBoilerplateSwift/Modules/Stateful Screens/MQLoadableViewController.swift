@@ -121,7 +121,7 @@ public class MQLoadableViewController: UIViewController {
     }
     
     /**
-    Override point for creating the `MQOperation` that the view controller will run and
+    Override point for creating the `__MQOperation` that the view controller will run and
     display the results of. If there are any pieces of information not yet available to create an
     operation, you can return `nil` so that the view controller is stuck in the `startingView`.
     
@@ -130,7 +130,7 @@ public class MQLoadableViewController: UIViewController {
     and there are items in the data source, or the `noResultsView` if there are none. Alternatively,
     you may also just show the `primaryView` even if the data source is empty.
     */
-    public func createOperation() -> MQOperation? {
+    public func createOperation() -> __MQOperation? {
         fatalError("Unimplemented function \(__FUNCTION__)")
     }
     

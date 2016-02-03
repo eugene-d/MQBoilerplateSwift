@@ -1,5 +1,5 @@
 //
-//  MQAsynchronousOperation.swift
+//  __MQAsynchronousOperation.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 7/23/15.
@@ -9,10 +9,10 @@
 import Foundation
 
 /**
-An `MQOperation` subclass that runs asynchronously. It overrides the properties and
+An `__MQOperation` subclass that runs asynchronously. It overrides the properties and
 functions that are required to be overriden when implementing an asynchronous `NSOperation`.
 */
-public class MQAsynchronousOperation: MQOperation {
+public class __MQAsynchronousOperation: __MQOperation {
     
     // MARK: Internal state variables
     

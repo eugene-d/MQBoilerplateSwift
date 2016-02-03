@@ -26,27 +26,8 @@ public class MQDispatcher {
     }
     
     public class func asyncRunInMainThread(block: () -> Void) {
-//        if NSThread.isMainThread() {
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-//                block()
-//            }
-//        } else {
-//            dispatch_async(dispatch_get_main_queue()) {
-//                block()
-//            }
-//        }
         dispatch_async(dispatch_get_main_queue()) {
             block()
-        }
-    }
-    
-    public class func runInMainThread(block: () -> Void) {
-        if NSThread.isMainThread() {
-            block()
-        } else {
-            dispatch_async(dispatch_get_main_queue()) {
-                block()
-            }
         }
     }
     

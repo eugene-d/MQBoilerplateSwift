@@ -2,63 +2,97 @@
 //  MQOperation.swift
 //  MQBoilerplateSwift
 //
-//  Created by Matt Quiros on 7/23/15.
-//  Copyright © 2015 Matt Quiros. All rights reserved.
+//  Created by Matt Quiros on 01/02/2016.
+//  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
 import Foundation
 
-/**
-An `MQOperation` is any task that needs to execute code at various points during its execution
-and depending on whether it succeeds or fails. This is a subclass of `NSOperation` and must be
-added to an `NSOperationQueue` to execute. For an asynchronous implementation, see `MQAsynchronousOperation`.
-*/
 public class MQOperation: NSOperation {
     
-    /**
-    Executed when the operation begins. For example, you can show a loading screen in this block.
-    */
-    public var startBlock: (() -> Void)?
+    public var startBlock: (Void -> Void)?
+    public var returnBlock: (Void -> Void)?
+    public var successBlock: (Any? -> Void)?
+    public var failBlock: (NSError -> Void)?
+    public var finishBlock: (Void -> Void)?
     
-    /**
-    Executed when the operation finishes processing but before a success or failure status is determined.
-    */
-    public var returnBlock: (() -> Void)?
+    public var executeCallbacksInMainThread = true
     
-    /**
-    Executed when the operation produces an error, e.g., show an error dialog.
-    */
-    public var failureBlock: ((NSError) -> Void)?
+    // MARK: Internal state variables
     
-    /**
-    Executed when the operation produces a result, e.g., showing a `UITableView` of results.
-    */
-    public var successBlock: ((Any?) -> Void)?
+    private var _executing = false
+    private var _finished = false
     
-    /**
-    Executed before the operation closes regardless of whether it succeeds or fails, e.g., closing I/O streams.
-    */
-    public var finishBlock: (() -> Void)?
+    // MARK: NSOperation required overrides
     
-//    /**
-//     The object that builds an `NSError` object from `ErrorType`s thrown in `do` statements.
-//     */
-//    public var errorBuilder: MQErrorBuilder {
-//        fatalError("Override this property and supply your custom error builder.")
-//    }
+    public override var concurrent: Bool {
+        return true
+    }
     
-    /**
-    Defines the operation and at which points the callback blocks are executed.
-    */
-    public override func main() {
-        defer {
-            if self.cancelled == false {
-                self.runFinishBlock()
-            }
+    public override var asynchronous: Bool {
+        return true
+    }
+    
+    public override var executing: Bool {
+        return self._executing
+    }
+    
+    public override var finished: Bool {
+        return self._finished
+    }
+    
+    // MARK: Builders
+    
+    public func onStart(startBlock: Void -> Void) -> MQOperation {
+        self.startBlock = startBlock
+        return self
+    }
+    
+    public func onReturn(returnBlock: Void -> Void) -> MQOperation {
+        self.returnBlock = returnBlock
+        return self
+    }
+    
+    public func onSuccess(successBlock: Any? -> Void) -> MQOperation {
+        self.successBlock = successBlock
+        return self
+    }
+    
+    public func onFail(failBlock: NSError -> Void) -> MQOperation {
+        self.failBlock = failBlock
+        return self
+    }
+    
+    public func onFinish(finishBlock: Void -> Void) -> MQOperation {
+        self.finishBlock = finishBlock
+        return self
+    }
+    
+    public func buildResult(object: Any?) throws -> Any? {
+        return nil
+    }
+    
+    // MARK: Functions
+    
+    public override func start() {
+        print("\(__FUNCTION__)")
+        if self.cancelled {
+            self.willChangeValueForKey("isFinished")
+            self._finished = true
+            self.didChangeValueForKey("isFinished")
+            return
         }
         
-        if self.cancelled {
-            return
+        self.willChangeValueForKey("isExecuting")
+        NSThread.detachNewThreadSelector(Selector("main"), toTarget: self, withObject: nil)
+        self._executing = true
+        self.didChangeValueForKey("isExecuting")
+    }
+    
+    public override func main() {
+        print("\(__FUNCTION__)")
+        defer {
+            self.closeOperation()
         }
         
         self.runStartBlock()
@@ -67,120 +101,128 @@ public class MQOperation: NSOperation {
             return
         }
         
-        self.runReturnBlock()
-        
-        if self.cancelled {
-            return
-        }
-        
         do {
-            let result = try buildResult(nil)
-            self.runSuccessBlockWithResult(result)
+            let result = try self.buildResult(nil)
+            
+            if self.cancelled {
+                return
+            }
+            
+            self.runReturnBlock()
+            
+            if self.cancelled {
+                return
+            }
+            
+            self.runSuccessBlock(result)
         } catch {
-            self.runFailureBlockWithError(error)
+            self.runReturnBlock()
+            
+            if self.cancelled {
+                return
+            }
+            
+            self.runFailBlock(error)
         }
     }
     
-    /**
-    Override point for converting the raw result (usually a JSON object) into your own custom object or value type.
-    The function throws an error if the `rawResult` can't be meaningfully converted into a custom type.
-    Otherwise, the function denotes success by returning with or without a custom value.
-    */
-    public func buildResult(rawResult: Any?) throws -> Any? {
-        return nil
+    public func closeOperation() {
+        if self.cancelled == false {
+            self.runFinishBlock()
+        }
+        
+        self.willChangeValueForKey("isExecuting")
+        self.willChangeValueForKey("isFinished")
+        
+        self._executing = false
+        self._finished = true
+        
+        self.didChangeValueForKey("isExecuting")
+        self.didChangeValueForKey("isFinished")
+        
+        print("\(__FUNCTION__)")
     }
     
-    /**
-    Performs the `startBlock` in the main UI thread and waits until it is finished.
-    */
     public func runStartBlock() {
-        if let startBlock = self.startBlock {
-            if self.cancelled {
+        print("\(__FUNCTION__)")
+        guard let startBlock = self.startBlock
+            else {
                 return
-            }
-            
+        }
+        
+        if self.executeCallbacksInMainThread == true {
             MQDispatcher.syncRunInMainThread(startBlock)
+        } else {
+            startBlock()
         }
     }
     
-    /**
-    Performs the `returnBlock` in the main UI thread and waits until it is finished.
-    */
     public func runReturnBlock() {
-        if let returnBlock = self.returnBlock {
-            if self.cancelled {
+        print("\(__FUNCTION__)")
+        guard let returnBlock = self.returnBlock
+            else {
                 return
-            }
-            
+        }
+        
+        if self.executeCallbacksInMainThread == true {
             MQDispatcher.syncRunInMainThread(returnBlock)
+        } else {
+            returnBlock()
         }
     }
     
-    /**
-    Performs the `successBlock` in the main UI thread and waits until it is finished.
-    */
-    public func runSuccessBlockWithResult(result: Any?) {
-        if let successBlock = self.successBlock {
-            if self.cancelled {
+    public func runSuccessBlock(result: Any?) {
+        print("\(__FUNCTION__)")
+        guard let successBlock = self.successBlock
+            else {
                 return
-            }
-            
+        }
+        
+        if self.executeCallbacksInMainThread == true {
             MQDispatcher.syncRunInMainThread {
                 successBlock(result)
             }
+        } else {
+            successBlock(result)
         }
     }
     
-    /**
-    Performs the `failureBlock` in the main UI thread and waits until it is finished.
-    */
-    public func runFailureBlockWithError(error: NSError) {
-        if let failureBlock = self.failureBlock {
-            if self.cancelled {
+    public func runFailBlock(error: NSError) {
+        print("\(__FUNCTION__): NSError")
+        guard let failBlock = self.failBlock
+            else {
                 return
-            }
-            MQDispatcher.syncRunInMainThread {
-                failureBlock(error)
-            }
-        }
-    }
-    
-    /**
-     Automatically converts `ErrorType` objects to an `NSError` object based on `self.errorBuilder`
-     and calls `self.runFailurBlockWithError` with the generated error object.
-     */
-    public func runFailureBlockWithError(error: ErrorType) {
-        guard let theError = error as? MQErrorType else {
-            self.runFailureBlockWithError(error as NSError)
-            return
         }
         
-        self.runFailureBlockWithError(theError.object())
-    }
-    
-    /**
-    Performs the `finishBlock` in the main UI thread and waits until it is finished.
-    */
-    public func runFinishBlock() {
-        if let finishBlock = self.finishBlock {
-            if self.cancelled {
-                return
+        if self.executeCallbacksInMainThread == true {
+            MQDispatcher.syncRunInMainThread {
+                failBlock(error)
             }
-            
-            MQDispatcher.syncRunInMainThread(finishBlock)
+        } else {
+            failBlock(error)
         }
     }
     
-    /**
-    Overrides the current `failureBlock` to show an error dialog in a provided `UIViewController`.
-    */
-    public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
-        self.failureBlock = {[unowned presenter] error in
-            if self.cancelled {
+    public func runFailBlock(error: ErrorType) {
+        print("\(__FUNCTION__): ErrorType")
+        if let error = error as? MQErrorType {
+            self.runFailBlock(error.object())
+        } else {
+            self.runFailBlock(error as NSError)
+        }
+    }
+    
+    public func runFinishBlock() {
+        print("\(__FUNCTION__)")
+        guard let finishBlock = self.finishBlock
+            else {
                 return
-            }
-            
-            MQErrorDialog.showError(error, inPresenter: presenter)
+        }
+        
+        if self.executeCallbacksInMainThread == true {
+            MQDispatcher.syncRunInMainThread(finishBlock)
+        } else {
+            finishBlock()
         }
     }
     

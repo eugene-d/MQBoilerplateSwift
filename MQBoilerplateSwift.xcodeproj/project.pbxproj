@@ -35,10 +35,10 @@
 		26C1098D1C5F87B2000FCFDB /* MQFieldTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109511C5F87B1000FCFDB /* MQFieldTextView.swift */; };
 		26C1098E1C5F87B2000FCFDB /* MQArchivableValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109531C5F87B1000FCFDB /* MQArchivableValueType.swift */; };
 		26C1098F1C5F87B2000FCFDB /* MQFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109541C5F87B1000FCFDB /* MQFileManager.swift */; };
-		26C109901C5F87B2000FCFDB /* MQAsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109561C5F87B1000FCFDB /* MQAsynchronousOperation.swift */; };
-		26C109911C5F87B2000FCFDB /* MQChainedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109571C5F87B1000FCFDB /* MQChainedOperation.swift */; };
-		26C109921C5F87B2000FCFDB /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109581C5F87B1000FCFDB /* MQOperation.swift */; };
-		26C109931C5F87B2000FCFDB /* MQURLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109591C5F87B1000FCFDB /* MQURLOperation.swift */; };
+		26C109901C5F87B2000FCFDB /* __MQAsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109561C5F87B1000FCFDB /* __MQAsynchronousOperation.swift */; };
+		26C109911C5F87B2000FCFDB /* __MQChainedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109571C5F87B1000FCFDB /* __MQChainedOperation.swift */; };
+		26C109921C5F87B2000FCFDB /* __MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109581C5F87B1000FCFDB /* __MQOperation.swift */; };
+		26C109931C5F87B2000FCFDB /* __MQURLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109591C5F87B1000FCFDB /* __MQURLOperation.swift */; };
 		26C109941C5F87B2000FCFDB /* MQDefaultNoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C1095B1C5F87B1000FCFDB /* MQDefaultNoResultsView.swift */; };
 		26C109951C5F87B2000FCFDB /* MQDefaultRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C1095C1C5F87B1000FCFDB /* MQDefaultRetryView.swift */; };
 		26C109961C5F87B2000FCFDB /* MQDefaultStartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C1095D1C5F87B1000FCFDB /* MQDefaultStartingView.swift */; };
@@ -58,11 +58,11 @@
 		26C109A41C5F87B2000FCFDB /* MQNSNotificationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C1096E1C5F87B1000FCFDB /* MQNSNotificationObject.swift */; };
 		26C109A51C5F87B2000FCFDB /* MQPopupPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109701C5F87B1000FCFDB /* MQPopupPickerViewController.swift */; };
 		26C109A61C5F87B2000FCFDB /* MQStartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109711C5F87B1000FCFDB /* MQStartupViewController.swift */; };
-		26C109A91C5F8871000FCFDB /* MQTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109A81C5F8871000FCFDB /* MQTask.swift */; };
+		26C109A91C5F8871000FCFDB /* MQOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109A81C5F8871000FCFDB /* MQOperation.swift */; };
 		26C109AB1C5F8CD2000FCFDB /* MQStatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C109AA1C5F8CD2000FCFDB /* MQStatefulViewController.swift */; };
-		26D6EB5A1C6074D100A65D89 /* MQURLTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6EB591C6074D100A65D89 /* MQURLTask.swift */; };
+		26D6EB5A1C6074D100A65D89 /* MQURLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6EB591C6074D100A65D89 /* MQURLOperation.swift */; };
 		26E3B49C1C5FAE7A00596C82 /* MQFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3B49B1C5FAE7A00596C82 /* MQFormViewController.swift */; };
-		26E3B4A21C5FB87400596C82 /* MQBlockTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3B4A11C5FB87400596C82 /* MQBlockTask.swift */; };
+		26E3B4A21C5FB87400596C82 /* MQBlockOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3B4A11C5FB87400596C82 /* MQBlockOperation.swift */; };
 		26E9FE971ADE090B00E92745 /* MQBoilerplateSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */; };
 		26E9FE9E1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9FE9D1ADE090B00E92745 /* MQBoilerplateSwiftTests.swift */; };
 /* End PBXBuildFile section */
@@ -107,10 +107,10 @@
 		26C109511C5F87B1000FCFDB /* MQFieldTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFieldTextView.swift; sourceTree = "<group>"; };
 		26C109531C5F87B1000FCFDB /* MQArchivableValueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQArchivableValueType.swift; sourceTree = "<group>"; };
 		26C109541C5F87B1000FCFDB /* MQFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFileManager.swift; sourceTree = "<group>"; };
-		26C109561C5F87B1000FCFDB /* MQAsynchronousOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQAsynchronousOperation.swift; sourceTree = "<group>"; };
-		26C109571C5F87B1000FCFDB /* MQChainedOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQChainedOperation.swift; sourceTree = "<group>"; };
-		26C109581C5F87B1000FCFDB /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
-		26C109591C5F87B1000FCFDB /* MQURLOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQURLOperation.swift; sourceTree = "<group>"; };
+		26C109561C5F87B1000FCFDB /* __MQAsynchronousOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MQAsynchronousOperation.swift; sourceTree = "<group>"; };
+		26C109571C5F87B1000FCFDB /* __MQChainedOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MQChainedOperation.swift; sourceTree = "<group>"; };
+		26C109581C5F87B1000FCFDB /* __MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MQOperation.swift; sourceTree = "<group>"; };
+		26C109591C5F87B1000FCFDB /* __MQURLOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MQURLOperation.swift; sourceTree = "<group>"; };
 		26C1095B1C5F87B1000FCFDB /* MQDefaultNoResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultNoResultsView.swift; sourceTree = "<group>"; };
 		26C1095C1C5F87B1000FCFDB /* MQDefaultRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultRetryView.swift; sourceTree = "<group>"; };
 		26C1095D1C5F87B1000FCFDB /* MQDefaultStartingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQDefaultStartingView.swift; sourceTree = "<group>"; };
@@ -131,11 +131,11 @@
 		26C109701C5F87B1000FCFDB /* MQPopupPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQPopupPickerViewController.swift; sourceTree = "<group>"; };
 		26C109711C5F87B1000FCFDB /* MQStartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQStartupViewController.swift; sourceTree = "<group>"; };
 		26C109731C5F87B1000FCFDB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26C109A81C5F8871000FCFDB /* MQTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTask.swift; sourceTree = "<group>"; };
+		26C109A81C5F8871000FCFDB /* MQOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQOperation.swift; sourceTree = "<group>"; };
 		26C109AA1C5F8CD2000FCFDB /* MQStatefulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQStatefulViewController.swift; sourceTree = "<group>"; };
-		26D6EB591C6074D100A65D89 /* MQURLTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQURLTask.swift; sourceTree = "<group>"; };
+		26D6EB591C6074D100A65D89 /* MQURLOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQURLOperation.swift; sourceTree = "<group>"; };
 		26E3B49B1C5FAE7A00596C82 /* MQFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQFormViewController.swift; sourceTree = "<group>"; };
-		26E3B4A11C5FB87400596C82 /* MQBlockTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQBlockTask.swift; sourceTree = "<group>"; };
+		26E3B4A11C5FB87400596C82 /* MQBlockOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQBlockOperation.swift; sourceTree = "<group>"; };
 		26E9FE8B1ADE090B00E92745 /* MQBoilerplateSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQBoilerplateSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE961ADE090B00E92745 /* MQBoilerplateSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQBoilerplateSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E9FE9C1ADE090B00E92745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -263,13 +263,13 @@
 		26C109551C5F87B1000FCFDB /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				26C109561C5F87B1000FCFDB /* MQAsynchronousOperation.swift */,
-				26C109571C5F87B1000FCFDB /* MQChainedOperation.swift */,
-				26C109581C5F87B1000FCFDB /* MQOperation.swift */,
-				26C109591C5F87B1000FCFDB /* MQURLOperation.swift */,
-				26C109A81C5F8871000FCFDB /* MQTask.swift */,
-				26E3B4A11C5FB87400596C82 /* MQBlockTask.swift */,
-				26D6EB591C6074D100A65D89 /* MQURLTask.swift */,
+				26C109561C5F87B1000FCFDB /* __MQAsynchronousOperation.swift */,
+				26C109571C5F87B1000FCFDB /* __MQChainedOperation.swift */,
+				26C109581C5F87B1000FCFDB /* __MQOperation.swift */,
+				26C109591C5F87B1000FCFDB /* __MQURLOperation.swift */,
+				26C109A81C5F8871000FCFDB /* MQOperation.swift */,
+				26E3B4A11C5FB87400596C82 /* MQBlockOperation.swift */,
+				26D6EB591C6074D100A65D89 /* MQURLOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -485,7 +485,7 @@
 			files = (
 				26C109871C5F87B2000FCFDB /* MQFieldCollection.swift in Sources */,
 				26C1097B1C5F87B2000FCFDB /* UIView.swift in Sources */,
-				26C109901C5F87B2000FCFDB /* MQAsynchronousOperation.swift in Sources */,
+				26C109901C5F87B2000FCFDB /* __MQAsynchronousOperation.swift in Sources */,
 				26C109801C5F87B2000FCFDB /* MQErrorDialog.swift in Sources */,
 				26C1099B1C5F87B2000FCFDB /* MQStartingView.swift in Sources */,
 				26C109791C5F87B2000FCFDB /* String.swift in Sources */,
@@ -511,29 +511,29 @@
 				26C109941C5F87B2000FCFDB /* MQDefaultNoResultsView.swift in Sources */,
 				26C109851C5F87B2000FCFDB /* MQField.swift in Sources */,
 				26C109821C5F87B2000FCFDB /* MQErrorBuilder.swift in Sources */,
-				26C109931C5F87B2000FCFDB /* MQURLOperation.swift in Sources */,
+				26C109931C5F87B2000FCFDB /* __MQURLOperation.swift in Sources */,
 				26C109881C5F87B2000FCFDB /* MQFieldPickerView.swift in Sources */,
 				26C109971C5F87B2000FCFDB /* MQLoadableViewController.swift in Sources */,
 				26C109811C5F87B2000FCFDB /* MQError.swift in Sources */,
 				26C1098C1C5F87B2000FCFDB /* MQFieldTextFieldDelegate.swift in Sources */,
 				26C1098F1C5F87B2000FCFDB /* MQFileManager.swift in Sources */,
-				26E3B4A21C5FB87400596C82 /* MQBlockTask.swift in Sources */,
+				26E3B4A21C5FB87400596C82 /* MQBlockOperation.swift in Sources */,
 				26C1099A1C5F87B2000FCFDB /* MQRetryView.swift in Sources */,
 				26E3B49C1C5FAE7A00596C82 /* MQFormViewController.swift in Sources */,
 				26C1097E1C5F87B2000FCFDB /* MQAlertDialog.swift in Sources */,
-				26C109921C5F87B2000FCFDB /* MQOperation.swift in Sources */,
+				26C109921C5F87B2000FCFDB /* __MQOperation.swift in Sources */,
 				26C1099C1C5F87B2000FCFDB /* MQDispatcher.swift in Sources */,
 				26C109741C5F87B1000FCFDB /* Double.swift in Sources */,
 				26C109771C5F87B1000FCFDB /* NSDate.swift in Sources */,
 				26C1099E1C5F87B2000FCFDB /* MQButton.swift in Sources */,
-				26C109A91C5F8871000FCFDB /* MQTask.swift in Sources */,
+				26C109A91C5F8871000FCFDB /* MQOperation.swift in Sources */,
 				26C109A61C5F87B2000FCFDB /* MQStartupViewController.swift in Sources */,
 				26C109A01C5F87B2000FCFDB /* MQLabelButton.swift in Sources */,
-				26C109911C5F87B2000FCFDB /* MQChainedOperation.swift in Sources */,
+				26C109911C5F87B2000FCFDB /* __MQChainedOperation.swift in Sources */,
 				26C109981C5F87B2000FCFDB /* MQLoadingView.swift in Sources */,
 				26C109991C5F87B2000FCFDB /* MQNoResultsView.swift in Sources */,
 				26C109751C5F87B1000FCFDB /* MKMapView.swift in Sources */,
-				26D6EB5A1C6074D100A65D89 /* MQURLTask.swift in Sources */,
+				26D6EB5A1C6074D100A65D89 /* MQURLOperation.swift in Sources */,
 				26C109891C5F87B2000FCFDB /* MQFieldSelectionCell.swift in Sources */,
 				26C1098E1C5F87B2000FCFDB /* MQArchivableValueType.swift in Sources */,
 				26C109781C5F87B2000FCFDB /* NSLayoutConstraint.swift in Sources */,

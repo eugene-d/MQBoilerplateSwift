@@ -1,5 +1,5 @@
 //
-//  MQBlockTask.swift
+//  MQBlockOperation.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 01/02/2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MQBlockTask: MQTask {
+public class MQBlockOperation: MQOperation {
     
     var block: Void throws -> Any?
     

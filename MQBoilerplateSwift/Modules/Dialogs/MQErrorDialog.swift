@@ -13,12 +13,11 @@ public final class MQErrorDialog {
     public class func showError(error: NSError, inPresenter presenter: UIViewController) {
         let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
         let okButtonAction = UIAlertAction(title: "OK", style: .Default) {_ in
-//            alertController.dismissViewControllerAnimated(true, completion: nil)
-            presenter.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(okButtonAction)
         
-        MQDispatcher.runInMainThread {
+        MQDispatcher.asyncRunInMainThread {
             presenter.presentViewController(alertController, animated: true, completion: nil)
         }
     }
