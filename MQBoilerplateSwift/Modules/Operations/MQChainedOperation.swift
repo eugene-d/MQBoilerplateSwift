@@ -9,7 +9,9 @@
 import Foundation
 
 /**
- The chain's `returnBlock` and `failBlock` overrides those of the operations in the chain.
+ Notes:
+ * The chain's `returnBlock` and `failBlock` overrides those of the operations in the chain.
+ * The head operation's `successBlock` isn't overriden to automatically run the chain's `returnBlock`.
  */
 public class MQChainedOperation: MQOperation {
     
@@ -29,7 +31,8 @@ public class MQChainedOperation: MQOperation {
         }
         
         if self.operations.isEmpty {
-            // If this is the first operation in the chain, nothing else needs to be done.
+            // If this is the first operation in the chain, exit.
+            // Don't override the head's success block.
             return
         }
         
@@ -42,6 +45,8 @@ public class MQChainedOperation: MQOperation {
         tail.successBlock = {[unowned self] result in
             guard validator?(result) == true || validator == nil
                 else {
+                    // If the validator is non-nil and returns false, then the chain should prematurely end.
+                    // Run the returnBlock already and then the current operation's success logic.
                     tail.runReturnBlock()
                     tailSuccessBlock?(result)
                     return
@@ -58,9 +63,18 @@ public class MQChainedOperation: MQOperation {
             self.closeOperation()
         }
         
-        guard let head = self.operations.first
+        guard let head = self.operations.first,
+            let tail = self.operations.last
             else {
                 return
+        }
+        
+        // Set up the tail's successBlock to run the returnBlock before its
+        // own success logic. This hasn't been set in the append() function.
+        let tailSuccessBlock = tail.successBlock
+        tail.successBlock = { result in
+            tail.runReturnBlock()
+            tailSuccessBlock?(result)
         }
         
         self.runStartBlock()

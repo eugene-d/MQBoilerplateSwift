@@ -18,7 +18,11 @@ public class MQURLOperation: MQOperation {
             return
         }
         
-        self.runURLRequest()
+        do {
+            try self.runURLRequest()
+        } catch {
+            self.runFailBlock(error)
+        }
     }
     
     /**
@@ -28,7 +32,7 @@ public class MQURLOperation: MQOperation {
      If you want to customise the return behavior, you have to define when the callback blocks will be called.
      You must also call `closeOperation` yourself, otherwise the operation won't properly close.
      */
-    public func runURLRequest() {
+    public func runURLRequest() throws {
     }
     
     public func returnFromURLRequest(error: NSError?, _ object: Any?) {
