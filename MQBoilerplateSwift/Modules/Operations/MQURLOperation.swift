@@ -41,18 +41,15 @@ public class MQURLOperation: MQOperation {
         }
         
         if let error = error {
-            self.runReturnBlock()
             self.runFailBlock(error)
             return
         }
         
         do {
             let result = try self.buildResult(object)
-            self.runReturnBlock()
             self.runSuccessBlock(result)
             return
         } catch {
-            self.runReturnBlock()
             self.runFailBlock(error)
         }
     }

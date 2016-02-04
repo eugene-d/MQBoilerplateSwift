@@ -12,7 +12,7 @@ public class MQBlockOperation: MQOperation {
     
     var block: Void throws -> Any?
     
-    public init(block: Void throws -> Any?) {
+    public init(_ block: Void throws -> Any?) {
         self.block = block
     }
     
@@ -34,20 +34,8 @@ public class MQBlockOperation: MQOperation {
                 return
             }
             
-            self.runReturnBlock()
-            
-            if self.cancelled {
-                return
-            }
-            
             self.runSuccessBlock(result)
         } catch {
-            self.runReturnBlock()
-            
-            if self.cancelled {
-                return
-            }
-            
             self.runFailBlock(error)
         }
     }

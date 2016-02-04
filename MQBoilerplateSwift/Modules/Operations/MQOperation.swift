@@ -43,27 +43,27 @@ public class MQOperation: NSOperation {
     
     // MARK: Builders
     
-    public func onStart(startBlock: Void -> Void) -> MQOperation {
+    public func onStart(startBlock: Void -> Void) -> Self {
         self.startBlock = startBlock
         return self
     }
     
-    public func onReturn(returnBlock: Void -> Void) -> MQOperation {
+    public func onReturn(returnBlock: Void -> Void) -> Self {
         self.returnBlock = returnBlock
         return self
     }
     
-    public func onSuccess(successBlock: Any? -> Void) -> MQOperation {
+    public func onSuccess(successBlock: Any? -> Void) -> Self {
         self.successBlock = successBlock
         return self
     }
     
-    public func onFail(failBlock: NSError -> Void) -> MQOperation {
+    public func onFail(failBlock: NSError -> Void) -> Self {
         self.failBlock = failBlock
         return self
     }
     
-    public func onFinish(finishBlock: Void -> Void) -> MQOperation {
+    public func onFinish(finishBlock: Void -> Void) -> Self {
         self.finishBlock = finishBlock
         return self
     }
@@ -75,7 +75,7 @@ public class MQOperation: NSOperation {
     // MARK: Functions
     
     public override func start() {
-        print("\(__FUNCTION__)")
+        print("\(self.description) : \(__FUNCTION__)")
         if self.cancelled {
             self.willChangeValueForKey("isFinished")
             self._finished = true
@@ -90,7 +90,7 @@ public class MQOperation: NSOperation {
     }
     
     public override func main() {
-        print("\(__FUNCTION__)")
+        print("\(self.description) : \(__FUNCTION__)")
         defer {
             self.closeOperation()
         }
@@ -140,11 +140,11 @@ public class MQOperation: NSOperation {
         self.didChangeValueForKey("isExecuting")
         self.didChangeValueForKey("isFinished")
         
-        print("\(__FUNCTION__)")
+        print("\(self.description) : \(__FUNCTION__)")
     }
     
     public func runStartBlock() {
-        print("\(__FUNCTION__)")
+        print("\(self.description) : \(__FUNCTION__)")
         guard let startBlock = self.startBlock
             else {
                 return
@@ -158,7 +158,7 @@ public class MQOperation: NSOperation {
     }
     
     public func runReturnBlock() {
-        print("\(__FUNCTION__)")
+        print("\(self.description) : \(__FUNCTION__)")
         guard let returnBlock = self.returnBlock
             else {
                 return
@@ -172,7 +172,7 @@ public class MQOperation: NSOperation {
     }
     
     public func runSuccessBlock(result: Any?) {
-        print("\(__FUNCTION__)")
+        print("\(self.description) : \(__FUNCTION__)")
         guard let successBlock = self.successBlock
             else {
                 return
@@ -188,7 +188,7 @@ public class MQOperation: NSOperation {
     }
     
     public func runFailBlock(error: NSError) {
-        print("\(__FUNCTION__): NSError")
+        print("\(self.description) : \(__FUNCTION__): NSError")
         guard let failBlock = self.failBlock
             else {
                 return
@@ -204,7 +204,7 @@ public class MQOperation: NSOperation {
     }
     
     public func runFailBlock(error: ErrorType) {
-        print("\(__FUNCTION__): ErrorType")
+        print("\(self.description) : \(__FUNCTION__): ErrorType")
         if let error = error as? MQErrorType {
             self.runFailBlock(error.object())
         } else {
@@ -213,7 +213,7 @@ public class MQOperation: NSOperation {
     }
     
     public func runFinishBlock() {
-        print("\(__FUNCTION__)")
+        print("\(self.description) : \(__FUNCTION__)")
         guard let finishBlock = self.finishBlock
             else {
                 return
