@@ -6,12 +6,18 @@
 //  Copyright (c) 2015 Matt Quiros. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /**
 A `UITextFieldDelegate` that changes the value of the `MQField` associated with an `MQFieldTextField`.
 */
 public class MQFieldTextFieldDelegate: NSObject, UITextFieldDelegate {
+    
+    public var activeTextField: UITextField?
+    
+    public func textFieldDidBeginEditing(textField: UITextField) {
+        self.activeTextField = textField
+    }
     
     public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if let fieldTextField = textField as? MQFieldTextField {
@@ -30,6 +36,10 @@ public class MQFieldTextFieldDelegate: NSObject, UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    public func textFieldDidEndEditing(textField: UITextField) {
+        self.activeTextField = nil
     }
     
 }

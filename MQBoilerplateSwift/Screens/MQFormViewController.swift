@@ -14,8 +14,6 @@ public class MQFormViewController: UIViewController {
         fatalError("Unimplemented \(__FUNCTION__): You must provide the scroll view for the form.")
     }
     
-    public var activeTextField: UITextField?
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,8 +31,7 @@ public class MQFormViewController: UIViewController {
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        guard let activeTextField = self.activeTextField,
-            let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
+        guard let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
             else {
                 return
         }
@@ -42,12 +39,6 @@ public class MQFormViewController: UIViewController {
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         self.scrollView.contentInset = insets
         self.scrollView.scrollIndicatorInsets = insets
-        
-        var rect = self.view.frame
-        rect.size.height -= keyboardSize.height
-        if (CGRectContainsPoint(rect, activeTextField.frame.origin) == false) {
-            self.scrollView.scrollRectToVisible(activeTextField.frame, animated: true)
-        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
@@ -58,18 +49,6 @@ public class MQFormViewController: UIViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-}
-
-extension MQFormViewController: UITextFieldDelegate {
-    
-    public func textFieldDidBeginEditing(textField: UITextField) {
-        self.activeTextField = textField
-    }
-    
-    public func textFieldDidEndEditing(textField: UITextField) {
-        self.activeTextField = nil
     }
     
 }
