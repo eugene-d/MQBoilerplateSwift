@@ -1,5 +1,5 @@
 //
-//  MQURLOperation.swift
+//  __MQURLOperation.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 7/23/15.
@@ -11,7 +11,7 @@ import Foundation
 /**
 A base implementation for an operation that makes URL requests.
 */
-public class MQURLOperation: MQAsynchronousOperation {
+public class __MQURLOperation: __MQAsynchronousOperation {
     
     public enum Method: String {
         case OPTIONS = "OPTIONS"
@@ -41,11 +41,11 @@ public class MQURLOperation: MQAsynchronousOperation {
     
     /**
     The `NSURLSession` object which creates the URL tasks. Ideally, you create subclasses of
-    `MQURLOperation` that share a singleton `NSURLSession` object, and you simply pass the singleton
-    to the `MQURLOperation` initializer.
+    `__MQURLOperation` that share a singleton `NSURLSession` object, and you simply pass the singleton
+    to the `__MQURLOperation` initializer.
     */
     public var session: NSURLSession
-    public var method: MQURLOperation.Method
+    public var method: __MQURLOperation.Method
     public var URL: String
     
     /**
@@ -65,7 +65,7 @@ public class MQURLOperation: MQAsynchronousOperation {
     // MARK -
     
     public init(session: NSURLSession,
-        method: MQURLOperation.Method,
+        method: __MQURLOperation.Method,
         URL: String,
         contentType: ContentType,
         parameters: [String : AnyObject]? = nil) {
@@ -138,7 +138,7 @@ public class MQURLOperation: MQAsynchronousOperation {
     
     /**
     Handles the response returned by the server. You should override this method in a base
-    `MQURLOperation` class so that all its children have a uniform behavior of processing an API's response.
+    `__MQURLOperation` class so that all its children have a uniform behavior of processing an API's response.
     
     **IMPORTANT** You must call `super.handleResponse()` at the very end of your override to
     make sure that the `NSOperation` state flags are correctly updated.

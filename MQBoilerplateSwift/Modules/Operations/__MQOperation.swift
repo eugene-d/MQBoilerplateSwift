@@ -1,5 +1,5 @@
 //
-//  MQOperation.swift
+//  __MQOperation.swift
 //  MQBoilerplateSwift
 //
 //  Created by Matt Quiros on 7/23/15.
@@ -9,11 +9,11 @@
 import Foundation
 
 /**
-An `MQOperation` is any task that needs to execute code at various points during its execution
+An `__MQOperation` is any task that needs to execute code at various points during its execution
 and depending on whether it succeeds or fails. This is a subclass of `NSOperation` and must be
-added to an `NSOperationQueue` to execute. For an asynchronous implementation, see `MQAsynchronousOperation`.
+added to an `NSOperationQueue` to execute. For an asynchronous implementation, see `__MQAsynchronousOperation`.
 */
-public class MQOperation: NSOperation {
+public class __MQOperation: NSOperation {
     
     /**
     Executed when the operation begins. For example, you can show a loading screen in this block.
