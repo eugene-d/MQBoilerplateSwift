@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class MQStartupViewController : UIViewController {
+open class MQStartupViewController : UIViewController {
     
-    public var operation: NSOperation?
+    open var operation: Operation?
     
-    lazy var operationQueue = NSOperationQueue()
-    lazy var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    lazy var operationQueue = OperationQueue()
+    lazy var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
-    private var isComingFromViewDidLoad = true
+    fileprivate var isComingFromViewDidLoad = true
     
 //    public init(operation: NSOperation) {
 //        self.operation = operation
@@ -26,7 +26,7 @@ public class MQStartupViewController : UIViewController {
 //        fatalError("init(coder:) has not been implemented")
 //    }
     
-    public override func loadView() {
+    open override func loadView() {
         self.view = UIView()
         self.view.addSubview(self.activityIndicator)
         
@@ -37,28 +37,28 @@ public class MQStartupViewController : UIViewController {
         // Center the loadingView.
         self.view.addConstraints([
             NSLayoutConstraint(item: activityIndicator,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self.view,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: activityIndicator,
-                attribute: .CenterY,
-                relatedBy: .Equal,
+                attribute: .centerY,
+                relatedBy: .equal,
                 toItem: self.view,
-                attribute: .CenterY,
+                attribute: .centerY,
                 multiplier: 1,
                 constant: 0),
             ])
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.startAnimating()
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Check if appearing for the first time.

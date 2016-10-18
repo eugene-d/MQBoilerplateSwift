@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class MQDefaultStartingView: MQStartingView {
+open class MQDefaultStartingView: MQStartingView {
     
-    public var startingTextLabel: UILabel
+    open var startingTextLabel: UILabel
     
-    public override var text: String? {
+    open override var text: String? {
         didSet {
             if let text = self.text {
                 self.startingTextLabel.text = text
@@ -24,14 +24,14 @@ public class MQDefaultStartingView: MQStartingView {
     public init() {
         self.startingTextLabel = UILabel()
         self.startingTextLabel.numberOfLines = 0
-        self.startingTextLabel.lineBreakMode = .ByWordWrapping
+        self.startingTextLabel.lineBreakMode = .byWordWrapping
         self.startingTextLabel.text = "Nothing here yet."
-        self.startingTextLabel.textAlignment = .Center
+        self.startingTextLabel.textAlignment = .center
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         self.addSubview(self.startingTextLabel)
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         self.addAutolayout()
     }
     
@@ -46,24 +46,24 @@ public class MQDefaultStartingView: MQStartingView {
         
         self.addConstraints([
             NSLayoutConstraint(item: self.startingTextLabel,
-                attribute: .CenterY,
-                relatedBy: .Equal,
+                attribute: .centerY,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterY,
+                attribute: .centerY,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.startingTextLabel,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.startingTextLabel,
-                attribute: .Width,
-                relatedBy: .Equal,
+                attribute: .width,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .Width,
+                attribute: .width,
                 multiplier: 2.0 / 3.0,
                 constant: 0)
             ])

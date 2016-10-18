@@ -8,20 +8,20 @@
 
 import UIKit
 
-public class MQLoadableViewController: UIViewController {
+open class MQLoadableViewController: UIViewController {
     
     public enum View {
-        case Starting, Loading, Retry, Primary, NoResults
+        case starting, loading, retry, primary, noResults
     }
     
-    public var task: MQExecutableTask?
-    public lazy var operationQueue = NSOperationQueue()
+    open var task: MQExecutableTask?
+    open lazy var operationQueue = OperationQueue()
     
-    public var startingView: MQStartingView!
-    public var loadingView: UIView!
-    public var retryView: MQRetryView!
-    public var primaryView: UIView?
-    public var noResultsView: MQNoResultsView!
+    open var startingView: MQStartingView!
+    open var loadingView: UIView!
+    open var retryView: MQRetryView!
+    open var primaryView: UIView?
+    open var noResultsView: MQNoResultsView!
     
     /**
     Determines whether the `successBlock` should be overridden to automatically
@@ -33,7 +33,7 @@ public class MQLoadableViewController: UIViewController {
     array that may have no elements), you can set this to true to show the `primaryView`
     in the `successBlock`.
     */
-    public var automaticallyShowsPrimaryViewOnSuccess = false
+    open var automaticallyShowsPrimaryViewOnSuccess = false
     
     /**
     A flag used by `viewWillAppear:` to check if it will be the first time for
@@ -46,7 +46,7 @@ public class MQLoadableViewController: UIViewController {
     */
     var isComingFromViewDidLoad = true
     
-    public override func loadView() {
+    open override func loadView() {
         let mainView = UIView()
         self.view = mainView
         
@@ -64,35 +64,35 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
-    public func setupStartingView() {
+    open func setupStartingView() {
         if self.startingView == nil {
             self.startingView = MQDefaultStartingView()
         }
     }
     
-    public func setupLoadingView() {
+    open func setupLoadingView() {
         if self.loadingView == nil {
             self.loadingView = MQLoadingView()
         }
     }
     
-    public func setupRetryView() {
+    open func setupRetryView() {
         if self.retryView == nil {
             self.retryView = MQDefaultRetryView()
         }
     }
     
-    public func setupPrimaryView() {
+    open func setupPrimaryView() {
         
     }
     
-    public func setupNoResultsView() {
+    open func setupNoResultsView() {
         if self.noResultsView == nil {
             self.noResultsView = MQDefaultNoResultsView()
         }
     }
     
-    public func setupViewConstraints() {
+    open func setupViewConstraints() {
         self.startingView.fillSuperview()
         self.loadingView.fillSuperview()
         self.retryView.fillSuperview()
@@ -103,15 +103,15 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
-    public func setupTask() {
+    open func setupTask() {
         
     }
     
-    public func startTask() {
+    open func startTask() {
         if var task = self.task {
             self.overrideTaskBlocks(&task)
             
-            if task.type == .NSOperation {
+            if task.type == .nsOperation {
                 if let operation = task as? MQOperation {
                     self.operationQueue.addOperation(operation)
                 }
@@ -121,24 +121,24 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
-    public func restartTask() {
+    open func restartTask() {
         self.setupTask()
         self.startTask()
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupViewConstraints()
         
-        self.showView(.Starting)
+        self.showView(.starting)
         
         if let retryView = self.retryView as? MQDefaultRetryView {
             retryView.internalDelegate = self
         }
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if self.isComingFromViewDidLoad {
@@ -147,19 +147,19 @@ public class MQLoadableViewController: UIViewController {
         }
     }
     
-    public func showView(view: MQLoadableViewController.View) {
-        self.startingView.hidden = view != .Starting
-        self.loadingView.hidden = view != .Loading
-        self.retryView.hidden = view != .Retry
+    open func showView(_ view: MQLoadableViewController.View) {
+        self.startingView.isHidden = view != .starting
+        self.loadingView.isHidden = view != .loading
+        self.retryView.isHidden = view != .retry
         
         if let primaryView = self.primaryView {
-            primaryView.hidden = view != .Primary
+            primaryView.isHidden = view != .primary
         }
         
-        self.noResultsView.hidden = view != .NoResults
+        self.noResultsView.isHidden = view != .noResults
     }
     
-    public func overrideTaskBlocks(inout task: MQExecutableTask) {
+    open func overrideTaskBlocks(_ task: inout MQExecutableTask) {
         // Override the startBlock to automatically show the loading view.
         let someCustomStartBlock = task.startBlock
         task.startBlock = {[unowned self] in
@@ -167,7 +167,7 @@ public class MQLoadableViewController: UIViewController {
                 customStartBlock()
             }
             
-            self.showView(.Loading)
+            self.showView(.loading)
         }
         
         if self.automaticallyShowsPrimaryViewOnSuccess {
@@ -178,7 +178,7 @@ public class MQLoadableViewController: UIViewController {
                 if let customSuccessBlock = someCustomSuccessBlock {
                     customSuccessBlock(result)
                 }
-                self.showView(.Primary)
+                self.showView(.primary)
             }
         }
         
@@ -192,7 +192,7 @@ public class MQLoadableViewController: UIViewController {
             
             if let retryView = self.retryView {
                 retryView.error = error
-                self.showView(.Retry)
+                self.showView(.retry)
             }
         }
     }

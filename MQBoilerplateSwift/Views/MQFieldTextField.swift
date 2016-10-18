@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class MQFieldTextField : UITextField {
+open class MQFieldTextField : UITextField {
     
-    public weak var field: MQField? {
+    open weak var field: MQField? {
         didSet {
             if let field = self.field {
                 self.applyTextInputTraits()
@@ -23,10 +23,10 @@ public class MQFieldTextField : UITextField {
         }
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.clearButtonMode = .WhileEditing
-        self.keyboardType = .Default
+        self.clearButtonMode = .whileEditing
+        self.keyboardType = .default
     }
     
     func applyTextInputTraits() {

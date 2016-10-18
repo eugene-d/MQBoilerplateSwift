@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class MQImageButton: MQButton {
+open class MQImageButton: MQButton {
     
-    public lazy var imageView = UIImageView()
+    open lazy var imageView = UIImageView()
     
     public override init() {
         super.init()

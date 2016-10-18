@@ -9,7 +9,7 @@
 import Foundation
 
 public enum MQExecutableTaskType {
-    case Default, NSOperation
+    case `default`, nsOperation
 }
 
 public protocol MQExecutableTask: class {
@@ -53,16 +53,16 @@ public protocol MQExecutableTask: class {
     Implemented by subclasses to synchronously perform the `successBlock` and
     then the `finishBlock` in the main thread if they exist.
     */
-    func runSuccessBlockAndFinish(result result: Any?)
+    func runSuccessBlockAndFinish(result: Any?)
     
     /**
     Implemented by subclasses to synchronously perform the `failureBlock` and
     then the `finishBlock` in the main thread if they exist.
     */
-    func runFailureBlockAndFinish(error error: NSError)
+    func runFailureBlockAndFinish(error: NSError)
     
     func runFinishBlock()
     
-    func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController)
+    func overrideFailureBlockToShowErrorDialogInPresenter(_ presenter: UIViewController)
     
 }

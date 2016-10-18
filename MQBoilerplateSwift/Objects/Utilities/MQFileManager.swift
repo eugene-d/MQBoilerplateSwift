@@ -8,43 +8,43 @@
 
 import Foundation
 
-public class MQFileManager {
+open class MQFileManager {
     
     // MARK: Convenience methods
     
     /**
     Convenience method for returning the URL of a file in /Document.
     */
-    public class func URLForFileName(fileName: String) -> NSURL? {
-        return self.URLForFileName(fileName, inFolder: .DocumentDirectory)
+    open class func URLForFileName(_ fileName: String) -> URL? {
+        return self.URLForFileName(fileName, inFolder: .documentDirectory)
     }
     
     /**
     Convenience method for checking whether a file exists in /Document.
     */
-    public class func findsFileWithName(fileName: String) -> Bool {
-        return self.findsFileWithName(fileName, inFolder: .DocumentDirectory)
+    open class func findsFileWithName(_ fileName: String) -> Bool {
+        return self.findsFileWithName(fileName, inFolder: .documentDirectory)
     }
     
     /**
     Convenience method for writing an object to /Document/fileName.
     */
-    public class func writeObject(object: AnyObject, toFileName fileName: String) -> Bool {
-        return self.writeObject(object, toFileName: fileName, inFolder: .DocumentDirectory)
+    open class func writeObject(_ object: AnyObject, toFileName fileName: String) -> Bool {
+        return self.writeObject(object, toFileName: fileName, inFolder: .documentDirectory)
     }
     
     /**
     Convenience method for deflating an object of type T from /Document/fileName.
     */
-    public class func objectWithFileName<T>(fileName: String) -> T? {
-        return (self.objectWithFileName(fileName, inFolder: .DocumentDirectory) as T?)
+    open class func objectWithFileName<T>(_ fileName: String) -> T? {
+        return (self.objectWithFileName(fileName, inFolder: .documentDirectory) as T?)
     }
     
     /**
     Convenience method for deleting a file in /Document.
     */
-    public class func deleteObjectWithFileName(fileName: String, error: NSErrorPointer) {
-        self.deleteObjectWithFileName(fileName, inFolder: .DocumentDirectory, error: error)
+    open class func deleteObjectWithFileName(_ fileName: String, error: NSErrorPointer) {
+        self.deleteObjectWithFileName(fileName, inFolder: .documentDirectory, error: error)
     }
     
     // MARK: Base methods
@@ -52,12 +52,12 @@ public class MQFileManager {
     /**
     Returns the URL for a system folder in the app's sandbox.
     */
-    public class func URLForSystemFolder(folder: NSSearchPathDirectory) -> NSURL? {
-        let fileManager = NSFileManager.defaultManager()
-        let URLs = fileManager.URLsForDirectory(folder, inDomains: .UserDomainMask)
+    open class func URLForSystemFolder(_ folder: FileManager.SearchPathDirectory) -> URL? {
+        let fileManager = FileManager.default
+        let URLs = fileManager.urls(for: folder, in: .userDomainMask)
         
-        if let lastObject: AnyObject = URLs.last {
-            if let  directoryURL = lastObject as? NSURL {
+        if let lastObject: AnyObject = URLs.last as AnyObject? {
+            if let  directoryURL = lastObject as? URL {
                 return directoryURL
             }
         }
@@ -67,36 +67,36 @@ public class MQFileManager {
     /**
     Returns the URL for a file in a given system directory.
     */
-    public class func URLForFileName(fileName: String, inFolder folder: NSSearchPathDirectory) -> NSURL? {
+    open class func URLForFileName(_ fileName: String, inFolder folder: FileManager.SearchPathDirectory) -> URL? {
         if let systemDirectory = self.URLForSystemFolder(folder) {
-            return systemDirectory.URLByAppendingPathComponent(fileName)
+            return systemDirectory.appendingPathComponent(fileName)
         }
         return nil
     }
     
-    public class func findsFileWithName(fileName: String, inFolder folder: NSSearchPathDirectory) -> Bool {
+    open class func findsFileWithName(_ fileName: String, inFolder folder: FileManager.SearchPathDirectory) -> Bool {
         if let filePath = self.URLForFileName(fileName, inFolder: folder) {
-            return NSFileManager.defaultManager().fileExistsAtPath(filePath.path!)
+            return FileManager.default.fileExists(atPath: filePath.path)
         }
         return false
     }
     
-    public class func findsFileInURL(fileURL: NSURL) -> Bool {
-        return NSFileManager.defaultManager().fileExistsAtPath(fileURL.path!)
+    open class func findsFileInURL(_ fileURL: URL) -> Bool {
+        return FileManager.default.fileExists(atPath: fileURL.path)
     }
     
-    public class func writeObject(object: AnyObject, toFileName fileName: String, inFolder folder: NSSearchPathDirectory) -> Bool {
+    open class func writeObject(_ object: AnyObject, toFileName fileName: String, inFolder folder: FileManager.SearchPathDirectory) -> Bool {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
-            return NSKeyedArchiver.archiveRootObject(object, toFile: fileURL.path!)
+            return NSKeyedArchiver.archiveRootObject(object, toFile: fileURL.path)
         }
         return false
     }
     
-    public class func objectWithFileName<T>(fileName: String, inFolder folder: NSSearchPathDirectory) -> T? {
+    open class func objectWithFileName<T>(_ fileName: String, inFolder folder: FileManager.SearchPathDirectory) -> T? {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
                 
-                if let object: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithFile(fileURL.path!) {
+                if let object = NSKeyedUnarchiver.unarchiveObject(withFile: fileURL.path) {
                     if let typedObject = object as? T {
                         return typedObject
                     }
@@ -106,14 +106,14 @@ public class MQFileManager {
         return nil
     }
     
-    public class func deleteObjectWithFileName(fileName: String, inFolder folder: NSSearchPathDirectory, error: NSErrorPointer) {
+    open class func deleteObjectWithFileName(_ fileName: String, inFolder folder: FileManager.SearchPathDirectory, error: NSErrorPointer) {
         if let fileURL = self.URLForFileName(fileName, inFolder: folder) {
             if self.findsFileInURL(fileURL) {
                 
                 do {
-                    try NSFileManager.defaultManager().removeItemAtURL(fileURL)
+                    try FileManager.default.removeItem(at: fileURL)
                 } catch let error1 as NSError {
-                    error.memory = error1
+                    error?.pointee = error1
                 }
             }
         }

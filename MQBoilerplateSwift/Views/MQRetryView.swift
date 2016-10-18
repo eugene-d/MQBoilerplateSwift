@@ -10,13 +10,13 @@ import UIKit
 
 public protocol MQRetryViewDelegate {
     
-    func retryViewDidTapRetry(retryView: MQRetryView)
+    func retryViewDidTapRetry(_ retryView: MQRetryView)
     
 }
 
-public class MQRetryView: UIView {
+open class MQRetryView: UIView {
     
-    public var error: NSError?
-    public var delegate: MQRetryViewDelegate?
+    open var error: NSError?
+    open var delegate: MQRetryViewDelegate?
     
 }

@@ -17,11 +17,11 @@ here will have to be copy-pasted across any class that conforms to `MQExecutable
 */
 public final class MQExecutableTaskBlockRunner {
     
-    public class func runStartBlockOfTask(task: MQExecutableTask) {
+    public class func runStartBlockOfTask(_ task: MQExecutableTask) {
         if let startBlock = task.startBlock {
             // If the task is an operation, check first if it has been cancelled.
             if let operation = task as? MQOperation {
-                if operation.cancelled {
+                if operation.isCancelled {
                     return
                 }
             }
@@ -30,11 +30,11 @@ public final class MQExecutableTaskBlockRunner {
         }
     }
     
-    public class func runReturnBlockOfTask(task: MQExecutableTask) {
+    public class func runReturnBlockOfTask(_ task: MQExecutableTask) {
         if let returnBlock = task.returnBlock {
             // If the task is an operation, check first if it has been cancelled.
             if let operation = task as? MQOperation {
-                if operation.cancelled {
+                if operation.isCancelled {
                     return
                 }
             }
@@ -43,11 +43,11 @@ public final class MQExecutableTaskBlockRunner {
         }
     }
     
-    public class func runSuccessBlockOfTaskAndFinish(task: MQExecutableTask, withResult result: Any?) {
+    public class func runSuccessBlockOfTaskAndFinish(_ task: MQExecutableTask, withResult result: Any?) {
         if let successBlock = task.successBlock {
             // If the task is an operation, check first if it has been cancelled.
             if let operation = task as? MQOperation {
-                if operation.cancelled {
+                if operation.isCancelled {
                     return
                 }
             }
@@ -60,11 +60,11 @@ public final class MQExecutableTaskBlockRunner {
         }
     }
     
-    public class func runFailureBlockOfTaskAndFinish(task: MQExecutableTask, withError error: NSError) {
+    public class func runFailureBlockOfTaskAndFinish(_ task: MQExecutableTask, withError error: NSError) {
         if let failureBlock = task.failureBlock {
             // If the task is an operation, check first if it has been cancelled.
             if let operation = task as? MQOperation {
-                if operation.cancelled {
+                if operation.isCancelled {
                     return
                 }
             }
@@ -77,11 +77,11 @@ public final class MQExecutableTaskBlockRunner {
         }
     }
     
-    public class func runFinishBlockOfTask(task: MQExecutableTask) {
+    public class func runFinishBlockOfTask(_ task: MQExecutableTask) {
         if let finishBlock = task.finishBlock {
             // If the task is an operation, check first if it has been cancelled.
             if let operation = task as? MQOperation {
-                if operation.cancelled {
+                if operation.isCancelled {
                     return
                 }
             }
@@ -90,11 +90,11 @@ public final class MQExecutableTaskBlockRunner {
         }
     }
     
-    public class func overrideFailureBlockOfTask(task: MQExecutableTask, toShowErrorDialogInPresenter presenter: UIViewController) {
+    public class func overrideFailureBlockOfTask(_ task: MQExecutableTask, toShowErrorDialogInPresenter presenter: UIViewController) {
         let someCustomFailureBlock = task.failureBlock
         task.failureBlock = { error in
             if let operation = task as? MQOperation {
-                if operation.cancelled {
+                if operation.isCancelled {
                     return
                 }
             }
@@ -104,7 +104,7 @@ public final class MQExecutableTaskBlockRunner {
             }
             
             if let operation = task as? MQOperation {
-                if operation.cancelled {
+                if operation.isCancelled {
                     return
                 }
             }

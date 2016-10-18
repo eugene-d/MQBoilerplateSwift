@@ -8,62 +8,62 @@
 
 import Foundation
 
-public class MQDispatcher {
+open class MQDispatcher {
     
     /**
     Executes the specified block in the main thread and waits until it returns.
     The function guarantees that no deadlocks will occur. If the current thread is the main
     thread, it executes there. If it isn't, the block is dispatched to the main thread.
     */
-    public class func syncRunInMainThread(block: () -> Void) {
-        if NSThread.isMainThread() {
+    open class func syncRunInMainThread(_ block: () -> Void) {
+        if Thread.isMainThread {
             block()
         } else {
-            dispatch_sync(dispatch_get_main_queue()) {
+            DispatchQueue.main.sync {
                 block()
             }
         }
     }
     
-    public class func asyncRunInMainThread(block: () -> Void) {
-        if NSThread.isMainThread() {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+    open class func asyncRunInMainThread(_ block: @escaping () -> Void) {
+        if Thread.isMainThread {
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
                 block()
             }
         } else {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 block()
             }
         }
     }
     
-    public class func asyncRunInBackgroundThread(block: () -> Void) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+    open class func asyncRunInBackgroundThread(_ block: @escaping () -> Void) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
             block()
         }
     }
     
-    @available(*, deprecated=1.3, message="Use asyncRunInBackgroundThread()")
-    public class func executeInBackgroundThread(block: () -> Void) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+    @available(*, deprecated: 1.3, message: "Use asyncRunInBackgroundThread()")
+    open class func executeInBackgroundThread(_ block: @escaping () -> Void) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
             block()
         }
     }
     
-    @available(*, deprecated=1.3, message="")
-    public class func executeInMainThreadSynchronously(block: () -> Void) {
-        if NSThread.isMainThread() {
+    @available(*, deprecated: 1.3, message: "")
+    open class func executeInMainThreadSynchronously(_ block: () -> Void) {
+        if Thread.isMainThread {
             block()
         } else {
-            dispatch_sync(dispatch_get_main_queue()) {
+            DispatchQueue.main.sync {
                 block()
             }
         }
     }
     
-    @available(*, deprecated=1.2, message="")
-    public class func executeInMainThread(block: () -> Void) {
-        dispatch_async(dispatch_get_main_queue(), {
+    @available(*, deprecated: 1.2, message: "")
+    open class func executeInMainThread(_ block: @escaping () -> Void) {
+        DispatchQueue.main.async(execute: {
             block()
         })
     }

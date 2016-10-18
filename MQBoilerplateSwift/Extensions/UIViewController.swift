@@ -12,15 +12,15 @@ private let kLoadingOverlay = MQLoadingOverlay()
 
 public extension UIViewController {
     
-    public func embedChildViewController(childViewController: UIViewController) {
+    public func embedChildViewController(_ childViewController: UIViewController) {
         self.embedChildViewController(childViewController, fillSuperview: true)
     }
     
-    public func embedChildViewController(childViewController: UIViewController, fillSuperview: Bool) {
+    public func embedChildViewController(_ childViewController: UIViewController, fillSuperview: Bool) {
         self.embedChildViewController(childViewController, toView: self.view, fillSuperview: fillSuperview)
     }
     
-    public func embedChildViewController(childViewController: UIViewController, toView superview: UIView, fillSuperview: Bool) {
+    public func embedChildViewController(_ childViewController: UIViewController, toView superview: UIView, fillSuperview: Bool) {
         self.addChildViewController(childViewController)
         
         if fillSuperview {
@@ -29,11 +29,11 @@ public extension UIViewController {
             superview.addSubview(childViewController.view)
         }
         
-        childViewController.didMoveToParentViewController(self)
+        childViewController.didMove(toParentViewController: self)
     }
     
-    public func showLoadingOverlay(show: Bool) {
-        if let appDelegate = UIApplication.sharedApplication().delegate,
+    public func showLoadingOverlay(_ show: Bool) {
+        if let appDelegate = UIApplication.shared.delegate,
             let someWindow = appDelegate.window,
             let window = someWindow {
                 if show {

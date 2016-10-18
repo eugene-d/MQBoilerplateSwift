@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class MQLabelButton: MQButton {
+open class MQLabelButton: MQButton {
     
-    public var label: UILabel = UILabel()
+    open var label: UILabel = UILabel()
     
     public override init() {
         super.init()
-        self.label.textAlignment = .Center
+        self.label.textAlignment = .center
         self.customView.addSubviewAndFill(self.label)
     }
 
@@ -22,7 +22,7 @@ public class MQLabelButton: MQButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func sizeToFit() {
+    open override func sizeToFit() {
         self.label.sizeToFit()
         self.bounds = self.label.bounds
     }

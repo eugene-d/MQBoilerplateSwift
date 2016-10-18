@@ -8,18 +8,18 @@
 
 import UIKit
 
-public class MQTableViewCell: UITableViewCell {
+open class MQTableViewCell: UITableViewCell {
     
-    public func applyConstantColors() {
+    open func applyConstantColors() {
         
     }
     
-    public override func setSelected(selected: Bool, animated: Bool) {
+    open override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.applyConstantColors()
     }
     
-    public override func setHighlighted(highlighted: Bool, animated: Bool) {
+    open override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         self.applyConstantColors()
     }

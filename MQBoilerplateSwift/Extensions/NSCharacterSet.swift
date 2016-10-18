@@ -8,10 +8,10 @@
 
 import Foundation
 
-public extension NSCharacterSet {
+public extension CharacterSet {
     
-    public class func decimalNumberCharacterSet() -> NSCharacterSet {
-        return NSCharacterSet(charactersInString: "0123456789.")
+    public static func decimalNumberCharacterSet() -> CharacterSet {
+        return CharacterSet(charactersIn: "0123456789.")
     }
     
 }

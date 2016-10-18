@@ -8,15 +8,15 @@
 
 import Foundation
 
-public class MQLoadingOverlay : UIView {
+open class MQLoadingOverlay : UIView {
     
     var translucentView: UIView
     var activityIndicator: UIActivityIndicatorView
     
     public init() {
         self.translucentView = UIView()
-        self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-        super.init(frame: CGRectZero)
+        self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        super.init(frame: CGRect.zero)
         
         self.setupViews()
         self.addAutolayout()
@@ -27,9 +27,9 @@ public class MQLoadingOverlay : UIView {
     }
     
     func setupViews() {
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
-        self.translucentView.backgroundColor = UIColor.blackColor()
+        self.translucentView.backgroundColor = UIColor.black
         self.translucentView.alpha = 0.7
         self.translucentView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubviewAndFill(self.translucentView)
@@ -44,17 +44,17 @@ public class MQLoadingOverlay : UIView {
         // Center the activity indicator.
         self.addConstraints([
             NSLayoutConstraint(item: self.activityIndicator,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.activityIndicator,
-                attribute: .CenterY,
-                relatedBy: .Equal,
+                attribute: .centerY,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterY,
+                attribute: .centerY,
                 multiplier: 1,
                 constant: 0)
             ])

@@ -13,16 +13,16 @@ A custom button implementation where you can just set the background color
 which is automatically darkened when pressed. If you want a label or an image
 in the button, you can use `MQLabelButton` or `MQImageButton` instead, respectively.
 */
-public class MQButton: UIControl {
+open class MQButton: UIControl {
     
     /**
     The view that is used to darken the entire button when pressed.
     */
-    public var overlayView: UIView = {
+    open var overlayView: UIView = {
         let overlayView = UIView()
-        overlayView.backgroundColor = UIColor.blackColor()
+        overlayView.backgroundColor = UIColor.black
         overlayView.alpha = 0.3
-        overlayView.userInteractionEnabled = false
+        overlayView.isUserInteractionEnabled = false
         return overlayView
     }()
     
@@ -31,37 +31,37 @@ public class MQButton: UIControl {
     in the button, subclass `MQButton` and make your label or image a filling
     subview of `customView`.
     */
-    public var customView: UIView = {
+    open var customView: UIView = {
         let customView = UIView()
-        customView.backgroundColor = UIColor.clearColor()
-        customView.userInteractionEnabled = false
+        customView.backgroundColor = UIColor.clear
+        customView.isUserInteractionEnabled = false
         return customView
     }()
     
     public init() {
-        super.init(frame: CGRectZero)
-        self.backgroundColor = UIColor.clearColor()
+        super.init(frame: CGRect.zero)
+        self.backgroundColor = UIColor.clear
         self.addSubviewsAndFill(self.customView, self.overlayView)
         
         // Initially, the darkView shouldn't be showing.
-        self.overlayView.hidden = true
+        self.overlayView.isHidden = true
     }
 
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        self.overlayView.hidden = false
+    open override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        self.overlayView.isHidden = false
         return true
     }
     
-    public override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
-        self.overlayView.hidden = true
+    open override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        self.overlayView.isHidden = true
     }
     
-    public override func cancelTrackingWithEvent(event: UIEvent?) {
-        self.overlayView.hidden = true
+    open override func cancelTracking(with event: UIEvent?) {
+        self.overlayView.isHidden = true
     }
     
 }

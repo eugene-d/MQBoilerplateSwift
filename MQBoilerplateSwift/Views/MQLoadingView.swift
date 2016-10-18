@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class MQLoadingView: UIView {
+open class MQLoadingView: UIView {
 
     var spinnerView: UIActivityIndicatorView
     var loadingLabel: UILabel
     var containerView: UIView
     
-    public var text: String? {
+    open var text: String? {
         didSet {
             if let text = self.text {
                 self.loadingLabel.text = text
@@ -26,19 +26,19 @@ public class MQLoadingView: UIView {
     }
     
     public init() {
-        self.spinnerView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        self.spinnerView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         
         self.loadingLabel = UILabel()
         self.loadingLabel.text = "Loading"
         self.loadingLabel.numberOfLines = 0
-        self.loadingLabel.lineBreakMode = .ByWordWrapping
-        self.loadingLabel.textAlignment = .Center
+        self.loadingLabel.lineBreakMode = .byWordWrapping
+        self.loadingLabel.textAlignment = .center
         
         self.containerView = UIView()
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         self.containerView.addSubviews(self.spinnerView, self.loadingLabel)
         self.addSubviews(self.containerView)
@@ -75,10 +75,10 @@ public class MQLoadingView: UIView {
         
         self.containerView.addConstraint(
             NSLayoutConstraint(item: self.spinnerView,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self.containerView,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0))
     }
@@ -86,24 +86,24 @@ public class MQLoadingView: UIView {
     func addAutolayoutInMainView() {
         self.addConstraints([
             NSLayoutConstraint(item: self.containerView,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.containerView,
-                attribute: .CenterY,
-                relatedBy: .Equal,
+                attribute: .centerY,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterY,
+                attribute: .centerY,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.containerView,
-                attribute: .Width,
-                relatedBy: .Equal,
+                attribute: .width,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .Width,
+                attribute: .width,
                 multiplier: 2.0 / 3,
                 constant: 0)
             ])

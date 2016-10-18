@@ -15,68 +15,68 @@ by adding it to an `NSOperationQueue`.
 See *Asynchronous Versus Synchronous Operations* in:
 https://developer.apple.com/library/mac/documentation/Cocoa/Reference/NSOperation_class/index.html
 */
-public class MQOperation : NSOperation, MQExecutableTask {
+open class MQOperation : Operation, MQExecutableTask {
     
-    public var type: MQExecutableTaskType {
-        return .NSOperation
+    open var type: MQExecutableTaskType {
+        return .nsOperation
     }
     
     /**
     Tasks that need execution before the main `process()` function is executed.
     An example of what to do in a `startBlock` would be to show a loading view.
     */
-    public var startBlock: (() -> Void)?
+    open var startBlock: (() -> Void)?
     
-    public var returnBlock: (() -> Void)?
+    open var returnBlock: (() -> Void)?
     
     /**
     Executed after the `preparationBlock` if `error` is `nil`.
     You must take care of dispatching UI-related tasks in the `successBlock` to the
     main thread.
     */
-    public var successBlock: ((Any?) -> Void)?
+    open var successBlock: ((Any?) -> Void)?
     
     /**
     Executed after the `preparationBlock` if the `error` is non-`nil`.
     You must take care of dispatching UI-related tasks in the `failureBlock` to the
     main thread.
     */
-    public var failureBlock: ((NSError) -> Void)?
+    open var failureBlock: ((NSError) -> Void)?
     
-    public var finishBlock: (() -> Void)?
+    open var finishBlock: (() -> Void)?
     
     /**
     The error that was produced during the process block. If this property is `nil`,
     the operation is considered successful and the `successBlock` is executed.
     Otherwise, the `failureBlock` is executed.
     */
-    public var error: NSError?
+    open var error: NSError?
     
     /**
     The value that will be returned to the `successBlock` when it is executed.
     */
-    public var result: Any?
+    open var result: Any?
     
-    public override func main() {
-        if self.cancelled {
+    open override func main() {
+        if self.isCancelled {
             return
         }
         
         self.runStartBlock()
         
-        if self.cancelled {
+        if self.isCancelled {
             return
         }
         
         self.mainProcess()
         
-        if self.cancelled {
+        if self.isCancelled {
             return
         }
         
         self.runReturnBlock()
         
-        if self.cancelled {
+        if self.isCancelled {
             return
         }
         
@@ -94,7 +94,7 @@ public class MQOperation : NSOperation, MQExecutableTask {
     You must constantly check for the operation's `cancelled` property when
     overriding this method.
     */
-    public func mainProcess() {
+    open func mainProcess() {
         
     }
     
@@ -105,27 +105,27 @@ public class MQOperation : NSOperation, MQExecutableTask {
         
     }
     
-    public func runStartBlock() {
+    open func runStartBlock() {
         MQExecutableTaskBlockRunner.runStartBlockOfTask(self)
     }
     
-    public func runReturnBlock() {
+    open func runReturnBlock() {
         MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
     }
     
-    public func runSuccessBlockAndFinish(result result: Any?) {
+    open func runSuccessBlockAndFinish(result: Any?) {
         MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
     }
     
-    public func runFailureBlockAndFinish(error error: NSError) {
+    open func runFailureBlockAndFinish(error: NSError) {
         MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
     }
     
-    public func runFinishBlock() {
+    open func runFinishBlock() {
         MQExecutableTaskBlockRunner.runFinishBlockOfTask(self)
     }
     
-    public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
+    open func overrideFailureBlockToShowErrorDialogInPresenter(_ presenter: UIViewController) {
         MQExecutableTaskBlockRunner.overrideFailureBlockOfTask(self,
             toShowErrorDialogInPresenter: presenter)
     }

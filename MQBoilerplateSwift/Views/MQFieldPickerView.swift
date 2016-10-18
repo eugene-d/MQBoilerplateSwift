@@ -8,8 +8,8 @@
 
 import UIKit
 
-public class MQFieldPickerView : UIPickerView {
+open class MQFieldPickerView : UIPickerView {
     
-    public weak var field: MQField?
+    open weak var field: MQField?
     
 }

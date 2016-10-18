@@ -8,50 +8,50 @@
 
 import Foundation
 
-public class MQConcreteExecutableTask: MQExecutableTask {
+open class MQConcreteExecutableTask: MQExecutableTask {
     
-    public var type: MQExecutableTaskType {
-        return .Default
+    open var type: MQExecutableTaskType {
+        return .default
     }
     
-    public var startBlock: (() -> Void)?
-    public var returnBlock: (() -> Void)?
-    public var failureBlock: ((NSError) -> Void)?
-    public var successBlock: ((Any?) -> Void)?
-    public var finishBlock: (() -> Void)?
+    open var startBlock: (() -> Void)?
+    open var returnBlock: (() -> Void)?
+    open var failureBlock: ((NSError) -> Void)?
+    open var successBlock: ((Any?) -> Void)?
+    open var finishBlock: (() -> Void)?
     
     public init() {}
     
-    public func begin() {
+    open func begin() {
         self.runStartBlock()
         self.mainProcess()
     }
     
-    public func mainProcess() {
+    open func mainProcess() {
         
     }
     
-    public func runStartBlock() {
+    open func runStartBlock() {
         MQExecutableTaskBlockRunner.runStartBlockOfTask(self)
     }
     
-    public func runReturnBlock() {
+    open func runReturnBlock() {
         MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
     }
     
-    public func runSuccessBlockAndFinish(result result: Any?) {
+    open func runSuccessBlockAndFinish(result: Any?) {
         MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
     }
     
-    public func runFailureBlockAndFinish(error error: NSError) {
+    open func runFailureBlockAndFinish(error: NSError) {
         MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
     }
     
-    public func runFinishBlock() {
+    open func runFinishBlock() {
         MQExecutableTaskBlockRunner.runFinishBlockOfTask(self)
     }
     
-    public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
+    open func overrideFailureBlockToShowErrorDialogInPresenter(_ presenter: UIViewController) {
         MQExecutableTaskBlockRunner.overrideFailureBlockOfTask(self,
             toShowErrorDialogInPresenter: presenter)
     }

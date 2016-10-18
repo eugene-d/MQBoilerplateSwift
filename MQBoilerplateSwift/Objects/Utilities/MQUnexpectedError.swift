@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class MQUnexpectedError: MQError {
+open class MQUnexpectedError: MQError {
     
     public init(_ message: String) {
-        super.init("An unexpected error occurred:\n\(message)", code: .Unexpected)
+        super.init("An unexpected error occurred:\n\(message)", code: .unexpected)
     }
 
     required public init?(coder aDecoder: NSCoder) {

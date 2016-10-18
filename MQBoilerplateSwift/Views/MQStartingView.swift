@@ -8,8 +8,8 @@
 
 import UIKit
 
-public class MQStartingView: UIView {
+open class MQStartingView: UIView {
     
-    public var text: String?
+    open var text: String?
     
 }

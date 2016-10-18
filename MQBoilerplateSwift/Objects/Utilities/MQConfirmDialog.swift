@@ -8,21 +8,21 @@
 
 import Foundation
 
-public class MQConfirmDialog {
+open class MQConfirmDialog {
     
-    @available(*, deprecated=1.10)
-    public var title: String
+    @available(*, deprecated: 1.10)
+    open var title: String
     
-    @available(*, deprecated=1.10)
-    public var message: String
+    @available(*, deprecated: 1.10)
+    open var message: String
     
-    @available(*, deprecated=1.10)
-    public var confirmButtonTitle: String
+    @available(*, deprecated: 1.10)
+    open var confirmButtonTitle: String
     
-    @available(*, deprecated=1.10)
-    public var cancelButtonTitle: String
+    @available(*, deprecated: 1.10)
+    open var cancelButtonTitle: String
     
-    @available(*, deprecated=1.10)
+    @available(*, deprecated: 1.10)
     public init() {
         self.title = "Confirm"
         self.message = "Are you sure?"
@@ -30,52 +30,52 @@ public class MQConfirmDialog {
         self.cancelButtonTitle = "Cancel"
     }
     
-    @available(*, deprecated=1.10)
-    public func showInPresenter(presenter: UIViewController, confirmAction someAction: (() -> Void)?) {
-        let alertController = UIAlertController(title: self.title, message: self.message, preferredStyle: .Alert)
+    @available(*, deprecated: 1.10)
+    open func showInPresenter(_ presenter: UIViewController, confirmAction someAction: (() -> Void)?) {
+        let alertController = UIAlertController(title: self.title, message: self.message, preferredStyle: .alert)
         
         let confirmButtonAction = UIAlertAction(title: self.confirmButtonTitle,
-            style: .Default) {_ in
+            style: .default) {_ in
                 if let confirmAction = someAction {
                     confirmAction()
                 }
-                alertController.dismissViewControllerAnimated(true, completion: nil)
+                alertController.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(confirmButtonAction)
         
         let cancelAction = UIAlertAction(title: self.cancelButtonTitle,
-            style: UIAlertActionStyle.Cancel) {_ in
-                alertController.dismissViewControllerAnimated(true, completion: nil)
+            style: UIAlertActionStyle.cancel) {_ in
+                alertController.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(cancelAction)
         
-        presenter.presentViewController(alertController, animated: true, completion: nil)
+        presenter.present(alertController, animated: true, completion: nil)
     }
     
-    public class func showInPresenter(presenter: UIViewController,
+    open class func showInPresenter(_ presenter: UIViewController,
         title: String = "Confirm",
         message: String = "Are you sure?",
         confirmButtonTitle: String = "Yes",
         cancelButtonTitle: String = "Cancel",
         confirmAction someAction: (() -> ())?) {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             
             let confirmButtonAction = UIAlertAction(title: confirmButtonTitle,
-                style: .Default) { _ in
+                style: .default) { _ in
                     if let confirmAction = someAction {
                         confirmAction()
                     }
-                    alertController.dismissViewControllerAnimated(true, completion: nil)
+                    alertController.dismiss(animated: true, completion: nil)
             }
             alertController.addAction(confirmButtonAction)
             
             let cancelAction = UIAlertAction(title: cancelButtonTitle,
-                style: UIAlertActionStyle.Cancel) { _ in
-                    alertController.dismissViewControllerAnimated(true, completion: nil)
+                style: UIAlertActionStyle.cancel) { _ in
+                    alertController.dismiss(animated: true, completion: nil)
             }
             alertController.addAction(cancelAction)
             
-            presenter.presentViewController(alertController, animated: true, completion: nil)
+            presenter.present(alertController, animated: true, completion: nil)
     }
     
 }

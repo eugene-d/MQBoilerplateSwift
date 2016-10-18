@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class MQDefaultNoResultsView: MQNoResultsView {
+open class MQDefaultNoResultsView: MQNoResultsView {
     
-    public var noResultsLabel: UILabel
+    open var noResultsLabel: UILabel
     
-    public override var text: String? {
+    open override var text: String? {
         didSet {
             if let text = self.text {
                 self.noResultsLabel.text = text
@@ -24,16 +24,16 @@ public class MQDefaultNoResultsView: MQNoResultsView {
     public init() {
         self.noResultsLabel = UILabel()
         self.noResultsLabel.numberOfLines = 0
-        self.noResultsLabel.lineBreakMode = .ByWordWrapping
+        self.noResultsLabel.lineBreakMode = .byWordWrapping
         self.noResultsLabel.text = "No results found."
-        self.noResultsLabel.textAlignment = .Center
+        self.noResultsLabel.textAlignment = .center
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         self.addSubview(self.noResultsLabel)
         self.addAutolayout()
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
     }
 
     public required init(coder aDecoder: NSCoder) {
@@ -47,24 +47,24 @@ public class MQDefaultNoResultsView: MQNoResultsView {
         
         self.addConstraints([
             NSLayoutConstraint(item: self.noResultsLabel,
-                attribute: .CenterY,
-                relatedBy: .Equal,
+                attribute: .centerY,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterY,
+                attribute: .centerY,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.noResultsLabel,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.noResultsLabel,
-                attribute: .Width,
-                relatedBy: .Equal,
+                attribute: .width,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .Width,
+                attribute: .width,
                 multiplier: 2.0 / 3.0,
                 constant: 0)
             ])

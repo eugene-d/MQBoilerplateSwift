@@ -12,7 +12,7 @@ import Foundation
 NOTE: This class is a work in progress and currently sets a blueprint for `NSURLSessionDataTask` objects only.
 Moreover, HTTP payloads are assumed to be written in JSON format.
 */
-public class MQAPIRequest: MQExecutableTask, Equatable {
+open class MQAPIRequest: MQExecutableTask, Equatable {
     
     public enum Method: String {
         case OPTIONS = "OPTIONS"
@@ -26,21 +26,21 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         case CONNECT = "CONNECT"
     }
     
-    public var type: MQExecutableTaskType {
-        return .Default
+    open var type: MQExecutableTaskType {
+        return .default
     }
     
-    public let session: NSURLSession
-    public var task: NSURLSessionTask?
+    open let session: URLSession
+    open var task: URLSessionTask?
     
-    public let URL: NSURL
-    public let method: MQAPIRequest.Method
-    public let parameters: [String : AnyObject]?
+    open let URL: Foundation.URL
+    open let method: MQAPIRequest.Method
+    open let parameters: [String : AnyObject]?
     
-    public var needsAuthentication: Bool
-    public var cookie: NSHTTPCookie?
+    open var needsAuthentication: Bool
+    open var cookie: HTTPCookie?
     
-    public var startBlock: (() -> Void)?
+    open var startBlock: (() -> Void)?
     
     /**
     The block executed when the request returns with a response.
@@ -49,26 +49,26 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
     in the main thread. The convenience methods `finish()`, `failWithError(:)`, and `succeedWithResult(:)`
     are provided for performing the said blocks in the main thread.
     */
-    public var responseHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?
+    open var responseHandler: ((Data?, URLResponse?, NSError?) -> Void)?
     
-    public var returnBlock: (() -> Void)?
-    public var failureBlock: ((NSError) -> Void)?
-    public var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?)?)?
-    public var successBlock: ((Any?) -> Void)?
-    public var cookieBlock: ((NSHTTPCookie) -> Void)?
-    public var finishBlock: (() -> Void)?
+    open var returnBlock: (() -> Void)?
+    open var failureBlock: ((NSError) -> Void)?
+    open var builderBlock: ((AnyObject?) -> (AnyObject?, NSError?)?)?
+    open var successBlock: ((Any?) -> Void)?
+    open var cookieBlock: ((HTTPCookie) -> Void)?
+    open var finishBlock: (() -> Void)?
     
-    public init(session: NSURLSession, method: MQAPIRequest.Method, URL: String, parameters: [String : AnyObject]?) {
+    public init(session: URLSession, method: MQAPIRequest.Method, URL: String, parameters: [String : AnyObject]?) {
         self.session = session
         self.method = method
-        self.URL = NSURL(string: URL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet())!)!
+        self.URL = Foundation.URL(string: URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed)!)!
         self.parameters = parameters
         self.needsAuthentication = false
     }
     
-    public func begin() {
-        let request = NSMutableURLRequest(URL: self.URL)
-        request.HTTPMethod = method.rawValue
+    open func begin() {
+        let request = NSMutableURLRequest(url: self.URL)
+        request.httpMethod = method.rawValue
         request.setValue("application/json;charset=UTF-8", forHTTPHeaderField: "Content-Type")
         if self.needsAuthentication {
             if let cookie = self.cookie {
@@ -81,17 +81,17 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         
         if let parameters = self.parameters {
             do {
-                request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
             } catch _ {
-                request.HTTPBody = nil
+                request.httpBody = nil
             }
         }
-        
-        self.task = self.session.dataTaskWithRequest(request) {[unowned self] (data, response, error) in
+
+        self.task = self.session.dataTask(with: request as URLRequest, completionHandler: {[unowned self] (data, response, error) in
             if let responseHandler = self.responseHandler {
-                responseHandler(data, response, error)
+                responseHandler(data, response, error as NSError?)
             }
-        }
+        }) 
         
         self.runStartBlock()
         self.task!.resume()
@@ -104,27 +104,27 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
         
     }
     
-    public func runStartBlock() {
+    open func runStartBlock() {
         MQExecutableTaskBlockRunner.runStartBlockOfTask(self)
     }
     
-    public func runReturnBlock() {
+    open func runReturnBlock() {
         MQExecutableTaskBlockRunner.runReturnBlockOfTask(self)
     }
     
-    public func runSuccessBlockAndFinish(result result: Any?) {
+    open func runSuccessBlockAndFinish(result: Any?) {
         MQExecutableTaskBlockRunner.runSuccessBlockOfTaskAndFinish(self, withResult: result)
     }
     
-    public func runFailureBlockAndFinish(error error: NSError) {
+    open func runFailureBlockAndFinish(error: NSError) {
         MQExecutableTaskBlockRunner.runFailureBlockOfTaskAndFinish(self, withError: error)
     }
     
-    public func runFinishBlock() {
+    open func runFinishBlock() {
         MQExecutableTaskBlockRunner.runFinishBlockOfTask(self)
     }
     
-    public func overrideFailureBlockToShowErrorDialogInPresenter(presenter: UIViewController) {
+    open func overrideFailureBlockToShowErrorDialogInPresenter(_ presenter: UIViewController) {
         MQExecutableTaskBlockRunner.overrideFailureBlockOfTask(self, toShowErrorDialogInPresenter: presenter)
     }
     
@@ -133,7 +133,7 @@ public class MQAPIRequest: MQExecutableTask, Equatable {
 extension MQAPIRequest: Hashable {
     
     public var hashValue: Int {
-        return unsafeAddressOf(self).hashValue
+        return Unmanaged.passUnretained(self).toOpaque().hashValue
     }
     
 }

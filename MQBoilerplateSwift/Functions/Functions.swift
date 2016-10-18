@@ -8,7 +8,7 @@
 
 import Foundation
 
-public func nonEmptyString(arg: Any?) -> String? {
+public func nonEmptyString(_ arg: Any?) -> String? {
     if let string = arg as? String {
         if string.isEmpty == false {
             return string

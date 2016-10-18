@@ -10,7 +10,7 @@ import Foundation
 
 public extension UIView {
     
-    public class func disableAutoresizingMasksInViews(views: UIView...) {
+    public class func disableAutoresizingMasksInViews(_ views: UIView...) {
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -20,19 +20,19 @@ public extension UIView {
     Adds multiple subviews in order. Later arguments are placed on top of the views
     preceding them.
     */
-    public func addSubviews(views: UIView ...) {
+    public func addSubviews(_ views: UIView ...) {
         for view in views {
             self.addSubview(view)
         }
     }
     
-    public func addSubviewsAndFill(views: UIView ...) {
+    public func addSubviewsAndFill(_ views: UIView ...) {
         for view in views {
             self.addSubviewAndFill(view)
         }
     }
     
-    public func addSubviewAndFill(view: UIView) {
+    public func addSubviewAndFill(_ view: UIView) {
         self.addSubview(view)
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +61,7 @@ public extension UIView {
     
     public class func instantiateFromNib<T: UIView>() -> T? {
         if let className = self.className() {
-            let mainBundle = NSBundle.mainBundle()
+            let mainBundle = Bundle.main
             if let objects = mainBundle.loadNibNamed(className, owner: self, options: nil) {
                 if let view = objects.last as? T {
                     return view
@@ -84,7 +84,7 @@ public extension UIView {
     */
     class func className() -> String? {
         let description = self.classForCoder().description()
-        if let className = description.componentsSeparatedByString(".").last {
+        if let className = description.components(separatedBy: ".").last {
             return className
         }
         return nil

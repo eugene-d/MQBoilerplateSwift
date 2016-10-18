@@ -10,11 +10,11 @@ import Foundation
 
 public let kMQGenericErrorCode: Int = -1
 
-public class MQError : NSError {
+open class MQError : NSError {
     
     public enum Code: Int {
-        case Generic = -1
-        case Unexpected = -2
+        case generic = -1
+        case unexpected = -2
     }
     
 //    public init(message: String) {
@@ -32,7 +32,7 @@ public class MQError : NSError {
     public init(_ message: String, code: Code) {
         // Set the error's domain property.
         var domain: String
-        if let bundleID = NSBundle.mainBundle().bundleIdentifier {
+        if let bundleID = Bundle.main.bundleIdentifier {
             domain = bundleID
         } else {
             domain = ""
@@ -42,7 +42,7 @@ public class MQError : NSError {
     }
     
     public convenience init(_ message: String) {
-        self.init(message, code: .Generic)
+        self.init(message, code: .generic)
     }
 
     required public init?(coder aDecoder: NSCoder) {

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DF5384677E919531626A9682F31F55C34D261EA5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DF5384677E919531626A9682F31F55C34D261EA5" : 9223372036854775807,
+    "2793087D5E88EBA07F398A30E2194F4E5CB6A23C" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D3DB01FA-7898-46DC-8BAB-8E9998166153",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DF5384677E919531626A9682F31F55C34D261EA5" : "MQBoilerplateSwift\/",
+    "2793087D5E88EBA07F398A30E2194F4E5CB6A23C" : "..\/..\/.."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MQBoilerplateSwift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MQBoilerplateSwift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:SiliconValleyInsight\/cheers-bac.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2793087D5E88EBA07F398A30E2194F4E5CB6A23C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CocoaPods\/Specs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DF5384677E919531626A9682F31F55C34D261EA5"
+    }
+  ]
+}

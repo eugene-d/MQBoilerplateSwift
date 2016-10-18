@@ -21,13 +21,13 @@ protocol MQDefaultRetryViewDelegate {
 /**
 A default implementation of an `MQRetryView`.
 */
-public class MQDefaultRetryView: MQRetryView {
+open class MQDefaultRetryView: MQRetryView {
     
     var errorLabel: UILabel
     var retryButton: UIButton
     var containerView: UIView
     
-    public override var error: NSError? {
+    open override var error: NSError? {
         didSet {
             if let error = self.error {
                 self.errorLabel.text = error.localizedDescription
@@ -40,12 +40,12 @@ public class MQDefaultRetryView: MQRetryView {
     
     public init() {
         self.errorLabel = UILabel()
-        self.retryButton = UIButton(type: .System)
+        self.retryButton = UIButton(type: .system)
         self.containerView = UIView()
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         self.setupViews()
         self.addAutolayout()
     }
@@ -56,11 +56,11 @@ public class MQDefaultRetryView: MQRetryView {
     
     func setupViews() {
         self.errorLabel.numberOfLines = 0
-        self.errorLabel.lineBreakMode = .ByWordWrapping
-        self.errorLabel.textAlignment = .Center
+        self.errorLabel.lineBreakMode = .byWordWrapping
+        self.errorLabel.textAlignment = .center
         
-        self.retryButton.setTitle("Retry", forState: .Normal)
-        self.retryButton.addTarget(self, action: Selector("retryButtonTapped"), forControlEvents: .TouchUpInside)
+        self.retryButton.setTitle("Retry", for: UIControlState())
+        self.retryButton.addTarget(self, action: #selector(MQDefaultRetryView.retryButtonTapped), for: .touchUpInside)
         
         self.containerView.addSubviews(self.errorLabel, self.retryButton)
         self.addSubview(containerView)
@@ -78,7 +78,7 @@ public class MQDefaultRetryView: MQRetryView {
     
     func addAutolayoutInContainerView() {
         let views = ["errorLabel" : self.errorLabel,
-            "retryButton" : self.retryButton]
+            "retryButton" : self.retryButton] as [String : Any]
         let rules = ["H:|-0-[errorLabel]-0-|",
             "V:|-0-[errorLabel]-0-[retryButton]-0-|"]
         
@@ -86,15 +86,15 @@ public class MQDefaultRetryView: MQRetryView {
             NSLayoutConstraint.constraintsWithVisualFormatArray(
                 rules,
                 metrics: nil,
-                views: views))
+                views: views as [String : AnyObject]))
         
         // Center the Retry button horizontally.
         self.containerView.addConstraint(
             NSLayoutConstraint(item: self.retryButton,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self.containerView,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0))
     }
@@ -102,26 +102,26 @@ public class MQDefaultRetryView: MQRetryView {
     func addAutolayoutInMainView() {
         self.addConstraints([
             NSLayoutConstraint(item: self.containerView,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.containerView,
-                attribute: .CenterY,
-                relatedBy: .Equal,
+                attribute: .centerY,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterY,
+                attribute: .centerY,
                 multiplier: 1,
                 constant: 1),
             
             // Limit the container's width to 2/3 of the main view.
             NSLayoutConstraint(item: self.containerView,
-                attribute: .Width,
-                relatedBy: .Equal,
+                attribute: .width,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .Width,
+                attribute: .width,
                 multiplier: 2.0 / 3,
                 constant: 0)
             ])
